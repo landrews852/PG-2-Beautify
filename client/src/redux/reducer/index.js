@@ -1,4 +1,4 @@
-import { GET_IMG_CARRUSEL } from "../actions" 
+import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS } from "../actions" 
 
 const initialState = {
   user: [],
@@ -17,6 +17,18 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         carrusel: action.payload
+      }
+    
+    case ALL_PRODUCTS:
+      return {
+        ...state,
+        allProducts: action.payload
+      }
+
+    case GET_PRODUCTS_BY_NAME:
+      return {
+        ...state,
+        products: action.payload
       }
 
 

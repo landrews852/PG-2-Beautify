@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../images/logo.png';
+import SearchBar from '../searchBar';
 
 export default function Navigator () {
   return (
@@ -20,6 +21,7 @@ export default function Navigator () {
               {/* <NavDropdown.Divider /> */}
               {/* <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
             </NavDropdown>
+            <SearchBar/>
           </Nav>
         </Navbar.Collapse>
       </Container>

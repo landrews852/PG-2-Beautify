@@ -3,10 +3,7 @@ import './login.css';
 
 export default function Login () {
     return (
-        <div>
-            	<a href="https://front.codes/" class="logo" target="_blank">
-		<img src="https://assets.codepen.io/1462889/fcy.png" alt="" />
-	</a>
+        <div>  
 
 	<div class="section">
 		<div class="container">
@@ -21,7 +18,7 @@ export default function Login () {
 								<div class="card-front">
 									<div class="center-wrap">
 										<div class="section text-center">
-											<h4 class="mb-4 pb-3">Ingresar</h4>
+											<h4 className="mb-4 pb-3">Ingresar</h4>
 											<div class="form-group">
 												<input type="email" name="logemail" class="form-style" placeholder="Tu E-mail" id="logemail" autocomplete="off" />
 												<i class="input-icon uil uil-at"></i>

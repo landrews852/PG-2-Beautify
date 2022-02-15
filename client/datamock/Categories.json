@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name_category": "facial"
+    },
+    {
+        "id": 2,
+        "name_category": "cejas"
+    },
+    {
+        "id": 3,
+        "name_category": "pestañas"
+    }
+]

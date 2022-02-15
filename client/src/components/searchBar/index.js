@@ -29,7 +29,7 @@ export default function SearchBar() {
                 onChange={(e) => handleInputChange(e)}
             />
             
-                <button className="search" type="submit" onClick={(e) => handleSubmit(e)}></button>
+                <button className="search" type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
                 
         </div>
     

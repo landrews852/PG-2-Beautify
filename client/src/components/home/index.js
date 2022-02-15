@@ -4,6 +4,7 @@ import Card from '../card';
 import Slideshow from '../carousel';
 import Navigator from '../navbar';
 import {allProducts} from '../../redux/actions'
+import Footer from '../footer';
 
 
 function Home() {
@@ -11,7 +12,7 @@ function Home() {
     <div className='home'>
       <Navigator />
       <Slideshow />
-
+      <Footer />
 
     {/* COMENTO LO DE ABAJO HASTA QUE SE CREE LA RUTA DE PRODUCTOS ASI NO SE ROMPE LA PAGINA ENTERA */}
 

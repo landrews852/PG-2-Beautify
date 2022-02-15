@@ -22,7 +22,7 @@ export default function SearchBar() {
 
     return (
     
-        <div className="barra">
+        <div className="searchbar">
             <input 
                 type="text"
                 placeholder=""

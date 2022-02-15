@@ -24,7 +24,7 @@ export const getImgCarrusel = ()=>{
 
 export const allProducts = () => {
   return async function (dispatch) {
-    var json = await axios("ruta de productos", {
+    var json = await axios("ruta de los productos", {
 
     });
 

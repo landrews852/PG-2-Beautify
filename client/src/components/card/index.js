@@ -18,3 +18,4 @@ export default function Card({ image, product_name, cost_by_unit }) {
         </div>
     )
 }
+//

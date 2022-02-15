@@ -6,7 +6,7 @@ import Navigator from '../navbar';
 /* import {allProducts} from '../../redux/actions' */
 import Footer from '../footer';
 import CardCateServices from '../cardCateServices';
-let services = require('../../datamock/Services.json')
+import Homeservices from '../homeservices'
 let allProducts = require('../../datamock/Products.json')
 
 
@@ -16,20 +16,14 @@ function Home() {
     <div className='home'>
       <Navigator />
       <Slideshow />
-      {
-        services && services.slice(0,3).map (e =>(
-          <Link key={e.id_service} to ={'home/service'+ e.id_service}>
-            <CardCateServices
-            img= {e.image}
-            servicio={e.category}
-            />
-          </Link>
-        ))
-      }
+      <h2>Services</h2>
 
+      <Homeservices/>
+
+      <h2>Products</h2>
     {/* COMENTO LO DE ABAJO HASTA QUE SE CREE LA RUTA DE PRODUCTOS ASI NO SE ROMPE LA PAGINA ENTERA */}
 
-     {allProducts && allProducts.map(c => {
+     {allProducts && allProducts.slice(0,5).map(c => {
       return (
         <Link key={c.code} to={'home/' + c.code}>
         <Card
@@ -42,7 +36,6 @@ function Home() {
         )
       })
     }
- 
       <Footer/>
     </div>
   )

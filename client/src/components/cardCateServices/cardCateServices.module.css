@@ -1,0 +1,10 @@
+.cards img {
+
+  height:max-content;
+  width:100%;
+}
+.cards h3 {
+  position: relative;
+  bottom: 50px;
+  font-style: italic;
+}

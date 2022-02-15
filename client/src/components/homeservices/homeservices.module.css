@@ -1,0 +1,12 @@
+.contenedor {
+     margin: 0 auto;
+    max-width: 1200px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    background-color: var(--color-background);
+    font-family: "Lobster", cursive;
+
+
+}

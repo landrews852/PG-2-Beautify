@@ -1,4 +1,4 @@
-initialState = {
+const initialState = {
   user: [],
   products: [],
   productDetail: [],

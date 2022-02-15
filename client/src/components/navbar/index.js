@@ -13,21 +13,21 @@ export default function Navigator () {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Productos" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown title="Products" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">product 1</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">product 2</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">product 3</NavDropdown.Item>
               {/* <NavDropdown.Divider /> */}
               {/* <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
             </NavDropdown>
-            <NavDropdown title="Servicios" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown title="Services" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">service 1</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">service 2</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">service 3</NavDropdown.Item>
             </NavDropdown>
-            <SearchBar align='right'/>
+            <Nav.Link href="#login">Login</Nav.Link>
           </Nav>
+            <SearchBar align='right'/>
         </Navbar.Collapse>
       </Container>
     </Navbar>

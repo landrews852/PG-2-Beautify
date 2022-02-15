@@ -1,0 +1,202 @@
+[
+    {
+        "dni": 1,
+        "profile_picture": "http://dummyimage.com/152x128.png/ff4444/ffffff",
+        "name_client": "Kirby",
+        "last_name_client": "Tipton",
+        "email": "ktipton0@apache.org",
+        "address": "48 Meadow Ridge Place",
+        "phone": "850-592-0102",
+        "birthday": "2009-08-19"
+    },
+    {
+        "dni": 2,
+        "profile_picture": "http://dummyimage.com/141x237.png/cc0000/ffffff",
+        "name_client": "Melody",
+        "last_name_client": "Cust",
+        "email": "mcust1@1und1.de",
+        "address": "7122 Corscot Alley",
+        "phone": "449-773-8367",
+        "birthday": "2011-06-09"
+    },
+    {
+        "dni": 3,
+        "profile_picture": "http://dummyimage.com/154x219.png/ff4444/ffffff",
+        "name_client": "Tobe",
+        "last_name_client": "Masterman",
+        "email": "tmasterman2@deviantart.com",
+        "address": "422 Anhalt Trail",
+        "phone": "505-822-0102",
+        "birthday": "1962-05-25"
+    },
+    {
+        "dni": 4,
+        "profile_picture": "http://dummyimage.com/202x189.png/ff4444/ffffff",
+        "name_client": "Wilmette",
+        "last_name_client": "Dobrovolny",
+        "email": "wdobrovolny3@slideshare.net",
+        "address": "1 Russell Plaza",
+        "phone": "465-563-2595",
+        "birthday": "2000-08-24"
+    },
+    {
+        "dni": 5,
+        "profile_picture": "http://dummyimage.com/162x211.png/ff4444/ffffff",
+        "name_client": "Ami",
+        "last_name_client": "Cotmore",
+        "email": "acotmore4@illinois.edu",
+        "address": "33668 Bunker Hill Terrace",
+        "phone": "937-198-7100",
+        "birthday": "1980-07-28"
+    },
+    {
+        "dni": 6,
+        "profile_picture": "http://dummyimage.com/198x195.png/5fa2dd/ffffff",
+        "name_client": "Randolf",
+        "last_name_client": "Upston",
+        "email": "rupston5@ifeng.com",
+        "address": "4 Cardinal Parkway",
+        "phone": "670-735-0873",
+        "birthday": "2001-11-21"
+    },
+    {
+        "dni": 7,
+        "profile_picture": "http://dummyimage.com/237x156.png/cc0000/ffffff",
+        "name_client": "Dewitt",
+        "last_name_client": "Lardnar",
+        "email": "dlardnar6@blog.com",
+        "address": "132 Monica Trail",
+        "phone": "124-211-5698",
+        "birthday": "1987-05-09"
+    },
+    {
+        "dni": 8,
+        "profile_picture": "http://dummyimage.com/209x211.png/5fa2dd/ffffff",
+        "name_client": "Lazarus",
+        "last_name_client": "Kew",
+        "email": "lkew7@va.gov",
+        "address": "52182 Atwood Place",
+        "phone": "411-738-1537",
+        "birthday": "2003-12-01"
+    },
+    {
+        "dni": 9,
+        "profile_picture": "http://dummyimage.com/123x202.png/dddddd/000000",
+        "name_client": "Carlie",
+        "last_name_client": "Rany",
+        "email": "crany8@omniture.com",
+        "address": "62148 Nobel Park",
+        "phone": "532-255-8765",
+        "birthday": "2016-03-12"
+    },
+    {
+        "dni": 10,
+        "profile_picture": "http://dummyimage.com/190x143.png/cc0000/ffffff",
+        "name_client": "Alix",
+        "last_name_client": "De Hailes",
+        "email": "adehailes9@slashdot.org",
+        "address": "0621 Westend Terrace",
+        "phone": "954-566-8241",
+        "birthday": "2021-07-02"
+    },
+    {
+        "dni": 11,
+        "profile_picture": "http://dummyimage.com/200x169.png/cc0000/ffffff",
+        "name_client": "Michael",
+        "last_name_client": "Oldred",
+        "email": "moldreda@123-reg.co.uk",
+        "address": "14916 Stuart Pass",
+        "phone": "136-463-3390",
+        "birthday": "1982-09-01"
+    },
+    {
+        "dni": 12,
+        "profile_picture": "http://dummyimage.com/247x144.png/5fa2dd/ffffff",
+        "name_client": "Manya",
+        "last_name_client": "Littlejohn",
+        "email": "mlittlejohnb@va.gov",
+        "address": "6624 Waxwing Parkway",
+        "phone": "168-212-0937",
+        "birthday": "1961-06-06"
+    },
+    {
+        "dni": 13,
+        "profile_picture": "http://dummyimage.com/182x139.png/5fa2dd/ffffff",
+        "name_client": "Dannie",
+        "last_name_client": "Pedrick",
+        "email": "dpedrickc@deviantart.com",
+        "address": "341 Packers Street",
+        "phone": "105-330-4575",
+        "birthday": "1964-02-04"
+    },
+    {
+        "dni": 14,
+        "profile_picture": "http://dummyimage.com/150x171.png/cc0000/ffffff",
+        "name_client": "Tammy",
+        "last_name_client": "McMonnies",
+        "email": "tmcmonniesd@yandex.ru",
+        "address": "383 Westerfield Trail",
+        "phone": "986-106-0282",
+        "birthday": "1972-08-14"
+    },
+    {
+        "dni": 15,
+        "profile_picture": "http://dummyimage.com/162x159.png/ff4444/ffffff",
+        "name_client": "Gabriel",
+        "last_name_client": "Danson",
+        "email": "gdansone@ning.com",
+        "address": "4005 Weeping Birch Point",
+        "phone": "268-320-5981",
+        "birthday": "1989-04-17"
+    },
+    {
+        "dni": 16,
+        "profile_picture": "http://dummyimage.com/237x185.png/ff4444/ffffff",
+        "name_client": "Dorothea",
+        "last_name_client": "Ubanks",
+        "email": "dubanksf@reverbnation.com",
+        "address": "201 Forest Dale Drive",
+        "phone": "993-910-6574",
+        "birthday": "2007-01-15"
+    },
+    {
+        "dni": 17,
+        "profile_picture": "http://dummyimage.com/114x113.png/dddddd/000000",
+        "name_client": "Myron",
+        "last_name_client": "Andrivel",
+        "email": "mandrivelg@simplemachines.org",
+        "address": "13 Dixon Alley",
+        "phone": "133-381-9963",
+        "birthday": "1990-03-15"
+    },
+    {
+        "dni": 18,
+        "profile_picture": "http://dummyimage.com/122x143.png/ff4444/ffffff",
+        "name_client": "Martina",
+        "last_name_client": "Woolland",
+        "email": "mwoollandh@facebook.com",
+        "address": "03 Becker Plaza",
+        "phone": "211-839-3089",
+        "birthday": "2008-04-16"
+    },
+    {
+        "dni": 19,
+        "profile_picture": "http://dummyimage.com/175x101.png/cc0000/ffffff",
+        "name_client": "Nels",
+        "last_name_client": "Bridell",
+        "email": "nbridelli@ask.com",
+        "address": "449 Dorton Place",
+        "phone": "174-340-1458",
+        "birthday": "2007-10-27"
+    },
+    {
+        "dni": 20,
+        "profile_picture": "http://dummyimage.com/148x199.png/5fa2dd/ffffff",
+        "name_client": "Bryn",
+        "last_name_client": "Rugge",
+        "email": "bruggej@eventbrite.com",
+        "address": "42 Grover Alley",
+        "phone": "604-766-8958",
+        "birthday": "1994-10-02"
+    }
+]

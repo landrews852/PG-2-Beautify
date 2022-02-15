@@ -17,9 +17,6 @@ module.exports = (sequelize) => {
     description:{
       type:DataTypes.STRING
     },
-    category:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
-    },
     expiration_date:{
       type:DataTypes.DATE
     },

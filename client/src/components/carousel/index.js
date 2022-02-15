@@ -40,7 +40,7 @@ export default function Slideshow() {
               <h3>{e.label}</h3>
               <p>{e.text}</p>
             </Carousel.Caption>
-          </Carousel.Item>
+          </Carousel.Item> 
         ))}
       </Carousel>
     </div>

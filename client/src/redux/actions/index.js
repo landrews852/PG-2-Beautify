@@ -4,6 +4,7 @@ import axios from 'axios';
 export const GET_IMG_CARRUSEL= 'GET_IMG_CARRUSEL';
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME"
 export const ALL_PRODUCTS= 'ALL_PRODUCTS';
+export const GET_CATEGORIES = 'GET_CATEGORIES';
 
 
 
@@ -50,3 +51,20 @@ export const getProductsbyName = (name) => {
   }
 }
 }
+
+export const getCategories = () => {
+  return async function (dispatch) {
+    var info = await axios("ruta categories del back", {
+
+    })
+    return dispatch({ type: "GET_CATEGORIES", payload: info.data })
+}
+}
+
+export function postProduct(payload) { 
+  return async function (dispatch) {
+      var response = await axios.post("ruta del post", payload)
+      return response;
+  }
+}
+

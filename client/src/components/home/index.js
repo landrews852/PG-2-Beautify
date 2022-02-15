@@ -5,8 +5,7 @@ import Navigator from '../navbar';
 function Home() {
   return (
     <div className='home'>
-      <Navigator />
-      <h1>Hola Mundo</h1>
+      <Navigator/>
       <Slideshow />
     </div> 
   )

@@ -1,3 +1,5 @@
+import { GET_IMG_CARRUSEL } from "../actions" 
+
 const initialState = {
   user: [],
   products: [],
@@ -6,14 +8,15 @@ const initialState = {
   order: [],
   orderDetail: [],
   cart: [],
+  carrusel:[]
 }
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case '':
+    case GET_IMG_CARRUSEL:
       return {
         ...state,
-        user: action.payload
+        carrusel: action.payload
       }
 
 

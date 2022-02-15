@@ -1,4 +1,4 @@
-import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT } from "../actions" 
+import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, FILTER_BY_CAT } from "../actions" 
 
 const initialState = {
   user: [],
@@ -23,6 +23,7 @@ export default function rootReducer(state = initialState, action) {
     case ALL_PRODUCTS:
       return {
         ...state,
+        products: action.payload,
         allProducts: action.payload
       }
 
@@ -42,6 +43,17 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state
         }
+
+    case FILTER_BY_CAT:
+      const allProducts = state.allProducts
+            const cat = action.payload.toLowerCase()
+            
+            const products = allProducts.filter( prod => prod.category.includes(cat) )
+            
+            return {
+                ...state,
+                products: products
+            };
 
 
     default:

@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+// import NavBar from './components/navbar/NavBar';
 
-function carousel() {
+function Home() {
   return (
-    <div>
+    <div className='home'>
+      <>
+        {/* <NavBar /> */}
+      </>
       <h1>Hola Mundo</h1>
     </div>
   )
 }
 
-export default carousel
+export default Home;

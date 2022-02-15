@@ -15,6 +15,7 @@ export default function SearchBar() {
 
     function handleSubmit(e) {
         e.preventDefault()
+        alert('This feature is on development')
         dispatch(getProductsbyName(name))
     }
     
@@ -25,7 +26,7 @@ export default function SearchBar() {
         <div className="searchbar">
             <input 
                 type="text"
-                placeholder=""
+                placeholder="Search for products"
                 onChange={(e) => handleInputChange(e)}
             />
             

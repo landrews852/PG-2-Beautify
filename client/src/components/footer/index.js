@@ -11,12 +11,14 @@ export default function Footer() {
     return (
         <div className={s.container}>
             <div className={s.img}>
+              <Link to="/">
                 <img src={logo} alt="logo" height='100px' />
+              </Link>
             </div>
             <ul className={s.lista}>
-                <li className={s.li}><img width='50px' href="https://www.instagram.com/" src={ig} /></li>
-                <li className={s.li}><img width='50px' href="https://www.facebook.com/" src={fb} /></li>
-                <li className={s.li}><img width='50px' href="https://www.facebook.com/" src={mail} /></li>
+                <li className={s.li}><a href="https://www.instagram.com/"><img width='50px' src={ig} /></a></li>
+                <li className={s.li}><a href="https://www.facebook.com/"><img width='50px' src={fb} /></a></li>
+                <li className={s.li}><a href="mailto:beautify@correo.com"><img width='50px' src={mail} /></a></li>
             </ul>
         </div>
     )

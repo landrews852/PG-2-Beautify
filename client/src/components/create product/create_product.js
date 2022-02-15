@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { postProduct, getCategories} from "../../redux/actions";
+import { postProduct, getCategories } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -55,7 +55,7 @@ export default function NewProduct() {
             ...input,
             [e.target.name]: e.target.value
         })
-        
+
         setErrors(validate({
             ...input,
             [e.target.name]: e.target.value
@@ -87,7 +87,7 @@ export default function NewProduct() {
 
         })
         history.push("/home")
-        
+
     }
 
     function handleDelete(el) {
@@ -164,7 +164,7 @@ export default function NewProduct() {
                             onChange={handleChange}
                         />
                     </div>
-                    
+
 
                     <div>
                         <label>Image:</label>
@@ -179,7 +179,7 @@ export default function NewProduct() {
                         <p className="error">{errors.image}</p>
                     )}
 
-<div>
+                    <div>
                         <label>Warranty:</label>
                         <input
                             type="text"
@@ -206,7 +206,7 @@ export default function NewProduct() {
                             <option value="Skincare">Skincare</option>
                             <option value="Lashes">Lashes</option>
                             <option value="Eyebrows">Eyebrows</option>
-                            
+
                         </select>
                     </div>
 

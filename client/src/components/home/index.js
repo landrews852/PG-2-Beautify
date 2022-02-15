@@ -1,4 +1,6 @@
 import React from 'react';
+import Slideshow from '../carousel';
+
 // import NavBar from './components/navbar/NavBar';
 
 function Home() {
@@ -8,7 +10,8 @@ function Home() {
         {/* <NavBar /> */}
       </>
       <h1>Hola Mundo</h1>
-    </div>
+      <Slideshow/>
+    </div> 
   )
 }
 

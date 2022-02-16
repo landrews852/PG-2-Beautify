@@ -22,16 +22,18 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { id, admin_name, password, profile_picture, email, address, phone } = req.body
-    const newAdmin = await Admin.create({
-      id,
-      admin_name,
-      password,
-      profile_picture,
-      email,
-      address,
-      phone
-    })
-    res.json(newAdmin);
+    if (id && admin_name && password && email) {
+      const newAdmin = await Admin.create({
+        id,
+        admin_name,
+        password,
+        profile_picture,
+        email,
+        address,
+        phone
+      })
+      res.json(newAdmin);
+    }
   } catch (err) {
     res.json(err);
   }

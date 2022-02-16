@@ -27,7 +27,7 @@ export default function Navigator () {
               <NavDropdown.Item href="#service 3">service 3</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#contact">Contact</Nav.Link>
-            <Nav.Link href="#login"> <ButtonLogin />   </Nav.Link>
+            <Nav.Link href="#login"> <ButtonLogin /> </Nav.Link>
           </Nav>
             <SearchBar align='right'/>
         </Navbar.Collapse>

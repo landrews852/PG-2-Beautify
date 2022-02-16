@@ -1,12 +1,13 @@
 import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT } from "../actions"
+import * as types from '../actions'
 
 const initialState = {
   user: [],
   products: [],
-  productDetail: [],
+  productDetail: {}, // Los detalles son objetos
   allProducts: [],
   order: [],
-  orderDetail: [],
+  orderDetail: {}, // Los detalles son objetos
   cart: [],
   carrusel: [],
   categories: []
@@ -44,8 +45,17 @@ export default function rootReducer(state = initialState, action) {
         ...state
       }
 
+    case types.GET_PRODUCT_DETAIL:
+      return {
+        ...state,
+        productDetail : action.payload
+      }
 
-
+    case types.CLEAN_PRODUCT_DETAIL:
+      return {
+        ...state,
+        productDetail : {}
+      }
 
     default:
       return state

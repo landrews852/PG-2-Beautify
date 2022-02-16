@@ -4,16 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../images/logo2.png';
 import SearchBar from '../searchBar';
 import ButtonLogin from '../buttonlogin';
+import { Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Navigator () {
-  return (
+  return (<>
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home"><img src={logo} height="100px" alt="logo" /></Navbar.Brand>
+        <Navbar.Brand> <Link to={'/'}><img src={logo} height="100px" alt="logo" /></Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link> <Link to={'/'}>Home</Link></Nav.Link>
             <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item href="#product 1">product 1</NavDropdown.Item>
               <NavDropdown.Item href="#product 2">product 2</NavDropdown.Item>
@@ -33,6 +35,8 @@ export default function Navigator () {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    <Outlet></Outlet>
+  </>
   )
 }
 //

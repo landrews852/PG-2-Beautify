@@ -14,7 +14,6 @@ let allProducts = require('../../datamock/Products.json')
 function Home() {
   return (
     <div className='home'>
-      <Navigator />
       <Slideshow />
       <Homeservices/>
 
@@ -23,7 +22,7 @@ function Home() {
 
      {allProducts && allProducts.slice(0,5).map(c => {
       return (
-        <Link key={c.id} to={'home/' + c.id}> {/* Cambio de c.code a c.id, ya que se cambio la propiedad en el objeto*/}
+        <Link key={c.id} to={'product/' + c.id}> {/* Cambio de c.code a c.id, ya que se cambio la propiedad en el objeto*/}
         <Card
         name={c.product_name}
         image={c.image}

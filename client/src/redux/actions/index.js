@@ -6,8 +6,8 @@ export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME"
 export const ALL_PRODUCTS = 'ALL_PRODUCTS';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const POST_PRODUCT = 'POST_PRODUCT'
-
-
+export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
+export const CLEAN_PRODUCT_DETAIL = 'CLEAN_PRODUCT_DETAIL'
 
 export const getImgCarrusel = () => {
   return async function (dispatch) {
@@ -38,7 +38,6 @@ export const allProducts = () => {
   }
 }
 
-
 export const getProductsbyName = (name) => {
   return async function (dispatch) {
     try {
@@ -66,6 +65,19 @@ export const postProduct = (payload) => {
   return async function (dispatch) {
     var response = await axios.post("ruta del post", payload)
     return response;
+  }
+}
+
+export const getProductDetail = () => {
+  return async function (dispatch) {
+    let detail = await axios.get('ruta_get_detail')
+    return dispatch({ type: GET_PRODUCT_DETAIL, payload: detail.data })
+  } 
+}
+
+export const cleanProductDetail = () => {
+  return function (dispatch){
+    return dispatch({ type: CLEAN_PRODUCT_DETAIL})
   }
 }
 

@@ -7,7 +7,7 @@
 	line-height: 1.7;
 	color: #c4c3ca;
 	/* background-color: #1f2029; */
-	overflow-x: hidden;
+	
 }
 a {
 	cursor: pointer;
@@ -17,10 +17,10 @@ a:hover {
 	text-decoration: none;
 }
 .link {
-  color: #c4c3ca;
+  color: #191c1d;
 }
 .link:hover {
-  color: #ffeba7;
+  color: #830711;
 }
 p {
   font-weight: 500;
@@ -34,9 +34,14 @@ h4 {
 
 
 h6 span{
-  padding: 0 20px;
-  text-transform: uppercase;
-  font-weight: 700;
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: black;
+    background: white;
+    border-radius: 20px;
+    margin: 0px 10px;
+    box-shadow: 0 2px 3px 1px rgba(0,0,0,0.3);
 }
 .section{
   position: relative;
@@ -87,16 +92,19 @@ h6 span{
   transform: translateX(44px) rotate(-270deg);
 }
 
+.modal-content {
+    background:linear-gradient(90deg, #f7cad09d, #766bcc81);	
+}
 
 .card-3d-wrap {
   position: relative;
   width: 440px;
   max-width: 100%;
-  height: 400px;
+  height: 500px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   perspective: 800px;
-  margin-top: 60px;
+  margin-top: 40px;
   
 }
 .card-3d-wrapper {
@@ -289,4 +297,65 @@ h6 span{
 	height: 26px;
 	width: auto;
 	display: block;
+}
+
+/****** MODAL ************/
+
+.modal-lg, .modal-xl {
+    max-width:500px!important;
+  }
+
+.modal {    
+    overflow-y: hidden!important;
+}
+.screen__background {		
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	-webkit-clip-path: inset(0 0 0 0);
+	clip-path: inset(0 0 0 0);	
+}
+
+.screen__background__shape {
+	transform: rotate(45deg);
+	position: absolute;
+}
+
+.screen__background__shape1 {
+	height: 520px;
+	width: 520px;
+	background: #FFF;	
+	top: -50px;
+	right: 120px;	
+	border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+	height: 220px;
+	width: 220px;
+	background: #F7CAD0;	
+	top: -172px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.screen__background__shape3 {
+	height: 540px;
+	width: 190px;
+	background: linear-gradient(270deg, #5D54A4, #F7CAD0);
+	top: -24px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.screen__background__shape4 {
+	height: 400px;
+	width: 200px;
+	background: #F7CAD0;	
+	top: 420px;
+	right: 50px;	
+	border-radius: 60px;
 }

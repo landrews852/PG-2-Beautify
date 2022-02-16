@@ -7,8 +7,8 @@ export default function Login () {
 
 	<div class="sectionwraper">
 		<div class="container">
-			<div class="row full-height justify-content-center">
-				<div class="col-12 text-center align-self-center py-5">
+			<div class="row justify-content-center">
+				<div class="col-12 text-center align-self-center">
 					<div class="section pb-5 pt-5 pt-sm-2 text-center">
 						<h6 class="mb-0 pb-3"><span>Ingresar </span><span>Crear cuenta</span></h6>
 			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
@@ -31,6 +31,12 @@ export default function Login () {
                             				<p class="mb-0 mt-4 text-center"><a href="#0" class="link">¿Olvidaste tu contraseña?</a></p>
 				      					</div>
 			      					</div>
+                                        <div class="screen__background">
+                                            <span class="screen__background__shape screen__background__shape4"></span>
+                                            <span class="screen__background__shape screen__background__shape3"></span>		
+                                            <span class="screen__background__shape screen__background__shape2"></span>
+                                            <span class="screen__background__shape screen__background__shape1"></span>
+                                        </div>      
 			      				</div>
 								<div class="card-back">
 									<div class="center-wrap">
@@ -51,6 +57,12 @@ export default function Login () {
 											<a href="#" class="btn mt-4">Crear</a>
 				      					</div>
 			      					</div>
+                                      <div class="screen__background">
+                                            <span class="screen__background__shape screen__background__shape4"></span>
+                                            <span class="screen__background__shape screen__background__shape3"></span>		
+                                            <span class="screen__background__shape screen__background__shape2"></span>
+                                            <span class="screen__background__shape screen__background__shape1"></span>
+                                        </div> 
 			      				</div>
 			      			</div>
 			      		</div>

@@ -3,6 +3,7 @@ import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../images/logo2.png';
 import SearchBar from '../searchBar';
+import ButtonLogin from '../buttonlogin';
 
 export default function Navigator () {
   return (
@@ -26,7 +27,7 @@ export default function Navigator () {
               <NavDropdown.Item href="#service 3">service 3</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#contact">Contact</Nav.Link>
-            <Nav.Link href="#login">Login</Nav.Link>
+            <Nav.Link href="#login"> <ButtonLogin />   </Nav.Link>
           </Nav>
             <SearchBar align='right'/>
         </Navbar.Collapse>

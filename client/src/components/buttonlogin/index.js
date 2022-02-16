@@ -20,9 +20,9 @@ function MyVerticallyCenteredModal(props) {
         <Modal.Body>
          <Login />
         </Modal.Body>
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     );
   }
@@ -32,9 +32,9 @@ function MyVerticallyCenteredModal(props) {
   
     return (
       <>
-        <Button variant="primary" onClick={() => setModalShow(true)}>
-          Launch vertically centered modal
-        </Button>
+        <a variant="primary" onClick={() => setModalShow(true)}>
+          Login
+        </a>
   
         <MyVerticallyCenteredModal
           show={modalShow}

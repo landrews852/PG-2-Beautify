@@ -7,6 +7,7 @@ import Market from './components/market';
 import React from 'react';
 import Navigator from './components/navbar';
 import Footer from './components/footer';
+import ProductDetail from './components/productDetail/productDetail';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route  path= "/" element={<Home/>} />
           <Route  path="/market" element={<Market />} />          
           <Route  path="/services" element={<Services/>}/>
+          <Route  path= "/home/:id" element={<ProductDetail/>} />
         </Routes>
         <Footer/> {/* se agregó el footer a todas las páginas */}
       </div>

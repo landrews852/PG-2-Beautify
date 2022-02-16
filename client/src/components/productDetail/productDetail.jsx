@@ -19,6 +19,7 @@ export default function ProductDetail() {
     let productDetail = products.find( product => product.id == id)
 
     return (<>
+        hola
         <span>{productDetail.product_name}</span>
         <span>{productDetail.brand}</span>
         <span>{productDetail.category}</span>

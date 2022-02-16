@@ -17,15 +17,19 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn, Category } = require('./src/db.js');
+const server = require("./src/app.js");
+const { conn, Category } = require("./src/db.js");
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, async() => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
-    try{
-      await Category.bulkCreate([{ name_category: "Cejas" }, { name_category: "Pestanas" }, { name_category: "Cuidado Facial" }])
+conn.sync({ force: false }).then(() => {
+  server.listen(3001, async () => {
+    console.log("%s listening at 3001"); // eslint-disable-line no-console
+    try {
+      await Category.bulkCreate([
+        { name_category: "Cejas" },
+        { name_category: "Pestanas" },
+        { name_category: "Cuidado Facial" },
+      ]);
       //await Category.create({name_category: "Cejas"});
     } catch (error) {
       return error;

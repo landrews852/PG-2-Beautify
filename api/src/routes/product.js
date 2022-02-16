@@ -29,11 +29,12 @@ router.post("/", async (req, res) => {
     cost_by_unit,
     description,
     category,
-    expiration_date,
+    //expiration_date,
     warranty,
     brand,
     image,
-    country,
+    discount
+    //country,
   } = req.body;
 
   try {
@@ -43,36 +44,39 @@ router.post("/", async (req, res) => {
       cost_by_unit &&
       description &&
       category &&
-      expiration_date &&
+      //expiration_date &&
       warranty &&
       brand &&
       image &&
-      country
+      discount
+      //country
     ) {
-      console.log(req.body);
+      var categoryy = await Promise.all(
+        category.map(
+          async (c) => await Category.findAll({ where: { name_category: c } })
+        )
+      );
+      categoryy = categoryy.flat();
+      
       let product = await Product.create({
         product_name,
         stock,
         cost_by_unit,
         description,
-        expiration_date,
+        //expiration_date,
         warranty,
         brand,
         image,
-        country,
+        discount
+        //country,
       });
 
-      var categoryy = await Promise.all(
-        category.map(
-          async (c) => await Category.findAll({ where: { name: c } })
-        )
-      );
-      categoryy = categoryy.flat();
-      await product.setCategories(categoryy);
+      product.setCategory(categoryy[0].id);
+
       return res.json(product);
     }
   } catch (e) {
-    return res.json("ERROR");
+    console.log(e);
   }
 });
 

@@ -214,6 +214,10 @@ background: #DFC2F2;
 	margin-block: 20px;
 	width: 50%;
 	height: 100%;
+	border-radius:10px;
+}
+.product-image img {
+	transition: all 1s ease-out;
 
 }
 
@@ -243,4 +247,5 @@ background: #DFC2F2;
 .info ul li:hover{transform: translateX(50px) scale(1.3);} */
 
 .product-image:hover img {transition: all 1s ease-out;}
+
 .product-image:hover img {transform: scale(1.2, 1.2);}

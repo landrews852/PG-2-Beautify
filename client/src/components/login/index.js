@@ -5,7 +5,7 @@ export default function Login () {
     return (
         <div>  
 
-	<div class="section">
+	<div class="sectionwraper">
 		<div class="container">
 			<div class="row full-height justify-content-center">
 				<div class="col-12 text-center align-self-center py-5">

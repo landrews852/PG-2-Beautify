@@ -1,10 +1,10 @@
 .cards img {
-
-  height:max-content;
-  width:100%;
+  height:300px;
+  width: 45vw;
 }
 .cards h3 {
   position: relative;
   bottom: 50px;
   font-style: italic;
+  color:black;
 }

@@ -1,13 +1,11 @@
-import React from 'react'
-import Style from './cardServices.module.css'
+import React from "react";
+import "./cardServices.css";
 let services = require("../../datamock/Services.json");
-
 export default function cardService() {
-  let service= services.slice (0,8)
   return (
-    <div className={Style.cont} >
+    /*     <div className={Style.cont} >
       {
-        service.map ((service)=>(
+        services.map ((service)=>(
       <div className={Style.cont2}>
         <img src={service.image} alt='Not found'/>
         <h2>{service.name_service}</h2>
@@ -19,6 +17,48 @@ export default function cardService() {
       </div>
         ))
       }
+    </div> */
+    <div /* className={Style.cont} */>
+      { services.map ((service)=>(
+
+        <div id="container">
+        <div class="product-details">
+        
+          <div class='title-stars' >
+          <h1>{service.name_service}</h1>
+
+          <span class="hint-star star">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          </span>
+
+          </div>
+          <p class="information">
+          {service.description}
+          </p>
+
+          <div class="control">
+            <button class="btn">
+              <span class="price">{service.price} $</span>
+              <span class="shopping-cart">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </span>
+              <span class="buy">Buy Now</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-image">
+          <img
+            src={service.image}
+            alt="Omar Dsoky"
+            />
+        </div>
+        </div>
+      ))}
     </div>
-  )
+  );
 }

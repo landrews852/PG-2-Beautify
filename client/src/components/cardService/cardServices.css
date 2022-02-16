@@ -58,19 +58,29 @@ background: #DFC2F2;
 	background-attachment: fixed;	
 	background-size: cover;
 	} */
+#cont{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px;
+
+}
 
 #container{
 	display: flex;
+	flex-wrap:wrap-reverse;
+	justify-content: center;
 	align-items: center;
 	box-shadow: 0 15px 30px 1px rgba(128, 128, 128, 0.31);
 	background: rgba(255, 255, 255, 0.90);
 	text-align: center;
-	border-radius: 5px;
+	border-radius: 10px;
 	overflow: hidden;
-	margin: 5em auto;
+	margin-top: 3rem;
 	height: auto;
 	width: 95vw;
-	
+	border: 1px solid black;
+
 }
 
 
@@ -83,8 +93,9 @@ background: #DFC2F2;
 	align-self: flex-start;
 	padding: 20px;
 	height: auto;
-	float: left;
 	width: 50%;
+	min-width: 400px;
+	
 }
 
 /* 	Product Name */
@@ -138,6 +149,7 @@ background: #DFC2F2;
 	text-align: justify;
 	font-size: 20px;
 	color: #7d7d7d;
+	width: 100%;
 	
 }
 
@@ -213,11 +225,13 @@ background: #DFC2F2;
 	overflow: hidden;
 	margin-block: 20px;
 	width: 50%;
+	min-width: 300px;
 	height: 100%;
 	border-radius:10px;
 }
 .product-image img {
 	transition: all 1s ease-out;
+	height: fit-content;
 
 }
 

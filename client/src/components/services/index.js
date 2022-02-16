@@ -8,8 +8,6 @@ export default function Services() {
 
 
   return (
-    <div>
       <CardService/>  
-    </div>
   )
 }

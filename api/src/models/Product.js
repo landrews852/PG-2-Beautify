@@ -10,27 +10,39 @@ module.exports = (sequelize) => {
     },
     stock:{
       type:DataTypes.INTEGER,
+      allowNull: false
     },
     cost_by_unit:{
-      type:DataTypes.INTEGER
+      type:DataTypes.FLOAT,
+      allowNull: false
     },
     description:{
-      type:DataTypes.STRING
+      type:DataTypes.STRING,
+      allowNull: false
     },
-    expiration_date:{
-      type:DataTypes.DATE
-    },
+    // expiration_date:{
+    //   type:DataTypes.DATE,
+    // },
     warranty:{
-        type:DataTypes.INTEGER
+        type:DataTypes.INTEGER,
+        allowNull: false
     },
     brand:{
-      type:DataTypes.STRING
+      type:DataTypes.STRING,
+      allowNull: false
     },
     image:{
-      type:DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false
     },
-    country:{
-        type:DataTypes.STRING,
-      }
+    discount: {
+      type: DataTypes.INTEGER
+    }
+    // country:{
+    //     type:DataTypes.STRING,
+    //   }
+  },
+  {
+    timestamps: false,
   });
 };

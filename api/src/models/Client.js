@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
   sequelize.define(
     "client",
     {
-      client_id: {
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false
@@ -15,18 +15,22 @@ module.exports = (sequelize) => {
       },
       lastname_client: {
         type: DataTypes.STRING,
+        allowNull: false
       },
       profile_picture: {
         type: DataTypes.STRING,
       },
       password_client: {
         type: DataTypes.STRING,
+        allowNull: false
       },
       email: {
         type: DataTypes.STRING,
+        allowNull: false
       },
       address: {
         type: DataTypes.STRING,
+        allowNull: false
       },
       phone: {
         type: DataTypes.INTEGER,
@@ -34,15 +38,12 @@ module.exports = (sequelize) => {
       birthday: {
         type: DataTypes.DATE,
       },
-      purchase_history: {
-        type: DataTypes.INTEGER,
-      },
-      dating_history: {
-        type: DataTypes.DATE,
-      },
-      payment_detail: {
-        type: DataTypes.STRING,
-      }
+      // purchase_history: {
+      //   type: DataTypes.INTEGER,
+      // },
+      // dating_history: {
+      //   type: DataTypes.DATE,
+      // },
     },
     {
       timestamps: false,

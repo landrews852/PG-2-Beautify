@@ -9,10 +9,7 @@ export default function Services() {
 
   return (
     <div>
-      <Navigator/>  
-      <CardService/>
-      <Footer/>
-     
+      <CardService/>  
     </div>
   )
 }

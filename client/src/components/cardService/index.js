@@ -41,7 +41,7 @@ export default function cardService() {
           </p>
 
           <div class="control">
-            <button class="btn">
+            <button class="btns">
               <span class="price">{service.price} $</span>
               <span class="shopping-cart">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>

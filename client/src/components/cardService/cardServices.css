@@ -60,7 +60,8 @@ background: #DFC2F2;
 	} */
 
 #container{
-	position:static;
+	display: flex;
+	align-items: center;
 	box-shadow: 0 15px 30px 1px rgba(128, 128, 128, 0.31);
 	background: rgba(255, 255, 255, 0.90);
 	text-align: center;
@@ -79,6 +80,7 @@ background: #DFC2F2;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	align-self: flex-start;
 	padding: 20px;
 	height: auto;
 	float: left;
@@ -148,10 +150,10 @@ background: #DFC2F2;
 	
 }
 /* the Button */
-.btn {
+.btns {
 	transform: translateY(0px);
 	transition: 0.3s linear;
-	background: #49C608;
+	background: #F7CAD0;
 	border-radius: 5px;
   position: relative;
   overflow: hidden;
@@ -164,9 +166,9 @@ background: #DFC2F2;
 	
 }
 
-.btn:hover{transform: translateY(-4px);}
+.btns:hover{transform: translateY(-4px); background-color:#DCA3C5;}
 
-.btn span {
+.btns span {
 	font-family: 'Farsan', cursive;
 	transition: transform 0.3s;
 	display: inline-block;
@@ -176,18 +178,18 @@ background: #DFC2F2;
 	
 }
 /* shopping cart icon */
-.btn .price, .shopping-cart{
+.btns .price, .shopping-cart{
 	background: #333;
 	border: 0;
 	margin: 0;
 }
 
-.btn .price {
+.btns .price {
 	transform: translateX(-10%); padding-right: 15px;
 }
 
 /* the Icon */
-.btn .shopping-cart {
+.btns .shopping-cart {
 	transform: translateX(-100%);
   position: absolute;
 	background: #333;
@@ -197,11 +199,11 @@ background: #DFC2F2;
 }
 
 /* buy */
-.btn .buy {z-index: 3; font-weight: bolder;}
+.btns .buy {z-index: 3; font-weight: bolder;}
 
-.btn:hover .price {transform: translateX(-110%);}
+.btns:hover .price {transform: translateX(-110%);}
 
-.btn:hover .shopping-cart {transform: translateX(0%);}
+.btns:hover .shopping-cart {transform: translateX(0%);}
 
 
 
@@ -210,8 +212,8 @@ background: #DFC2F2;
 	transition: all 1s ease-out;
 	overflow: hidden;
 	margin-block: 20px;
-	height: 100%;
 	width: 50%;
+	height: 100%;
 
 }
 
@@ -240,5 +242,5 @@ background: #DFC2F2;
 /* .info ul li{transition: 0.3s ease;}
 .info ul li:hover{transform: translateX(50px) scale(1.3);} */
 
-.product-image:hover img {transition: all 0.8s ease-out;}
+.product-image:hover img {transition: all 1s ease-out;}
 .product-image:hover img {transform: scale(1.2, 1.2);}

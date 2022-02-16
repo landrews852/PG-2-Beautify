@@ -23,12 +23,12 @@ function Home() {
 
      {allProducts && allProducts.slice(0,5).map(c => {
       return (
-        <Link key={c.code} to={'home/' + c.code}>
+        <Link key={c.id} to={'home/' + c.id}> {/* Cambio de c.code a c.id, ya que se cambio la propiedad en el objeto*/}
         <Card
         name={c.product_name}
         image={c.image}
         cost_by_unit={c.cost_by_unit}
-        id={c.code}
+        id={c.id}
         />
         </Link>
         )

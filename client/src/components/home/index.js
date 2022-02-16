@@ -14,7 +14,6 @@ let allProducts = require('../../datamock/Products.json')
 function Home() {
   return (
     <div className='home'>
-      <Navigator />
       <Slideshow />
       <Homeservices/>
 
@@ -34,7 +33,7 @@ function Home() {
         )
       })
     }
-      <Footer/>
+      
     </div>
   )
 }

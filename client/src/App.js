@@ -2,23 +2,27 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter as Router} from 'react-router-dom';
 import Home from './components/home'
-import Login from './components/login'
-import ButtonLogin from './components/buttonlogin';
 import Services from './components/services';
+import Market from './components/market';
+import React from 'react';
+import Navigator from './components/navbar';
+import Footer from './components/footer';
 
 function App() {
   return (
+    <>
     <Router>
       <div className="App">
+        < Navigator /> {/* se agregó la barra a todas las páginas */}
         <Routes>
           <Route  path= "/" element={<Home/>} />
-          <Route  path= "/login" element={<Login/>} />
-          <Route  path="/modal" element={<ButtonLogin/>} />
-          
+          <Route  path="/market" element={<Market />} />          
           <Route  path="/services" element={<Services/>}/>
         </Routes>
+        <Footer/> {/* se agregó el footer a todas las páginas */}
       </div>
     </Router>
+    </>
   );
 }
 

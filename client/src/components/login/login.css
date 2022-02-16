@@ -93,7 +93,7 @@ h6 span{
 }
 
 .modal-content {
-    background:linear-gradient(90deg, #f7cad09d, #766bcc81);	
+    background:#ffffffba;
 }
 
 .card-3d-wrap {
@@ -132,8 +132,8 @@ h6 span{
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
+  /* -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden; */
   backface-visibility: hidden;
   box-shadow: 0 1px 5px 3px rgba(0,0,0,0.5);
 }
@@ -258,13 +258,13 @@ h6 span{
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-align-items: center;
+  /* -webkit-align-items: center;
   -moz-align-items: center;
-  -ms-align-items: center;
+  -ms-align-items: center; */
   align-items: center;
-  -webkit-justify-content: center;
+  /* -webkit-justify-content: center;
   -moz-justify-content: center;
-  -ms-justify-content: center;
+  -ms-justify-content: center; */
   justify-content: center;
   -ms-flex-pack: center;
   text-align: center;

@@ -42,13 +42,14 @@ const { Product, Category, Order, Service } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-Product.belongsToMany(Category, { through: "product_category" });
-Category.belongsToMany(Product, { through: "product_category" });
+Category.hasMany(Product);
+Product.belongsTo(Category);
+
+Category.hasMany(Service);
+Service.belongsTo(Category);
 
 Product.belongsToMany(Order, { through: "order_product" });
 Order.belongsToMany(Product, { through: "order_product" });
-
-Service.belongsTo(Category);
 
 // Client.hasMany(Order);
 // Order.belongsTo(Client);

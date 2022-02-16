@@ -69,5 +69,16 @@ export const postProduct = (payload) => {
   }
 }
 
+export const getProductDetail = () => {
+  return async function (dispatch) {
+    let detail = await axios.get('ruta_get_detail')
+    return dispatch({ type: GET_PRODUCT_DETAIL, payload: detail.data })
+  } 
+}
 
+export const cleanProductDetail = () => {
+  return function (dispatch){
+    return dispatch({ type: CLEAN_PRODUCT_DETAIL})
+  }
+}
 

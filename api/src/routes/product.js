@@ -39,8 +39,7 @@ router.post("/", async (req, res) => {
       category &&
       warranty &&
       brand &&
-      image &&
-      discount
+      image
     ) {
       var categoryy = await Promise.all(
         category.map(
@@ -54,7 +53,6 @@ router.post("/", async (req, res) => {
         stock,
         cost_by_unit,
         description,
-
         warranty,
         brand,
         image,
@@ -63,7 +61,7 @@ router.post("/", async (req, res) => {
 
       product.setCategory(categoryy[0].id);
 
-      return res.json(product);
+      return res.json("created");
     }
   } catch (e) {
     console.log(e);

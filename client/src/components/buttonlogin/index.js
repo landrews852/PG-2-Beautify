@@ -32,10 +32,9 @@ function MyVerticallyCenteredModal(props) {
   
     return (
       <>
-        <a variant="primary" onClick={() => setModalShow(true)}>
+        <span variant="primary" onClick={() => setModalShow(true)}>
           Login
-        </a>
-  
+        </span>
         <MyVerticallyCenteredModal
           show={modalShow}
           onHide={() => setModalShow(false)}

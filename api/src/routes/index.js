@@ -3,13 +3,10 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const productRouter = require('./product.js');
 const categoriesRouter = require('./categories.js');
-<<<<<<< HEAD
-const serviceRouter = require('./service.js')
-const adminRouter = require('./admin.js')
-=======
 const serviceRouter = require('./service.js');
 const reviewRouter = require('./review.js');
->>>>>>> 96fe4284daea09a0f60be793e81f9b3f5c9fef9e
+const adminRouter = require('./admin.js')
+
 
 const router = Router();
 
@@ -18,10 +15,7 @@ const router = Router();
 router.use('/api/product', productRouter);
 router.use('/api/categories', categoriesRouter);
 router.use('/api/service', serviceRouter);
-<<<<<<< HEAD
-router.use('/api/admin', adminRouter);
-=======
 router.use('/api/review', reviewRouter);
->>>>>>> 96fe4284daea09a0f60be793e81f9b3f5c9fef9e
+router.use('/api/admin', adminRouter);
 
 module.exports = router;

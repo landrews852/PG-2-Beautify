@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       discount: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.INTEGER,
         defaultValue: 0,
       },
     },

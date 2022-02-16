@@ -13,5 +13,6 @@ export default function Market () {
                 allProducts&&allProducts.map(p => <Card product_name={p.product_name} />)
             }
         </div>
+        
     )
 }

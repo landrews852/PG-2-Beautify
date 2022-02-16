@@ -6,7 +6,8 @@ export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME"
 export const ALL_PRODUCTS = 'ALL_PRODUCTS';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const POST_PRODUCT = 'POST_PRODUCT'
-
+export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
+export const CLEAN_PRODUCT_DETAIL = 'CLEAN_PRODUCT_DETAIL'
 
 
 export const getImgCarrusel = () => {

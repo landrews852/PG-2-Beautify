@@ -1,3 +1,7 @@
+
+.cards {
+  margin-inline: 10px;
+}
 .cards img {
   height:300px;
   width: 45vw;

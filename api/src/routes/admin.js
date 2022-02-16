@@ -7,12 +7,12 @@ const router = Router();
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params
-    const allAdmin = await Admin.findAll({
+    const data = await Admin.findAll({
       where: {
         id
       }
     })
-    res.json(allAdmin);
+    res.json(data);
   } catch (err) {
     res.json(err);
   }

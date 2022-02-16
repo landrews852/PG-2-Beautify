@@ -2,7 +2,7 @@ import React from "react";
 import CardCateServices from "../cardCateServices";
 import { Link } from "react-router-dom";
 import Style from "./homeservices.module.css";
-let services = require("../../datamock/Services.json");
+let services = require("../../datamock/Categories.json");
 
 function index() {
   return (
@@ -12,7 +12,7 @@ function index() {
         {services &&
           services.slice(0, 3).map((e) => (
             // <Link key={e.id_service} to ={'home/service'+ e.id_service}>
-            <CardCateServices img={e.image} servicio={e.category}/>
+            <CardCateServices img={e.image} servicio={e.name_category}/>
             // </Link>
           ))}
       </div>

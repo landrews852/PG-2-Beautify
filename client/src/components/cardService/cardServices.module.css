@@ -1,0 +1,44 @@
+.cont{
+  display: flex;
+  flex-direction: column ;
+
+}
+.cont2{
+  margin: 20px;
+  width: 95vw;
+  height: 300px;
+  display: grid;
+  grid-template-columns: 380px  1fr;
+  grid-template-rows: 40px  1fr 30px ;
+  background-color: var(--color-background);
+  padding: 10px;
+  border: 0.5px solid black ;
+  border-radius: 10px;
+
+
+
+}.cont2 img{
+  height:95%;
+  width: 350px;
+  grid-row: 1/5;
+  border-radius: 10px;
+
+}
+.cont2 p{
+  text-align: justify;
+  grid-row: 2;
+  height:100%;
+
+
+  
+}  
+.cont2 h2{
+  margin: 0;
+  padding: 0;
+  grid-row: 1;
+   
+}
+.cont2 label{
+  grid-row: 3;
+  margin-inline: 50px;
+}

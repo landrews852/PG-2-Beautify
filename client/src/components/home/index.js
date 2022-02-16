@@ -16,8 +16,6 @@ function Home() {
     <div className='home'>
       <Navigator />
       <Slideshow />
-      <h2>Services</h2>
-
       <Homeservices/>
 
       <h2>Products</h2>

@@ -7,14 +7,14 @@ module.exports = (sequelize) => {
       order_date: {
         type: DataTypes.DATE,
       },
+      // id_client: {
+      //   type: DataTypes.INTEGER,
+      // },
       delivery_date: {
         type: DataTypes.DATE,
       },
       total_amount: {
-        type: DataTypes.BOOLEAN,
-      },
-      discount: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
       },
       status: {
         type: DataTypes.ENUM("paid", "process", "rejected", "delivered"),

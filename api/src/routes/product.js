@@ -16,9 +16,9 @@ router.get("/", async (req, res) => {
         },
       ],
     });
-    res.json(allProduct);
+    return res.json(allProduct);
   } catch (err) {
-    return err;
+    return res.json(err);
   }
 });
 

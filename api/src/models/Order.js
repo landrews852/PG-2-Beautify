@@ -7,9 +7,6 @@ module.exports = (sequelize) => {
       order_date: {
         type: DataTypes.DATE,
       },
-      // id_client: {
-      //   type: DataTypes.INTEGER,
-      // },
       delivery_date: {
         type: DataTypes.DATE,
       },

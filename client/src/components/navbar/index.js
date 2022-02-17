@@ -2,9 +2,9 @@ import React from 'react';
 import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../images/logo2.png';
-import SearchBar from '../searchbar';
+import SearchBar from '../searchBar';
 import ButtonLogin from '../buttonlogin';
-import { Link } from 'react-router-dom';
+
 
 export default function Navigator () {
   return (

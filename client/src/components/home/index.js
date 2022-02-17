@@ -2,10 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../card';
 import Slideshow from '../carousel';
-import Navigator from '../navbar';
 /* import {allProducts} from '../../redux/actions' */
-import Footer from '../footer';
-import CardCateServices from '../cardCateServices';
+
 import Homeservices from '../homeservices'
 let allProducts = require('../../datamock/Products.json')
 

@@ -2,17 +2,34 @@ import React from 'react';
 import './login.css';
 
 export default function Login () {
-    return (
-        <div>  
+    
+	var falso = false
+	const handleCheck = (e) => {
+		e.preventDefault();
+		
+	}
+	const handleClickCreate = (e) => {
+		e.preventDefault();
+		let check = document.getElementsByClassName("checkbox");		
+		check[0].checked=true;		
+	}
+	const handleClickLogin = (e) => {
+		e.preventDefault();
+		let check = document.getElementsByClassName("checkbox");		
+		check[0].checked=false;		
+	}
+	
+	return (
+        <>  
 
 	<div className="sectionwraper">
-		<div className="container">
+		<div className="containerlogin">
 			<div className="row justify-content-center">
 				<div className="col-12 text-center align-self-center">
 					<div className="section pb-5 pt-5 pt-sm-2 text-center">
-						<h6 className="mb-0 pb-3"><span>Ingresar </span><span>Crear cuenta</span></h6>
+						<h6 className="mb-0 pb-3"><button onClick={(e) => handleClickLogin(e)}>Ingresar</button><button onClick={(e) => handleClickCreate(e)}>Crear cuenta</button></h6>
 			          	<input className="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-			          	<label for="reg-log"></label>
+			          	<label htmlFor="reg-log"></label>
 						<div className="card-3d-wrap mx-auto">
 							<div className="card-3d-wrapper">
 								<div className="card-front">
@@ -27,7 +44,7 @@ export default function Login () {
 												<input type="password" name="logpass" className="form-style" placeholder="Tu contraseña" id="logpass" autoComplete="off" />
 												<i className="input-icon uil uil-lock-alt"></i>
 											</div>
-											<a href="#" className="btn mt-4">Ingresar</a>
+											<button className="btn mt-4">Ingresar</button>
                             				<p className="mb-0 mt-4 text-center"><a href="#0" className="link">¿Olvidaste tu contraseña?</a></p>
 				      					</div>
 			      					</div>
@@ -54,7 +71,7 @@ export default function Login () {
 												<input type="password" name="logpass" className="form-style" placeholder="Tu contraseña" id="logpass" autoComplete="off" />
 												<i className="input-icon uil uil-lock-alt"></i>
 											</div>
-											<a href="#" className="btn mt-4">Crear</a>
+											<button className="btn mt-4">Crear</button>
 				      					</div>
 			      					</div>
                                       <div className="screen__background">
@@ -72,6 +89,6 @@ export default function Login () {
 	    </div>
 	</div>
 
-        </div>
+        </>
     )
 }

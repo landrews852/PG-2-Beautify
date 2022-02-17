@@ -7,7 +7,7 @@ const router = Router();
 router.post('/',async (req,res) =>{
     const { rank, comment } = req.body;
     const { idClient, idProduct } = req.query;
-   
+   //comentario
     if(rank&&comment&&idClient&&idProduct){
         let review = await Review.create({
             rank,
@@ -51,7 +51,7 @@ router.delete('/:id', async(req,res) =>{
           id
         }
       })
-      return res.send(`Service con ID=${id} eliminado`)
+      return res.send(`Review con ID=${id} eliminado`)
     }
     }catch(e){
         return res.json('ERROR')

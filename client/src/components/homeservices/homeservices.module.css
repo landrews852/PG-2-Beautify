@@ -1,0 +1,12 @@
+.contenedor {
+display: flex;
+flex-direction: row;
+justify-content:space-evenly;
+flex-wrap:wrap;
+}
+.services {
+  background-color: #DCA3C5;
+  margin-block: 20px;
+  width: 100vw;
+
+}

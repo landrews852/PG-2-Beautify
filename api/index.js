@@ -25,12 +25,16 @@ conn.sync({ force: false }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
     try {
-      await Category.bulkCreate([
-        { name_category: "Cejas" },
-        { name_category: "Pestanas" },
-        { name_category: "Cuidado Facial" },
-      ]);
-      //await Category.create({name_category: "Cejas"});
+      // await Category.bulkCreate([
+      //   { name_category: "Cejas" },
+      //   { name_category: "Pestanas" },
+      //   { name_category: "Cuidado Facial" },
+      // ]);
+      await Category.findOrCreate({ where: { name_category: "Cejas" } });
+      await Category.findOrCreate({ where: { name_category: "Pestanas" } });
+      await Category.findOrCreate({
+        where: { name_category: "Cuidado Facial" },
+      });
     } catch (error) {
       return error;
     }

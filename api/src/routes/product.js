@@ -5,20 +5,6 @@ const { filter } = require("./funcionFilter");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  try {
-    const allProduct = await Product.findAll({
-      include: {
-        model: Category,
-        attributes: ["name_category"],
-      },
-    });
-    return res.json(allProduct);
-  } catch (err) {
-    return res.json(err);
-  }
-});
-
-router.get("/filter", async (req, res) => {
   const { category } = req.query;
   const { brand } = req.query;
   const { min } = req.query;
@@ -26,9 +12,8 @@ router.get("/filter", async (req, res) => {
 
   const condition = filter(category, brand, min, max);
   try {
+    condition.include = { model: Category, attributes: ["name_category"] };
     const products = await Product.findAll(condition);
-
-    // condition.include = { model: Category, attributes: ["name_category"] };
 
     res.json(products.length ? products : "no se encontro nada");
   } catch (err) {

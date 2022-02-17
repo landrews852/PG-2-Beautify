@@ -4,7 +4,7 @@ function filter(category, brand, min, max) {
   let condition;
 
   if (category || brand || min || max) {
-    if (category && brand) {
+    if (category && brand && min && max) {
       condition = {
         where: {
           [Op.and]: [
@@ -144,6 +144,7 @@ function filter(category, brand, min, max) {
       return condition;
     }
   }
+  return {};
 }
 
 module.exports = {

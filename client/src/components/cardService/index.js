@@ -1,37 +1,40 @@
 import React from "react";
-import "./cardServices.css";
+import Style from "./cardServices.module.css"
+console.log (Style)
+
 let services = require("../../datamock/Services.json");
+
 export default function cardService() {
   return (
-    <div id='cont' >
+    <div id={Style.cont} >
       {services.map((service) => (
-        <div id="container">
-          <div class="product-details">
-            <div class="title-stars">
+        <div id={Style.container}>
+          <div className={Style['product-details']}>
+            <div className={Style['title-stars']}>
               <h1>{service.name_service}</h1>
 
-              <span class="hint-star star">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
+              <span className= {[Style["hint-star"], Style.star].join(' ')}>
+                <i className= {[Style.fa, Style['fa-star']].join (' ')} aria-hidden="true"></i>
+                <i className= {[Style.fa, Style['fa-star']].join(' ')} aria-hidden="true"></i>
+                <i className= {[Style.fa, Style['fa-star']].join(' ')} aria-hidden="true"></i>
+                <i className= {[Style.fa, Style['fa-star-half-o']].join(' ')} aria-hidden="true"></i>
+                <i className= {[Style.fa, Style['fa-star-o']].join(' ')} aria-hidden="true"></i>
               </span>
             </div>
-            <p class="information">{service.description}</p>
+            <p className= {Style.information}>{service.description}</p>
 
-            <div class="control">
-              <button class="btns">
-                <span class="price">{service.price} $</span>
-                <span class="shopping-cart">
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <div className= {Style.control}>
+              <button className= {Style.btns}>
+                <span className= {Style.price}>{service.price} $</span>
+                <span className= {Style['shopping-cart']}>
+                  <i className= {[Style.fa , Style['fa-shopping-cart']].join(' ')} aria-hidden="true"></i>
                 </span>
-                <span class="buy">Buy Now</span>
+                <span className= {Style.buy}>Buy Now</span>
               </button>
             </div>
           </div>
 
-          <div class="product-image">
+          <div className= {Style ['product-image']}>
             <img src={service.image} alt="Omar Dsoky" />
           </div>
 

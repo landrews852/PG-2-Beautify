@@ -1,6 +1,6 @@
 # PG-2: Beautify
 
-<img align="right" src="./client/src/images/logo2.png" height="500px">
+<img align="right" src="./client/src/images/logo2.png" width="500px">
 
 ## E-COMMERCE
 

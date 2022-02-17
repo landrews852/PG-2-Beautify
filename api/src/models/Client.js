@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       profile_picture: {
         type: DataTypes.STRING,
       },
-      password_client: {
+      password: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -33,10 +33,10 @@ module.exports = (sequelize) => {
         allowNull: false
       },
       phone: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
       },
       birthday: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
       },
       // purchase_history: {
       //   type: DataTypes.INTEGER,

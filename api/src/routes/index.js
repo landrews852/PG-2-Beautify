@@ -6,6 +6,7 @@ const categoriesRouter = require('./categories.js');
 const serviceRouter = require('./service.js');
 const reviewRouter = require('./review.js');
 const adminRouter = require('./admin.js')
+const clientRouter = require('./client.js')
 
 
 const router = Router();
@@ -17,5 +18,6 @@ router.use('/api/categories', categoriesRouter);
 router.use('/api/service', serviceRouter);
 router.use('/api/review', reviewRouter);
 router.use('/api/admin', adminRouter);
+router.use('/api/client', clientRouter);
 
 module.exports = router;

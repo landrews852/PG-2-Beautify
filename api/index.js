@@ -17,12 +17,26 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const server = require("./src/app.js");
+const { conn, Category } = require("./src/db.js");
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+conn.sync({ force: false }).then(() => {
+  server.listen(3001, async () => {
+    console.log("%s listening at 3001"); // eslint-disable-line no-console
+    try {
+      // await Category.bulkCreate([
+      //   { name_category: "Cejas" },
+      //   { name_category: "Pestanas" },
+      //   { name_category: "Cuidado Facial" },
+      // ]);
+      await Category.findOrCreate({ where: { name_category: "cejas" } });
+      await Category.findOrCreate({ where: { name_category: "pestanas" } });
+      await Category.findOrCreate({
+        where: { name_category: "cuidado facial" },
+      });
+    } catch (error) {
+      return error;
+    }
   });
 });

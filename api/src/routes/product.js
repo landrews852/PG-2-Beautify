@@ -1,27 +1,38 @@
 const { Router } = require("express");
-const { Product, Category } = require("../db");
+const { Product, Category, Op } = require("../db");
+const { filter } = require("./funcionFilter");
 
 const router = Router();
 
 router.get("/", async (req, res) => {
+  const { categoryId } = req.query;
+  const { brand } = req.query;
+  const { min } = req.query;
+  const { max } = req.query;
+
+  const condition = filter(categoryId, brand, min, max);
   try {
-    const allProduct = await Product.findAll({
-      include: [
-        {
-          model: Category,
-          attributes: ["name_category"],
-          through: {
-            attributes: [],
-          },
-        },
-      ],
-    });
-    return res.json(allProduct);
+    condition.include = { model: Category, attributes: ["name_category"] };
+    const products = await Product.findAll(condition);
+
+    res.json(products.length ? products : "nothing found");
   } catch (err) {
-    return res.json(err);
+    res.json(err);
   }
 });
-
+router.get("/discounts", async (req, res) => {
+  try {
+    const discounts = await Product.findAll({
+      include: { model: Category, attributes: ["name_category"] },
+      where: {
+        discount: { [Op.gt]: 0 },
+      },
+    });
+    res.json(discounts.length ? discounts : "We don't have discounts");
+  } catch (err) {
+    res.json(err);
+  }
+});
 router.post("/", async (req, res) => {
   const {
     product_name,
@@ -29,11 +40,10 @@ router.post("/", async (req, res) => {
     cost_by_unit,
     description,
     category,
-    expiration_date,
     warranty,
     brand,
     image,
-    country,
+    discount,
   } = req.body;
 
   try {
@@ -43,36 +53,68 @@ router.post("/", async (req, res) => {
       cost_by_unit &&
       description &&
       category &&
-      expiration_date &&
       warranty &&
       brand &&
-      image &&
-      country
+      image
     ) {
-      console.log(req.body);
+      var categoryy = await Promise.all(
+        category.map(
+          async (c) => await Category.findAll({ where: { name_category: c } })
+        )
+      );
+      categoryy = categoryy.flat();
+
       let product = await Product.create({
         product_name,
         stock,
         cost_by_unit,
         description,
-        expiration_date,
         warranty,
         brand,
         image,
-        country,
+        discount,
       });
 
-      var categoryy = await Promise.all(
-        category.map(
-          async (c) => await Category.findAll({ where: { name: c } })
-        )
-      );
-      categoryy = categoryy.flat();
-      await product.setCategories(categoryy);
-      return res.json(product);
+      product.setCategory(categoryy[0].id);
+
+      return res.json("created");
     }
   } catch (e) {
-    return res.json("ERROR");
+    console.log(e);
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      product_name,
+      stock,
+      cost_by_unit,
+      description,
+      warranty,
+      brand,
+      image,
+      discount,
+    } = req.body;
+    let data = {};
+    if (product_name !== undefined) data.product_name = product_name;
+    if (stock !== undefined) data.stock = stock;
+    if (cost_by_unit !== undefined) data.cost_by_unit = cost_by_unit;
+    if (description !== undefined) data.description = description;
+    if (warranty !== undefined) data.warranty = warranty;
+    if (brand !== undefined) data.brand = brand;
+    if (image !== undefined) data.image = image;
+    if (discount !== undefined) data.discount = discount;
+    const updateProduct = await Product.update(data, {
+      where: {
+        id,
+      },
+      returning: true,
+    });
+    res.json(updateProduct[1]);
+  } catch (err) {
+    res.json(err);
   }
 });
 

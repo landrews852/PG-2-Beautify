@@ -10,12 +10,18 @@ module.exports = (sequelize) => {
     },
     price:{
       type:DataTypes.FLOAT,
+      allowNull: false
     },
     description:{
-      type:DataTypes.STRING
+      type:DataTypes.STRING,
+      allowNull: false
     },
     image:{
-      type:DataTypes.STRING
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false
     }
+  },
+  {
+    timestamps: false,
   });
 };

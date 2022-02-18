@@ -3,6 +3,7 @@ const { Op } = require("../db");
 function filter(category, brand, min, max) {
   let condition;
 
+
   if (category || brand || min || max) {
     if (category && brand && min && max) {
       condition = {
@@ -71,7 +72,7 @@ function filter(category, brand, min, max) {
         where: {
           [Op.and]: [
             { categoryId: category },
-            { cost_by_unit: { [Op.between]: [parseFloat(min)] } },
+            { cost_by_unit: { [Op.gte]: parseFloat(min) } },
           ],
         },
       };
@@ -146,6 +147,8 @@ function filter(category, brand, min, max) {
   }
   return {};
 }
+
+
 
 module.exports = {
   filter,

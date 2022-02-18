@@ -7,7 +7,11 @@ module.exports = (sequelize) => {
     name_category: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+    disabled: {
+      type: DataTypes.STRING,
+      defaultValue: false,
+    },
   },
   {
     timestamps: false,

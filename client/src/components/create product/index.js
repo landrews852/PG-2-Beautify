@@ -39,6 +39,7 @@ export default function NewProduct() {
         image: "",
         warranty: "",
         brand: "",
+        discount: "",
         category: []
     })
     console.log(input)
@@ -79,6 +80,7 @@ export default function NewProduct() {
             image: "",
             warranty: "",
             brand: "",
+            discount: "",
             category: []
 
         })
@@ -133,6 +135,15 @@ export default function NewProduct() {
                             type="integer"
                             value={input.stock}
                             name="stock"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label>Discount:</label>
+                        <input
+                            type="integer"
+                            value={input.discount}
+                            name="discount"
                             onChange={handleChange}
                         />
                     </div>

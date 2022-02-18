@@ -8,16 +8,21 @@ router.post("/", async (req, res) => {
   const { rank, comment } = req.body;
   const { idClient, idProduct } = req.query;
   //comentario
+  try{
   if (rank && comment && idClient && idProduct) {
     let review = await Review.create({
       rank,
       comment,
     });
     //Creo que el error esta pq no puedo crear clientes ni productos, comentando esta dos lineas funciona
-    // await review.setClient(idClient);
-    // await review.setProduct(idProduct);
-    return res.json(review);
-  }
+     await review.setClient(idClient);
+     await review.setProduct(idProduct);
+     return res.json(review);
+    }
+    }catch(e){
+     return res.json(e);
+    }
+  
 });
 
 router.get("/", async (req, res) => {

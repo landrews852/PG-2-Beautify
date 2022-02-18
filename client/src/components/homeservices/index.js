@@ -12,7 +12,7 @@ function index() {
         {services &&
           services.slice(0, 3).map((e) => (
             // <Link key={e.id_service} to ={'home/service'+ e.id_service}>
-            <CardCateServices img={e.image} servicio={e.name_category}/>
+            <CardCateServices img={e.image} key={e.id} servicio={e.name_category}/>
             // </Link>
           ))}
       </div>

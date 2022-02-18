@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
     comment: {
       type: DataTypes.TEXT
     },
+    disabled: {
+      type: DataTypes.STRING,
+      defaultValue: false,
+    },
   },
     {
       timestamps: false,

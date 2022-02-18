@@ -7,30 +7,30 @@ module.exports = (sequelize) => {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
       },
       name_client: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       lastname_client: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       profile_picture: {
         type: DataTypes.STRING,
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       address: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       phone: {
         type: DataTypes.STRING,

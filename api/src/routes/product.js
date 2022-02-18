@@ -5,12 +5,12 @@ const { filter } = require("./funcionFilter");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const { category } = req.query;
+  const { categoryId } = req.query;
   const { brand } = req.query;
   const { min } = req.query;
   const { max } = req.query;
 
-  const condition = filter(category, brand, min, max);
+  const condition = filter(categoryId, brand, min, max);
   try {
     condition.include = { model: Category, attributes: ["name_category"] };
     const products = await Product.findAll(condition);

@@ -1,12 +1,12 @@
 ### Client
 
-| TYPE   | DETAIL         | ROUTE                                | SEND              | INFO                                                                                                                              |
-| ------ | -------------- | ------------------------------------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| GET    | get all client | http://localhost:3001/api/client     |                   |                                                                                                                                   |
-| GET    | get client     | http://localhost:3001/api/client/:id | params            | id                                                                                                                                |
-| POST   | post client    | http://localhost:3001/api/client     | body              | id*, name_client*, lastname_client*, profile_picture, password*, email*, address*, phone, birthday                                |
-| PUT    | update client  | http://localhost:3001/api/client/:id | params (id), body | id / name_client, lastname_client, profile_picture, password, email, address, phone, birthday) y la data que se quiera actualizar |
-| DELETE | delete client  | http://localhost:3001/api/client/:id | params            | id                                                                                                                                |
+| TYPE | DETAIL         | ROUTE                                | SEND              | INFO                                                                                                                              |
+| ---- | -------------- | ------------------------------------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| GET  | get all client | http://localhost:3001/api/client     |                   |                                                                                                                                   |
+| GET  | get client     | http://localhost:3001/api/client/:id | params            | id                                                                                                                                |
+| POST | post client    | http://localhost:3001/api/client     | body              | id*, name_client*, lastname_client*, profile_picture, password*, email*, address*, phone, birthday                                |
+| PUT  | update client  | http://localhost:3001/api/client/:id | params (id), body | id / name_client, lastname_client, profile_picture, password, email, address, phone, birthday) y la data que se quiera actualizar |
+|  |
 
 ### Admin
 

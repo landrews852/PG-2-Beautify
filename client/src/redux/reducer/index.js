@@ -1,4 +1,4 @@
-import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT } from "../actions"
+import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, POST_SERVICE } from "../actions"
 import * as types from '../actions'
 
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
   orderDetail: {},
   cart: [],
   carrusel: [],
-  categories: []
+  categories: [],
+
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -41,6 +42,10 @@ export default function rootReducer(state = initialState, action) {
       }
 
     case POST_PRODUCT:
+      return {
+        ...state
+      }
+      case POST_SERVICE:
       return {
         ...state
       }

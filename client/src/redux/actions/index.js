@@ -8,6 +8,7 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const POST_PRODUCT = 'POST_PRODUCT'
 export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
 export const CLEAN_PRODUCT_DETAIL = 'CLEAN_PRODUCT_DETAIL'
+export const POST_SERVICE = 'POST_SERVICE'
 
 
 export const getImgCarrusel = () => {
@@ -83,3 +84,9 @@ export const cleanProductDetail = () => {
   }
 }
 
+export const postService = (payload) => {
+  return async function (dispatch) {
+    var response = await axios.post("ruta del post", payload)
+    return response;
+  }
+}

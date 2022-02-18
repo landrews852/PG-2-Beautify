@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import Style from "./homeservices.module.css";
 let services = require("../../datamock/Categories.json");
 
+
 function index() {
   return (
     <>
-      <h2 className={Style.services}>Services</h2>
+      <h2 className={Style.services}>SERVICIOS</h2>
       <div className={Style.contenedor}>
         {services &&
           services.slice(0, 3).map((e) => (

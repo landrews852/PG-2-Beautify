@@ -5,6 +5,7 @@ import Slideshow from '../carousel';
 /* import {allProducts} from '../../redux/actions' */
 
 import Homeservices from '../homeservices'
+import "./home.css"
 let allProducts = require('../../datamock/Products.json')
 
 
@@ -15,10 +16,9 @@ function Home() {
       <Slideshow />
       <Homeservices/>
 
-      <h2>Products</h2>
-    {/* COMENTO LO DE ABAJO HASTA QUE SE CREE LA RUTA DE PRODUCTOS ASI NO SE ROMPE LA PAGINA ENTERA */}
-
-     {allProducts && allProducts.slice(0,5).map(c => {
+      <h2>PRODUCTOS</h2>
+    
+      {allProducts && allProducts.slice(0,5).map(c => {
       return (
         <Link key={c.id} to={'home/' + c.id}> {/* Cambio de c.code a c.id, ya que se cambio la propiedad en el objeto*/}
         <Card

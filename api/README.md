@@ -25,11 +25,12 @@
 
 ### Product
 
-| TYPE | DETAIL           | ROUTE                             | SEND  | INFO                                                                                       |
-| ---- | ---------------- | --------------------------------- | ----- | ------------------------------------------------------------------------------------------ |
-| GET  | get all products | http://localhost:3001/api/product |       |                                                                                            |
-| POST | post client      | http://localhost:3001/api/product | body  | product_name*,stock*,cost_by_unit*,description*,category*,warranty*,brand*,image*,discount |
-| GET  | filter           | http://localhost:3001/api/product | query | depende del filtro a aplicar se recibe **categoryId, brand, min, max**                     |
+| TYPE | DETAIL               | ROUTE                                       | SEND  | INFO                                                                                       |
+| ---- | -------------------- | ------------------------------------------- | ----- | ------------------------------------------------------------------------------------------ |
+| GET  | get all products     | http://localhost:3001/api/product           |       |                                                                                            |
+| POST | post client          | http://localhost:3001/api/product           | body  | product_name*,stock*,cost_by_unit*,description*,category*,warranty*,brand*,image*,discount |
+| GET  | filter               | http://localhost:3001/api/product           | query | depende del filtro a aplicar se recibe **categoryId, brand, min, max**                     |
+| GET  | get product discound | http://localhost:3001/api/product/discounts |       |
 
 ### Examples filter products
 

@@ -1,12 +1,16 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const GET_IMG_CARRUSEL = "GET_IMG_CARRUSEL";
-export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
-export const ALL_PRODUCTS = "ALL_PRODUCTS";
-export const GET_CATEGORIES = "GET_CATEGORIES";
-export const POST_PRODUCT = "POST_PRODUCT";
-export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
-export const CLEAN_PRODUCT_DETAIL = "CLEAN_PRODUCT_DETAIL";
+export const GET_IMG_CARRUSEL = 'GET_IMG_CARRUSEL';
+export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME"
+export const ALL_PRODUCTS = 'ALL_PRODUCTS';
+export const GET_CATEGORIES = 'GET_CATEGORIES';
+export const POST_PRODUCT = 'POST_PRODUCT'
+export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
+export const CLEAN_PRODUCT_DETAIL = 'CLEAN_PRODUCT_DETAIL'
+export const POST_SERVICE = 'POST_SERVICE'
+export const PRICE_SORT = 'PRICE_SORT'
+export const RATING_SORT = 'RATING_SORT'
+export const FILTER_BY_OFFER = 'FILTER_BY_OFFER'
 
 export const getImgCarrusel = () => {
   return async function (dispatch) {
@@ -73,3 +77,27 @@ export const cleanProductDetail = () => {
     return dispatch({ type: CLEAN_PRODUCT_DETAIL });
   };
 };
+
+export const postService = (payload) => {
+  return async function (dispatch) {
+    var response = await axios.post("ruta del post", payload)
+    return response;
+  }
+}
+export const priceSort = (payload) => {
+  return function (dispatch) {
+    return dispatch({ type: PRICE_SORT, payload })
+  }
+}
+
+export const ratingSort = (payload) => {
+  return function (dispatch) {
+    return dispatch({ type: RATING_SORT, payload })
+  }
+}
+
+export const filterByOffer = (payload) => {
+  return function (dispatch) {
+    return dispatch({ type: FILTER_BY_OFFER, payload })
+  }
+}

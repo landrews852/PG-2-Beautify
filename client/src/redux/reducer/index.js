@@ -1,4 +1,4 @@
-import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT } from "../actions"
+import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, POST_SERVICE, PRICE_SORT, RATING_SORT, FILTER_BY_OFFER } from "../actions"
 import * as types from '../actions'
 
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
   orderDetail: {},
   cart: [],
   carrusel: [],
-  categories: []
+  categories: [],
+
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -45,18 +46,55 @@ export default function rootReducer(state = initialState, action) {
         ...state
       }
 
+    case POST_SERVICE:
+    return {
+      ...state
+    }
+
     case types.GET_PRODUCT_DETAIL:
     return {
       ...state,
       productDetail : action.payload
     }
 
-  case types.CLEAN_PRODUCT_DETAIL:
-    return {
-      ...state,
-      productDetail : {}
-    }
+    case types.CLEAN_PRODUCT_DETAIL:
+      return {
+        ...state,
+        productDetail : {}
+      }
 
+    case PRICE_SORT:
+      const sortedProducts = state.allProducts.sort((a, b) => {
+        if (action.payload.asc) {
+          return a.price - b.price
+        }
+        return b.price - a.price
+      })
+      return {
+        ...state,
+        products: sortedProducts
+      }
+
+    case RATING_SORT:
+      const sortedProductsRating = state.allProducts.sort((a, b) => {
+        if (action.payload.asc) {
+          return a.rating - b.rating
+        }
+        return b.rating - a.rating
+      })
+      return {
+        ...state,
+        products: sortedProductsRating
+      }
+
+    case FILTER_BY_OFFER:
+      const filteredProducts = state.allProducts.filter(product => {
+        return product.offer === action.payload.offer
+      })
+      return {
+        ...state,
+        products: filteredProducts
+      }
 
     default:
       return state

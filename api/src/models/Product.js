@@ -39,6 +39,9 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
+      disabled: {
+        type: DataTypes.STRING
+      },
     },
     {
       timestamps: false,

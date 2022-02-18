@@ -38,6 +38,9 @@ module.exports = (sequelize) => {
       birthday: {
         type: DataTypes.DATEONLY,
       },
+      disabled: {
+        type: DataTypes.STRING
+      },
       // purchase_history: {
       //   type: DataTypes.INTEGER,
       // },

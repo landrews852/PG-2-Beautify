@@ -19,7 +19,10 @@ module.exports = (sequelize) => {
     image:{
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
-    }
+    },
+    disabled: {
+      type: DataTypes.STRING
+    },
   },
   {
     timestamps: false,

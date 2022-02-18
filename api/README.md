@@ -25,12 +25,13 @@
 
 ### Product
 
-| TYPE | DETAIL               | ROUTE                                       | SEND  | INFO                                                                                       |
-| ---- | -------------------- | ------------------------------------------- | ----- | ------------------------------------------------------------------------------------------ |
-| GET  | get all products     | http://localhost:3001/api/product           |       |                                                                                            |
-| POST | post client          | http://localhost:3001/api/product           | body  | product_name*,stock*,cost_by_unit*,description*,category*,warranty*,brand*,image*,discount |
-| GET  | filter               | http://localhost:3001/api/product           | query | depende del filtro a aplicar se recibe **categoryId, brand, min, max**                     |
-| GET  | get product discound | http://localhost:3001/api/product/discounts |       |
+| TYPE | DETAIL               | ROUTE                                       | SEND              | INFO                                                                                                                            |
+| ---- | -------------------- | ------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| GET  | get all products     | http://localhost:3001/api/product           |                   |                                                                                                                                 |
+| POST | post client          | http://localhost:3001/api/product           | body              | product_name*,stock*,cost_by_unit*,description*,category*,warranty*,brand*,image*,discount                                      |
+| GET  | filter               | http://localhost:3001/api/product           | query             | depende del filtro a aplicar se recibe **categoryId, brand, min, max**                                                          |
+| GET  | get product discound | http://localhost:3001/api/product/discounts |                   |
+| PUT  | update product       | http://localhost:3001/api/product/:id       | params (id), body | id / (product_name*,stock*,cost_by_unit*,description*,category*, warranty*, brand*, image* ) y la data que se quiera actualizar |
 
 ### Examples filter products
 
@@ -39,3 +40,10 @@
 - http://localhost:3001/api/product?categoryId=1&brand=Infiniti;
 - http://localhost:3001/api/product?min=10&max=50;
 - http://localhost:3001/api/product?min=10;
+
+### Service
+
+| TYPE | DETAIL           | ROUTE                             | SEND | INFO                                                  |
+| ---- | ---------------- | --------------------------------- | ---- | ----------------------------------------------------- |
+| GET  | get all services | http://localhost:3001/api/service |      |                                                       |
+| POST | post service     | http://localhost:3001/api/service | body | name_service*, price, description*, image*, category* |

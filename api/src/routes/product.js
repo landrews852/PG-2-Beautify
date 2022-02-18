@@ -84,4 +84,38 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      product_name,
+      stock,
+      cost_by_unit,
+      description,
+      warranty,
+      brand,
+      image,
+      discount,
+    } = req.body;
+    let data = {};
+    if (product_name !== undefined) data.product_name = product_name;
+    if (stock !== undefined) data.stock = stock;
+    if (cost_by_unit !== undefined) data.cost_by_unit = cost_by_unit;
+    if (description !== undefined) data.description = description;
+    if (warranty !== undefined) data.warranty = warranty;
+    if (brand !== undefined) data.brand = brand;
+    if (image !== undefined) data.image = image;
+    if (discount !== undefined) data.discount = discount;
+    const updateProduct = await Product.update(data, {
+      where: {
+        id,
+      },
+      returning: true,
+    });
+    res.json(updateProduct[1]);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 module.exports = router;

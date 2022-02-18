@@ -30,10 +30,10 @@ conn.sync({ force: false }).then(() => {
       //   { name_category: "Pestanas" },
       //   { name_category: "Cuidado Facial" },
       // ]);
-      await Category.findOrCreate({ where: { name_category: "Cejas" } });
-      await Category.findOrCreate({ where: { name_category: "Pestanas" } });
+      await Category.findOrCreate({ where: { name_category: "cejas" } });
+      await Category.findOrCreate({ where: { name_category: "pestanas" } });
       await Category.findOrCreate({
-        where: { name_category: "Cuidado Facial" },
+        where: { name_category: "cuidado facial" },
       });
     } catch (error) {
       return error;

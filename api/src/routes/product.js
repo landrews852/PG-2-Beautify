@@ -9,15 +9,35 @@ router.get("/", async (req, res) => {
   const { brand } = req.query;
   const { min } = req.query;
   const { max } = req.query;
+  const { name } = req.query;
+  const { orderName } = req.query;
+  const { orderPrice } = req.query;
 
-  const condition = filter(categoryId, brand, min, max);
+  if(name){
+    try{
+    let product = await Product.findAll({where: {product_name : {[Op.substring] : name.toLowerCase()}}, include : { model: Category, attributes: ["name_category"] }})
+    res.json(product.length ? product : "nothing found");
+  }catch(e){
+    return res.json(e)
+  }
+  }else{
+  const condition = filter(categoryId, brand?.toLowerCase(), min, max);
   try {
     condition.include = { model: Category, attributes: ["name_category"] };
-    const products = await Product.findAll(condition);
-
+    let products;
+    if(orderName){
+      condition.order = [['product_name', orderName]];
+      products = await Product.findAll(condition);
+    }else if(orderPrice){
+      condition.order = [['cost_by_unit', orderPrice]];
+      products = await Product.findAll(condition);  
+    }else{
+      products = await Product.findAll(condition);
+    } 
     res.json(products.length ? products : "nothing found");
   } catch (err) {
     res.json(err);
+  }
   }
 });
 router.get("/discounts", async (req, res) => {
@@ -59,18 +79,18 @@ router.post("/", async (req, res) => {
     ) {
       var categoryy = await Promise.all(
         category.map(
-          async (c) => await Category.findAll({ where: { name_category: c } })
+          async (c) => await Category.findAll({ where: { name_category: c.toLowerCase() } })
         )
       );
       categoryy = categoryy.flat();
 
       let product = await Product.create({
-        product_name,
+        product_name : product_name.toLowerCase(),
         stock,
         cost_by_unit,
         description,
         warranty,
-        brand,
+        brand : brand.toLowerCase(),
         image,
         discount,
       });
@@ -117,5 +137,20 @@ router.put("/:id", async (req, res) => {
     res.json(err);
   }
 });
+
+router.get('/:id', async(req,res) =>{
+
+  const { id } = req.params;
+
+  try{
+    if(id){
+    let product = await Product.findByPk(id, {include:{model: Category, attributes: ["name_category"]}});
+    return res.json(product)
+    }
+  }catch(e){
+    return res.json(e)
+  }
+
+})
 
 module.exports = router;

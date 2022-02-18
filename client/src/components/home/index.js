@@ -1,13 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Homeservices from '../homeservices'
 import { Link } from "react-router-dom";
 import Card from "../card";
 import Slideshow from "../carousel";
 import { allProducts } from "../../redux/actions";
 import "./home.css"
-
 import Homeservices from "../homeservices";
 // let allProducts = require('../../datamock/Products.json')
 

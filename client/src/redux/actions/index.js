@@ -10,6 +10,7 @@ export const CLEAN_PRODUCT_DETAIL = 'CLEAN_PRODUCT_DETAIL'
 export const POST_SERVICE = 'POST_SERVICE'
 export const PRICE_SORT = 'PRICE_SORT'
 export const RATING_SORT = 'RATING_SORT'
+export const FILTER_BY_OFFER = 'FILTER_BY_OFFER'
 
 export const getImgCarrusel = () => {
   return async function (dispatch) {
@@ -92,5 +93,11 @@ export const priceSort = (payload) => {
 export const ratingSort = (payload) => {
   return function (dispatch) {
     return dispatch({ type: RATING_SORT, payload })
+  }
+}
+
+export const filterByOffer = (payload) => {
+  return function (dispatch) {
+    return dispatch({ type: FILTER_BY_OFFER, payload })
   }
 }

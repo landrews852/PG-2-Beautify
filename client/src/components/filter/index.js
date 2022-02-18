@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from "./filter.module.css"
-import { priceSort, ratingSort } from '../../redux/actions';
+import { priceSort, ratingSort, filterByOffer } from '../../redux/actions';
 
 export default function Filter () {
 

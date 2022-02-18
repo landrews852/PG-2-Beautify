@@ -1,4 +1,4 @@
-import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, POST_SERVICE, PRICE_SORT, RATING_SORT } from "../actions"
+import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, POST_SERVICE, PRICE_SORT, RATING_SORT, FILTER_BY_OFFER } from "../actions"
 import * as types from '../actions'
 
 const initialState = {
@@ -85,6 +85,15 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: sortedProductsRating
+      }
+
+    case FILTER_BY_OFFER:
+      const filteredProducts = state.allProducts.filter(product => {
+        return product.offer === action.payload.offer
+      })
+      return {
+        ...state,
+        products: filteredProducts
       }
 
     default:

@@ -15,7 +15,7 @@ export const FILTER_BY_OFFER = 'FILTER_BY_OFFER'
 export const getImgCarrusel = () => {
   return async function (dispatch) {
     try {
-      let carrusel = await axios.get(`ruta del Back`);
+      let carrusel = await axios.get(`ruta api`)
       dispatch({
         type: GET_IMG_CARRUSEL,
         payload: carrusel.data,
@@ -53,7 +53,7 @@ export const getProductsbyName = (name) => {
 
 export const getCategories = () => {
   return async function (dispatch) {
-    var info = await axios("ruta categories del back", {});
+    var info = await axios("http://localhost:3001/api/categories");
     return dispatch({ type: "GET_CATEGORIES", payload: info.data });
   };
 };

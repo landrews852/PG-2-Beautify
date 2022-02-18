@@ -9,6 +9,9 @@ export const POST_PRODUCT = 'POST_PRODUCT'
 export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
 export const CLEAN_PRODUCT_DETAIL = 'CLEAN_PRODUCT_DETAIL'
 export const POST_SERVICE = 'POST_SERVICE'
+export const PRICE_SORT = 'PRICE_SORT'
+export const RATING_SORT = 'RATING_SORT'
+
 
 
 export const getImgCarrusel = () => {
@@ -90,3 +93,15 @@ export const postService = (payload) => {
     return response;
   }
 }
+export const priceSort = (payload) => {
+  return function (dispatch) {
+    return dispatch({ type: PRICE_SORT, payload })
+  }
+}
+
+export const ratingSort = (payload) => {
+  return function (dispatch) {
+    return dispatch({ type: RATING_SORT, payload })
+  }
+}
+

@@ -6,7 +6,7 @@ import s from './Cart.module.css';
 
 export default function Cart () {
   return (
-    <div>
+    <div className={s.cart}>
       <h2 className={s.title}>Carrito de compras</h2>
       {/* <div className={s.cart}> */}
         <div className={s.cartItems}>

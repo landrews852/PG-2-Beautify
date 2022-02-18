@@ -20,7 +20,7 @@ function Home() {
     <div className="home">
       <Slideshow />
       <Homeservices />
-      <h2>Products</h2>
+      <h2>PRODUCTOS</h2>
       {/* COMENTO LO DE ABAJO HASTA QUE SE CREE LA RUTA DE PRODUCTOS ASI NO SE ROMPE LA PAGINA ENTERA */}
 
       {product &&

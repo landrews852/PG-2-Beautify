@@ -65,9 +65,9 @@ export const postProduct = (payload) => {
   };
 };
 
-export const getProductDetail = () => {
+export const getProductDetail = (id) => {
   return async function (dispatch) {
-    let detail = await axios.get("ruta_get_detail");
+    let detail = await axios.get(`http://localhost:3001/api/product/${id}`);
     return dispatch({ type: GET_PRODUCT_DETAIL, payload: detail.data });
   };
 };

@@ -2,13 +2,14 @@ import React from 'react';
 import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../images/logo2.png';
-import SearchBar from '../searchBar';
+import SearchBar from '../searchbar';
 import ButtonLogin from '../buttonlogin';
+import './navBar.css';
 
 
 export default function Navigator () {
   return (
-    <Navbar variant="light" expand="lg">
+    <Navbar className='navBarr' variant="light" expand="lg">
       <Container>
         <Navbar.Brand href="/"><img src={logo} height="100px" alt="logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

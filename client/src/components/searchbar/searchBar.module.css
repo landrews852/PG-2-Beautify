@@ -1,0 +1,29 @@
+.btn {
+  width: 80px;
+  height: 30px;
+  border-radius: 0px 10px 10px 0px;
+  border: 1px solid rgb(231, 231, 231);
+  /* padding: 5px; */
+  background: linear-gradient(to bottom, #f3abb6 5%, #ffcada 100%);
+}
+
+.btn:hover {
+  background: linear-gradient(to bottom, #dfa3ac 5%, #ffd3e0 100%);
+}
+
+.btn:hover:active {
+  background: linear-gradient(to bottom, #dfadb5 5%, #ffdce6 100%);
+}
+
+.searchbar {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.input {
+  width: 300x;
+  height: 30px;
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid rgb(231, 231, 231);
+  padding: 5px;
+}

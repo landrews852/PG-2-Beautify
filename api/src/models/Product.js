@@ -40,7 +40,8 @@ module.exports = (sequelize) => {
         defaultValue: 0,
       },
       disabled: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        defaultValue: false,
       },
     },
     {

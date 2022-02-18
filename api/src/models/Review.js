@@ -12,7 +12,8 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT
     },
     disabled: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: false,
     },
   },
     {

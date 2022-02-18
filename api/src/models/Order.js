@@ -17,7 +17,8 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("paid", "process", "rejected", "delivered"),
       },
       disabled: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        defaultValue: false,
       },
     },
     {

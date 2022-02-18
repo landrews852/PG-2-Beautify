@@ -39,7 +39,8 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
       },
       disabled: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        defaultValue: false,
       },
       // purchase_history: {
       //   type: DataTypes.INTEGER,

@@ -29,7 +29,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING
     },
     disabled: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: false,
     },
   },
     {

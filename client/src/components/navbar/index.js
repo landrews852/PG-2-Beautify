@@ -5,6 +5,8 @@ import logo from '../../images/logo2.png';
 import SearchBar from '../searchbar';
 import ButtonLogin from '../buttonlogin';
 import './navBar.css';
+import carrito from '../../images/carrito2.png';
+import { Link } from 'react-router-dom';
 
 
 export default function Navigator () {
@@ -36,7 +38,8 @@ export default function Navigator () {
               <NavDropdown.Item href="/service 3">service 3</NavDropdown.Item>
             </NavDropdown> */}
           </Nav>
-            <SearchBar/>
+            <SearchBar className='navSearch' />
+            <Nav.Link href="/cart"><img src={carrito} alt="carrito" className='navCarrito' /></Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

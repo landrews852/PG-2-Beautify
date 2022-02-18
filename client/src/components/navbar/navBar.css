@@ -1,5 +1,48 @@
 .navBarr {
   background-color: #fbeee6 !important;
   overflow: hidden;
-  border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.navCarrito {
+  position: absolute;
+  width: 30px;
+  top: 40%;
+  bottom: 40%;
+  /* right: 30px; */
+  display: block;
+  /* z-index: 100; */
+  /* transition: all 250ms linear; */
+  /* border: #000000 solid 1px;
+  border-radius: 11px; */
+  opacity: 0.6;
+}
+
+.navCarrito:hover {
+  opacity: 0.8;
+}
+
+.navSearch {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: block;
+  z-index: 100;
+  transition: all 250ms linear;
+}
+
+.hreff {
+  color: #000000;
+  text-decoration: none;
+}
+.nav-link {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:link {
+  color: #000000;
+  text-decoration: none;
+  text-decoration-style: none;
+  text-decoration-color: none;
 }

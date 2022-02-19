@@ -1,38 +1,18 @@
+import logo from './logo.svg';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import { BrowserRouter as Router} from 'react-router-dom';
-import Home from './components/home'
-import Services from './components/services';
-import Market from './components/market';
 import React from 'react';
-import Navigator from './components/navbar';
-import Footer from './components/footer';
-import ProductDetail from './components/productDetail/productDetail';
-import Contact from './components/contact';
-import Cart from './components/cart';
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
 
 function App() {
   return (
-    <>
-    <Router>
+    <BrowserRouter>
       <div className="App">
-        <div className="navigator">
-        < Navigator className="navigator" /> {/* se agregó la barra a todas las páginas */}
-        </div>
         <Routes>
-          <Route  path="/" element={<Home />} />
-          <Route  path="/market" element={<Market />} />          
-          <Route  path="/services" element={<Services/>}/>
-          <Route  path= "/market/:id" element={<ProductDetail/>} />
-          <Route  path="/services" element={<Services />}/>
-          <Route  path="/contact" element={<Contact />}/>
-          <Route  path="/cart" element={<Cart />}/>
+          <Route path="/" element={<Home />} />
         </Routes>
-        < Footer /> {/* se agregó el footer a todas las páginas */}
       </div>
-    </Router>
-    </>
+    </BrowserRouter>
   );
 }
 

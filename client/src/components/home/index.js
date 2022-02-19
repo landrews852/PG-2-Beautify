@@ -14,8 +14,8 @@ function Home() {
       <Homeservices />
       <h2>PRODUCTOS</h2>
 
-      <HomeProducts />
-      
+      <HomeProducts />      
+
     </div>
   );
 }

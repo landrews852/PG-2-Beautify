@@ -19,9 +19,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn, Category } = require("./src/db.js");
+const loadDB = require("./src/loadDB/loadDB.js");
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: true }).then( async() => {
+  await loadDB();
+  console.log("DataBase loaded");
+
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
     try {

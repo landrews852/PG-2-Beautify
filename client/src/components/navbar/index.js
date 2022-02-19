@@ -29,8 +29,8 @@ export default function Navigator () {
               <NavDropdown.Item href="/product1">product 1</NavDropdown.Item>
               <NavDropdown.Item href="/product2">product 2</NavDropdown.Item>
               <NavDropdown.Item href="/product3">product 3</NavDropdown.Item> */}
-              {/* <NavDropdown.Divider /> */}
-              {/* <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
+              {/* <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
             {/* </NavDropdown>
             <NavDropdown title="Services" id="basic-nav-dropdown">
               <NavDropdown.Item href="/service 1">service 1</NavDropdown.Item>
@@ -39,7 +39,7 @@ export default function Navigator () {
             </NavDropdown> */}
           </Nav>
             <SearchBar className='navSearch' />
-            <Nav.Link href="/cart"><img src={carrito} alt="carrito" className='navCarrito' /></Nav.Link>
+            <Nav.Link href="/cart"><div className='divCarrito'><img src={carrito} alt="carrito" className='navCarrito' /></div></Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

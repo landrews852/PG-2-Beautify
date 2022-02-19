@@ -8,7 +8,7 @@ export default function Slideshow() {
   const arrcarrusel = [
     {
       id: 1,
-      img: "https://images2.revistafama.com/tJ9jvfPWHSF_Hs1D2yz6-NBaHp0=/958x596/uploads/media/2019/07/03/que-son-las-pestanas-de-1.jpg",
+      img: "https://www.bellezamarife.com/wp-content/uploads/2015/11/tratamientos-antiedad-y-rejuvenecimiento-1.png",
       label: "First slide label",
       text: "Lo que sea 1 ",
     },
@@ -20,7 +20,7 @@ export default function Slideshow() {
     },
     {
       id: 3,
-      img: "https://images.ecestaticos.com/ECoBIlRtrxVxWqNbrCW8zJo7zIo=/18x6:2268x1247/1440x810/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F719%2F5c8%2Fb3f%2F7195c8b3f1e6d69995db09a01eb672bd.jpg",
+      img: "https://www.diariodesevilla.es/2021/07/27/wappissima/belleza/seguir-rutina-belleza-facial-verano_1596150530_141807946_1200x675.jpg",
       label: "Third slide label",
       text: "Lo que sea 3 ",
     },

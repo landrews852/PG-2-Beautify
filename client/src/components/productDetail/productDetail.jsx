@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
   getProductDetail,
-  cleanProductDetail,
-  allProducts,
+  cleanProductDetail
 } from "../../redux/actions";
 import React from "react";
 // import "./cardServices.css";
@@ -33,7 +32,7 @@ export default function ProductDetail() {
 
   let products = useSelector((state) => state.products);
   useEffect(() => {
-    dispatch(allProducts());
+    dispatch(getProductDetail());
   }, []);
 
   // Para fines de mostrar informacion extraigo del producto del datamock

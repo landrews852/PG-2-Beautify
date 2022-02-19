@@ -1,3 +1,5 @@
+/*************** BUTTON CART ********************/
+
 .buttoncart {
     position: relative;
     display: inline-block;
@@ -79,14 +81,26 @@
     width: 100%;
    }
    
-   .buttoncart:hover .circle .icon.arrow {
-    background: #fff;
-    transform: translate(1rem, 0);
+   .buttoncart:hover .circle .carticon {
+     left:15%;
+     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1)
    }
    
    .buttoncart:hover .button-text {
     color: #fff;
    }
+   .carticon {
+   display: var(--fa-display, inline-block);
+   height: 22px;
+   overflow: visible;
+   align-content: center;
+   position: absolute;
+   padding: 12px 10px;
+   color:white;
+   left:0%;
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1)
+   }   
+
 
 /************ CONTENEDOR CARD ****************/
     .cards {
@@ -117,9 +131,13 @@
     overflow: hidden;
     }   
    .cardcontenedor {
-    width: 50%;
-    margin: 1em auto 1em auto;  
+    width: 13vw;
+    margin: 1em 2em;
     box-shadow: 0 1px 6px 2px rgba(0,0,0,0.3);
     padding-bottom: 10px;
     border-radius: 15px;
+    }
+
+    .homeowl {
+        margin: 1em auto; 
     }

@@ -58,3 +58,10 @@
 .owl-dot:hover{
   background: #0072bc!important;
 }
+
+.owl-carousel .owl-item {
+  width:0px!important;
+  margin: auto 6.7em!important;
+  font-size:10px;
+
+ }

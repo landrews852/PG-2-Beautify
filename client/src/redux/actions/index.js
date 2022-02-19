@@ -1,4 +1,4 @@
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 
 export const GET_IMG_CARRUSEL = 'GET_IMG_CARRUSEL';
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME"
@@ -105,7 +105,7 @@ export const filterByOffer = (payload) => {
 
 export const getServices = ()=>{
   return async function (dispatch) {
-    const services = await axios.get (`/api/service`)
+    const services = await axios.get (`http://localhost:3001/api/service`)
     return dispatch ({ 
       type: GET_SERVICES,
       payload: services.data

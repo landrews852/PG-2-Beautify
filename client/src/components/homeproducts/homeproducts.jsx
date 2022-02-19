@@ -28,7 +28,7 @@ export default function HomeProducts  () {
       {  
         <OwlCarousel className="owl-theme" loop margin={10} nav>
             {product &&
-        product.map((p) => (
+        product.slice(0,10).map((p) => (
           <Link key={p.id} to={"/market/" + p.id}>
           <div class='item'>
               <Card 

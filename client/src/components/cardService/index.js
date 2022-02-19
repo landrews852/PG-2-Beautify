@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import Style from "./cardServices.module.css"
 import { useDispatch, useSelector } from "react-redux";
+import { getServices } from "../../redux/actions";
 
 
 let services = require("../../datamock/Services.json");
 
-export default function cardService() {
+export default function CardService() {
 
   const dispatch= useDispatch ();
   useEffect (()=>{

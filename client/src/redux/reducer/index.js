@@ -1,4 +1,4 @@
-import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, POST_SERVICE, PRICE_SORT, RATING_SORT, FILTER_BY_OFFER } from "../actions"
+import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, POST_SERVICE, PRICE_SORT, RATING_SORT, FILTER_BY_OFFER, GET_PRODUCT_DETAIL, CLEAN_PRODUCT_DETAIL, GET_SERVICES } from "../actions"
 
 
 const initialState = {
@@ -52,13 +52,13 @@ export default function rootReducer(state = initialState, action) {
       ...state
     }
 
-    case types.GET_PRODUCT_DETAIL:
+    case GET_PRODUCT_DETAIL:
     return {
       ...state,
       productDetail : action.payload
     }
 
-    case types.CLEAN_PRODUCT_DETAIL:
+    case CLEAN_PRODUCT_DETAIL:
       return {
         ...state,
         productDetail : {}
@@ -99,7 +99,7 @@ export default function rootReducer(state = initialState, action) {
     case GET_SERVICES:
       return {
         ...state,
-        services: payload 
+        services: action.payload 
       }  
 
     default:

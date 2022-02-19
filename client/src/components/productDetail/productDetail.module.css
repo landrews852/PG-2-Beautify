@@ -189,7 +189,7 @@
 	overflow: hidden;
     max-width: max-content;
 	max-height: 300px;
-	float: right;
+	/* float: right; */
 	display: inline-block;
 }
 

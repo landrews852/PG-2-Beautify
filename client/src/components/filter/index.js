@@ -56,7 +56,7 @@ export default function Filter () {
             <option value="DESC">Mayor a menor</option>
           </select>
         </div>
-          <br/>
+        <br/>
         <div className={s.selectContainer}>
           <label className="label-filter">Ordenar por nombre: </label>
           <select className={s.select} name="name" onChange={(e) => handleSortByName(e)}>
@@ -66,6 +66,7 @@ export default function Filter () {
             <option value="DESC">Descendente</option>
           </select>
         </div>
+        <br/>
         <div className={s.selectContainer}>
           <label className="label-filter">Filtrar por categorías: </label>
           <select className={s.select} name="categories" onChange={handleFilterCategories}>
@@ -77,6 +78,7 @@ export default function Filter () {
                 )) : null}
           </select>
         </div>
+        <br/>
         <div className={s.selectContainer}>
           <label className='label-filter'>Filtrar por marca: </label>
           <select className={s.select} name="brands" onChange={handleFilterBrands}>

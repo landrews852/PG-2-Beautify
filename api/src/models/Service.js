@@ -13,13 +13,17 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     description:{
-      type:DataTypes.STRING,
+      type:DataTypes.TEXT,
       allowNull: false
     },
     image:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.ARRAY(DataTypes.STRING (1000)),
       allowNull: false
-    }
+    },
+    disabled: {
+      type: DataTypes.STRING,
+      defaultValue: false,
+    },
   },
   {
     timestamps: false,

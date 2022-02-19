@@ -8,21 +8,21 @@ export default function Slideshow() {
   const arrcarrusel = [
     {
       id: 1,
-      img: "https://www.bellezamarife.com/wp-content/uploads/2015/11/tratamientos-antiedad-y-rejuvenecimiento-1.png",
-      label: "First slide label",
-      text: "Lo que sea 1 ",
+      img: "https://beautysas.vteximg.com.br/arquivos/ids/176764/fragancias-1.jpg?v=637806113206470000",
+      label: "Fragancias",
+      text: "Aprovecha nuestra nuevas fragancias con descuento",
     },
     {
       id: 2,
-      img: "https://media.glamour.mx/photos/619051d02d97bd4c522a2691/master/w_1600,c_limit/260880.jpg",
-      label: "Second slide label",
-      text: "Lo que sea 2 ",
+      img: "https://beautysas.vteximg.com.br/arquivos/ids/176717/B24%20-%201920x580%20-%20Dylan%20Blue%20PF.jpg?v=637805376353800000",
+      label: "Versace Dylan Blue ",
+      text: "Homenaje a la femineidad y masculinidad",
     },
     {
       id: 3,
-      img: "https://www.diariodesevilla.es/2021/07/27/wappissima/belleza/seguir-rutina-belleza-facial-verano_1596150530_141807946_1200x675.jpg",
-      label: "Third slide label",
-      text: "Lo que sea 3 ",
+      img: "https://beautysas.vteximg.com.br/arquivos/ids/176628/B24%20-%201920x580%20-%20Mugler_AngelNova_Valentines.jpg?v=637799406797230000",
+      label: "Angel",
+      text: "Lo que estabas esperando, cae del cielo",
     },
   ];
 

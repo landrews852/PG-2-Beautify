@@ -50,8 +50,8 @@ export default function Filter () {
         <div className={s.selectContainer}>
           <label className="label-filter">Ordenar por precio: </label>
           <select className={s.select} name="precio" onChange={(e) => handleSortByPrice(e)}>
-            <option disabled>Select an option:</option>
-            <option hidden>Select an option</option>
+            <option disabled>Selecciona una opción:</option>
+            <option hidden>Selecciona una opción</option>
             <option value="ASC">Menor a mayor</option>
             <option value="DESC">Mayor a menor</option>
           </select>
@@ -60,8 +60,8 @@ export default function Filter () {
         <div className={s.selectContainer}>
           <label className="label-filter">Ordenar por nombre: </label>
           <select className={s.select} name="name" onChange={(e) => handleSortByName(e)}>
-            <option disabled>Select an option:</option>
-            <option hidden>Select an option</option>
+            <option disabled>Selecciona una opción:</option>
+            <option hidden>Selecciona una opción</option>
             <option value="ASC">Ascendente</option>
             <option value="DESC">Descendente</option>
           </select>
@@ -70,9 +70,9 @@ export default function Filter () {
         <div className={s.selectContainer}>
           <label className="label-filter">Filtrar por categorías: </label>
           <select className={s.select} name="categories" onChange={handleFilterCategories}>
-            <option disabled>Select an option:</option>
-            <option hidden>Select an option</option>
-            <option value="all">All</option>
+            <option disabled>Selecciona una opción:</option>
+            <option hidden>Selecciona una opción</option>
+            <option value="all">Todas</option>
               {categories && categories.length > 0 ? categories.map(e => (
                 <option key={e.id} value={e.id} >{e.name_category}</option>
                 )) : null}
@@ -82,9 +82,9 @@ export default function Filter () {
         <div className={s.selectContainer}>
           <label className='label-filter'>Filtrar por marca: </label>
           <select className={s.select} name="brands" onChange={handleFilterBrands}>
-            <option disabled>Select an option:</option>
-            <option hidden>Select an option</option>
-            <option value="all">All</option>
+            <option disabled>Selecciona una opción:</option>
+            <option hidden>Selecciona una opción</option>
+            <option value="all">Todas</option>
               {brands && brands.length > 0 ? brands.map(e => (
                 <option key={e} value={e} >{e}</option>
                 )) : null}

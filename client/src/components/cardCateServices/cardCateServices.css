@@ -35,10 +35,12 @@ body {
   height: 450px;
   font-size: 65px;
   background: rgba(0, 0, 0, 0.4);
+  transition: all 0.5s linear;
 }
 .acc-item h1:hover {
-  font-size: 0%;
-  background: none
+  font-size: 65px;
+  background: none;
+  opacity: 0;
 }
 
 .acc-item p {

@@ -14,15 +14,15 @@ export default function Slideshow() {
     },
     {
       id: 2,
-      img: "https://beautysas.vteximg.com.br/arquivos/ids/176717/B24%20-%201920x580%20-%20Dylan%20Blue%20PF.jpg?v=637805376353800000",
-      label: "Versace Dylan Blue ",
-      text: "Homenaje a la femineidad y masculinidad",
+      img: "http://www.incontech.com.sg/wp-content/uploads/2016/06/incontech-web-banner_Beauty-Skin-Care.jpg",
+      label: "Cuida tu piel con Aloe Vera",
+      text: "Belleza de adentro hacia afuera",
     },
     {
       id: 3,
-      img: "https://beautysas.vteximg.com.br/arquivos/ids/176628/B24%20-%201920x580%20-%20Mugler_AngelNova_Valentines.jpg?v=637799406797230000",
-      label: "Angel",
-      text: "Lo que estabas esperando, cae del cielo",
+      img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.marcoaldany.com%2Fwp-content%2Fuploads%2F2018%2F09%2Fbanner-pestanas.jpg&f=1&nofb=1",
+      label: "Pestañas y Cejas",
+      text: "Conocé nuestras ofertas en productos y servicios",
     },
   ];
 

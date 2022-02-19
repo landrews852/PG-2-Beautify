@@ -9,9 +9,12 @@ export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
 export const CLEAN_PRODUCT_DETAIL = 'CLEAN_PRODUCT_DETAIL'
 export const POST_SERVICE = 'POST_SERVICE'
 export const PRICE_SORT = 'PRICE_SORT'
-export const RATING_SORT = 'RATING_SORT'
+export const NAME_SORT = 'NAME_SORT'
 export const FILTER_BY_OFFER = 'FILTER_BY_OFFER'
+export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY'
+export const FILTER_BY_BRAND = 'FILTER_BY_BRAND'
 export const GET_SERVICES = 'GET_SERVICES'
+export const GET_BRANDS = 'GET_BRANDS'
 
 export const getImgCarrusel = () => {
   return async function (dispatch) {
@@ -85,17 +88,34 @@ export const postService = (payload) => {
     return response;
   }
 }
-export const priceSort = (payload) => {
-  return function (dispatch) {
-    return dispatch({ type: PRICE_SORT, payload })
-  }
-}
 
-export const ratingSort = (payload) => {
-  return function (dispatch) {
-    return dispatch({ type: RATING_SORT, payload })
-  }
-}
+export const nameSort = (payload) => {
+  return async function (dispatch) {
+    let sort = await axios.get(`http://localhost:3001/api/product?orderName=${payload}`);
+    return dispatch({ type: NAME_SORT, payload: sort.data });
+  };
+};
+
+export const priceSort = (payload) => {
+  return async function (dispatch) {
+    let sort = await axios.get(`http://localhost:3001/api/product?orderPrice=${payload}`);
+    return dispatch({ type: PRICE_SORT, payload: sort.data });
+  };
+};
+
+export const filterCategory = (payload) => {
+  return async function (dispatch) {
+    let filter = await axios.get(`http://localhost:3001/api/product?categoryId=${payload}`);
+    return dispatch({ type: FILTER_BY_CATEGORY, payload: filter.data });
+  };
+};
+
+export const filterBrand = (payload) => {
+  return async function (dispatch) {
+    let filter = await axios.get(`http://localhost:3001/api/product?brand=${payload}`);
+    return dispatch({ type: FILTER_BY_BRAND, payload: filter.data });
+  };
+};
 
 export const filterByOffer = (payload) => {
   return function (dispatch) {
@@ -111,4 +131,15 @@ export const getServices = ()=>{
       payload: services.data
     }) 
   }
+}
+
+export function getBrands() {
+  return async function (dispatch) {
+    var json = await axios.get('http://localhost:3001/api/product');
+
+    dispatch({
+      type: GET_BRANDS,
+      payload: json.data,
+    });
+  };
 }

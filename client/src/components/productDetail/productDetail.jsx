@@ -36,7 +36,7 @@ export default function ProductDetail() {
         <div className={Styles.container}>
           <div className={Styles["product-details"]}>
           <div className={Styles['title-stars']}>
-            <h1>Nombre</h1>
+            <h1>{productDetail.product_name}</h1>
             <span className={Styles["hint-star"]}>
               {ranking_starts.map((star) => (
                 <i className={`${Styles.fa} ${Styles[star]}`}></i>
@@ -44,15 +44,12 @@ export default function ProductDetail() {
             </span>
           </div>
             <p className={Styles.information}>
-              " Especially good for container gardening, the Angelonia will keep
-              blooming all summer even if old flowers are removed. Once tall
-              enough to cut, bring them inside and you'll notice a light scent
-              that some say is reminiscent of apples. "
+              {productDetail.description}
             </p>
 
             <div className={Styles.control}>
               <button className={Styles.btns}>
-                <span className={Styles.price}>49 $</span>
+                <span className={Styles.price}>{productDetail.cost_by_unit} $</span>
                 <span className={Styles["shopping-cart"]}>
                   <i
                     className={`${Styles.fa} ${Styles["fa-shopping-cart"]}`}
@@ -66,30 +63,27 @@ export default function ProductDetail() {
 
           <div className={Styles["product-image"]}>
             <img
-              src="https://sc01.alicdn.com/kf/HTB1Cic9HFXXXXbZXpXXq6xXFXXX3/200006212/HTB1Cic9HFXXXXbZXpXXq6xXFXXX3.jpg"
+              src={productDetail.image}
               alt="Omar Dsoky"
             />
 
             <div className={Styles.info}>
-              <h2>The Description</h2>
+              <h2>¿Te interesa?</h2>
               <ul>
                 <li>
-                  <strong>Sun Needs: </strong>Full Sun
+                  <strong>Tenemos: </strong>{productDetail.stock} items disponibles
                 </li>
                 <li>
-                  <strong>Soil Needs: </strong>Damp
+                  <strong>A un precio de: </strong> {productDetail.cost_by_unit}$ c/u
+                </li>
+                {(productDetail.discount > 0) && <li>
+                  <strong>Ahorra un: </strong> {productDetail.discount}% con esta compra
+                </li>}
+                <li>
+                  <strong>Marca: </strong> {productDetail.brand}
                 </li>
                 <li>
-                  <strong>Zones: </strong>9 - 11
-                </li>
-                <li>
-                  <strong>Height: </strong>2 - 3 feet
-                </li>
-                <li>
-                  <strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall
-                </li>
-                <li>
-                  <strong>Features: </strong>Tolerates heat
+                  <strong>Garantia por: </strong> {productDetail.warranty} semanas
                 </li>
               </ul>
             </div>

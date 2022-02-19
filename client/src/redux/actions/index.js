@@ -11,6 +11,7 @@ export const POST_SERVICE = 'POST_SERVICE'
 export const PRICE_SORT = 'PRICE_SORT'
 export const RATING_SORT = 'RATING_SORT'
 export const FILTER_BY_OFFER = 'FILTER_BY_OFFER'
+export const GET_SERVICES = 'GET_SERVICES'
 
 export const getImgCarrusel = () => {
   return async function (dispatch) {
@@ -99,5 +100,15 @@ export const ratingSort = (payload) => {
 export const filterByOffer = (payload) => {
   return function (dispatch) {
     return dispatch({ type: FILTER_BY_OFFER, payload })
+  }
+}
+
+export const getServices = ()=>{
+  return async function (dispatch) {
+    const services = await axios.get (`http://localhost:3001/api/service`)
+    return dispatch ({ 
+      type: GET_SERVICES,
+      payload: services.data
+    }) 
   }
 }

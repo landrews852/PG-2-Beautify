@@ -2,85 +2,97 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from "./filter.module.css"
-import { priceSort, ratingSort, filterByOffer } from '../../redux/actions';
+import { priceSort, nameSort, filterByOffer, filterBrand, filterCategory, getCategories, getBrands } from '../../redux/actions';
 
 export default function Filter () {
 
   const categories = useSelector(state => state.categories)
+  const products = useSelector(state => state.products)
   const brands = useSelector(state => state.brands)
 
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(getCategories())
+    dispatch(getBrands())
+  }, [dispatch])
+
   function handleSortByPrice(e) {
-    dispatch(priceSort(e.target.value === 'asc'));
+    dispatch(priceSort(e.target.value));
 
   }
 
-  function handleSortByRating(e) {
-    dispatch(ratingSort(e.target.value));
+  function handleSortByName(e) {
+    dispatch(nameSort(e.target.value));
 
   }
 
-  // function handleFilterCategories(e) {
-  //   dispatch(filterByCategories(e.target.value));
+  function handleFilterCategories(e) {
+    dispatch(filterCategory(e.target.value));
 
-  // }
+  }
+
+  function handleFilterBrands(e) {
+    dispatch(filterBrand(e.target.value));
+
+  }
   
   function handleFilterOffer(e) {
     dispatch(filterByOffer(e.target.value));
 
   }
 
+  console.log(categories)
+  console.log(products)
   return (
     <div className={s.filter}>
       <div className={s.selectDiv}>
         <div className={s.selectContainer}>
           <label className="label-filter">Ordenar por precio: </label>
-          <select onChange={(e) => handleSortByPrice(e)}>
+          <select className={s.select} name="precio" onChange={(e) => handleSortByPrice(e)}>
             <option disabled>Select an option:</option>
             <option hidden>Select an option</option>
-            <option value="asc">Menor a mayor</option>
-            <option value="desc">Mayor a menor</option>
+            <option value="ASC">Menor a mayor</option>
+            <option value="DESC">Mayor a menor</option>
           </select>
         </div>
           <br/>
         <div className={s.selectContainer}>
-          <label className="label-filter">Ordenar por rating: </label>
-          <select onChange={(e) => handleSortByRating(e)}>
+          <label className="label-filter">Ordenar por nombre: </label>
+          <select className={s.select} name="name" onChange={(e) => handleSortByName(e)}>
             <option disabled>Select an option:</option>
             <option hidden>Select an option</option>
-            <option value="asc">Menor a mayor</option>
-            <option value="desc">Mayor a menor</option>
+            <option value="ASC">Ascendente</option>
+            <option value="DESC">Descendente</option>
           </select>
         </div>
         <div className={s.selectContainer}>
           <label className="label-filter">Filtrar por categorías: </label>
-          {/* <select className="filter-categories" name="categories" onChange={handleFilterCategories}> */}
-          <select className="filter-categories" name="categories" >
+          <select className={s.select} name="categories" onChange={handleFilterCategories}>
             <option disabled>Select an option:</option>
             <option hidden>Select an option</option>
             <option value="all">All</option>
               {categories && categories.length > 0 ? categories.map(e => (
-                <option key={e.id} value={e.name} >{e.name}</option>
+                <option key={e.id} value={e.id} >{e.name_category}</option>
                 )) : null}
           </select>
         </div>
         <div className={s.selectContainer}>
           <label className='label-filter'>Filtrar por marca: </label>
-          {/* <select className="filter-brands" name="brands" onChange={handleFilterBrands}> */}
-          <select className="filter-brands" name="brands" >
+          <select className={s.select} name="brands" onChange={handleFilterBrands}>
             <option disabled>Select an option:</option>
             <option hidden>Select an option</option>
             <option value="all">All</option>
               {brands && brands.length > 0 ? brands.map(e => (
-                <option key={e.id} value={e.name} >{e.name}</option>
+                <option key={e} value={e} >{e}</option>
                 )) : null}
           </select>
         </div>
-        <div className={s.checkbox}>
+        {/* <div className={s.checkbox}>
+          <checkbox/>
           <input type="checkbox" name="offert" onChange={handleFilterOffer} /> 
           <label className='label-filter'>Filtrar ofertas </label>
-        </div>
+        </div> */}
       </div>
     </div>
   )

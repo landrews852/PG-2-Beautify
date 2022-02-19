@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Style from "./cardServices.module.css"
-console.log (Style)
+import { useDispatch, useSelector } from "react-redux";
+
 
 let services = require("../../datamock/Services.json");
 
 export default function cardService() {
+
+  const dispatch= useDispatch ();
+  useEffect (()=>{
+    dispatch (getServices())
+  },[])
+  const services= useSelector ((state)=> state.services)
+  console.log (services)
   return (
     <div id={Style.cont} >
       {services.map((service) => (

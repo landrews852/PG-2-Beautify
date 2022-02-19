@@ -12,7 +12,7 @@ export default function CardCateServices() {
         dispatch(getCategories());
     },[]);
     const categories= useSelector ((state)=>state.categories)
-
+    console.log (categories)
    return ( <section class="content-wrapper">
 <ul id="accordion">
     <li class="acc-item">

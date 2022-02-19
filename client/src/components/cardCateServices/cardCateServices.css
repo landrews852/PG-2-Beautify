@@ -32,10 +32,9 @@ body {
   
 }
 .acc-item h1 {
-  height: 150px;
+  height: 450px;
   font-size: 65px;
   background: rgba(0, 0, 0, 0.4);
-  text-align: center;
 }
 .acc-item h1:hover {
   font-size: 0%;

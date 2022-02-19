@@ -19,8 +19,7 @@ export default function HomeProducts  () {
     // },[dispatch]); 
     
     useMemo(() => {
-        dispatch(allProducts());
-        
+        dispatch(allProducts());        
       },[dispatch]);
        
     

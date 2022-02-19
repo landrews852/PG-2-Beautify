@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getProductDetail, cleanProductDetail } from "../../redux/actions";
 import React from "react";
 import Styles from "./productDetail.module.css";
+import Button from "../button/button";
 // let products = require("../../datamock/Products.json");
 
 export default function ProductDetail() {
@@ -58,6 +59,7 @@ export default function ProductDetail() {
                 </span>
                 <span className={Styles.buy}>Buy Now</span>
               </button>
+              <Button></Button>
             </div>
           </div>
 

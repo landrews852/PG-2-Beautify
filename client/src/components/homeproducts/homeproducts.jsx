@@ -15,7 +15,7 @@ export default function HomeProducts  () {
     useEffect(() => {
       dispatch(allProducts());
     },[]);  
-       
+      
     const product = useSelector((state) => state.products);
     return (
       <>

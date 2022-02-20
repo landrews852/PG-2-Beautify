@@ -5,12 +5,13 @@ import { getProductDetail, cleanProductDetail } from "../../redux/actions";
 import React from "react";
 import Styles from "./productDetail.module.css";
 import Button from "../button/button";
+
 // let products = require("../../datamock/Products.json");
 
 export default function ProductDetail() {
   let { id } = useParams();
   const dispatch = useDispatch();
-  // let productDetail = useSelector(state => state.productDetail)
+  let productDetail = useSelector(state => state.productDetail)
 
   const ranking = 2.5;
   let ranking_starts = [1, 2, 3, 4, 5];
@@ -21,15 +22,12 @@ export default function ProductDetail() {
     if (ranking - rank < 0) return "fa-star-o";
   });
 
-  let products = useSelector((state) => state.products);
-
   useEffect(() => {
-    dispatch(getProductDetail());
+    dispatch(getProductDetail(id));
     return dispatch(cleanProductDetail());
-  }, []);
+  }, [dispatch]);
 
-  // Para fines de mostrar informacion extraigo del producto del datamock
-  let productDetail = products.find((product) => product.id == id);
+ 
 
   return (
     <>

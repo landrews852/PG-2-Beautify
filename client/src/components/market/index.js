@@ -25,23 +25,24 @@ export default function Market() {
   
 
   return (
-    <div className="main">
+    paginatedProducts.length? (
+<div className="main">
       <Filter />
       <Pagination>
-  <Pagination.First onClick={() => setPage(1)}/>
-  <Pagination.Prev disabled={page <= 1} onClick={() => setPage(page-1)}/>
-  <Pagination.Item onClick={() => setPage(1)} hidden={page === 1 || page === 2}>{1}</Pagination.Item>
-  <Pagination.Ellipsis hidden={page === 1 || lastPage <= 3} />
+        <Pagination.First onClick={() => setPage(1)}/>
+        <Pagination.Prev disabled={page <= 1} onClick={() => setPage(page-1)}/>
+        <Pagination.Item onClick={() => setPage(1)} hidden={page === 1 || page === 2}>{1}</Pagination.Item>
+        <Pagination.Ellipsis hidden={page === 1 || lastPage <= 3} />
 
-  <Pagination.Item onClick={() => setPage(page - 1)} hidden={page === 1}>{page - 1}</Pagination.Item>
-  <Pagination.Item active>{page}</Pagination.Item>
-  <Pagination.Item onClick={() => setPage(page + 1)} hidden={page === lastPage || lastPage === (page + 1)}>{page + 1}</Pagination.Item>
+        <Pagination.Item onClick={() => setPage(page - 1)} hidden={page === 1}>{page - 1}</Pagination.Item>
+        <Pagination.Item active>{page}</Pagination.Item>
+        <Pagination.Item onClick={() => setPage(page + 1)} hidden={page === lastPage || lastPage === (page + 1)}>{page + 1}</Pagination.Item>
 
-  <Pagination.Ellipsis hidden={page === lastPage || lastPage <= 3} />
-  <Pagination.Item onClick={() => setPage(lastPage)} hidden={page === lastPage}>{lastPage}</Pagination.Item>
-  <Pagination.Next disabled={page >= lastPage} onClick={() => setPage(page + 1)}/>
-  <Pagination.Last onClick={() => setPage(lastPage)}/>
-</Pagination>
+        <Pagination.Ellipsis hidden={page === lastPage || lastPage <= 3} />
+        <Pagination.Item onClick={() => setPage(lastPage)} hidden={page === lastPage}>{lastPage}</Pagination.Item>
+        <Pagination.Next disabled={page >= lastPage} onClick={() => setPage(page + 1)}/>
+        <Pagination.Last onClick={() => setPage(lastPage)}/>
+      </Pagination>
       <div className="Container Market">
         {paginatedProducts?.map((product) => (
             <Link key={product.id} to={"/market/" + product.id}>
@@ -54,5 +55,7 @@ export default function Market() {
           ))}
       </div>
     </div>
+    )
+    : <p>Estoy cargando amigo</p>
   );
 }

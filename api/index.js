@@ -22,7 +22,7 @@ const { conn } = require("./src/db.js");
 const { loadCategories } = require("../api/loadData/categoryLoad");
 const { loadProducts } = require("../api/loadData/productLoad");
 const { clientLoad } = require("../api/loadData/clientLoad");
-const { loadServices } = require("../api/loadData/servicesLoad")
+const { loadServices } = require("../api/loadData/servicesLoad");
 
 // Syncing all the models at once.
 

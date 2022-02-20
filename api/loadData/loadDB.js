@@ -1,15 +1,16 @@
-const { Client } = require("../src/db.js");
-const infoClient = require("../src/datamock/clients.json");
+const { Client } = require("../db");
 
-const clientLoad = async () => {
+const loadClient = async () => {
   try {
+    const infoClient = require("../datamock/Clients_back.json");
+
     await Promise.all(
-      infoClient?.map(async (cl) => {
+      infoClient.map(async (cl) => {
         await Client.create({
           id: cl.id,
           name_client: cl.name_client,
           lastname_client: cl.lastname_client,
-          profile_picture: cl.profile_picture,
+          profile_picture: cl.profile_picture[0],
           password: cl.password,
           email: cl.email,
           address: cl.address,
@@ -23,6 +24,4 @@ const clientLoad = async () => {
   }
 };
 
-module.exports = {
-  clientLoad,
-};
+module.exports = loadClient;

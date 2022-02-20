@@ -1,0 +1,24 @@
+.cart {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  /* background-color: #fafafa; */
+}
+
+.cartItems {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  background-color: #fafafa;
+}

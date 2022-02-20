@@ -1,16 +1,13 @@
 const { Product, Category } = require("../src/db.js");
 const { products } = require("../src/datamock/products.js");
 
-const loadProducts = () => {
-  products?.map(async (p) => {
-    var categoryy = await Promise.all(
-      p.category.map(
-        async (c) =>
-          await Category.findAll({
-            where: { name_category: c.toLowerCase() },
+const  loadProducts =async () => {
+
+  await Promise.all(products?.map(async (p) => {
+    
+    var categoryy = await Category.findAll({
+            where: { name_category: p.category[0].toLowerCase()},
           })
-      )
-    );
     categoryy = categoryy.flat();
 
     let product = await Product.create({
@@ -24,8 +21,8 @@ const loadProducts = () => {
       discount: p.discount,
     });
 
-    product.setCategory(categoryy[0].id);
-  });
+    await product.setCategory(categoryy[0].id);
+  }));
 };
 module.exports = {
   loadProducts,

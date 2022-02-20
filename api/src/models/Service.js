@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
         allowNull: false,
         set(value) {
           let name = value.toLowerCase();
-          this.setDataValue("product_name", name);
+          this.setDataValue("name_service", name);
         },
       },
       price: {

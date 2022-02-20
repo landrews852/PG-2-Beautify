@@ -3,26 +3,22 @@ const { services } = require("../src/datamock/services.js");
 
 const loadServices = async () => {
   try {
-    services?.map(async (se) => {
-      var categoryy = await Promise.all(
-        se.category.map(
-          async (c) =>
-            await Category.findAll({
-              where: { name_category: c.toLowerCase() },
+    await Promise.all(services.map(async (se) => {
+      var categoryy = await Category.findAll({
+              where: { name_category: se.category[0].toLowerCase()},
             })
-        )
-      );
-      categoryy = categoryy.flat();
-
+        
+       categoryy = categoryy.flat();
+       
       let service = await Service.create({
         name_service: se.name_service,
         price: se.price,
         description: se.description,
         image: se.image,
       });
-
-      service.setCategory(categoryy[0].id);
-    });
+      
+      await service.setCategory(categoryy[0].id);
+    }));
   } catch (error) {
     console.log(error);
   }

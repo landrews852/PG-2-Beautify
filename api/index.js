@@ -29,9 +29,9 @@ const { loadServices } = require("../api/loadData/servicesLoad");
 conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
-    loadCategories();
-    loadProducts();
-    clientLoad();
-    loadServices();
+    await loadCategories();
+    await loadProducts();
+    await clientLoad();
+    await loadServices();
   });
 });

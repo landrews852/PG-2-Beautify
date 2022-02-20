@@ -13,10 +13,7 @@ function Home() {
       <Slideshow />
       <Homeservices />
       <h2>PRODUCTOS</h2>
-      <HomeProducts />
-
-
-      
+      <HomeProducts />      
     </div>
   );
 }

@@ -6,26 +6,33 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { Link } from "react-router-dom";
 import Card from '../card';
+import { useMemo } from 'react';
 
 export default function HomeProducts  () {
     
     const dispatch = useDispatch();
     
-
-    useEffect(() => {
-      dispatch(allProducts());
-    },[]);  
-       
     const product = useSelector((state) => state.products);
+    // useEffect(() => {
+    //   dispatch(allProducts());
+      
+    // },[dispatch]); 
+    
+    useMemo(() => {
+        dispatch(allProducts());
+        
+      },[dispatch]);
+       
+    
     return (
       <>
       {  
-        <OwlCarousel loop margin={10} nav>
+        <OwlCarousel className="owl-theme" loop margin={10} nav>
             {product &&
         product.map((p) => (
           <Link key={p.id} to={"/market/" + p.id}>
           <div class='item'>
-              <Card
+              <Card 
             product_name={p.product_name}
             image={p.image}
             cost_by_unit={p.cost_by_unit}

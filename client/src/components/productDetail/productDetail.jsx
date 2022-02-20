@@ -1,12 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {
-  getProductDetail,
-  cleanProductDetail
-} from "../../redux/actions";
+import { getProductDetail, cleanProductDetail } from "../../redux/actions";
 import React from "react";
-// import "./cardServices.css";
+import Styles from "./productDetail.module.css";
+import Button from "../button/button";
 // let products = require("../../datamock/Products.json");
 
 export default function ProductDetail() {
@@ -18,21 +16,16 @@ export default function ProductDetail() {
   let ranking_starts = [1, 2, 3, 4, 5];
   // Ranking dinamico para estrellas.
   ranking_starts = ranking_starts.map((rank) => {
-    if (rank < ranking) return "fa fa-star";
-    if (rank - ranking === 0.5) return "fa fa-star-half-o";
-    if (ranking - rank < 0) return "fa fa-star-o";
+    if (rank < ranking) return "fa-star";
+    if (rank - ranking === 0.5) return "fa-star-half-o";
+    if (ranking - rank < 0) return "fa-star-o";
   });
 
-  console.log(ranking_starts);
-
-  // useEffect(() => {
-  //   dispatch(getProductDetail(id));
-  //   return dispatch(cleanProductDetail());
-  // }, []);
-
   let products = useSelector((state) => state.products);
+
   useEffect(() => {
     dispatch(getProductDetail());
+    //  return dispatch(cleanProductDetail());
   }, []);
 
   // Para fines de mostrar informacion extraigo del producto del datamock
@@ -40,42 +33,62 @@ export default function ProductDetail() {
 
   return (
     <>
-      <div id="cont">
-        <div id="container">
-          <div class="product-details">
-            <div class="title-stars">
-              <h1>{productDetail.product_name}</h1>
+      <div className={Styles.ProductDetail}>
+        <div className={Styles.container}>
+          <div className={Styles["product-details"]}>
+          <div className={Styles['title-stars']}>
+            <h1>{productDetail.product_name}</h1>
+            <span className={Styles["hint-star"]}>
+              {ranking_starts.map((star) => (
+                <i className={`${Styles.fa} ${Styles[star]}`}></i>
+              ))}
+            </span>
+          </div>
+            <p className={Styles.information}>
+              {productDetail.description}
+            </p>
 
-              <span className="hint-star star">
-                {ranking_starts.map((start) => (
-                  <i className={start}></i>
-                ))}
-              </span>
-
-              <span>{productDetail.brand}</span>
-            </div>
-            <p class="information">{productDetail.description}</p>
-            <p class="information">{productDetail.category.name_category}</p>
-            <p class="information">{productDetail.country}</p>
-            <p class="information">{productDetail.discount}</p>
-            {/* <p class="information">{productDetail.expiration_date}</p> */}
-            <p class="information">{productDetail.stock}</p>
-            <p class="information">{productDetail.warranty}</p>
-            <div class="control">
-              <button class="btns">
-                <span class="price">{productDetail.cost_by_unit} $</span>
-                <span class="shopping-cart">
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <div className={Styles.control}>
+              <button className={Styles.btns}>
+                <span className={Styles.price}>{productDetail.cost_by_unit} $</span>
+                <span className={Styles["shopping-cart"]}>
+                  <i
+                    className={`${Styles.fa} ${Styles["fa-shopping-cart"]}`}
+                    aria-hidden="true"
+                  ></i>
                 </span>
-                <span class="buy">Buy Now</span>
+                <span className={Styles.buy}>Buy Now</span>
               </button>
+              <Button></Button>
             </div>
           </div>
 
-          <div class="product-image">
-            {productDetail.image.map((img) => (
-              <img src={img} alt="fotico_papa"></img>
-            ))}
+          <div className={Styles["product-image"]}>
+            <img
+              src={productDetail.image}
+              alt="Omar Dsoky"
+            />
+
+            <div className={Styles.info}>
+              <h2>¿Te interesa?</h2>
+              <ul>
+                <li>
+                  <strong>Tenemos: </strong>{productDetail.stock} items disponibles
+                </li>
+                <li>
+                  <strong>A un precio de: </strong> {productDetail.cost_by_unit}$ c/u
+                </li>
+                {(productDetail.discount > 0) && <li>
+                  <strong>Ahorra un: </strong> {productDetail.discount}% con esta compra
+                </li>}
+                <li>
+                  <strong>Marca: </strong> {productDetail.brand}
+                </li>
+                <li>
+                  <strong>Garantia por: </strong> {productDetail.warranty} semanas
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

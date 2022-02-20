@@ -9,6 +9,10 @@ module.exports = (sequelize) => {
       product_name: {
         type: DataTypes.STRING,
         allowNull: false,
+        set(value) {
+          let name = value.toLowerCase();
+          this.setDataValue("product_name", name);
+        },
       },
       stock: {
         type: DataTypes.INTEGER,
@@ -30,6 +34,10 @@ module.exports = (sequelize) => {
       brand: {
         type: DataTypes.STRING,
         allowNull: false,
+        set(value) {
+          let name = value.toLowerCase();
+          this.setDataValue("brand", name);
+        },
       },
       image: {
         type: DataTypes.ARRAY(DataTypes.TEXT),

@@ -14,20 +14,22 @@ export default function Market() {
   useEffect(() => {
     dispatch(allProducts());
   }, []);
-
+  console.log("productos",typeof products)
   return (
-    <div className="Container Market">
+    <div className="main">
       <Filter />
-      {products &&
-        products.map((p) => (
-          <Link key={p.id} to={"/market/" + p.id}>
-          <Card
-            product_name={p.product_name}
-            image={p.image}
-            cost_by_unit={p.cost_by_unit}
-          />
-          </Link>
-        ))}
+      <div className="Container Market">
+        {typeof products === "string"?<div>Sin categorias</div>:
+          products.map((p) => (
+            <Link key={p.id} to={"/market/" + p.id}>
+            <Card
+              product_name={p.product_name}
+              image={p.image}
+              cost_by_unit={p.cost_by_unit}
+              />
+            </Link>
+          ))}
+      </div>
     </div>
   );
 }

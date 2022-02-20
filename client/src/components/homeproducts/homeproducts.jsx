@@ -12,6 +12,12 @@ export default function HomeProducts  () {
     
     const dispatch = useDispatch();
     
+
+
+    useEffect(() => {
+      dispatch(allProducts());
+    },[]);  
+      
     const product = useSelector((state) => state.products);
     // useEffect(() => {
     //   dispatch(allProducts());
@@ -19,17 +25,16 @@ export default function HomeProducts  () {
     // },[dispatch]); 
     
     useMemo(() => {
-        dispatch(allProducts());
-        
+        dispatch(allProducts());        
       },[dispatch]);
-       
+      
     
     return (
       <>
       {  
         <OwlCarousel className="owl-theme" loop margin={10} nav>
             {product &&
-        product.map((p) => (
+        product.slice(0,10).map((p) => (
           <Link key={p.id} to={"/market/" + p.id}>
           <div class='item'>
               <Card 

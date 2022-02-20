@@ -25,7 +25,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     dispatch(getProductDetail());
-    //  return dispatch(cleanProductDetail());
+    return dispatch(cleanProductDetail());
   }, []);
 
   // Para fines de mostrar informacion extraigo del producto del datamock
@@ -49,16 +49,6 @@ export default function ProductDetail() {
             </p>
 
             <div className={Styles.control}>
-              <button className={Styles.btns}>
-                <span className={Styles.price}>{productDetail.cost_by_unit} $</span>
-                <span className={Styles["shopping-cart"]}>
-                  <i
-                    className={`${Styles.fa} ${Styles["fa-shopping-cart"]}`}
-                    aria-hidden="true"
-                  ></i>
-                </span>
-                <span className={Styles.buy}>Buy Now</span>
-              </button>
               <Button></Button>
             </div>
           </div>

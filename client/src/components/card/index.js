@@ -1,7 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import "./card.css"
+import Button from "../button/button";
 
 
 export default function Card({ image, product_name, cost_by_unit }) {
@@ -11,12 +10,7 @@ export default function Card({ image, product_name, cost_by_unit }) {
         <img src={image} alt="Img not found" />
         <h3>{product_name}</h3>
         <span className="cardcost">$ {cost_by_unit}</span>
-        <button class="buttoncart">
-          <span class="circle" aria-hidden="true">
-          <FontAwesomeIcon icon={faCartPlus} className="carticon" />
-          </span>
-          <span class="button-text"> carrito</span>
-        </button>
+        <Button></Button>
       </div>
     </div>
   );

@@ -44,7 +44,7 @@ export const allProducts = () => {
 export const getProductsbyName = (name) => {
   return async function (dispatch) {
     try {
-      let json = await axios.get("ruta productos");
+      let json = await axios.get(`http://localhost:3001/api/product?name=${name}`);
       return dispatch({
         type: GET_PRODUCTS_BY_NAME,
         payload: json.data,

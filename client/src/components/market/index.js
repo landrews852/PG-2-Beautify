@@ -25,7 +25,7 @@ export default function Market() {
   
 
   return (
-    paginatedProducts.length? (
+    paginatedProducts.length&& (
 <div className="main">
       <Filter />
       <Pagination>
@@ -44,7 +44,7 @@ export default function Market() {
         <Pagination.Last onClick={() => setPage(lastPage)}/>
       </Pagination>
       <div className="Container Market">
-        {paginatedProducts?.map((product) => (
+        {typeof paginatedProducts !== "string" ?paginatedProducts.map((product) => (
             <Link key={product.id} to={"/market/" + product.id}>
               <Card
                 product_name={product.product_name}
@@ -52,10 +52,10 @@ export default function Market() {
                 cost_by_unit={product.cost_by_unit}
               />
             </Link>
-          ))}
+          )): <p>No hay productos en esta categoria</p>
+        }
       </div>
     </div>
-    )
-    : <p>Estoy cargando amigo</p>
-  );
+    ) 
+  )
 }

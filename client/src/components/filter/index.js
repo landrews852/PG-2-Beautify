@@ -18,7 +18,7 @@ export default function Filter () {
   }, [dispatch])
 
   function handleSortByPrice(e) {
-    dispatch(priceSort(e.target.value));
+    dispatch(priceSort(e.target.value));   
 
   }
 

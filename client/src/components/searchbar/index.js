@@ -16,7 +16,6 @@ export default function SearchBar() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        alert('This feature is on development')
         dispatch(getProductsbyName(name))
     }
     

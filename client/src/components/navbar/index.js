@@ -20,10 +20,10 @@ export default function Navigator () {
             {/* <Link className='nav-link' to="/">Home</Link>
             <Link className='nav-link' to="/market"><span>Productos</span></Link>
             <Link className='nav-link' to="/services"><span>Servicios</span></Link> */}
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/market">Productos</Nav.Link>
-            <Nav.Link href="/services">Servicios</Nav.Link>
-            <Nav.Link href="/contact">Contact</Nav.Link>
+            <Link to="/" className='nav-link'>Home</Link>
+            <Link to="/market" className='nav-link'>Productos</Link>
+            <Link to="/services" className='nav-link'>Servicios</Link>
+            <Link to="/contact" className='nav-link'>Contact</Link>
             <Nav.Link> <ButtonLogin /> </Nav.Link>
             {/* <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item href="/product1">product 1</NavDropdown.Item>

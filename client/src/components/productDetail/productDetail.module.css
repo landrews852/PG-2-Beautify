@@ -54,7 +54,7 @@
 	
 }
 
-.container .product-details h1:before{
+/* .container .product-details h1:before{
 	position: absolute;
 	content: '';
 	right: 0%; 
@@ -70,14 +70,14 @@
 	margin: 0;
 	animation: chan-sh 6s ease infinite;
 
-}
+} */
 
 
-@keyframes chan-sh {
+/* @keyframes chan-sh {
 	from  {content: 'free shipping';}
 	to  {content: 'New';}
 	
-}
+} */
 
 /*Product Rating  */
 .hint-star {

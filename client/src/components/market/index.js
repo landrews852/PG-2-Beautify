@@ -20,8 +20,8 @@ export default function Market() {
   let lastPage = 1 + Math.floor(products.length/9)
   let paginatedProducts = (products !== 'nothing found') ? products.slice(firstItem,lastItem) : []
 
-  useEffect(() => {
-    dispatch(allProducts());
+  useEffect(async () => {
+    if(products.length === 0) dispatch(allProducts());
   }, []);
   
   const Paginate = (page) => {

@@ -16,7 +16,9 @@ export default function Navigator () {
   return (
     <Navbar className='navBarr' variant="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/"><img src={logo} height="100px" alt="logo" /></Navbar.Brand>
+        <Link to="/">
+          <Navbar.Brand><img src={logo} height="100px" alt="logo" /></Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

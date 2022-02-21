@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { postProduct, getCategories } from "../../redux/actions";
+import { postProduct, getCategories, postService } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 
 function validate(input) {
     let errors = {};
-    if (!input.name) {
-        errors.name = "The product's name is required.";
+    if (!input.name_service) {
+        errors.name = "The service's name is required.";
 
+    } else if (!input.price) {
+        errors.description = "The price is required."
     } else if (!input.description) {
-        errors.description = "The description is required."
-    } else if (!input.cost_by_unit) {
-        errors.cost_by_unit = "The cost is required."
+        errors.cost_by_unit = "The description is required."
     } else if (!input.image) {
         errors.image = "The image is required."
     }
@@ -32,15 +32,10 @@ export default function NewProduct() {
 
 
     const [input, setInput] = useState({
-        product_name: "",
+        name_service: "",
         description: "",
-        stock: "",
-        cost_by_unit: "",
+        price: "",
         image: "",
-        expiration_date: "",
-        warranty: "",
-        brand: "",
-        country: "",
         category: []
     })
     console.log(input)
@@ -72,17 +67,12 @@ export default function NewProduct() {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(postProduct(input))
-        alert("The product was added successfully!")
+        alert("The service was added successfully!")
         setInput({
-            product_name: "",
+            name_service: "",
             description: "",
-            stock: "",
-            cost_by_unit: "",
+            price: "",
             image: "",
-            expiration_date: "",
-            warranty: "",
-            brand: "",
-            country: "",
             category: []
 
         })
@@ -100,21 +90,21 @@ export default function NewProduct() {
 
 
     return (
-        <div className="new">
+        <div className="newService">
             <Link to="/home"><button className="back">Go back</button></Link>
-            <h1>Add your product</h1>
+            <h1>Add your service</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="form">
                     <div>
-                        <label>Product name:</label>
+                        <label>Service name:</label>
                         <input
                             type="text"
-                            value={input.product_name}
-                            name="product_name"
+                            value={input.name_service}
+                            name="name_service"
                             onChange={handleChange}
                         />
-                        {errors.product_name && (
-                            <p className="error">{errors.product_name}</p>
+                        {errors.name_service && (
+                            <p className="error">{errors.name_service}</p>
                         )}
                     </div>
 
@@ -132,40 +122,16 @@ export default function NewProduct() {
                     )}
 
                     <div>
-                        <label>Stock:</label>
+                        <label>Price:</label>
                         <input
                             type="integer"
-                            value={input.stock}
-                            name="stock"
+                            value={input.price}
+                            name="price"
                             onChange={handleChange}
                         />
                     </div>
 
-
-                    <div>
-                        <label>cost_by_unit:</label>
-                        <input
-                            type="integer"
-                            value={input.cost_by_unit}
-                            name="cost_by_unit"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    {errors.cost_by_unit && (
-                        <p className="errorcost">{errors.cost_by_unit}</p>
-                    )}
-
-                    <div className="expiration">
-                        <label>Expiration date:</label>
-                        <input
-                            type="date"
-                            value={input.expiration_date}
-                            name="expiration_date"
-                            onChange={handleChange}
-                        />
-                    </div>
-
-
+                
                     <div>
                         <label>Image:</label>
                         <input
@@ -179,26 +145,8 @@ export default function NewProduct() {
                         <p className="error">{errors.image}</p>
                     )}
 
-                    <div>
-                        <label>Warranty:</label>
-                        <input
-                            type="text"
-                            value={input.warranty}
-                            name="warranty"
-                            onChange={handleChange}
-                        />
-                    </div>
 
-                    <div>
-                        <label>Brand:</label>
-                        <input
-                            type="text"
-                            value={input.brand}
-                            name="brand"
-                            onChange={handleChange}
-                        />
-                    </div>
-
+                
                     <div>
                         <label>Category</label>
 
@@ -210,7 +158,7 @@ export default function NewProduct() {
                         </select>
                     </div>
 
-                    <button disabled={errors.product_name || errors.description || errors.cost_by_unit || errors.image} className="submit" type="submit">Create Recipe</button>
+                    <button disabled={errors.name_service || errors.description || errors.price || errors.image} className="submit" type="submit">Add service</button>
 
                 </div>
 

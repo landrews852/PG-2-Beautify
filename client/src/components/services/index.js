@@ -1,13 +1,16 @@
 import React from 'react'
-import Navigator from '../navbar';
+import Filter from '../filter'
 import CardService from '../cardService';
-import Footer from '../footer';
+
 
 
 export default function Services() {
 
 
   return (
+    <>
+      {/* <Filter/> */}
       <CardService/>  
+    </>
   )
 }

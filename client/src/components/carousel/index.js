@@ -8,21 +8,21 @@ export default function Slideshow() {
   const arrcarrusel = [
     {
       id: 1,
-      img: "https://images2.revistafama.com/tJ9jvfPWHSF_Hs1D2yz6-NBaHp0=/958x596/uploads/media/2019/07/03/que-son-las-pestanas-de-1.jpg",
-      label: "First slide label",
-      text: "Lo que sea 1 ",
+      img: "https://beautysas.vteximg.com.br/arquivos/ids/176764/fragancias-1.jpg?v=637806113206470000",
+      label: "Fragancias",
+      text: "Aprovecha nuestra nuevas fragancias con descuento",
     },
     {
       id: 2,
-      img: "https://media.glamour.mx/photos/619051d02d97bd4c522a2691/master/w_1600,c_limit/260880.jpg",
-      label: "Second slide label",
-      text: "Lo que sea 2 ",
+      img: "http://www.incontech.com.sg/wp-content/uploads/2016/06/incontech-web-banner_Beauty-Skin-Care.jpg",
+      label: "Cuida tu piel con Aloe Vera",
+      text: "Belleza de adentro hacia afuera",
     },
     {
       id: 3,
-      img: "https://images.ecestaticos.com/ECoBIlRtrxVxWqNbrCW8zJo7zIo=/18x6:2268x1247/1440x810/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F719%2F5c8%2Fb3f%2F7195c8b3f1e6d69995db09a01eb672bd.jpg",
-      label: "Third slide label",
-      text: "Lo que sea 3 ",
+      img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.marcoaldany.com%2Fwp-content%2Fuploads%2F2018%2F09%2Fbanner-pestanas.jpg&f=1&nofb=1",
+      label: "Pestañas y Cejas",
+      text: "Conocé nuestras ofertas en productos y servicios",
     },
   ];
 

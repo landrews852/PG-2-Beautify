@@ -1,0 +1,40 @@
+/************ CONTENEDOR CARD ****************/
+    .cards {
+    display: flex;
+    flex-flow: column;
+    }   
+    .cards img {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    }
+
+    .cardcost {
+        font-size: 1.5em;
+        border-bottom: 1px solid black;
+        margin: auto;
+        color: rgb(36, 33, 33);
+        padding: 10px;
+        
+    }
+
+    .cards h3 {
+    font-size: 1.75rem;
+    height: 60px;
+    color:white;
+    background: #d4ab6b;
+    text-overflow: clip;
+    overflow: hidden;
+    }   
+   .cardcontenedor {
+    width: 13vw;
+    margin: 1em 2em;
+    box-shadow: 0 1px 6px 2px rgba(0,0,0,0.3);
+    padding-bottom: 10px;
+    border-radius: 15px;
+    min-width:250px;
+    }
+
+    .homeowl {
+        margin: 1em auto; 
+    }

@@ -2,12 +2,16 @@ const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
   sequelize.define('admin', {
-    admin_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      allowNull: false
     },
     admin_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -15,14 +19,19 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING
     },
     email: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     address: {
       type: DataTypes.STRING
     },
-    telephone: {
+    phone: {
       type: DataTypes.STRING
-    }
+    },
+    disabled: {
+      type: DataTypes.STRING,
+      defaultValue: false,
+    },
   },
     {
       timestamps: false,

@@ -1,38 +1,46 @@
-import React from "react";
-import "./cardServices.css";
-let services = require("../../datamock/Services.json");
-export default function cardService() {
+import React, { useEffect } from "react";
+import Style from "./cardServices.module.css"
+import { useDispatch, useSelector } from "react-redux";
+import { getServices } from "../../redux/actions";
+import Button from "../button/button";
+
+
+/* let services = require("../../datamock/Services.json"); */
+
+export default function CardService() {
+
+  const dispatch= useDispatch ();
+  useEffect (()=>{
+    dispatch (getServices())
+  },[])
+  const services= useSelector ((state)=> state.services)
+  console.log (services)
   return (
-    <div id='cont' >
+    <div id={Style.cont} >
       {services.map((service) => (
-        <div id="container">
-          <div class="product-details">
-            <div class="title-stars">
+        <div key={service.id} id={Style.container}>
+          <div className={Style['product-details']}>
+            <div className={Style['title-stars']}>
               <h1>{service.name_service}</h1>
 
-              <span class="hint-star star">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
+              <span className= {[Style["hint-star"], Style.star].join(' ')}>
+                <i className= {[Style.fa, Style['fa-star']].join (' ')} aria-hidden="true"></i>
+                <i className= {[Style.fa, Style['fa-star']].join(' ')} aria-hidden="true"></i>
+                <i className= {[Style.fa, Style['fa-star']].join(' ')} aria-hidden="true"></i>
+                <i className= {[Style.fa, Style['fa-star-half-o']].join(' ')} aria-hidden="true"></i>
+                <i className= {[Style.fa, Style['fa-star-o']].join(' ')} aria-hidden="true"></i>
               </span>
             </div>
-            <p class="information">{service.description}</p>
+            <p className= {Style.information}>{service.description}</p>
 
-            <div class="control">
-              <button class="btns">
-                <span class="price">{service.price} $</span>
-                <span class="shopping-cart">
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                </span>
-                <span class="buy">Buy Now</span>
-              </button>
+            <div className= {Style.control}>
+              <Button quote={'Solicitalo'}/>
             </div>
           </div>
 
-          <div class="product-image">
-            <img src={service.image} alt="Omar Dsoky" />
+          <div className= {Style ['product-image']}>
+
+            <img src={service.image[0]} alt="Omar Dsoky" />
           </div>
 
         </div>

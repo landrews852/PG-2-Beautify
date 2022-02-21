@@ -3,30 +3,10 @@ import { Link } from "react-router-dom";
 import { postProduct, getCategories } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-
-function validate(input) {
-    let errors = {};
-    if (!input.name) {
-        errors.name = "The product's name is required.";
-
-    } else if (!input.description) {
-        errors.description = "The description is required."
-    } else if (!input.cost_by_unit) {
-        errors.cost_by_unit = "The cost is required."
-    } else if (!input.image) {
-        errors.image = "The image is required."
-    }
-
-    return errors;
-}
-
-
-
-
 export default function CreateProduct() {
     const dispatch = useDispatch();
     // const history = useHistory();
-    const category = useSelector((state) => state.categories)
+    const categories = useSelector((state) => state.categories)
     const [errors, setErrors] = useState({});
 
 
@@ -41,23 +21,76 @@ export default function CreateProduct() {
         discount: "",
         category: []
     })
+
+    const validate = (input) => {
+        let errors = {};
+        if (!input.product_name) {
+          errors.name = "Name required";
+        } else if (!/^[A-Z][\s\w\:]{1,35}$/.test(input.product_name)) {
+          errors.name =
+            "Name must begin with a capital letter, have no more than 35 characters and no symbols except ':' ";
+        }
+    
+        if (!input.description) {
+          errors.description = "Description required";
+        } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
+          errors.description =
+            "Description must begin with a capital letter, have no more than 250 characters";
+        }
+    
+        if (!input.image) {
+          errors.image = "Image is required";
+        } 
+        // else if (
+        //   !/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/.test(input.released)
+        // ) {
+        //   errors.released = "Released must be a valid date. Format: yyyy-mm-dd";
+        // } else if(new Date(input.released) > new Date(notFuture)) {
+        //     errors.released = "Come back to your future.";
+        // }
+    
+        if (!input.cost_by_unit) {
+          errors.cost_by_unit = "El costo es requerido";
+        }     
+
+        if (!input.stock) {
+          errors.stock = "Inventario inicial es requerido";
+        }
+    
+        if (!input.warranty) {
+          errors.warranty = "La garantia es requerida";
+        }
+
+        if (!input.brand) {
+            errors.brand = "La marca es requerido";
+          }
+
+          if (!input.category) {
+            errors.category = "Seleccion al menos una categoria";
+          }
+    
+        return errors;
+      };
+
+
     console.log(input)
+    console.log(errors)
+    console.log(categories)
 
     useEffect(() => {
+        setErrors(validate(input));
         dispatch(getCategories())
     }, [])
 
+    useEffect(()=>{
+        setErrors(validate(input));
+    },[input])
 
     function handleChange(e) {
         setInput({
             ...input,
             [e.target.name]: e.target.value
         })
-
-        setErrors(validate({
-            ...input,
-            [e.target.name]: e.target.value
-        }));
     }
 
     function handleSelect(e) {
@@ -103,20 +136,18 @@ export default function CreateProduct() {
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="form">
                     <div>
-                        <label>Product name:</label>
+                        <label>Nombre del producto:</label>
                         <input
                             type="text"
                             value={input.product_name}
                             name="product_name"
                             onChange={handleChange}
                         />
-                        {errors.product_name && (
-                            <p className="error">{errors.product_name}</p>
-                        )}
+                        {errors.name && (<p>{errors.name}</p>)}
                     </div>
 
                     <div className="description">
-                        <label>Description:</label>
+                        <label>Descripción:</label>
                         <input
                             type="text"
                             value={input.description}
@@ -137,8 +168,11 @@ export default function CreateProduct() {
                             onChange={handleChange}
                         />
                     </div>
+                    {errors.stock && (
+                        <p className="errorstock">{errors.stock}</p>
+                    )}
                     <div>
-                        <label>Discount:</label>
+                        <label>Descuento:</label>
                         <input
                             type="integer"
                             value={input.discount}
@@ -149,7 +183,7 @@ export default function CreateProduct() {
 
 
                     <div>
-                        <label>cost_by_unit:</label>
+                        <label>Costo por unidad:</label>
                         <input
                             type="integer"
                             value={input.cost_by_unit}
@@ -165,7 +199,7 @@ export default function CreateProduct() {
 
 
                     <div>
-                        <label>Image:</label>
+                        <label>Imagen:</label>
                         <input
                             type="text"
                             value={input.image}
@@ -178,7 +212,7 @@ export default function CreateProduct() {
                     )}
 
                     <div>
-                        <label>Warranty:</label>
+                        <label>Garantia:</label>
                         <input
                             type="text"
                             value={input.warranty}
@@ -186,9 +220,11 @@ export default function CreateProduct() {
                             onChange={handleChange}
                         />
                     </div>
-
+                    {errors.warranty && (
+                        <p className="error">{errors.warranty}</p>
+                    )}
                     <div>
-                        <label>Brand:</label>
+                        <label>Marca:</label>
                         <input
                             type="text"
                             value={input.brand}
@@ -196,17 +232,22 @@ export default function CreateProduct() {
                             onChange={handleChange}
                         />
                     </div>
-
+                    {errors.brand && (
+                        <p className="error">{errors.brand}</p>
+                    )}
                     <div>
-                        <label>Category</label>
+                        <label>Seleccione las Categorias</label>
 
                         <select className="cat" onChange={(e) => handleSelect(e)}>
-                            <option value="Skincare">Skincare</option>
-                            <option value="Lashes">Lashes</option>
-                            <option value="Eyebrows">Eyebrows</option>
-
+                        {categories.map((category,index) => <option key={category.id} value={category.name_category}> 
+                            {category.name_category}
+                        </option>)}
                         </select>
                     </div>
+
+                    {errors.category && (
+                        <p className="error">{errors.category}</p>
+                    )}
 
                     <button disabled={errors.product_name || errors.description || errors.cost_by_unit || errors.image} className="submit" type="submit">Add product</button>
 

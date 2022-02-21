@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCategories, postService } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import "./create_service.css"
+import "./create_service.module.css"
 
 function validate(input) {
     let errors = {};
@@ -97,7 +97,7 @@ export default function CreateService() {
 
     return (
         <div className="newService">
-            <Link to="/home"><button className="back">Volver</button></Link>
+            <Link to="/"><button className="back">Volver</button></Link>
             <h1>AGREGAR NUEVO SERVICIO</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="form">

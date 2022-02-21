@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { postProduct, getCategories } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import s from "./create_product.module.css"
 
 export default function CreateProduct() {
     const dispatch = useDispatch();
@@ -142,11 +143,11 @@ export default function CreateProduct() {
 
 
     return (
-        <div className="new">
-            <Link to="/home"><button className="back">Go back</button></Link>
-            <h1>Add your product</h1>
+        <div className={s.new}>
+            <Link to="/"><button className={s.button}>Volver</button></Link>
+            <h1>AGREGAR NUEVO PRODUCTO</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <div className="form">
+                <div className={s.form}>
                     <div>
                         <label>Nombre del producto:</label>
                         <input
@@ -250,7 +251,7 @@ export default function CreateProduct() {
                     <div>
                         <label>Seleccione las Categorias</label>
 
-                        <select className="cat" onChange={(e) => handleSelect(e)}>
+                        <select className={s.cat} onChange={(e) => handleSelect(e)}>
                         {categories.map((category,index) => <option key={category.id} value={category.name_category}> 
                             {category.name_category}
                         </option>)}
@@ -261,7 +262,7 @@ export default function CreateProduct() {
                         <p className="error">{errors.category}</p>
                     )}
 
-                    <button disabled={errors.product_name || errors.description || errors.cost_by_unit || errors.image} className="submit" type="submit">Add product</button>
+                    <button disabled={errors.product_name || errors.description || errors.cost_by_unit || errors.image} className={s.submit} type="submit">Agregar producto</button>
 
                 </div>
 

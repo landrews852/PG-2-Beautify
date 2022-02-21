@@ -97,13 +97,6 @@ export default function CreateProduct() {
         })
     }
 
-    function handleChangeimg (e){
-        setInput({
-            ...input,
-            image: [...input.image, e.target.value]
-        })
-    }
-
     function handleSelect(e) {
         setInput({
             ...input,

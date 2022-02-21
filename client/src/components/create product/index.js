@@ -23,32 +23,28 @@ export default function CreateProduct() {
         category: []       // Array 
     })
 
+    console.log(input)
+    console.log(errors)
+
     const validate = (input) => {
         let errors = {};
         if (!input.product_name) {
-          errors.name = "Name required";
+          errors.product_name = "El nombre es requerido";
         } else if (!/^[A-Z][\s\w\:]{1,35}$/.test(input.product_name)) {
-          errors.name =
-            "Name must begin with a capital letter, have no more than 35 characters and no symbols except ':' ";
+          errors.product_name =
+            "El nombre debe empezar en mayuscula y debe tener menos de 35 caracteres y solo acepta el signo ':'";
         }
     
         if (!input.description) {
           errors.description = "Description required";
         } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
           errors.description =
-            "Description must begin with a capital letter, have no more than 250 characters";
+            "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";
         }
     
-        if (!input.image) {
-          errors.image = "Image is required";
-        } 
-        // else if (
-        //   !/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/.test(input.released)
-        // ) {
-        //   errors.released = "Released must be a valid date. Format: yyyy-mm-dd";
-        // } else if(new Date(input.released) > new Date(notFuture)) {
-        //     errors.released = "Come back to your future.";
-        // }
+        if (input.image.length < 1) {
+          errors.image = "La imagen es requerida";
+        }
     
         if (!input.cost_by_unit) {
           errors.cost_by_unit = "El costo es requerido";
@@ -66,26 +62,22 @@ export default function CreateProduct() {
             errors.brand = "La marca es requerido";
           }
 
-          if (!input.category) {
-            errors.category = "Seleccion al menos una categoria";
+          if (input.category.length < 1) {
+            errors.category = "Selecciona una categoria";
           }
     
         return errors;
       };
 
 
-    console.log(input)
-/*     console.log(errors)
-    console.log(categories) */
-
     useEffect(() => {
-        // setErrors(validate(input));
+        setErrors(validate(input));
         dispatch(getCategories())
     }, [])
 
-    // useEffect(()=>{
-    //     setErrors(validate(input));
-    // },[input])
+    useEffect(()=>{
+        setErrors(validate(input));
+    },[input])
 
     function handleChange(e) {
         setInput({
@@ -93,23 +85,23 @@ export default function CreateProduct() {
             [e.target.name]: e.target.value
         })
 
-        setErrors(validate({
-            ...input,
-            [e.target.name]: e.target.value
-        }));
+        // setErrors(validate({
+        //     ...input,
+        //     [e.target.name]: e.target.value
+        // }));
     }
 
     function handleChangeimg (e){
         setInput({
             ...input,
-            image: [...input.image, e.target.value]
+            image: [e.target.value]
         })
     }
 
     function handleSelect(e) {
         setInput({
             ...input,
-            category: [...input.category, e.target.value]
+            category: [e.target.value]
         })
     }
 
@@ -141,7 +133,6 @@ export default function CreateProduct() {
     }
 
 
-
     return (
         <div className={s.new}>
             <Link to="/"><button className={s.button}>Volver</button></Link>
@@ -156,7 +147,7 @@ export default function CreateProduct() {
                             name="product_name"
                             onChange={handleChange}
                         />
-                        {errors.name && (<p>{errors.name}</p>)}
+                        {errors.product_name && (<p className={s.error}>{errors.product_name}</p>)}
                     </div>
 
                     <div className="description">
@@ -169,7 +160,7 @@ export default function CreateProduct() {
                         />
                     </div>
                     {errors.description && (
-                        <p className="errorsum">{errors.description}</p>
+                        <p className={s.error}>{errors.description}</p>
                     )}
 
                     <div>
@@ -182,7 +173,7 @@ export default function CreateProduct() {
                         />
                     </div>
                     {errors.stock && (
-                        <p className="errorstock">{errors.stock}</p>
+                        <p className={s.error}>{errors.stock}</p>
                     )}
                     <div>
                         <label>Descuento:</label>
@@ -205,7 +196,7 @@ export default function CreateProduct() {
                         />
                     </div>
                     {errors.cost_by_unit && (
-                        <p className="errorcost">{errors.cost_by_unit}</p>
+                        <p className={s.error}>{errors.cost_by_unit}</p>
                     )}
 
                 
@@ -221,7 +212,7 @@ export default function CreateProduct() {
                         />
                     </div>
                     {errors.image && (
-                        <p className="error">{errors.image}</p>
+                        <p className={s.error}>{errors.image}</p>
                     )}
 
                     <div>
@@ -234,7 +225,7 @@ export default function CreateProduct() {
                         />
                     </div>
                     {errors.warranty && (
-                        <p className="error">{errors.warranty}</p>
+                        <p className={s.error}>{errors.warranty}</p>
                     )}
                     <div>
                         <label>Marca:</label>
@@ -246,33 +237,41 @@ export default function CreateProduct() {
                         />
                     </div>
                     {errors.brand && (
-                        <p className="error">{errors.brand}</p>
+                        <p className={s.error}>{errors.brand}</p>
                     )}
                     <div>
                         <label>Seleccione las Categorias</label>
 
+
+                        
                         <select className={s.cat} onChange={(e) => handleSelect(e)}>
-                        {categories.map((category,index) => <option key={category.id} value={category.name_category}> 
-                            {category.name_category}
-                        </option>)}
+                        <option>Selecciones una categoria</option>
+                            {categories.map((category,index) => <option key={category.id} value={category.name_category}> 
+                                {category.name_category}
+                            </option>)}
+
                         </select>
                     </div>
-
+                        
                     {errors.category && (
-                        <p className="error">{errors.category}</p>
+                        <p className={s.error}>{errors.category}</p>
                     )}
 
-                    <button disabled={errors.product_name || errors.description || errors.cost_by_unit || errors.image} className={s.submit} type="submit">Agregar producto</button>
+
+                  
+
+                    <button disabled={(Object.values(errors).length > 0)} className={s.submit} type="submit">Agregar Producto</button>
+
 
                 </div>
 
             </form>
-            {input.category.map(el =>
+            {/* {input.category.map(el =>
                 <div key={el.id} className="divCats">
                     <p>{el}</p>
                     <button className="bontonX" onClick={() => handleDelete(el)}>X</button>
                 </div>
-            )}
+            )} */}
         </div>
     )
 }

@@ -36,7 +36,7 @@ export default function CreateProduct() {
         }
     
         if (!input.description) {
-          errors.description = "Description required";
+          errors.description = "La descripción es requerida";
         } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
           errors.description =
             "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";

@@ -7,6 +7,7 @@ const router = Router();
 
 router.post("/", async (req, res) => {
   const { name_service, price, description, image, category } = req.body;
+
   try {
     if (name_service && price && description && image && category) {
       let service = await Service.create({

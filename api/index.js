@@ -18,25 +18,20 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
-const { conn, Category } = require("./src/db.js");
+const { conn } = require("./src/db.js");
+const { loadCategories } = require("../api/loadData/categoryLoad");
+const { loadProducts } = require("../api/loadData/productLoad");
+const { clientLoad } = require("../api/loadData/clientLoad");
+const { loadServices } = require("../api/loadData/servicesLoad");
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+
+conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
-    try {
-      // await Category.bulkCreate([
-      //   { name_category: "Cejas" },
-      //   { name_category: "Pestanas" },
-      //   { name_category: "Cuidado Facial" },
-      // ]);
-      await Category.findOrCreate({ where: { name_category: "cejas" } });
-      await Category.findOrCreate({ where: { name_category: "pestanas" } });
-      await Category.findOrCreate({
-        where: { name_category: "cuidado facial" },
-      });
-    } catch (error) {
-      return error;
-    }
+    await loadCategories();
+    await loadProducts();
+    await clientLoad();
+    await loadServices();
   });
 });

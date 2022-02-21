@@ -17,20 +17,17 @@ export default function Navigator () {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {/* <Link className='nav-link' to="/">Home</Link>
-            <Link className='nav-link' to="/market"><span>Productos</span></Link>
-            <Link className='nav-link' to="/services"><span>Servicios</span></Link> */}
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/market">Productos</Nav.Link>
-            <Nav.Link href="/services">Servicios</Nav.Link>
-            <Nav.Link href="/contact">Contact</Nav.Link>
+            <Link to="/" className='nav-link'>Home</Link>
+            <Link to="/market" className='nav-link'>Productos</Link>
+            <Link to="/services" className='nav-link'>Servicios</Link>
+            <Link to="/contact" className='nav-link'>Contact</Link>
             <Nav.Link> <ButtonLogin /> </Nav.Link>
             {/* <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item href="/product1">product 1</NavDropdown.Item>
               <NavDropdown.Item href="/product2">product 2</NavDropdown.Item>
               <NavDropdown.Item href="/product3">product 3</NavDropdown.Item> */}
-              {/* <NavDropdown.Divider /> */}
-              {/* <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
+              {/* <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
             {/* </NavDropdown>
             <NavDropdown title="Services" id="basic-nav-dropdown">
               <NavDropdown.Item href="/service 1">service 1</NavDropdown.Item>
@@ -39,7 +36,7 @@ export default function Navigator () {
             </NavDropdown> */}
           </Nav>
             <SearchBar className='navSearch' />
-            <Nav.Link href="/cart"><img src={carrito} alt="carrito" className='navCarrito' /></Nav.Link>
+            <Nav.Link href="/cart"><div className='divCarrito'><img src={carrito} alt="carrito" className='navCarrito' /></div></Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -37,10 +37,9 @@ export default function NewProduct() {
         stock: "",
         cost_by_unit: "",
         image: "",
-        expiration_date: "",
         warranty: "",
         brand: "",
-        country: "",
+        discount: "",
         category: []
     })
     console.log(input)
@@ -79,10 +78,9 @@ export default function NewProduct() {
             stock: "",
             cost_by_unit: "",
             image: "",
-            expiration_date: "",
             warranty: "",
             brand: "",
-            country: "",
+            discount: "",
             category: []
 
         })
@@ -140,6 +138,15 @@ export default function NewProduct() {
                             onChange={handleChange}
                         />
                     </div>
+                    <div>
+                        <label>Discount:</label>
+                        <input
+                            type="integer"
+                            value={input.discount}
+                            name="discount"
+                            onChange={handleChange}
+                        />
+                    </div>
 
 
                     <div>
@@ -155,15 +162,7 @@ export default function NewProduct() {
                         <p className="errorcost">{errors.cost_by_unit}</p>
                     )}
 
-                    <div className="expiration">
-                        <label>Expiration date:</label>
-                        <input
-                            type="date"
-                            value={input.expiration_date}
-                            name="expiration_date"
-                            onChange={handleChange}
-                        />
-                    </div>
+                
 
 
                     <div>
@@ -210,7 +209,7 @@ export default function NewProduct() {
                         </select>
                     </div>
 
-                    <button disabled={errors.product_name || errors.description || errors.cost_by_unit || errors.image} className="submit" type="submit">Create Recipe</button>
+                    <button disabled={errors.product_name || errors.description || errors.cost_by_unit || errors.image} className="submit" type="submit">Add product</button>
 
                 </div>
 

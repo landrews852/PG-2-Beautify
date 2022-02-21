@@ -16,7 +16,6 @@ export default function SearchBar() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        alert('This feature is on development')
         dispatch(getProductsbyName(name))
     }
     
@@ -32,7 +31,7 @@ export default function SearchBar() {
                 onChange={(e) => handleInputChange(e)}
             />
             
-                <button className={s.btn} type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
+                <button className={s.btn} type="submit" onClick={(e) => handleSubmit(e)}></button>
                 
         </div>
     

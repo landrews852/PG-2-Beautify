@@ -4,10 +4,23 @@
   border-bottom: 1px solid #ebebeb;
 }
 
+.divCarrito {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #fbeee6;
+  border-bottom: 1px solid #ebebeb;
+}
+
 .navCarrito {
   position: absolute;
-  width: 30px;
-  top: 40%;
+  width: 35px;
+  padding: 5px;
+  right: 8%;
+  top: 37%;
   bottom: 40%;
   /* right: 30px; */
   display: block;

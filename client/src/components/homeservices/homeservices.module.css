@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
+
 .contenedor {
   display: flex;
   flex-direction: row;
@@ -5,7 +7,14 @@
   flex-wrap: wrap;
 }
 .services {
-  background-color: #dca3c5;
+  
   margin-block: 20px;
   width: 100vw;
+  font-family: 'Belleza', sans-serif;
+  font-size: 70px;
+  background-color: #facdb6;
+  height: 100px;
+  text-shadow: 1px 1px 6px black;
+  
 }
+

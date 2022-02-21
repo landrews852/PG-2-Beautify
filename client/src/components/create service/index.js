@@ -188,11 +188,7 @@ export default function CreateService() {
                         <p className="error">{errors.category}</p>
                     )}
 
-<<<<<<< HEAD
                     <button disabled={(Object.values(errors).length > 0)} className="submit" type="submit">Add service</button>
-=======
-                    <button disabled={errors.name_service || errors.description || errors.price || errors.image} className="submit" type="submit">Agregar Servicio</button>
->>>>>>> 951686e3f5a95897a7081376cdef65811c8e2644
 
                 </div>
 

@@ -37,6 +37,7 @@ export default function Market() {
       { paginatedProducts.map((product) => (
             <Link key={product.id} to={"/market/" + product.id}>
               <Card
+                id={product.id}
                 product_name={product.product_name}
                 image={product.image}
                 cost_by_unit={product.cost_by_unit}

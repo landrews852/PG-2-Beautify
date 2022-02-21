@@ -6,12 +6,14 @@ import React from "react";
 import Styles from "./productDetail.module.css";
 import Button from "../button/button";
 
+
 // let products = require("../../datamock/Products.json");
 
 export default function ProductDetail() {
   let { id } = useParams();
   const dispatch = useDispatch();
   let productDetail = useSelector(state => state.productDetail)
+  const cart = useSelector(state => state.cart)
 
   const ranking = 2.5;
   let ranking_starts = [1, 2, 3, 4, 5];
@@ -27,7 +29,7 @@ export default function ProductDetail() {
     return dispatch(cleanProductDetail());
   }, [dispatch]);
 
- 
+
 
   return (
     <>
@@ -47,7 +49,7 @@ export default function ProductDetail() {
             </p>
 
             <div className={Styles.control}>
-              <Button></Button>
+              <Button quote={'AGREGAR'}></Button>
             </div>
           </div>
 

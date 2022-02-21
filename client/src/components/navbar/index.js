@@ -24,7 +24,7 @@ export default function Navigator () {
             <Link to="/market" className='nav-link'>Productos</Link>
             <Link to="/services" className='nav-link'>Servicios</Link>
             <Link to="/contact" className='nav-link'>Contact</Link>
-            <Nav.Link> <ButtonLogin /> </Nav.Link>
+            {/* <Nav.Link> <ButtonLogin /> </Nav.Link> */}
             {/* <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item href="/product1">product 1</NavDropdown.Item>
               <NavDropdown.Item href="/product2">product 2</NavDropdown.Item>
@@ -39,7 +39,7 @@ export default function Navigator () {
             </NavDropdown> */}
           </Nav>
             <SearchBar className='navSearch' />
-            <Nav.Link href="/cart"><div className='divCarrito'><img src={carrito} alt="carrito" className='navCarrito' /></div></Nav.Link>
+            <Link to="/cart"><div className='divCarrito'><img src={carrito} alt="carrito" className='navCarrito' /></div></Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -34,7 +34,8 @@ export default function CardService() {
             <p className= {Style.information}>{service.description}</p>
 
             <div className= {Style.control}>
-              <Button quote={'Solicitalo'}/>
+              <h5 className= {Style.information}>Contáctenos al correo para solicitar servicio</h5>
+              {/* <Button quote={'Solicitalo'}/> */}
             </div>
           </div>
 

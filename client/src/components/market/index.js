@@ -20,8 +20,8 @@ export default function Market() {
   let lastPage = 1 + Math.floor(products.length/9)
   let paginatedProducts = (products !== 'nothing found') ? products.slice(firstItem,lastItem) : []
 
-  useEffect(() => {
-    dispatch(allProducts());
+  useEffect(async () => {
+    if(products.length === 0) dispatch(allProducts());
   }, []);
   
   const Paginate = (page) => {
@@ -31,12 +31,14 @@ export default function Market() {
   return (
 <div className="main">
   <Filter Paginate = {Paginate} />
+  <br/>
     {paginatedProducts.length ?  <>
       < Pagination  firstItem={firstItem} lastItem={lastItem} lastPage={lastPage} Paginate={Paginate} page={page}/>
       <div className="Container Market">
       { paginatedProducts.map((product) => (
             <Link key={product.id} to={"/market/" + product.id}>
               <Card
+                id={product.id}
                 product_name={product.product_name}
                 image={product.image}
                 cost_by_unit={product.cost_by_unit}

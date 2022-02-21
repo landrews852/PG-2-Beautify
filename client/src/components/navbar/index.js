@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../images/logo2.png';
 import SearchBar from '../searchbar';
 import ButtonLogin from '../buttonlogin';
+
+// import { Link } from 'react-router-dom';
+
 import './navBar.css';
 import carrito from '../../images/carrito2.png';
 import { Link } from 'react-router-dom';
@@ -13,7 +16,9 @@ export default function Navigator () {
   return (
     <Navbar className='navBarr' variant="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/"><img src={logo} height="100px" alt="logo" /></Navbar.Brand>
+        <Link to="/">
+          <Navbar.Brand><img src={logo} height="100px" alt="logo" /></Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -21,7 +26,7 @@ export default function Navigator () {
             <Link to="/market" className='nav-link'>Productos</Link>
             <Link to="/services" className='nav-link'>Servicios</Link>
             <Link to="/contact" className='nav-link'>Contact</Link>
-            <Nav.Link> <ButtonLogin /> </Nav.Link>
+            {/* <Nav.Link> <ButtonLogin /> </Nav.Link> */}
             {/* <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item href="/product1">product 1</NavDropdown.Item>
               <NavDropdown.Item href="/product2">product 2</NavDropdown.Item>
@@ -36,7 +41,7 @@ export default function Navigator () {
             </NavDropdown> */}
           </Nav>
             <SearchBar className='navSearch' />
-            <Nav.Link href="/cart"><div className='divCarrito'><img src={carrito} alt="carrito" className='navCarrito' /></div></Nav.Link>
+            <Link to="/cart"><div className='divCarrito'><img src={carrito} alt="carrito" className='navCarrito' /></div></Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

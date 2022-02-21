@@ -10,7 +10,7 @@ export default function Card({ image, product_name, cost_by_unit }) {
         <img src={image} alt="Img not found" />
         <h3>{product_name}</h3>
         <span className="cardcost">$ {cost_by_unit}</span>
-        <Button></Button>
+        <Button quote={'Agregar'}></Button>
       </div>
     </div>
   );

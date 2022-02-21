@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Style from "./cardServices.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { getServices } from "../../redux/actions";
+import Button from "../button/button";
 
 
 /* let services = require("../../datamock/Services.json"); */
@@ -33,13 +34,14 @@ export default function CardService() {
             <p className= {Style.information}>{service.description}</p>
 
             <div className= {Style.control}>
-              <button className= {Style.btns}>
+              <Button quote={'Solicitalo'}/>
+              {/* <button className= {Style.btns}>
                 <span className= {Style.price}>{service.price} $</span>
                 <span className= {Style['shopping-cart']}>
                   <i className= {[Style.fa , Style['fa-shopping-cart']].join(' ')} aria-hidden="true"></i>
                 </span>
                 <span className= {Style.buy}>Buy Now</span>
-              </button>
+              </button> */}
             </div>
           </div>
 

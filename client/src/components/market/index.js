@@ -31,6 +31,7 @@ export default function Market() {
   return (
 <div className="main">
   <Filter Paginate = {Paginate} />
+  <br/>
     {paginatedProducts.length ?  <>
       < Pagination  firstItem={firstItem} lastItem={lastItem} lastPage={lastPage} Paginate={Paginate} page={page}/>
       <div className="Container Market">

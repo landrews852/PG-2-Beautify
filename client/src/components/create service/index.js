@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { postProduct, getCategories, postService } from "../../redux/actions";
+import { getCategories, postService } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -171,9 +171,7 @@ export default function CreateService() {
                     {errors.image && (
                         <p className="error">{errors.image}</p>
                     )}
-
-
-                
+               
                     <div>
                         <label>Category</label>
 
@@ -182,11 +180,7 @@ export default function CreateService() {
                         {categories?.map ((c)=>(
                             <option value={c.name_category}>{c.name_category}</option>
                         )) }
-{/* 
-                            <option value="Skincare">Skincare</option>
-                            <option value="Lashes">Lashes</option>
-                            <option value="Eyebrows">Eyebrows</option>
- */}
+
                         </select>
                         
                     </div>

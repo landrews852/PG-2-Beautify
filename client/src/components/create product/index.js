@@ -11,15 +11,15 @@ export default function CreateProduct() {
 
 
     const [input, setInput] = useState({
-        product_name: "",
-        description: "",
-        stock: "",
-        cost_by_unit: "",
-        image: "",
-        warranty: "",
-        brand: "",
-        discount: "",
-        category: []
+        product_name: "",  // string
+        description: "",   // TEXT
+        stock: '',         // integer
+        cost_by_unit: "",  // float
+        image: "",         // Array (text)
+        warranty: "",      // integer
+        brand: "",         // string
+        discount: "",      // INTEGER   
+        category: []       // Array 
     })
 
     console.log(input)
@@ -94,6 +94,13 @@ export default function CreateProduct() {
         setInput({
             ...input,
             image: [e.target.value]
+        })
+    }
+
+    function handleChangeimg (e){
+        setInput({
+            ...input,
+            image: [...input.image, e.target.value]
         })
     }
 

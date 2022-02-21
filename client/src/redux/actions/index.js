@@ -67,7 +67,7 @@ export const getCategories = () => {
 
 export const postProduct = (payload) => {
   return async function (dispatch) {
-    var response = await axios.post("ruta del post", payload);
+    var response = await axios.post("http://localhost:3001/api/product/", payload);
     return response;
   };
 };

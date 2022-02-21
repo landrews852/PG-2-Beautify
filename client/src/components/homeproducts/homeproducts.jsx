@@ -14,26 +14,22 @@ export default function HomeProducts  () {
     
 
 
-    useEffect(() => {
-      dispatch(allProducts());
-    },[]);  
-      
-    const product = useSelector((state) => state.products);
     // useEffect(() => {
     //   dispatch(allProducts());
+    // },[]);  
       
-    // },[dispatch]); 
+    let product = useSelector((state) => state.products);
+
     
     useMemo(() => {
         dispatch(allProducts());        
       },[dispatch]);
-      
     
     return (
       <>
       {  
         <OwlCarousel className="owl-theme" loop margin={10} nav>
-            {product &&
+            {product !== 'nothing found' &&
         product.slice(0,10).map((p) => (
           <Link key={p.id} to={"/market/" + p.id}>
           <div class='item'>

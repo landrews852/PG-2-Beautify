@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import s from "./filter.module.css"
 import { priceSort, nameSort, filterByOffer, filterBrand, filterCategory, getCategories, getBrands } from '../../redux/actions';
 
-export default function Filter ({firstPage}) {
+export default function Filter ({Paginate}) {
 
   const categories = useSelector(state => state.categories)
   const products = useSelector(state => state.products)
@@ -43,7 +43,7 @@ export default function Filter ({firstPage}) {
   }
 
   return (
-    <div className={s.filter} onChange={() => firstPage()}>
+    <div className={s.filter} onChange={() => Paginate(1)}>
       <div className={s.selectDiv}>
         <div className={s.selectContainer}>
           <label className="label-filter">Ordenar por precio: </label>

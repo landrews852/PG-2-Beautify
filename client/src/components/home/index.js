@@ -3,7 +3,6 @@ import Slideshow from "../carousel";
 import "./home.css"
 import Homeservices from "../homeservices";
 import HomeProducts from "../homeproducts/homeproducts";
-// let allProducts = require('../../datamock/Products.json')
 
 function Home() {
   

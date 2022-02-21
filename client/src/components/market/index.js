@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import "./market.css";
 import Filter from "../filter";
 import { allProducts } from "../../redux/actions";
-import { Pagination } from 'react-bootstrap'
-import { First } from "react-bootstrap/esm/PageItem";
+import Pagination from "../paginate/paginate";
+
 // let allProducts = require('../../datamock/Products.json')
 
 export default function Market() {
@@ -24,15 +24,15 @@ export default function Market() {
     dispatch(allProducts());
   }, []);
   
-  const firstPage = () => {
-    setPage(1)
+  const Paginate = (page) => {
+    setPage(page)
   }
 
   return (
     paginatedProducts.length ? ( 
 <div className="main">
-      <Filter firstPage = {firstPage} />
-      <Pagination>
+      <Filter Paginate = {Paginate} />
+      {/* <Pagination>
         <Pagination.First onClick={firstPage}/>
         <Pagination.Prev disabled={page <= 1} onClick={() => setPage(page-1)}/>
         <Pagination.Item onClick={firstPage} hidden={page === 1 || page === 2}>{1}</Pagination.Item>
@@ -46,7 +46,8 @@ export default function Market() {
         <Pagination.Item onClick={() => setPage(lastPage)} hidden={page === lastPage}>{lastPage}</Pagination.Item>
         <Pagination.Next disabled={page >= lastPage} onClick={() => setPage(page + 1)}/>
         <Pagination.Last onClick={() => setPage(lastPage)}/>
-      </Pagination>
+      </Pagination> */}
+      < Pagination  firstItem={firstItem} lastItem={lastItem} lastPage={lastPage} Paginate={Paginate} page={page}/>
       <div className="Container Market">
         { paginatedProducts.map((product) => (
             <Link key={product.id} to={"/market/" + product.id}>

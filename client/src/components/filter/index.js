@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import s from "./filter.module.css"
 import { priceSort, nameSort, filterByOffer, filterBrand, filterCategory, getCategories, getBrands } from '../../redux/actions';
 
-export default function Filter () {
+export default function Filter ({setPage}) {
 
   const categories = useSelector(state => state.categories)
   const products = useSelector(state => state.products)
@@ -15,6 +15,7 @@ export default function Filter () {
   useEffect(() => {
     dispatch(getCategories())
     dispatch(getBrands())
+    console.log(setPage)
   }, [dispatch])
 
   function handleSortByPrice(e) {
@@ -42,8 +43,6 @@ export default function Filter () {
 
   }
 
-  console.log(categories)
-  console.log(products)
   return (
     <div className={s.filter}>
       <div className={s.selectDiv}>

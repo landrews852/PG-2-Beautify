@@ -7,6 +7,7 @@ import "./market.css";
 import Filter from "../filter";
 import { allProducts } from "../../redux/actions";
 import { Pagination } from 'react-bootstrap'
+import { First } from "react-bootstrap/esm/PageItem";
 // let allProducts = require('../../datamock/Products.json')
 
 export default function Market() {
@@ -16,29 +17,32 @@ export default function Market() {
   let [page,setPage] = useState(1)
   let firstItem = (page - 1) * 9
   let lastItem = page * 9
-  let lastPage = Math.floor(products.length/9)
+  let lastPage = 1 + Math.floor(products.length/9)
   let paginatedProducts = products.slice(firstItem,lastItem)
 
   useEffect(() => {
     dispatch(allProducts());
   }, []);
   
+  const firstPage = () => {
+    setPage(1)
+  }
 
   return (
     paginatedProducts.length&& (
 <div className="main">
-      <Filter />
+      <Filter setPage = {firstPage} />
       <Pagination>
-        <Pagination.First onClick={() => setPage(1)}/>
+        <Pagination.First onClick={firstPage}/>
         <Pagination.Prev disabled={page <= 1} onClick={() => setPage(page-1)}/>
-        <Pagination.Item onClick={() => setPage(1)} hidden={page === 1 || page === 2}>{1}</Pagination.Item>
-        <Pagination.Ellipsis hidden={page === 1 || lastPage <= 3} />
+        <Pagination.Item onClick={firstPage} hidden={page === 1 || page === 2}>{1}</Pagination.Item>
+        <Pagination.Ellipsis hidden={page === 1 || lastPage <= 3 || page === 2} />
 
         <Pagination.Item onClick={() => setPage(page - 1)} hidden={page === 1}>{page - 1}</Pagination.Item>
         <Pagination.Item active>{page}</Pagination.Item>
         <Pagination.Item onClick={() => setPage(page + 1)} hidden={page === lastPage || lastPage === (page + 1)}>{page + 1}</Pagination.Item>
 
-        <Pagination.Ellipsis hidden={page === lastPage || lastPage <= 3} />
+        <Pagination.Ellipsis hidden={page === lastPage || lastPage <= 3 || lastPage === page + 1} />
         <Pagination.Item onClick={() => setPage(lastPage)} hidden={page === lastPage}>{lastPage}</Pagination.Item>
         <Pagination.Next disabled={page >= lastPage} onClick={() => setPage(page + 1)}/>
         <Pagination.Last onClick={() => setPage(lastPage)}/>

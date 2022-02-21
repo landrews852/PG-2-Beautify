@@ -9,7 +9,7 @@ export default function Services() {
 
   return (
     <>
-      <Filter/>
+      {/* <Filter/> */}
       <CardService/>  
     </>
   )

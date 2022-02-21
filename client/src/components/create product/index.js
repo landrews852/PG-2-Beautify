@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { postProduct, getCategories } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -17,16 +17,15 @@ function validate(input) {
         errors.image = "The image is required."
     }
 
-
     return errors;
 }
 
 
 
 
-export default function NewProduct() {
+export default function CreateProduct() {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const category = useSelector((state) => state.categories)
     const [errors, setErrors] = useState({});
 
@@ -84,7 +83,7 @@ export default function NewProduct() {
             category: []
 
         })
-        history.push("/home")
+        // history.push("/home")
 
     }
 

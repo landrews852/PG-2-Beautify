@@ -17,6 +17,7 @@ export default function SearchBar() {
     function handleSubmit(e) {
         e.preventDefault()
         dispatch(getProductsbyName(name))
+        setName("")
     }
     
 
@@ -26,6 +27,7 @@ export default function SearchBar() {
         <div className={s.searchBar}>
             <input 
                 className={s.input}
+                value={name}
                 type="text"
                 placeholder="Search for products"
                 onChange={(e) => handleInputChange(e)}

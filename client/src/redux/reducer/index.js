@@ -1,4 +1,4 @@
-import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, POST_SERVICE, PRICE_SORT, NAME_SORT, FILTER_BY_OFFER, GET_PRODUCT_DETAIL, CLEAN_PRODUCT_DETAIL, GET_SERVICES, FILTER_BY_CATEGORY, FILTER_BY_BRAND, GET_BRANDS } from "../actions"
+import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, POST_SERVICE, PRICE_SORT, NAME_SORT, FILTER_BY_OFFER, GET_PRODUCT_DETAIL, CLEAN_PRODUCT_DETAIL, GET_SERVICES, FILTER_BY_CATEGORY, FILTER_BY_BRAND, GET_BRANDS, ADD_TO_CART, DELETE_ITEM } from "../actions"
 
 
 const initialState = {
@@ -137,6 +137,19 @@ export default function rootReducer(state = initialState, action) {
         services: action.payload 
       }  
 
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cart: [...state.cart, action.payload]
+      }
+      
+    case DELETE_ITEM:
+      
+      return {
+        ...state,
+        cart: state.cart.filter((p) => p.id !== action.payload)
+      }
+    
     default:
       return state
   }

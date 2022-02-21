@@ -15,6 +15,9 @@ export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY'
 export const FILTER_BY_BRAND = 'FILTER_BY_BRAND'
 export const GET_SERVICES = 'GET_SERVICES'
 export const GET_BRANDS = 'GET_BRANDS'
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const DELETE_ITEM = 'DELETE_ITEM'
+
 
 export const getImgCarrusel = () => {
   return async function (dispatch) {
@@ -84,7 +87,7 @@ export const cleanProductDetail = () => {
 
 export const postService = (payload) => {
   return async function (dispatch) {
-    var response = await axios.post("ruta del post", payload)
+    var response = await axios.post("http://localhost:3001/api/service/", payload)
     return response;
   }
 }
@@ -142,4 +145,18 @@ export function getBrands() {
       payload: json.data,
     });
   };
+}
+
+export function addToCart (payload) {
+  return {
+    type: ADD_TO_CART,
+    payload
+  }
+}
+
+export function deleteItem (payload) {
+  return {
+    type: DELETE_ITEM,
+    payload
+  }
 }

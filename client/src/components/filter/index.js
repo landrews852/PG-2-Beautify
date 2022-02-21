@@ -70,7 +70,7 @@ export default function Filter ({Paginate}) {
           <select className={s.select} name="categories" onChange={handleFilterCategories}>
             <option disabled>Selecciona una opción:</option>
             <option hidden>Selecciona una opción</option>
-            <option value="all">Todas</option>
+            <option value="">Todas</option>
               {categories && categories.length > 0 ? categories.map(e => (
                 <option key={e.id} value={e.id} >{e.name_category}</option>
                 )) : null}
@@ -82,7 +82,7 @@ export default function Filter ({Paginate}) {
           <select className={s.select} name="brands" onChange={handleFilterBrands}>
             <option disabled>Selecciona una opción:</option>
             <option hidden>Selecciona una opción</option>
-            <option value="all">Todas</option>
+            <option value="">Todas</option>
               {brands && brands.length > 0 ? brands.map(e => (
                 <option key={e} value={e} >{e}</option>
                 )) : null}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { postProduct, getCategories, postService } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-
+import "./create_service.css"
 
 function validate(input) {
     let errors = {};
@@ -97,12 +97,12 @@ export default function CreateService() {
 
     return (
         <div className="newService">
-            <Link to="/home"><button className="back">Go back</button></Link>
-            <h1>Add your service</h1>
+            <Link to="/home"><button className="back">Volver</button></Link>
+            <h1>AGREGAR NUEVO SERVICIO</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="form">
                     <div>
-                        <label>Service name:</label>
+                        <label>Nombre del Servicio:</label>
                         <input
                             type="text"
                             value={input.name_service}
@@ -115,7 +115,7 @@ export default function CreateService() {
                     </div>
 
                     <div className="description">
-                        <label>Description:</label>
+                        <label>Descripción:</label>
                         <input
                             type="text"
                             value={input.description}
@@ -128,7 +128,7 @@ export default function CreateService() {
                     )}
 
                     <div>
-                        <label>Price:</label>
+                        <label>Precio:</label>
                         <input
                             type="integer"
                             value={input.price}
@@ -139,7 +139,7 @@ export default function CreateService() {
 
                 
                     <div>
-                        <label>Image:</label>
+                        <label>Imagen:</label>
                         <input
                             type="text"
                             value={input.image}
@@ -154,7 +154,7 @@ export default function CreateService() {
 
                 
                     <div>
-                        <label>Category</label>
+                        <label>Categoria</label>
 
                         <select className="cat" onChange={(e) => handleSelect(e)}>
 
@@ -169,7 +169,7 @@ export default function CreateService() {
                         </select>
                     </div>
 
-                    <button disabled={errors.name_service || errors.description || errors.price || errors.image} className="submit" type="submit">Add service</button>
+                    <button disabled={errors.name_service || errors.description || errors.price || errors.image} className="submit" type="submit">Agregar Servicio</button>
 
                 </div>
 

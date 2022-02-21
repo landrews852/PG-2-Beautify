@@ -18,7 +18,7 @@ export default function Market() {
   let firstItem = (page - 1) * 9
   let lastItem = page * 9
   let lastPage = 1 + Math.floor(products.length/9)
-  let paginatedProducts = products.slice(firstItem,lastItem)
+  let paginatedProducts = (products !== 'nothing found') ? products.slice(firstItem,lastItem) : []
 
   useEffect(() => {
     dispatch(allProducts());
@@ -29,9 +29,9 @@ export default function Market() {
   }
 
   return (
-    paginatedProducts.length&& (
+    paginatedProducts.length ? ( 
 <div className="main">
-      <Filter setPage = {firstPage} />
+      <Filter firstPage = {firstPage} />
       <Pagination>
         <Pagination.First onClick={firstPage}/>
         <Pagination.Prev disabled={page <= 1} onClick={() => setPage(page-1)}/>
@@ -48,7 +48,7 @@ export default function Market() {
         <Pagination.Last onClick={() => setPage(lastPage)}/>
       </Pagination>
       <div className="Container Market">
-        {typeof paginatedProducts !== "string" ?paginatedProducts.map((product) => (
+        { paginatedProducts.map((product) => (
             <Link key={product.id} to={"/market/" + product.id}>
               <Card
                 product_name={product.product_name}
@@ -56,10 +56,14 @@ export default function Market() {
                 cost_by_unit={product.cost_by_unit}
               />
             </Link>
-          )): <p>No hay productos en esta categoria</p>
+          )) 
         }
       </div>
     </div>
+    ) : (
+    
+    <p>No hay productos en esta categoria</p>
+
     ) 
   )
 }

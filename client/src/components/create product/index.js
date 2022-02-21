@@ -23,7 +23,7 @@ function validate(input) {
 
 
 
-export default function NewProduct() {
+export default function CreateProduct() {
     const dispatch = useDispatch();
     // const history = useHistory();
     const category = useSelector((state) => state.categories)

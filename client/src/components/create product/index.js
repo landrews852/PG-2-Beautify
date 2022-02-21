@@ -26,7 +26,7 @@ function validate(input) {
 
 export default function NewProduct() {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const category = useSelector((state) => state.categories)
     const [errors, setErrors] = useState({});
 

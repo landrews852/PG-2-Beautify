@@ -10,7 +10,8 @@ import Footer from './components/footer';
 import ProductDetail from './components/productDetail/productDetail';
 import Contact from './components/contact';
 import Cart from './components/cart';
-
+import CreateProduct from './components/create product'
+import CreateService from './components/create service'
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route  path="/services" element={<Services />}/>
           <Route  path="/contact" element={<Contact />}/>
           <Route  path="/cart" element={<Cart />}/>
+          <Route  path="/admin/product/create" element={<CreateProduct />}/>
+          <Route  path="/admin/service/create" element={<CreateService />}/>
         </Routes>
         < Footer /> {/* se agregó el footer a todas las páginas */}
       </div>

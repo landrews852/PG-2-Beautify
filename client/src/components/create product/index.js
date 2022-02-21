@@ -78,19 +78,24 @@ export default function CreateProduct() {
     console.log(categories) */
 
     useEffect(() => {
-        setErrors(validate(input));
+        // setErrors(validate(input));
         dispatch(getCategories())
     }, [])
 
-    useEffect(()=>{
-        setErrors(validate(input));
-    },[input])
+    // useEffect(()=>{
+    //     setErrors(validate(input));
+    // },[input])
 
     function handleChange(e) {
         setInput({
             ...input,
             [e.target.name]: e.target.value
         })
+
+        setErrors(validate({
+            ...input,
+            [e.target.name]: e.target.value
+        }));
     }
 
     function handleChangeimg (e){

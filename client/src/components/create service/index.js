@@ -4,24 +4,36 @@ import { postProduct, getCategories, postService } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 
-function validate(input) {
+const validate = (input) => {
     let errors = {};
     if (!input.name_service) {
-        errors.name = "The service's name is required.";
-
-    } else if (!input.price) {
-        errors.description = "The price is required."
-    } else if (!input.description) {
-        errors.cost_by_unit = "The description is required."
-    } else if (!input.image) {
-        errors.image = "The image is required."
+      errors.name_service = "Name required";
+    } else if (!/^[A-Z][\s\w\:]{1,35}$/.test(input.name_service)) {
+      errors.name_service =
+        "El nombre debe empezar en mayuscula y debe tener menos de 35 caracteres y solo acepta el signo ':'";
     }
 
+    if (!input.description) {
+      errors.description = "Description required";
+    } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
+      errors.description =
+        "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";
+    }
+
+    if (input.image.length < 1) {
+      errors.image = "La imagen es requerida";
+    }
+
+    if (!input.price) {
+      errors.price = "El costo es requerido";
+    }     
+
+    if (input.category.length < 1) {
+        errors.category = "Selecciona una categoria";
+    }
 
     return errors;
-}
-
-
+  };
 
 
 export default function CreateService() {
@@ -39,17 +51,24 @@ export default function CreateService() {
         category: []
     })
     console.log(input)
+    console.log(errors)
 
     useEffect(() => {
+        setErrors(validate(input));
         dispatch(getCategories())
     }, [])
     // console.log (categories)
     function handleChangeimg (e){
         setInput({
             ...input,
-            image: [...input.image, e.target.value]
+            image: [e.target.value]
         })
     }
+
+    useEffect(()=>{
+        setErrors(validate(input));
+    },[input])
+
     function handleChange(e) {
 
         setInput({
@@ -57,10 +76,10 @@ export default function CreateService() {
             [e.target.name]: e.target.value
         })
 
-        setErrors(validate({
-            ...input,
-            [e.target.name]: e.target.value
-        }));
+        // setErrors(validate({
+        //     ...input,
+        //     [e.target.name]: e.target.value
+        // }));
     }
 
     function handleSelect(e) {
@@ -136,7 +155,9 @@ export default function CreateService() {
                             onChange={handleChange}
                         />
                     </div>
-
+                    {errors.price && (
+                        <p className="errorsum">{errors.price}</p>
+                    )}
                 
                     <div>
                         <label>Image:</label>
@@ -157,7 +178,7 @@ export default function CreateService() {
                         <label>Category</label>
 
                         <select className="cat" onChange={(e) => handleSelect(e)}>
-
+                        <option>Selecciones una categoria</option>
                         {categories?.map ((c)=>(
                             <option value={c.name_category}>{c.name_category}</option>
                         )) }
@@ -167,19 +188,23 @@ export default function CreateService() {
                             <option value="Eyebrows">Eyebrows</option>
  */}
                         </select>
+                        
                     </div>
+                    {errors.category && (
+                        <p className="error">{errors.category}</p>
+                    )}
 
-                    <button disabled={errors.name_service || errors.description || errors.price || errors.image} className="submit" type="submit">Add service</button>
+                    <button disabled={(Object.values(errors).length > 0)} className="submit" type="submit">Add service</button>
 
                 </div>
 
             </form>
-            {input.category.map(el =>
+            {/* {input.category.map(el =>
                 <div key={el} className="divCats">
                     <p>{el}</p>
                     <button className="bontonX" onClick={() => handleDelete(el)}>X</button>
                 </div>
-            )}
+            )} */}
         </div>
     )
 }

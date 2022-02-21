@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCategories, postService } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import "./create_service.module.css"
+import s from "./create_service.module.css"
 
 const validate = (input) => {
     let errors = {};
@@ -115,11 +115,11 @@ export default function CreateService() {
 
 
     return (
-        <div className="newService">
-            <Link to="/"><button className="back">Volver</button></Link>
+        <div className={s.newService}>
+            <Link to="/"><button className={s.button}>Volver</button></Link>
             <h1>AGREGAR NUEVO SERVICIO</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <div className="form">
+                <div className={s.form}>
                     <div>
                         <label>Nombre del Servicio:</label>
                         <input
@@ -129,7 +129,7 @@ export default function CreateService() {
                             onChange={handleChange}
                         />
                         {errors.name_service && (
-                            <p className="error">{errors.name_service}</p>
+                            <p className={s.error}>{errors.name_service}</p>
                         )}
                     </div>
 
@@ -143,7 +143,7 @@ export default function CreateService() {
                         />
                     </div>
                     {errors.description && (
-                        <p className="errorsum">{errors.description}</p>
+                        <p className={s.error}>{errors.description}</p>
                     )}
 
                     <div>
@@ -156,7 +156,7 @@ export default function CreateService() {
                         />
                     </div>
                     {errors.price && (
-                        <p className="errorsum">{errors.price}</p>
+                        <p className={s.error}>{errors.price}</p>
                     )}
                 
                     <div>
@@ -169,13 +169,13 @@ export default function CreateService() {
                         />
                     </div>
                     {errors.image && (
-                        <p className="error">{errors.image}</p>
+                        <p className={s.error}>{errors.image}</p>
                     )}
                
                     <div>
                         <label>Categoria</label>
 
-                        <select className="cat" onChange={(e) => handleSelect(e)}>
+                        <select className={s.cat} onChange={(e) => handleSelect(e)}>
                         <option>Selecciones una categoria</option>
                         {categories?.map ((c)=>(
                             <option value={c.name_category}>{c.name_category}</option>
@@ -185,10 +185,10 @@ export default function CreateService() {
                         
                     </div>
                     {errors.category && (
-                        <p className="error">{errors.category}</p>
+                        <p className={s.errorcat}>{errors.category}</p>
                     )}
 
-                    <button disabled={(Object.values(errors).length > 0)} className="submit" type="submit">Add service</button>
+                    <button disabled={(Object.values(errors).length > 0)} className={s.submit} type="submit">Agregar Servicio</button>
 
                 </div>
 

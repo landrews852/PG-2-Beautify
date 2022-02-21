@@ -7,14 +7,14 @@ import s from "./create_service.module.css"
 const validate = (input) => {
     let errors = {};
     if (!input.name_service) {
-      errors.name_service = "Name required";
+      errors.name_service = "El nombre es requerido";
     } else if (!/^[A-Z][\s\w\:]{1,35}$/.test(input.name_service)) {
       errors.name_service =
         "El nombre debe empezar en mayuscula y debe tener menos de 35 caracteres y solo acepta el signo ':'";
     }
 
     if (!input.description) {
-      errors.description = "Description required";
+      errors.description = "La descripción es requerida";
     } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
       errors.description =
         "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";

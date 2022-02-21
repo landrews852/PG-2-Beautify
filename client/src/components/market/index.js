@@ -29,27 +29,12 @@ export default function Market() {
   }
 
   return (
-    paginatedProducts.length ? ( 
 <div className="main">
-      <Filter Paginate = {Paginate} />
-      {/* <Pagination>
-        <Pagination.First onClick={firstPage}/>
-        <Pagination.Prev disabled={page <= 1} onClick={() => setPage(page-1)}/>
-        <Pagination.Item onClick={firstPage} hidden={page === 1 || page === 2}>{1}</Pagination.Item>
-        <Pagination.Ellipsis hidden={page === 1 || lastPage <= 3 || page === 2} />
-
-        <Pagination.Item onClick={() => setPage(page - 1)} hidden={page === 1}>{page - 1}</Pagination.Item>
-        <Pagination.Item active>{page}</Pagination.Item>
-        <Pagination.Item onClick={() => setPage(page + 1)} hidden={page === lastPage || lastPage === (page + 1)}>{page + 1}</Pagination.Item>
-
-        <Pagination.Ellipsis hidden={page === lastPage || lastPage <= 3 || lastPage === page + 1} />
-        <Pagination.Item onClick={() => setPage(lastPage)} hidden={page === lastPage}>{lastPage}</Pagination.Item>
-        <Pagination.Next disabled={page >= lastPage} onClick={() => setPage(page + 1)}/>
-        <Pagination.Last onClick={() => setPage(lastPage)}/>
-      </Pagination> */}
+  <Filter Paginate = {Paginate} />
+    {paginatedProducts.length ?  <>
       < Pagination  firstItem={firstItem} lastItem={lastItem} lastPage={lastPage} Paginate={Paginate} page={page}/>
       <div className="Container Market">
-        { paginatedProducts.map((product) => (
+      { paginatedProducts.map((product) => (
             <Link key={product.id} to={"/market/" + product.id}>
               <Card
                 product_name={product.product_name}
@@ -60,11 +45,8 @@ export default function Market() {
           )) 
         }
       </div>
+    </>
+    : <p>No se han encontrado resultados para tu busqueda</p>   }
     </div>
-    ) : (
-    
-    <p>No hay productos en esta categoria</p>
-
-    ) 
   )
 }

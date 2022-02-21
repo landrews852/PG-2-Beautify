@@ -11,15 +11,15 @@ export default function CreateProduct() {
 
 
     const [input, setInput] = useState({
-        product_name: "",
-        description: "",
-        stock: "",
-        cost_by_unit: "",
-        image: "",
-        warranty: "",
-        brand: "",
-        discount: "",
-        category: []
+        product_name: "",  // string
+        description: "",   // TEXT
+        stock: '',         // integer
+        cost_by_unit: "",  // float
+        image: "",         // Array (text)
+        warranty: "",      // integer
+        brand: "",         // string
+        discount: "",      // INTEGER   
+        category: []       // Array 
     })
 
     const validate = (input) => {
@@ -74,8 +74,8 @@ export default function CreateProduct() {
 
 
     console.log(input)
-    console.log(errors)
-    console.log(categories)
+/*     console.log(errors)
+    console.log(categories) */
 
     useEffect(() => {
         setErrors(validate(input));
@@ -90,6 +90,13 @@ export default function CreateProduct() {
         setInput({
             ...input,
             [e.target.name]: e.target.value
+        })
+    }
+
+    function handleChangeimg (e){
+        setInput({
+            ...input,
+            image: [...input.image, e.target.value]
         })
     }
 
@@ -204,7 +211,7 @@ export default function CreateProduct() {
                             type="text"
                             value={input.image}
                             name="image"
-                            onChange={handleChange}
+                            onChange={handleChangeimg}
                         />
                     </div>
                     {errors.image && (

@@ -27,7 +27,7 @@ function validate(input) {
 export default function CreateService() {
     const dispatch = useDispatch();
     // const history = useHistory();
-    const category = useSelector((state) => state.categories)
+    const categories = useSelector((state) => state.categories)
     const [errors, setErrors] = useState({});
 
 
@@ -35,7 +35,7 @@ export default function CreateService() {
         name_service: "",
         description: "",
         price: "",
-        image: "",
+        image: [],
         category: []
     })
     console.log(input)
@@ -43,9 +43,15 @@ export default function CreateService() {
     useEffect(() => {
         dispatch(getCategories())
     }, [])
-
-
+    // console.log (categories)
+    function handleChangeimg (e){
+        setInput({
+            ...input,
+            image: [...input.image, e.target.value]
+        })
+    }
     function handleChange(e) {
+
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -66,13 +72,13 @@ export default function CreateService() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(postProduct(input))
+        dispatch(postService(input))
         alert("The service was added successfully!")
         setInput({
             name_service: "",
             description: "",
             price: "",
-            image: "",
+            image: [],
             category: []
 
         })
@@ -138,7 +144,7 @@ export default function CreateService() {
                             type="text"
                             value={input.image}
                             name="image"
-                            onChange={handleChange}
+                            onChange={handleChangeimg}
                         />
                     </div>
                     {errors.image && (
@@ -151,10 +157,15 @@ export default function CreateService() {
                         <label>Category</label>
 
                         <select className="cat" onChange={(e) => handleSelect(e)}>
+
+                        {categories?.map ((c)=>(
+                            <option value={c.name_category}>{c.name_category}</option>
+                        )) }
+{/* 
                             <option value="Skincare">Skincare</option>
                             <option value="Lashes">Lashes</option>
                             <option value="Eyebrows">Eyebrows</option>
-
+ */}
                         </select>
                     </div>
 
@@ -164,7 +175,7 @@ export default function CreateService() {
 
             </form>
             {input.category.map(el =>
-                <div key={el.id} className="divCats">
+                <div key={el} className="divCats">
                     <p>{el}</p>
                     <button className="bontonX" onClick={() => handleDelete(el)}>X</button>
                 </div>

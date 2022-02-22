@@ -16,7 +16,9 @@ export default function Cart_logo() {
       <Link to="/cart">
         <div className={s.div_cart}>
           <img src={carrito} alt="cart_logo" className={s.cart_img} />
-          <p className={s.num_items}>{numItems}</p>
+          <div className={s.cart_num}>
+            <p className={s.num_items}>{numItems}</p>
+          </div>
         </div>
       </Link>
     </div>

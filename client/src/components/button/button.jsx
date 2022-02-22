@@ -5,6 +5,7 @@ import s from "./button.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 export default function Button({ type, link, quote }) {
   const dispatch = useDispatch();
@@ -15,7 +16,11 @@ export default function Button({ type, link, quote }) {
   const handleAddToCart = () => {
     console.log("Agregar al carrito", productDetail);
     dispatch(addToCart(productDetail));
-    alert("Agregado");
+    Swal.fire({
+      icon: 'success',
+      title: '¡Buena elección!',
+      text: 'Ve al carrito para ver los productos agregados',
+    })
   };
 
   return (

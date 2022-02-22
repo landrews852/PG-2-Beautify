@@ -1,5 +1,22 @@
-import { GET_IMG_CARRUSEL, GET_PRODUCTS_BY_NAME, ALL_PRODUCTS, GET_CATEGORIES, POST_PRODUCT, POST_SERVICE, PRICE_SORT, NAME_SORT, FILTER_BY_OFFER, GET_PRODUCT_DETAIL, CLEAN_PRODUCT_DETAIL, GET_SERVICES, FILTER_BY_CATEGORY, FILTER_BY_BRAND, GET_BRANDS, ADD_TO_CART, DELETE_ITEM } from "../actions"
-
+import {
+  GET_IMG_CARRUSEL,
+  GET_PRODUCTS_BY_NAME,
+  ALL_PRODUCTS,
+  GET_CATEGORIES,
+  POST_PRODUCT,
+  POST_SERVICE,
+  PRICE_SORT,
+  NAME_SORT,
+  FILTER_BY_OFFER,
+  GET_PRODUCT_DETAIL,
+  CLEAN_PRODUCT_DETAIL,
+  GET_SERVICES,
+  FILTER_BY_CATEGORY,
+  FILTER_BY_BRAND,
+  GET_BRANDS,
+  ADD_TO_CART,
+  DELETE_ITEM,
+} from "../actions";
 
 const initialState = {
   user: [],
@@ -13,68 +30,68 @@ const initialState = {
   categories: [],
   services: [],
   brands: [],
-}
+};
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_IMG_CARRUSEL:
       return {
         ...state,
-        carrusel: action.payload
-      }
+        carrusel: action.payload,
+      };
 
     case ALL_PRODUCTS:
       return {
         ...state,
         products: action.payload,
-        allProducts: action.payload
-      }
+        allProducts: action.payload,
+      };
 
     case GET_PRODUCTS_BY_NAME:
       return {
         ...state,
-        products: action.payload
-      }
+        products: action.payload,
+      };
 
     case GET_CATEGORIES:
       return {
         ...state,
-        categories: action.payload
-      }
+        categories: action.payload,
+      };
 
     case POST_PRODUCT:
       return {
-        ...state
-      }
+        ...state,
+      };
 
     case POST_SERVICE:
-    return {
-      ...state
-    }
+      return {
+        ...state,
+      };
 
     case GET_PRODUCT_DETAIL:
-    return {
-      ...state,
-      productDetail : action.payload
-    }
+      return {
+        ...state,
+        productDetail: action.payload,
+      };
 
     case CLEAN_PRODUCT_DETAIL:
       return {
         ...state,
-        productDetail : {}
-      }
+        productDetail: {},
+      };
 
     case PRICE_SORT:
       return {
         ...state,
-        products: action.payload
-      }
+        products: action.payload,
+      };
 
     case NAME_SORT:
       return {
         ...state,
-        products: action.payload
-      }
+        products: action.payload,
+      };
 
     // case RATING_SORT:
     //   let arraySort1 =
@@ -105,52 +122,51 @@ export default function rootReducer(state = initialState, action) {
     case FILTER_BY_CATEGORY:
       return {
         ...state,
-        products: action.payload
-      }
+        products: action.payload,
+      };
 
     case FILTER_BY_BRAND:
       return {
         ...state,
-        products: action.payload
-      }
+        products: action.payload,
+      };
 
     case GET_BRANDS:
-      const brand = action.payload.map(e => e.brand).flat()
-      const brandsUnique = [...new Set(brand)]
+      const brand = action.payload.map((e) => e.brand).flat();
+      const brandsUnique = [...new Set(brand)];
       return {
         ...state,
         brands: brandsUnique,
       };
 
     case FILTER_BY_OFFER:
-      const filteredProducts = state.allProducts.filter(product => {
-        return product.offert === action.payload.offert
-      })
+      // const filteredProducts = state.allProducts.filter(product => {
+      //   return product.offert === action.payload.offert
+      // })
       return {
         ...state,
-        products: filteredProducts
-      }
+        products: action.payload,
+      };
 
     case GET_SERVICES:
       return {
         ...state,
-        services: action.payload 
-      }  
+        services: action.payload,
+      };
 
     case ADD_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, action.payload]
-      }
-      
+        cart: [...state.cart, action.payload],
+      };
+
     case DELETE_ITEM:
-      
       return {
         ...state,
-        cart: state.cart.filter((p) => p.id !== action.payload)
-      }
-    
+        cart: state.cart.filter((p) => p.id !== action.payload),
+      };
+
     default:
-      return state
+      return state;
   }
 }

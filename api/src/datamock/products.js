@@ -12,7 +12,7 @@ const products = [
       "https://images.pexels.com/photos/3373746/pexels-photo-3373746.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
       "https://images.pexels.com/photos/3373726/pexels-photo-3373726.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 38,
+    discount: 0,
   },
   {
     product_name: "Cabbage - Nappa",
@@ -28,7 +28,7 @@ const products = [
       "https://images.pexels.com/photos/3373725/pexels-photo-3373725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
       "https://images.pexels.com/photos/1625037/pexels-photo-1625037.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
     ],
-    discount: 35,
+    discount: 0,
   },
   {
     product_name: "Muffins - Assorted",
@@ -44,7 +44,7 @@ const products = [
       "https://images.pexels.com/photos/8478975/pexels-photo-8478975.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/8478794/pexels-photo-8478794.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
     ],
-    discount: 43,
+    discount: 0,
   },
   {
     product_name: "Fuji Apples",
@@ -70,14 +70,13 @@ const products = [
       "Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
     category: ["Duobam"],
     warranty: 51,
-    brand:
-      "Aveeno Active Naturals Positively Ageless Youth Perfecting Moisturizer",
+    brand: "Aveeno",
     image: [
       "https://images.pexels.com/photos/4046419/pexels-photo-4046419.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/4735904/pexels-photo-4735904.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
       "https://images.pexels.com/photos/8533265/pexels-photo-8533265.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
     ],
-    discount: 47,
+    discount: 0,
   },
   {
     product_name: "Wine - Red, Marechal Foch",
@@ -87,13 +86,13 @@ const products = [
       "Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
     category: ["Duobam"],
     warranty: 78,
-    brand: "Extra Strength Pain Relief Therapy",
+    brand: "Strength",
     image: [
       "https://images.pexels.com/photos/3373746/pexels-photo-3373746.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
       "https://images.pexels.com/photos/3373726/pexels-photo-3373726.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/3373725/pexels-photo-3373725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
     ],
-    discount: 28,
+    discount: 0,
   },
   {
     product_name: "Lid Tray - 12in Dome",
@@ -109,7 +108,7 @@ const products = [
       "https://images.pexels.com/photos/9518729/pexels-photo-9518729.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
       "https://images.pexels.com/photos/8478981/pexels-photo-8478981.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 24,
+    discount: 0,
   },
   {
     product_name: "Tendrils - Baby Pea, Organic",
@@ -119,13 +118,13 @@ const products = [
       "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
     category: ["Zoolab"],
     warranty: 83,
-    brand: "PhysiciansCare Non Aspirin",
+    brand: "PhysiciansCare",
     image: [
       "https://images.pexels.com/photos/8533265/pexels-photo-8533265.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
       "https://images.pexels.com/photos/10514763/pexels-photo-10514763.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/9518729/pexels-photo-9518729.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
     ],
-    discount: 31,
+    discount: 0,
   },
   {
     product_name: "Rye Special Old",
@@ -135,13 +134,13 @@ const products = [
       "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.",
     category: ["cuidado facial"],
     warranty: 7,
-    brand: "RE NUTRIV RADIANT UV BASE",
+    brand: "Decafert",
     image: [
       "https://images.pexels.com/photos/8140913/pexels-photo-8140913.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/7055832/pexels-photo-7055832.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/8509192/pexels-photo-8509192.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 34,
+    discount: 0,
   },
   {
     product_name: "Tea - Decaf 1 Cup",
@@ -157,7 +156,7 @@ const products = [
       "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/4041391/pexels-photo-4041391.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 22,
+    discount: 0,
   },
   {
     product_name: "Sobe - Green Tea",
@@ -167,13 +166,13 @@ const products = [
       "In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis.",
     category: ["cuidado facial"],
     warranty: 49,
-    brand: "Quetiapine Fumarate",
+    brand: "Fumarate",
     image: [
       "https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/5938644/pexels-photo-5938644.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/6763379/pexels-photo-6763379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 25,
+    discount: 0,
   },
   {
     product_name: "Bread - Corn Muffaleta Onion",
@@ -189,7 +188,7 @@ const products = [
       "https://images.pexels.com/photos/3762871/pexels-photo-3762871.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/6621322/pexels-photo-6621322.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 38,
+    discount: 0,
   },
   {
     product_name: "Plasticforkblack",
@@ -221,7 +220,7 @@ const products = [
       "https://images.pexels.com/photos/7480272/pexels-photo-7480272.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/3851905/pexels-photo-3851905.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 39,
+    discount: 0,
   },
   {
     product_name: "Beer - Guiness",
@@ -231,13 +230,13 @@ const products = [
       "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh.",
     category: ["cuidado facial"],
     warranty: 31,
-    brand: "Prairie Sage",
+    brand: "Prairie",
     image: [
       "https://images.pexels.com/photos/3321416/pexels-photo-3321416.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/1377034/pexels-photo-1377034.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/301367/pexels-photo-301367.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 42,
+    discount: 0,
   },
   {
     product_name: "Bandage - Flexible Neon",
@@ -263,13 +262,13 @@ const products = [
       "Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",
     category: ["cuidado facial"],
     warranty: 30,
-    brand: "METHADONE HYDROCHLORIDE",
+    brand: "METHADONE",
     image: [
       "https://images.pexels.com/photos/3321416/pexels-photo-3321416.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/1377034/pexels-photo-1377034.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/301367/pexels-photo-301367.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 40,
+    discount: 0,
   },
   {
     product_name: "Lettuce - Frisee",
@@ -279,13 +278,13 @@ const products = [
       "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim.",
     category: ["pestanas"],
     warranty: 100,
-    brand: "Reef Safe SPF 36",
+    brand: "SPF 36",
     image: [
       "https://images.pexels.com/photos/8128069/pexels-photo-8128069.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/3762871/pexels-photo-3762871.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/6621322/pexels-photo-6621322.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 35,
+    discount: 0,
   },
   {
     product_name: "Soup - Cream Of Potato / Leek",
@@ -295,13 +294,13 @@ const products = [
       "Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.",
     category: ["pestanas"],
     warranty: 21,
-    brand: "Amiodarone Hydrochloride",
+    brand: "Amiodarone",
     image: [
       "https://images.pexels.com/photos/4046316/pexels-photo-4046316.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/7480272/pexels-photo-7480272.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/3851905/pexels-photo-3851905.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 16,
+    discount: 0,
   },
   {
     product_name: "Oil - Grapeseed Oil",
@@ -310,13 +309,13 @@ const products = [
     description: "Donec posuere metus vitae ipsum.",
     category: ["pestanas"],
     warranty: 98,
-    brand: "Clonidine Hydrochloride",
+    brand: "Hydrochloride",
     image: [
       "https://images.pexels.com/photos/8509192/pexels-photo-8509192.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/8076472/pexels-photo-8076472.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 29,
+    discount: 0,
   },
   {
     product_name: "Container - Foam Dixie 12 Oz",
@@ -326,13 +325,13 @@ const products = [
       "In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.",
     category: ["pestanas"],
     warranty: 18,
-    brand: "Baclofen",
+    brand: "Amiodarone",
     image: [
       "https://images.pexels.com/photos/1619488/pexels-photo-1619488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/4046316/pexels-photo-4046316.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 30,
+    discount: 0,
   },
   {
     product_name: "Thyme - Lemon, Fresh",
@@ -341,13 +340,13 @@ const products = [
     description: "Duis bibendum.",
     category: ["pestanas"],
     warranty: 15,
-    brand: "Amitriptyline Hydrochloride",
+    brand: "Hydrochloride",
     image: [
       "https://images.pexels.com/photos/6763379/pexels-photo-6763379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/8128069/pexels-photo-8128069.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/3762871/pexels-photo-3762871.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 40,
+    discount: 0,
   },
   {
     product_name: "Tomatoes - Roma",
@@ -357,7 +356,7 @@ const products = [
       "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus.",
     category: ["pestanas"],
     warranty: 22,
-    brand: "GIVEN BY NATURE ALOE MASK SHEET",
+    brand: "Amiodarone",
     image: [
       "https://images.pexels.com/photos/4046316/pexels-photo-4046316.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/7480272/pexels-photo-7480272.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -379,7 +378,7 @@ const products = [
       "https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/5938644/pexels-photo-5938644.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 45,
+    discount: 0,
   },
   {
     product_name: "Food Colouring - Blue",
@@ -389,13 +388,13 @@ const products = [
       "Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy.",
     category: ["pestanas"],
     warranty: 2,
-    brand: "House Dust",
+    brand: "Dust",
     image: [
       "https://images.pexels.com/photos/6621322/pexels-photo-6621322.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/7269475/pexels-photo-7269475.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/7263026/pexels-photo-7263026.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 32,
+    discount: 0,
   },
   {
     product_name: "Wine - Chablis J Moreau Et Fils",
@@ -405,7 +404,7 @@ const products = [
       "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna.",
     category: ["pestanas"],
     warranty: 48,
-    brand: "Ziprasidone Hydrochloride",
+    brand: "Ziprasidon",
     image: [
       "https://images.pexels.com/photos/9518729/pexels-photo-9518729.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
       "https://images.pexels.com/photos/8478981/pexels-photo-8478981.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -421,7 +420,7 @@ const products = [
       "Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam.",
     category: ["pestanas"],
     warranty: 26,
-    brand: "Doxepin Hydrochloride",
+    brand: "Doxepin",
     image: [
       "https://images.pexels.com/photos/8076472/pexels-photo-8076472.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -454,8 +453,7 @@ const products = [
       "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
     category: ["Flexidy"],
     warranty: 48,
-    brand:
-      "DELTUSS DMX Cough Suppressant Nasal Decongestant Antihistamine GRAPE Flavor",
+    brand: "Deconge",
     image: [
       "https://images.pexels.com/photos/5938644/pexels-photo-5938644.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/6763379/pexels-photo-6763379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -471,13 +469,13 @@ const products = [
       "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
     category: ["Flexidy"],
     warranty: 23,
-    brand: "Neutrogena Body Clear Body Wash",
+    brand: "Neutrogena",
     image: [
       "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/4041391/pexels-photo-4041391.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    discount: 29,
+    discount: 0,
   },
 ];
 

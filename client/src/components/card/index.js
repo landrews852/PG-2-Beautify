@@ -14,7 +14,7 @@ export default function Card({ image, product_name, cost_by_unit, id }) {
         <h3>{product_name}</h3>
         <span className="cardcost">$ {cost_by_unit}</span>
         {/* </Link> */}
-        <MarketButton quote={'Detalle'}></MarketButton>
+        <MarketButton quote={'VER MÁS'}></MarketButton>
       </div>
     </div>
   );

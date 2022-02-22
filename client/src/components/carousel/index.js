@@ -2,19 +2,20 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './carousel.css';
-
+import img1 from "../../images/img1.jpg"
+import img2 from "../../images/img2.jpg"
 
 export default function Slideshow() {
   const arrcarrusel = [
     {
       id: 1,
-      img: "https://beautysas.vteximg.com.br/arquivos/ids/176764/fragancias-1.jpg?v=637806113206470000",
-      label: "Fragancias",
-      text: "Aprovecha nuestra nuevas fragancias con descuento",
+      img: img1,
+      label: "Belleza Natural",
+      text: "Potenciá tu belleza natural con el mejor cuidado",
     },
     {
       id: 2,
-      img: "http://www.incontech.com.sg/wp-content/uploads/2016/06/incontech-web-banner_Beauty-Skin-Care.jpg",
+      img: img2,
       label: "Cuida tu piel con Aloe Vera",
       text: "Belleza de adentro hacia afuera",
     },
@@ -34,7 +35,7 @@ export default function Slideshow() {
             <img
               className="d-block w-100"
               width="100%"
-              height="500vh"
+              height="600px"
               src={e.img}
               alt="First slide"
             />

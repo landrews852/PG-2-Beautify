@@ -22,10 +22,9 @@ export default function Navigator () {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/" className='nav-link'>Home</Link>
+            <Link to="/aboutUs" className='nav-link'>Quienes somos</Link>
             <Link to="/market" className='nav-link'>Productos</Link>
             <Link to="/services" className='nav-link'>Servicios</Link>
-            <Link to="/contact" className='nav-link'>Contact</Link>
             {/* <Nav.Link> <ButtonLogin /> </Nav.Link> */}
             {/* <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item href="/product1">product 1</NavDropdown.Item>

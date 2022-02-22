@@ -1,0 +1,36 @@
+
+.container {
+    
+    height: 420px;
+    margin-bottom: -25px;
+    background-image: url(https://img.freepik.com/foto-gratis/hermosa-sonrisa-joven-dientes-blancos_65293-2469.jpg?w=826);
+    backdrop-filter: blur(2px);
+    background-size: cover;
+}
+
+.content {
+    background-color: rgba(0, 0, 0, 0.192);
+    height: 500px;
+}
+.container h1 {
+margin-left: 590px;
+font-size: 70px;
+}
+
+
+.container h5 {
+    margin-top: 70px;
+    width: 50%;
+    margin-left: 630px;
+    font-size: 20px;
+    
+}
+
+.container p {
+    margin-top: 60px;
+    font-size: 17px;
+    font-style: italic;
+    margin-left: 710px;
+    width: 530px
+}
+

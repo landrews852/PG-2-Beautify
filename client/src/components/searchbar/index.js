@@ -6,6 +6,7 @@ import s from'./searchBar.module.css';
 import { useNavigate } from "react-router-dom";
 
 export default function SearchBar() {
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
 

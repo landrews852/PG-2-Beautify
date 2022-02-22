@@ -22,9 +22,7 @@ export default function marketButton({type, link, quote}) {
 
   return (
     <button className={s.buttoncart} >
-      <span className={s.circle} aria-hidden="true">
-        <FontAwesomeIcon icon={faCartPlus} className={s.carticon} />
-      </span>
+      
       <span className={s["button-text"]}> {quote} </span>
     </button>
   );

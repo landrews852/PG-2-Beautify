@@ -2,6 +2,8 @@
 .cards {
   display: flex;
   flex-flow: column;
+  background: linear-gradient(#ffd1d1, #fcc38f, #f799c0);
+  border-radius: 15px;
 }
 .cards img {
   width: 100%;
@@ -10,26 +12,31 @@
 }
 
 .cardcost {
-  font-size: 1.5em;
-  border-bottom: 1px solid black;
+  font-size: 1.2rem;
+  font-weight: bold;
   margin: auto;
-  color: rgb(36, 33, 33);
-  padding: 10px;
+  color: #333;
+  margin-top: -18px;
+  margin-bottom: 20px;
+  
 }
 
 .cards h3 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   height: 60px;
-  color: white;
-  background: #d4ab6b;
+  color: #333;
+  text-transform: uppercase;
   text-overflow: clip;
   overflow: hidden;
+  margin-bottom: 25px;
 }
+
+
 .cardcontenedor {
   width: 13vw;
   margin: 1em 2em;
   box-shadow: 0 1px 6px 2px rgba(0, 0, 0, 0.3);
-  padding-bottom: 10px;
+ 
   border-radius: 15px;
   min-width: 250px;
 }

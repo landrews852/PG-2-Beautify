@@ -51,6 +51,15 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         defaultValue: false,
       },
+
+      total: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          let price =
+            this.cost_by_unit - (this.cost_by_unit * this.discount) / 100;
+          return parseFloat(price.toFixed(2));
+        },
+      },
     },
     {
       timestamps: false,

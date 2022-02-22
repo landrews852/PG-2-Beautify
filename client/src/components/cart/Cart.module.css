@@ -22,3 +22,11 @@
   border-radius: 10px;
   background-color: #fafafa;
 }
+.title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.total {
+  margin-left: 800px;
+}

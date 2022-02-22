@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../images/logo2.png';
 import SearchBar from '../searchbar';
 import ButtonLogin from '../buttonlogin';
+import Cart_logo from './cart_logo';
 
 // import { Link } from 'react-router-dom';
 
@@ -40,7 +41,7 @@ export default function Navigator () {
             </NavDropdown> */}
           </Nav>
             <SearchBar className='navSearch' />
-            <Link to="/cart"><div className='divCarrito'><img src={carrito} alt="carrito" className='navCarrito' /></div></Link>
+            <Cart_logo />
         </Navbar.Collapse>
       </Container>
     </Navbar>

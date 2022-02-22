@@ -4,7 +4,7 @@
   border-bottom: 1px solid #ebebeb;
 }
 
-.divCarrito {
+.div_cart {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +15,7 @@
   border-bottom: 1px solid #ebebeb;
 }
 
-.navCarrito {
+.cart_img {
   position: absolute;
   width: 35px;
   padding: 5px;
@@ -31,8 +31,16 @@
   opacity: 0.6;
 }
 
-.navCarrito:hover {
+.cart_img:hover {
   opacity: 0.8;
+}
+
+.num_items {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .navSearch {
@@ -42,15 +50,6 @@
   display: block;
   z-index: 100;
   transition: all 250ms linear;
-}
-
-.hreff {
-  color: #000000;
-  text-decoration: none;
-}
-.nav-link {
-  color: #000000;
-  text-decoration: none;
 }
 
 a:link {

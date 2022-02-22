@@ -5,24 +5,20 @@ import logo from '../../images/logo2.png';
 import SearchBar from '../searchbar';
 import ButtonLogin from '../buttonlogin';
 import Cart_logo from './cart_logo';
-
-// import { Link } from 'react-router-dom';
-
-import './navBar.css';
-import carrito from '../../images/carrito2.png';
+import s from "./navBar.module.css";
 import { Link } from 'react-router-dom';
 
 
 export default function Navigator () {
   return (
-    <Navbar className='navBarr' variant="light" expand="lg">
+    <Navbar className={s.navBarr} variant="light" expand="lg">
       <Container>
         <Link to="/">
           <Navbar.Brand><img src={logo} height="100px" alt="logo" /></Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className={s.me_auto}>
             <Link to="/aboutUs" className='nav-link'>Quienes somos</Link>
             <Link to="/market" className='nav-link'>Productos</Link>
             <Link to="/services" className='nav-link'>Servicios</Link>
@@ -40,7 +36,7 @@ export default function Navigator () {
               <NavDropdown.Item href="/service 3">service 3</NavDropdown.Item>
             </NavDropdown> */}
           </Nav>
-            <SearchBar className='navSearch' />
+            <SearchBar className={s.navSearch} />
             <Cart_logo />
         </Navbar.Collapse>
       </Container>

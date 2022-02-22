@@ -1,13 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import carrito from '../../images/carrito2.png';
+import { useSelector } from "react-redux";
+import s from "./navBar.module.css";
 
 
 export default function Cart_logo() {
+
+  const cart = useSelector(state => state.cart);
+
+  const numItems = cart.length;
+
   return (
-    <div className='cart'>
-      <Link to="/cart"><div className='divCarrito'><img src={carrito} alt="carrito" className='navCarrito' /></div></Link>
-      <p></p>
+    <div className={s.cart}>
+      <Link to="/cart">
+        <div className={s.div_cart}>
+          <img src={carrito} alt="cart_logo" className={s.cart_img} />
+          <p className={s.num_items}>{numItems}</p>
+        </div>
+      </Link>
     </div>
   );
 }

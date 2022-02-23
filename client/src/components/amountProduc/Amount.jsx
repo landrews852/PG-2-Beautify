@@ -1,9 +1,9 @@
 import React from "react";
-import Button from "../button/button";
 import { useState } from "react";
+import MarketButton from "../button/MarketButton";
 
-function Amount() {
-  const [amount, setAmount] = useState(0);
+function Amount({ id }) {
+  const [amount, setAmount] = useState(1);
 
   const handleClickSum = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ function Amount() {
       />
       <button onClick={(e) => handleClickSum(e)}>+</button>
       <button onClick={(e) => handleClickSub(e)}>-</button>
-      <Button quote={"AGREGAR"} amount={amount}></Button>
+      <MarketButton amount={amount} id={id} />
     </div>
   );
 }

@@ -4,23 +4,32 @@ import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import s from "./button.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import Amount from "../amountProduc/Amount";
 
-export default function marketButton({ type, link, quote }) {
-  // const dispatch = useDispatch();
+export default function MarketButton({ amount, id }) {
+  const dispatch = useDispatch();
 
-  // const productDetail = useSelector(state => state.productDetail);
-  // const cart = useSelector(state => state.cart);
+  const products = useSelector((state) => state.products);
 
-  // const handleAddToCart = () => {
-  //   console.log("Agregar al carrito", productDetail);
-  //   dispatch(addToCart(productDetail));
-  //   // alert("Agregado")
-  // };
+  const product = products.find((p) => p.id === id);
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    console.log("Agregar al carrito", product);
+    dispatch(addToCart({ ...product, amount: amount }));
+    Swal.fire({
+      icon: "success",
+      title: "¡Buena elección!",
+      text: "Ve al carrito para ver los productos agregados",
+    });
+  };
 
   return (
-    <button className={s.buttoncart}>
-      <span className={s["button-text"]}> {quote} </span>
-    </button>
+    <>
+      <button className={s.buttoncart} onClick={(e) => handleAddToCart(e)}>
+        <span className={s["button-text"]}> Agregar al carrito </span>
+      </button>
+    </>
   );
 }

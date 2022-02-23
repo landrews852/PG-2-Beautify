@@ -1,6 +1,7 @@
 import React from "react";
 import "./card.css";
-import MarketButton from "../button/marketButton";
+import Button from "../button/ButtonDetails";
+
 import Amount from "../amountProduc/Amount";
 
 export default function Card({ image, product_name, cost_by_unit, id }) {
@@ -12,8 +13,8 @@ export default function Card({ image, product_name, cost_by_unit, id }) {
         <h3>{product_name}</h3>
         <span className="cardcost">$ {cost_by_unit}</span>
         {/* </Link> */}
-        <MarketButton quote={"VER MÁS"}></MarketButton>
-        <Amount />
+        <Button id={id} quote={"ver mas"} />
+        <Amount id={id} />
       </div>
     </div>
   );

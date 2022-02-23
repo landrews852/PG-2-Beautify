@@ -45,7 +45,7 @@ export default function ProductDetail() {
             <p className={Styles.information}>{productDetail.description}</p>
 
             <div className={Styles.control}>
-              <Amount />
+              <Amount id={productDetail.id} />
             </div>
           </div>
 

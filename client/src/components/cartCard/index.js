@@ -3,6 +3,7 @@ import s from "./cartCard.module.css";
 import img from "../../images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItem } from "../../redux/actions";
+import Amount from "../amountProduc/Amount";
 
 export default function Card({
   image,

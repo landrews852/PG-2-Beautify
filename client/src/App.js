@@ -1,17 +1,23 @@
+import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter as Router} from 'react-router-dom';
-import Home from './components/home'
-import Services from './components/services';
-import Market from './components/market';
-import React from 'react';
-import Navigator from './components/navbar';
-import Footer from './components/footer';
-import ProductDetail from './components/productDetail/productDetail';
-import Cart from './components/cart';
-import CreateProduct from './components/create product'
-import CreateService from './components/create service'
-import AboutUs from './components/aboutUs/aboutUs';
+
+//Admin Pages
+import CreateProduct from './components/pages/admin/createProduct/createProduct'
+import CreateService from './components/pages/admin/createService/createService'
+
+//Client Pages
+import Cart from './components/pages/client/cart/cart';
+import AboutUs from './components/pages/client/aboutUs/aboutUs';
+import Home from './components/pages/client/home/home'
+import Services from './components/pages/client/services/services';
+import Market from './components/pages/client/market/market';
+import ProductDetail from './components/pages/client/productDetail/productDetail';
+
+//Always Show
+import Navigator from './components/elements/navBar/navBar';
+import Footer from './components/elements/footer/footer';
 
 function App() {
   return (

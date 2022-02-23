@@ -45,6 +45,7 @@ export default function Market() {
           <div className="Container Market">
             {paginatedProducts.map((product) => (
               <Link key={product.id} to={"/market/" + product.id}>
+                console.log(product.id)
                 <Card
                   id={product.id}
                   product_name={product.product_name}

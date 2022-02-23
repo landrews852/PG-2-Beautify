@@ -3,6 +3,7 @@ import Card from "../cartCard";
 import s from "./Cart.module.css";
 import { useSelector } from "react-redux";
 import Total from "../totalCart/Total";
+import Amount from "../amountProduc/Amount";
 
 export default function Cart() {
   // const dispatch = useDispatch();
@@ -21,6 +22,9 @@ export default function Cart() {
               id={p.id}
               cost_by_unit={p.cost_by_unit}
               image={p.image}
+              key={p.id}
+              amount={p.amount}
+              total={p.total}
             />
           ))
         ) : (

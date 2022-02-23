@@ -155,10 +155,19 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case ADD_TO_CART:
-      return {
-        ...state,
-        cart: [...state.cart, action.payload],
-      };
+      let exists = state.cart.find((p, index) => {
+        if (p.id === action.payload.id) {
+          state.cart[index].amount =
+            action.payload.amount + state.cart[index].amount;
+          return true;
+        }
+      });
+      if (!exists) {
+        return {
+          ...state,
+          cart: [...state.cart, action.payload],
+        };
+      }
 
     case DELETE_ITEM:
       return {

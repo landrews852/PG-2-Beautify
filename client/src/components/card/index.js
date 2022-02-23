@@ -1,11 +1,9 @@
 import React from "react";
-import "./card.css"
+import "./card.css";
 import MarketButton from "../button/marketButton";
-import { Link } from "react-router-dom";
-
+import Amount from "../amountProduc/Amount";
 
 export default function Card({ image, product_name, cost_by_unit, id }) {
-  
   return (
     <div className="cardcontenedor">
       <div className="cards">
@@ -14,7 +12,8 @@ export default function Card({ image, product_name, cost_by_unit, id }) {
         <h3>{product_name}</h3>
         <span className="cardcost">$ {cost_by_unit}</span>
         {/* </Link> */}
-        <MarketButton quote={'VER MÁS'}></MarketButton>
+        <MarketButton quote={"VER MÁS"}></MarketButton>
+        <Amount />
       </div>
     </div>
   );

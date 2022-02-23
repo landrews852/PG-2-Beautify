@@ -1,14 +1,12 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import s from "./button.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions";
 import { Link } from "react-router-dom";
 
-
-export default function marketButton({type, link, quote}) {
-
+export default function marketButton({ type, link, quote }) {
   // const dispatch = useDispatch();
 
   // const productDetail = useSelector(state => state.productDetail);
@@ -21,8 +19,7 @@ export default function marketButton({type, link, quote}) {
   // };
 
   return (
-    <button className={s.buttoncart} >
-      
+    <button className={s.buttoncart}>
       <span className={s["button-text"]}> {quote} </span>
     </button>
   );

@@ -5,22 +5,20 @@ import s from "./button.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
-export default function Button({ type, link, quote }) {
+export default function Button({ type, link, quote, amount }) {
   const dispatch = useDispatch();
 
   const productDetail = useSelector((state) => state.productDetail);
-  // const cart = useSelector(state => state.cart);
 
   const handleAddToCart = () => {
-    console.log("Agregar al carrito", productDetail);
-    dispatch(addToCart(productDetail));
+    dispatch(addToCart({ ...productDetail, amount: amount }));
     Swal.fire({
-      icon: 'success',
-      title: '¡Buena elección!',
-      text: 'Ve al carrito para ver los productos agregados',
-    })
+      icon: "success",
+      title: "¡Buena elección!",
+      text: "Ve al carrito para ver los productos agregados",
+    });
   };
 
   return (

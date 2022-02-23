@@ -6,7 +6,7 @@ export default function Total() {
   let sum = 0;
 
   products.forEach((s) => {
-    sum = sum + s.total;
+    sum = sum + s.total * s.amount;
   });
 
   return (

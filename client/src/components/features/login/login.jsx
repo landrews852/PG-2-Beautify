@@ -26,8 +26,17 @@ export default function Login () {
 
 	const callprotectedApi = async () => {
 		try {
+		const infousuario = {
+			name_client: "Homer",
+			lastname_client: "Simpson",
+			profile_picture: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+			address: "Av. siempre viva 123",
+			password: "asdjapisdjasd",
+			phone: "45612323",
+			birthday: "2021-07-06"
+		} // info adicional para enviar a la API	
 		const token = await getAccessTokenSilently()
-		const response = await axios.get("http://localhost:3001/api/client/protected", {
+		const response = await axios.post("http://localhost:3001/api/client",infousuario, {
 			headers: {
 				authorization: `Bearer ${token}`
 			}

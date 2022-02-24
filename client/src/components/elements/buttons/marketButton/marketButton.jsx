@@ -41,7 +41,7 @@ export default function MarketButton({ amount, id }) {
   return (
     <>
       <button className={s.buttoncart} onClick={(e) => handleAddToCart(e)}>
-        <span className={s["button-text"]}> Agregar al carrito </span>
+        <span className={s["button-text"]}>Añadir al carrito</span>
       </button>
     </>
   );

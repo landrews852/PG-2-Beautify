@@ -2,7 +2,7 @@
 .cards {
   display: flex;
   flex-flow: column;
-  background: rgb(255 237 237);
+  background-color:rgb(255 237 237);
   border-radius: 10px;
 }
 

@@ -1,8 +1,10 @@
 import React from "react";
 import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
+import { useEffect, useState } from "react";
+import { addToCart } from "../../../../redux/actions";
 
 export default function Cart() {
   const productos = useSelector((state) => state.cart);

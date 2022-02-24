@@ -13,6 +13,7 @@ import Pagination from "../../../features/paginate/paginate";
 export default function Market() {
   const dispatch = useDispatch();
   let products = useSelector((state) => state.products);
+  const productsCart = useSelector((state) => state.cart);
 
   let [page, setPage] = useState(1);
   let firstItem = (page - 1) * 9;

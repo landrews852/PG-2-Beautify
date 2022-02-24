@@ -1,0 +1,60 @@
+/************ CONTENEDOR CARD ****************/
+.cards {
+    display: flex;
+    flex-flow: column;
+    background-color:rgb(255 237 237);
+    border-radius: 10px;
+    transition: all 0.3s ease-out;
+  }
+  
+  .cards:hover {
+    box-shadow: 0 2px 7px 3px rgba(0, 0, 0, 0.568);
+    transform: scale(1.02);
+  }
+  
+  .cards img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+    transition: all 1s ease-out;
+  }
+  .cards img:hover img {
+    transition: all 0.3s ease-out;
+  }
+  .cards img:hover img {
+    transform: scale(1.2, 1.2);
+  }
+  
+  .cardcost {
+    position: relative;
+    top: -2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: auto;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .cards h3 {
+    font-size: 1.5rem;
+    height: 4rem;
+    color: #333;
+    text-transform: uppercase;
+    text-overflow: clip;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  
+  .cardcontenedor {
+    width: 13vw;
+    margin: 1em 2em;
+    box-shadow: 0 1px 6px 2px rgba(0, 0, 0, 0.3);
+  margin-left: 6rem;
+    border-radius: 15px;
+    min-width: 250px;
+  }
+  
+  .homeowl {
+    margin: 1em auto;
+  }
+  

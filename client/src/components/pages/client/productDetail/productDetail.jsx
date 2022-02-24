@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import {
   getProductDetail,
   cleanProductDetail,
+  allProducts,
 } from "../../../../redux/actions";
 import React from "react";
 import Styles from "./productDetail.module.css";
@@ -13,7 +14,6 @@ export default function ProductDetail() {
   let { id } = useParams();
   const dispatch = useDispatch();
   let productDetail = useSelector((state) => state.productDetail);
-  const cart = useSelector((state) => state.cart);
 
   const ranking = 2.5;
   let ranking_starts = [1, 2, 3, 4, 5];
@@ -26,6 +26,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     dispatch(getProductDetail(id));
+    dispatch(allProducts());
     return dispatch(cleanProductDetail());
   }, [dispatch]);
 

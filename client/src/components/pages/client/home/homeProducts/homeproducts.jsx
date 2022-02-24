@@ -27,7 +27,6 @@ export default function HomeProducts() {
         <OwlCarousel className="owl-theme" loop margin={10} nav>
           {product !== "nothing found" &&
             product.slice(0, 10).map((p) => (
-              
                 <div class="item">
                   <Card
                     id={p.id}
@@ -36,7 +35,6 @@ export default function HomeProducts() {
                     cost_by_unit={p.cost_by_unit}
                   />
                 </div>
-              
             ))}
         </OwlCarousel>
       }

@@ -18,7 +18,7 @@ import {
   DELETE_ITEM,
 } from "../actions";
 
-const initialState = {
+export const initialState = {
   user: [],
   products: [],
   productDetail: {},
@@ -32,7 +32,7 @@ const initialState = {
   brands: [],
 };
 
-export default function rootReducer(state = initialState, action) {
+export function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_IMG_CARRUSEL:
       return {
@@ -140,9 +140,6 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case FILTER_BY_OFFER:
-      // const filteredProducts = state.allProducts.filter(product => {
-      //   return product.offert === action.payload.offert
-      // })
       return {
         ...state,
         products: action.payload,

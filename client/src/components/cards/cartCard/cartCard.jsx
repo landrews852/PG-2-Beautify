@@ -1,9 +1,7 @@
 import React from "react";
 import s from "./cartCard.module.css";
-import img from "../../../images/logo.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteItem } from "../../../redux/actions";
-import Amount from "../../features/amountProduct/amountProduct";
 
 export default function Card({
   image,
@@ -15,13 +13,8 @@ export default function Card({
 }) {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    // setGame({
-    //   ...cart,
-    //   cart: cart.id.filter((p) => p !== e),
-    // });
     if (id) {
       dispatch(deleteItem(id));
-      console.log(id);
     }
   };
   return (

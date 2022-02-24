@@ -1,25 +1,58 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { useAuth0 } from '@auth0/auth0-react'
 import './login.css';
-
+import axios from 'axios';
 export default function Login () {
     
 	
-	const handleClickCreate = (e) => {
-		e.preventDefault();
-		let check = document.getElementsByClassName("checkbox");		
-		check[0].checked=true;		
-	}
-	const handleClickLogin = (e) => {
-		e.preventDefault();
-		let check = document.getElementsByClassName("checkbox");		
-		check[0].checked=false;		
-	}
+	// const handleClickCreate = (e) => {
+	// 	e.preventDefault();
+	// 	let check = document.getElementsByClassName("checkbox");		
+	// 	check[0].checked=true;		
+	// }
+	// const handleClickLogin = (e) => {
+	// 	e.preventDefault();
+	// 	let check = document.getElementsByClassName("checkbox");		
+	// 	check[0].checked=false;		
+	// }
+
+	const {loginWithPopup, logout, user, isAuthenticated, getAccessTokenSilently} = useAuth0()
 	
+	const callApi = async () => {
+		const reqnoprot = await axios.get("http://localhost:3001/api/client")
+		console.log(reqnoprot.data);
+	}
+
+	const callprotectedApi = async () => {
+		try {
+		const token = await getAccessTokenSilently()
+		const response = await axios.get("http://localhost:3001/api/client/protected", {
+			headers: {
+				authorization: `Bearer ${token}`
+			}
+		})
+		console.log(response.data)
+		}
+		catch(error){
+			console.log(error)
+		}
+			
+	}
+
+	
+
 	return (
         <>  
-
-	<div className="sectionwraper">
+			<button onClick={loginWithPopup}>Log in</button>
+			<button onClick={logout}>Log out</button>
+			<button onClick={callApi}>No protedigo</button>
+			<button onClick={callprotectedApi}>Protegido</button>
+			<h2>User is {isAuthenticated?'Logged in' : 'Not Logged in'}</h2>
+      			{isAuthenticated &&
+      		<pre> {JSON.stringify(user,null,2)} </pre>
+			  }
+	{/* <div className="sectionwraper">
 		<div className="containerlogin">
 			<div className="row justify-content-center">
 				<div className="col-12 text-center align-self-center">
@@ -97,7 +130,7 @@ export default function Login () {
 		      	</div>
 	      	</div>
 	    </div>
-	</div> 
+	</div>  */}
 
         </>
     )

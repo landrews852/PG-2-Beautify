@@ -13,13 +13,8 @@ export default function Card({
 }) {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    // setGame({
-    //   ...cart,
-    //   cart: cart.id.filter((p) => p !== e),
-    // });
     if (id) {
       dispatch(deleteItem(id));
-      console.log(id);
     }
   };
   return (

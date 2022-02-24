@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import MarketButton from "../button/MarketButton";
+import { useSelector } from "react-redux";
+import { useLocalStorage } from "../localStorage/useLocalStorage";
 
 function Amount({ id }) {
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useLocalStorage("amount", 1);
 
   const handleClickSum = (e) => {
     e.preventDefault();

@@ -56,3 +56,19 @@
 .homeowl {
   margin: 1em auto;
 }
+
+.amount {
+  margin-left: -8rem;
+  margin-top: 1.5rem;
+  position: relative;
+  top: -0.5rem;
+  left: 1rem;
+}
+
+.button {
+  margin-left: 5rem;
+  margin-top: -3rem;
+  position: relative;
+  top: -0.5rem;
+  left: 1rem;
+}

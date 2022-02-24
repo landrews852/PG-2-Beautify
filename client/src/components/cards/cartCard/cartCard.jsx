@@ -2,6 +2,7 @@ import React from "react";
 import s from "./cartCard.module.css";
 import { useDispatch } from "react-redux";
 import { deleteItem } from "../../../redux/actions";
+import Amount from "../../features/amountProduct/amountProduct";
 
 export default function Card({
   image,
@@ -22,9 +23,9 @@ export default function Card({
       <img className={s.image} src={image} alt="Img not found" />
       <div className={s.card}>
         <div className={s.text}>
-          <h5>{product_name}</h5>
+          <h5 className={s.product_name}>{product_name}</h5>
           {cost_by_unit === total ? (
-            <p>$ {cost_by_unit}</p>
+            <p className={s.cost}>$ {cost_by_unit}</p>
           ) : (
             <p>
               Valor: <del>{cost_by_unit}</del>
@@ -32,7 +33,7 @@ export default function Card({
             </p>
           )}
 
-          <p>Cantidad : {amount}</p>
+          <p className={s.amount}> <Amount /> </p>
         </div>
         <button className={s.btn} onClick={(e) => handleDelete()}>
           x

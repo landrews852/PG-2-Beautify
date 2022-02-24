@@ -100,7 +100,7 @@
 /* control */
 
 .control{
-	bottom:auto;
+	bottom:5rem;
 	left: 22.8%;
 	
 }
@@ -218,3 +218,14 @@
 
 .product-image:hover img {transition: all 0.3s ease-out;}
 .product-image:hover img {transform: scale(1.2, 1.2);}
+
+.amount {
+	position: relative;
+	left: -7.5rem;
+	top: 3rem
+}
+
+.marketbutton {
+	position: relative;
+	left: 12rem;
+}

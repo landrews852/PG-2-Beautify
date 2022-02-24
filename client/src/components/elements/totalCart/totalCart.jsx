@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+
 export default function Total() {
   let products = useSelector((state) => state.cart);
   let sum = 0;

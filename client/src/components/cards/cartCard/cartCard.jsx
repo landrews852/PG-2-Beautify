@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteItem } from "../../../redux/actions";
 import Amount from "../../features/amountProduct/amountProduct";
 
+
 export default function Card({
   image,
   product_name,

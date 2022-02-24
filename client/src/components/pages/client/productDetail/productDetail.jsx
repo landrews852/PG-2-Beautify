@@ -9,6 +9,7 @@ import {
 import React from "react";
 import Styles from "./productDetail.module.css";
 import Amount from "../../../features/amountProduct/amountProduct";
+import MarketButton from "../../../elements/buttons/marketButton/marketButton";
 
 export default function ProductDetail() {
   let { id } = useParams();
@@ -47,7 +48,9 @@ export default function ProductDetail() {
 
             <div className={Styles.control}>
               <Amount id={productDetail.id} />
+          
             </div>
+            <div className={Styles.marketbutton}><MarketButton id={id}/></div>
           </div>
 
           <div className={Styles["product-image"]}>

@@ -7,20 +7,20 @@ margin: 0;
 }
 
 .quantity {
-    margin-left: 10px;
+    margin-left: 1rem;
 }
 
 .quantity input {
     text-align: center;
-    height: 35px;
-    width: 30px;
+    height: 1rem;
+    width: 2rem;
     border: none;
 }
 
 .btnn {
     
     border: none;
-    height: 35px;
-    width: 30px;
+    height: 2rem;
+    width: 2rem;
 }
 

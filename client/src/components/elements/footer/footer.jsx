@@ -18,7 +18,7 @@ export default function Footer() {
       </div>
       <ul className={s.lista}>
         <li className={s.li}>
-          <a href="https://www.instagram.com/">
+          <a href="https://www.instagram.com/" target="_blank">
             <img width="30px" src={ig} />
           </a>
         </li>

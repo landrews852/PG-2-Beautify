@@ -140,9 +140,6 @@ export function rootReducer(state = initialState, action) {
       };
 
     case FILTER_BY_OFFER:
-      // const filteredProducts = state.allProducts.filter(product => {
-      //   return product.offert === action.payload.offert
-      // })
       return {
         ...state,
         products: action.payload,

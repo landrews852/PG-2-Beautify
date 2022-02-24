@@ -115,7 +115,7 @@ export default function Filter({ Paginate }) {
           </select>
         </div>
         <div className={s.selectContainer}>
-          <button name="offert" onClick={handleFilterOffer}>
+          <button className={s.offert} name='offert' onClick={handleFilterOffer}>
             Ver ofertas
           </button>
           {/* <label className="label-filter">ofertas</label>           */}

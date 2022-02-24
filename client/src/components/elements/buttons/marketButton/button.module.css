@@ -12,11 +12,12 @@
     padding: 12px 18px;
     font-size: inherit;
     font-family: inherit;
-    width: 6rem;
-    height: auto;
+    width: 7rem;
+    height: 45px;
     margin: 0.5em auto;
     border: 1px solid #333;
-    border-radius: 20px;
+    border-radius: 10px;
+    margin-left: 18px;
    }
     
   

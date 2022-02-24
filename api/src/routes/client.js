@@ -1,16 +1,37 @@
 const { Router } = require("express");
 const { Client } = require("../db");
-
+const verifyjwt = require('../auth/auth.js');
+const { default: axios } = require("axios");
 const router = Router();
+
+// const authvalidate = router.use(verifyjwt)
 
 //Trae la información de todos los clientes
 router.get("/", async (req, res) => {
-  try {
-    const allData = await Client.findAll();
-    res.json(allData);
-  } catch (err) {
-    res.json(err);
-  }
+  // try {
+  //   const allData = await Client.findAll();
+  //   res.json(allData);
+  // } catch (err) {
+  //   res.json(err);
+  // }
+  res.json("No protegido")
+});
+
+router.get("/protected", verifyjwt, async (req, res) => {
+  // try {
+  //   const allData = await Client.findAll();
+  //   res.json(allData);
+  // } catch (err) {
+  //   res.json(err);
+  // }
+  const accesstoken = req.headers.authorization.split(' ')[1];
+  const response = await axios.get('https://dev-la4nkwuq.us.auth0.com/userinfo',{
+    headers: {
+      authorization: `Bearer ${accesstoken}`
+    }
+  });
+  const userinfo = response.data;
+  res.json(userinfo)
 });
 
 //Utiliza el id para conseguir la info de un cliente específico

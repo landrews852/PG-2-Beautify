@@ -18,7 +18,7 @@ export default function Footer() {
               </Link>
             </div>
             <ul className={s.lista}>
-                <li className={s.li}><a href="https://www.instagram.com/"><img width='30px' src={ig} /></a></li>
+                <li className={s.li}><a href="https://www.instagram.com/" target="_blank"><img width='30px' src={ig} /></a></li>
                 <li className={s.li}><a href="https://www.facebook.com/"><img width='28px' src={fb} /></a></li>
                 <li className={s.li}><div>
     <CopyToClipboard text= "beauty@email.com">

@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProductDetail, cleanProductDetail } from "../../../../redux/actions";
+import {
+  getProductDetail,
+  cleanProductDetail,
+} from "../../../../redux/actions";
 import React from "react";
 import Styles from "./productDetail.module.css";
-// import Button from "../button/button";
 import Amount from "../../../features/amountProduct/amountProduct";
-
-// let products = require("../../datamock/Products.json");
 
 export default function ProductDetail() {
   let { id } = useParams();

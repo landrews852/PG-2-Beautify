@@ -3,11 +3,8 @@ import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
 import { useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
-import Amount from "../../../features/amountProduct/amountProduct";
-
 
 export default function Cart() {
-  // const dispatch = useDispatch();
   const productos = useSelector((state) => state.cart);
 
   return (

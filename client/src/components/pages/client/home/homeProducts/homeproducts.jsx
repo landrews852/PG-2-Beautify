@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allProducts } from "../../../../../redux/actions";
 import OwlCarousel from "react-owl-carousel";
@@ -10,10 +10,6 @@ import { useMemo } from "react";
 
 export default function HomeProducts() {
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(allProducts());
-  // },[]);
 
   let product = useSelector((state) => state.products);
 
@@ -28,7 +24,7 @@ export default function HomeProducts() {
           {product !== "nothing found" &&
             product.slice(0, 10).map((p) => (
               <Link key={p.id} to={"/market/" + p.id}>
-                <div class="item">
+                <div className="item">
                   <Card
                     id={p.id}
                     product_name={p.product_name}

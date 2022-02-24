@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./cartCard.module.css";
-import img from "../../../images/logo.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteItem } from "../../../redux/actions";
 
 export default function Card({

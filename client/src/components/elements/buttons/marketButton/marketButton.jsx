@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./button.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../../redux/actions";

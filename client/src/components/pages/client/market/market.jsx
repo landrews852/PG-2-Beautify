@@ -8,12 +8,9 @@ import Filter from "../../../elements/filter/index";
 import { allProducts } from "../../../../redux/actions";
 import Pagination from "../../../features/paginate/paginate";
 
-// let allProducts = require('../../datamock/Products.json')
-
 export default function Market() {
   const dispatch = useDispatch();
   let products = useSelector((state) => state.products);
-  const productsCart = useSelector((state) => state.cart);
 
   let [page, setPage] = useState(1);
   let firstItem = (page - 1) * 9;
@@ -22,8 +19,9 @@ export default function Market() {
   let paginatedProducts =
     products !== "nothing found" ? products.slice(firstItem, lastItem) : [];
 
-  useEffect(async () => {
-    if (typeof products === 'string') dispatch(allProducts());
+  useEffect(() => {
+    if (typeof products === "string" || products.length == 0)
+      dispatch(allProducts());
   }, []);
 
   const Paginate = (page) => {

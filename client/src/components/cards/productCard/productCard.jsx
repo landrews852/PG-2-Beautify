@@ -1,7 +1,5 @@
 import React from "react";
 import "./productCard.css";
-import Button from "../../elements/buttons/button/button";
-
 import Amount from "../../features/amountProduct/amountProduct";
 
 export default function Card({ image, product_name, cost_by_unit, id }) {

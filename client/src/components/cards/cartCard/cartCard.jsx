@@ -24,7 +24,7 @@ export default function Card({
         <div className={s.text}>
           <h5>{product_name}</h5>
           {cost_by_unit === total ? (
-            <p>Valor:{cost_by_unit}</p>
+            <p>$ {cost_by_unit}</p>
           ) : (
             <p>
               Valor: <del>{cost_by_unit}</del>

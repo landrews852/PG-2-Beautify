@@ -22,7 +22,7 @@ export default function Market() {
     products !== "nothing found" ? products.slice(firstItem, lastItem) : [];
 
   useEffect(async () => {
-    if (products.length === 0) dispatch(allProducts());
+    if (typeof products === 'string') dispatch(allProducts());
   }, []);
 
   const Paginate = (page) => {

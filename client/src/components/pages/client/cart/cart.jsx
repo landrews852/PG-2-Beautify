@@ -2,13 +2,7 @@ import React from "react";
 import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
 import { useSelector } from "react-redux";
-<<<<<<< HEAD:client/src/components/cart/index.js
-import Total from "../totalCart/Total";
-=======
 import Total from "../../../elements/totalCart/totalCart";
-import Amount from "../../../features/amountProduct/amountProduct";
-
->>>>>>> 8a9d5bdc48c86682abbcdae7ca66503d1c76e0d4:client/src/components/pages/client/cart/cart.jsx
 
 export default function Cart() {
   const productos = useSelector((state) => state.cart);

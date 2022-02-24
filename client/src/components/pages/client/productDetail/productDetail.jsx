@@ -1,15 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProductDetail, cleanProductDetail } from "../../../../redux/actions";
+import {
+  getProductDetail,
+  cleanProductDetail,
+} from "../../../../redux/actions";
 import React from "react";
 import Styles from "./productDetail.module.css";
-<<<<<<< HEAD:client/src/components/productDetail/productDetail.jsx
-import Amount from "../amountProduc/Amount";
-=======
-// import Button from "../button/button";
 import Amount from "../../../features/amountProduct/amountProduct";
->>>>>>> 8a9d5bdc48c86682abbcdae7ca66503d1c76e0d4:client/src/components/pages/client/productDetail/productDetail.jsx
 
 export default function ProductDetail() {
   let { id } = useParams();

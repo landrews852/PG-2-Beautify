@@ -1,12 +1,8 @@
 import React from "react";
-import { useState } from "react";
-<<<<<<< HEAD:client/src/components/amountProduc/Amount.jsx
-import MarketButton from "../button/MarketButton";
-import { useSelector } from "react-redux";
-import { useLocalStorage } from "../localStorage/useLocalStorage";
-=======
+
 import MarketButton from "../../elements/buttons/marketButton/marketButton";
->>>>>>> 8a9d5bdc48c86682abbcdae7ca66503d1c76e0d4:client/src/components/features/amountProduct/amountProduct.jsx
+
+import { useLocalStorage } from "../../localStorage/useLocalStorage";
 
 function Amount({ id }) {
   const [amount, setAmount] = useLocalStorage("amount", 1);

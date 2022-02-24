@@ -5,10 +5,6 @@ import s from "./button.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../../redux/actions";
 import Swal from "sweetalert2";
-<<<<<<< HEAD:client/src/components/button/marketButton.jsx
-import { useLocalStorage } from "../localStorage/useLocalStorage";
-=======
->>>>>>> 8a9d5bdc48c86682abbcdae7ca66503d1c76e0d4:client/src/components/elements/buttons/marketButton/marketButton.jsx
 
 export default function MarketButton({ amount, id }) {
   const dispatch = useDispatch();

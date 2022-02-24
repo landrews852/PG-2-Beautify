@@ -26,7 +26,10 @@ router.get("/", async (req, res) => {
   } else {
     const condition = filter(categoryId, brand?.toLowerCase(), min, max);
     try {
-      condition.include = { model: Category, attributes: ["name_category"] };
+      condition.include = {
+        model: Category,
+        attributes: ["name_category"],
+      };
       let products;
       if (orderName) {
         condition.order = [["product_name", orderName]];

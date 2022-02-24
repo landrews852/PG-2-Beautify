@@ -23,7 +23,7 @@ export default function Footer() {
           </a>
         </li>
         <li className={s.li}>
-          <a href="https://www.facebook.com/">
+          <a href="https://www.facebook.com/" target="_blank">
             <img width="28px" src={fb} />
           </a>
         </li>

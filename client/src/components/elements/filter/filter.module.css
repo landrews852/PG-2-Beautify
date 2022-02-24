@@ -47,6 +47,32 @@
   margin-top: 12px;
 }
 
+.offert {
+  background: linear-gradient(
+    to bottom,
+    rgb(253, 238, 230) 5%,
+    rgb(251, 222, 218) 100%
+  );
+}
+
+.offert:hover {
+  background: linear-gradient(
+    to bottom,
+    rgb(253, 230, 224) 5%,
+    rgb(253, 238, 230) 100%
+  );
+}
+
+.offert:active {
+  background: linear-gradient(
+    to bottom,
+    rgb(253, 230, 224) 5%,
+    rgb(253, 238, 230) 100%
+  );
+  position: relative;
+  top: 1px;
+}
+
 @media screen and (max-width: 680px) {
   .filter {
     width: 200px;

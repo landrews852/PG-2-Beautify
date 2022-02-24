@@ -1,5 +1,6 @@
 .navBarr {
-  background-color: #fbeee6 !important;
+  /* background-color: #fbeee6 !important; */
+  background: linear-gradient(to bottom, #ffffff 5%, #fbeee6 100%);
   overflow: hidden;
   border-bottom: 1px solid #ebebeb;
 }

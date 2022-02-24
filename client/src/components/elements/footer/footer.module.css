@@ -9,7 +9,8 @@
   margin-top: 20px;
   position: sticky;
   /* bottom: 1%; */
-  background-color: #fcfcfc;
+  background: linear-gradient(to bottom, #fbeee6 5%, #ffffff 100%);
+  background-color: #ffffff;
 }
 
 .img {

@@ -27,22 +27,18 @@ export default function Login () {
 	const dispatch = useDispatch();
 	const userinfo = useSelector((state) => state.user);
     const isauth = isAuthenticated?1:2;
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
-	const callApi = async () => {
-		const reqnoprot = await axios.get("http://localhost:3001/api/client")
-		console.log(reqnoprot.data);
-	}
-	const [auth, setAuth] = useState(false);
+	// const callApi = async () => {
+	// 	const reqnoprot = await axios.get("http://localhost:3001/api/client")
+	// 	console.log(reqnoprot.data);
+	// }
+	// const [auth, setAuth] = useState(false);
 
-    useEffect (async()=>{        
-		setAuth (isAuthenticated);
-		if (isAuthenticated&&!userinfo.length) 
-		{			
-			const token = await getAccessTokenSilently()
-			const id = user.sub.split("|")[1];
-			dispatch(getUserInfo(id,token));
-			
+    useEffect (async ()=>{        
+		if(isAuthenticated){ 
+			const token = await getAccessTokenSilently();
+			dispatch(getUserInfo(token));
 		}
     },[isAuthenticated])
 
@@ -77,18 +73,21 @@ export default function Login () {
 			
 	}
 	
-	const logOff = (e) =>{
-		logout();
-		localStorage.clear();
+	
+	const logger = (state) =>{
+		if(state === 'Login') return loginWithPopup();
+		else{
+			logout();
+			localStorage.clear();
+		}
 	}
 
 	return (
         <>  
-			<button onClick={loginWithPopup}>Log in</button>
-			<button onClick={(e) => logOff(e)}>Log out</button>
-			<button onClick={callApi}>No protedigo</button>
-			<button onClick={callprotectedApi}>Generar Usuario</button>
-			<h3>{isAuthenticated?"Logeado":"No Logeado"}</h3>
+			
+			<button onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
+			<button onClick={callprotectedApi}>protected</button>
+			
 			  
 	{/* <div className="sectionwraper">
 		<div className="containerlogin">

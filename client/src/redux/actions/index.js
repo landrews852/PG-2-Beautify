@@ -183,25 +183,30 @@ export function deleteItem(payload) {
   };
 }
 
-export const postClient = (payload) => {
+export const callprotectedApi = async (infousuario, token) => {
+  try {	
+    const response = await axios.post("http://localhost:3001/api/client",infousuario, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+  })
+    console.log(response.data)
+  }
+  catch(error){
+    console.log(error)
+  }
+}
+
+export function getUserInfo(token) {
   return async function (dispatch) {
-    var response = await axios.post(
-      "http://localhost:3001/api/client/",
-      payload
-    );
-    return response;
-  };
-};
-export function getUserInfo(id,token) {
-  return async function (dispatch) {
-  const user = await axios.get(`http://localhost:3001/api/client/${id}`, {
-          headers: {
-            authorization: `Bearer ${token}`
-          }
-  })  
-  dispatch({
-    type: GET_CLIENT,
-    payload: user.data,
-  });
+    const user = await axios.get(`http://localhost:3001/api/client/info`, {
+            headers: {
+              authorization: `Bearer ${token}`
+            }
+    })  
+    dispatch({
+      type: GET_CLIENT,
+      payload: user.data,
+    });
   }
 }

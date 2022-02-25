@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { postClient } from "../../../../redux/actions";
+import { callprotectedApi } from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 import s from "./createClient.module.css"
 
 const validate = (input) => {
@@ -39,7 +40,6 @@ const validate = (input) => {
     return errors;
   };
 
-
 export default function CreateClient() {
     const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
@@ -51,9 +51,6 @@ export default function CreateClient() {
       address: "",
       phone: "",
       birthday: "",
-      id: "",
-      id_auth: "",
-      email: ""
     })
     console.log(input)
     console.log(errors)
@@ -80,9 +77,12 @@ export default function CreateClient() {
         })
     }
 
-    function handleSubmit(e) {
+    const {getAccessTokenSilently} = useAuth0();
+
+    async function handleSubmit (e) {
         e.preventDefault();
-        dispatch(postClient(input))
+        const token = await getAccessTokenSilently()
+        dispatch(callprotectedApi(input, token))
         alert("Client was added successfully!")
         setInput({
           name_client: "",
@@ -91,9 +91,6 @@ export default function CreateClient() {
           address: "",
           phone: "",
           birthday: "",
-          id: "",
-          id_auth: "",
-          email: ""
         })
     }
 
@@ -129,7 +126,7 @@ export default function CreateClient() {
                         <p className={s.error}>{errors.lastname_client}</p>
                     )}
 
-                    <div>
+                    {/* <div>
                         <label>E-mail:</label>
                         <input
                             type="email"
@@ -140,30 +137,7 @@ export default function CreateClient() {
                     </div>
                     {errors.email && (
                         <p className={s.error}>{errors.email}</p>
-                    )}
-                
-                    <div>
-                        <label>Auth_id:</label>
-                        <input
-                            type="text"
-                            value={input.id_auth}
-                            name="id_auth"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    
-                    <div>
-                        <label>identificacion:</label>
-                        <input
-                            type="number"
-                            value={input.id}
-                            name="id"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    {errors.id && (
-                        <p className={s.error}>{errors.id}</p>
-                    )}
+                    )} */}
 
                     <div>
                         <label>Foto Perfil:</label>
@@ -174,7 +148,7 @@ export default function CreateClient() {
                             onChange={handleChange}
                         />
                     </div>
-               
+                    
                     <div>
                         <label>Direccion:</label>
                         <input

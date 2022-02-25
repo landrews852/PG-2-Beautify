@@ -5,12 +5,9 @@ module.exports = (sequelize) => {
     "client",
     {
       id: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.STRING,
         primaryKey: true,
         allowNull: false,
-      },
-      id_auth: {
-        type: DataTypes.STRING,
       },
       name_client: {
         type: DataTypes.STRING,

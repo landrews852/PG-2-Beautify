@@ -7,14 +7,8 @@ const router = Router();
 // const authvalidate = router.use(verifyjwt)
 
 //Trae la información de todos los clientes
-router.get("/", async (req, res) => {
-  // try {
-  //   const allData = await Client.findAll();
-  //   res.json(allData);
-  // } catch (err) {
-  //   res.json(err);
-  // }
-  res.json("No protegido")
+router.get("/",verifyjwt, async (req, res) => {
+  
 });
 
 // router.post("/protected",  async (req, res) => {
@@ -43,9 +37,11 @@ router.get("/", async (req, res) => {
 
 
 //Utiliza el id para conseguir la info de un cliente específico
-router.get("/:id",verifyjwt, async (req, res) => {
+router.get("/info",verifyjwt, async (req, res) => {
   try {
-    const { id } = req.params;
+    const userinfo = await verifytoken(req);
+    const { sub } = userinfo;
+    const id = sub.split('|')[1];
     if (id) {
       const dataClient = await Client.findAll({
         where: {
@@ -69,20 +65,17 @@ router.post("/",verifyjwt, async (req, res) => {
       name_client,
       lastname_client,
       profile_picture,
-      id_auth,
-      email,
       address,
       phone,
       birthday,
       admin
     } = req.body;
-    if (name_client && lastname_client && id && email && address) {
+    if (name_client && lastname_client && email && address) {
       const newClient = await Client.create({
-        id_auth,
+        id: idsub,
         name_client,
         lastname_client,
         profile_picture,
-        id,
         email,
         address,
         phone,

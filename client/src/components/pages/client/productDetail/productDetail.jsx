@@ -50,7 +50,7 @@ export default function ProductDetail() {
               <Amount id={productDetail.id} />
           
             </div>
-            <div className={Styles.marketbutton}><MarketButton id={id}/></div>
+            <div className={Styles.marketbutton}><MarketButton amount = {productDetail.amount} id={productDetail.id}/></div>
           </div>
 
           <div className={Styles["product-image"]}>

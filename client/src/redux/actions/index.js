@@ -1,15 +1,11 @@
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
-<<<<<<< HEAD
-const apiRoute = "localhost:3001";
-=======
 export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
 export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
 export const DELETE_IMG_CARRUSEL = "DELETE_IMG_CARRUSEL";
 export const PUT_IMG_CARRUSEL = "PUT_IMG_CARRUSEL";
-const apiRoute = 'localhost:3001'
->>>>>>> b0a021fa3d6dae5cfb180051fd37d67d9d484df4
+const apiRoute = "localhost:3001";
 // const apiRoute = '143.244.172.125'
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
 export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
@@ -29,10 +25,7 @@ export const GET_BRANDS = "GET_BRANDS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_ITEM = "DELETE_ITEM";
 export const UPDATE_CART = "UPDATE_CART";
-export const GET_CLIENT = "GET_CLIENT"
-
-
-
+export const GET_CLIENT = "GET_CLIENT";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -51,7 +44,8 @@ export const getImgCarousel = () => {
 export const postImgCarousel = (payload) => {
   return async function (dispatch) {
     try {
-      let response = await axios.post("http://localhost:3001/api/carousel/",
+      let response = await axios.post(
+        "http://localhost:3001/api/carousel/",
         payload
       );
       return response.data;
@@ -64,8 +58,10 @@ export const postImgCarousel = (payload) => {
 export const deleteImgCarousel = (id) => {
   return async function (dispatch) {
     try {
-      let response = await axios.delete(`http://localhost:3001/api/carousel/${id}`);
-      dispatch(getImgCarousel())
+      let response = await axios.delete(
+        `http://localhost:3001/api/carousel/${id}`
+      );
+      dispatch(getImgCarousel());
       return response.data;
     } catch (err) {
       console.log(err);
@@ -76,7 +72,10 @@ export const deleteImgCarousel = (id) => {
 export const putImgCarousel = (data) => {
   return async function (dispatch) {
     try {
-      let response = await axios.put(`http://localhost:3001/api/carousel/${data.id}`, data);
+      let response = await axios.put(
+        `http://localhost:3001/api/carousel/${data.id}`,
+        data
+      );
       return response.data;
     } catch (err) {
       console.log(err);
@@ -178,7 +177,7 @@ export const priceSort = (payload) => {
   //   );
   //   return dispatch({ type: PRICE_SORT, payload: sort.data });
   // };
-    return {
+  return {
     type: PRICE_SORT,
     payload,
   };
@@ -253,14 +252,14 @@ export function deleteItem(payload) {
 
 export function getUserInfo(token) {
   return async function (dispatch) {
-  const user = await axios.get(`http://localhost:3001/api/client/info`, {
-          headers: {
-            authorization: `Bearer ${token}`
-          }
-  })  
-  dispatch({
-    type: GET_CLIENT,
-    payload: user.data,
-  });
-  }
+    const user = await axios.get(`http://localhost:3001/api/client/info`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    dispatch({
+      type: GET_CLIENT,
+      payload: user.data,
+    });
+  };
 }

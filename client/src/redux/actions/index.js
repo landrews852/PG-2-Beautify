@@ -157,20 +157,28 @@ export const postService = (payload) => {
 };
 
 export const nameSort = (payload) => {
-  return async function (dispatch) {
-    let sort = await axios.get(
-      `http://${apiRoute}/api/product?orderName=${payload}`
-    );
-    return dispatch({ type: NAME_SORT, payload: sort.data });
+  // return async function (dispatch) {
+  //   let sort = await axios.get(
+  //     `http://${apiRoute}/api/product?orderName=${payload}`
+  //   );
+  //   return dispatch({ type: NAME_SORT, payload: sort.data });
+  // };
+  return {
+    type: NAME_SORT,
+    payload,
   };
 };
 
 export const priceSort = (payload) => {
-  return async function (dispatch) {
-    let sort = await axios.get(
-      `http://${apiRoute}/api/product?orderPrice=${payload}`
-    );
-    return dispatch({ type: PRICE_SORT, payload: sort.data });
+  // return async function (dispatch) {
+  //   let sort = await axios.get(
+  //     `http://${apiRoute}/api/product?orderPrice=${payload}`
+  //   );
+  //   return dispatch({ type: PRICE_SORT, payload: sort.data });
+  // };
+    return {
+    type: PRICE_SORT,
+    payload,
   };
 };
 

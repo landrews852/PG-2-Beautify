@@ -12,21 +12,17 @@
     padding: 12px 18px;
     font-size: inherit;
     font-family: inherit;
-    width: 4rem;
+    width: 10rem;
     height: 45px;
     margin: 0.5em auto;
-    background: rgb(255, 120, 120);
-    background-image: url("../../../../images/carrito2.png");
-    background-size: 30px 30px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    border-radius: 10px;
-    margin-left: 18px;
+    background: rgb(3, 3, 3);
+    position: relative;
+    left: -21.5rem;
+    top:4rem;
    }
    
    .buttoncart:hover {
-    width: 6.5rem;
-    background-image: none;
+    background-color: #6e6e6e;
     transition: 0.5s ease;
    }
   
@@ -35,25 +31,14 @@
    .buttoncart .button-text {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
-    top: 0;
+    top: 0.5rem;
     left: 0;
     right: 0;
     bottom: 0;
     color: whitesmoke;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.6;
-    font-size: 0px;
+    font-size: 1.2rem;
     text-align: center;
-    text-transform: uppercase;
-   }
-   
-   
-   
-   
-   .buttoncart:hover .button-text {
-    color:black;
-    font-size: 14px;
-    
-    transition: 0.5s ease;
-   }
-   
+    }
+

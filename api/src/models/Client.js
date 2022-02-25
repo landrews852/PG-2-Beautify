@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
     "client",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         primaryKey: true,
         allowNull: false,
       },
@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       email: {
         type: DataTypes.STRING,
@@ -37,6 +37,10 @@ module.exports = (sequelize) => {
       },
       birthday: {
         type: DataTypes.DATEONLY,
+      },
+      admin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
       disabled: {
         type: DataTypes.STRING,

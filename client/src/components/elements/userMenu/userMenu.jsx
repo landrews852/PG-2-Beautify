@@ -58,9 +58,10 @@ export default function UserMenu() {
       </Dropdown.Toggle>
 
       <Dropdown.Menu align="end" as={CustomMenu} className={s.menu}>
-      <Dropdown.Item as={Link} to="/admin/product/create" active={location.pathname === "/admin/product/create"}>Crear producto</Dropdown.Item>
-      <Dropdown.Item as={Link} to="/admin/service/create" active={location.pathname === "/admin/service/create"}>Crear servicio</Dropdown.Item>
-      <Dropdown.Item as={Link} to="/admin/config" active={location.pathname === "/admin/config"}>Modificar página</Dropdown.Item>
+      {/* <Dropdown.Item as={Link} to="/config/admin/product/create" active={location.pathname === "/config/admin/product/create"}>Crear producto</Dropdown.Item>
+      <Dropdown.Item as={Link} to="/config/admin/service/create" active={location.pathname === "/config/admin/service/create"}>Crear servicio</Dropdown.Item> */}
+      <Dropdown.Item as={Link} to="/config" active={location.pathname === "/config"}>Configuracion</Dropdown.Item>
+      <Dropdown.Item>Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   </>

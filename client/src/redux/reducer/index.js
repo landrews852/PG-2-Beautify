@@ -1,5 +1,6 @@
+import axios from "axios";
 import {
-  GET_IMG_CARRUSEL,
+  GET_IMG_CAROUSEL,
   GET_PRODUCTS_BY_NAME,
   GET_SERVICES_BY_NAME,
   ALL_PRODUCTS,
@@ -18,6 +19,7 @@ import {
   ADD_TO_CART,
   DELETE_ITEM,
   UPDATE_CART,
+  GET_CLIENT,
 } from "../actions";
 
 export const initialState = {
@@ -36,7 +38,7 @@ export const initialState = {
 
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_IMG_CARRUSEL:
+    case GET_IMG_CAROUSEL:
       return {
         ...state,
         carrusel: action.payload,
@@ -89,43 +91,55 @@ export function rootReducer(state = initialState, action) {
         productDetail: {},
       };
 
-    case PRICE_SORT:
-      return {
-        ...state,
-        products: action.payload,
-      };
-
-    case NAME_SORT:
-      return {
-        ...state,
-        products: action.payload,
-      };
-
-    // case RATING_SORT:
-    //   let arraySort1 =
-    //   action.payload === "asc"
-    //     ? state.allProducts.sort(function (a, b) {
-    //       if (a.rating > b.rating) {
-    //         return 1;
-    //       }
-    //       if (b.rating > a.rating) {
-    //         return -1;
-    //       }
-    //       return 0;
-    //     })
-    //     : state.allProducts.sort(function (a, b) {
-    //       if (a.rating > b.rating) {
-    //         return -1;
-    //       }
-    //       if (b.rating > a.rating) {
-    //         return 1;
-    //       }
-    //       return 0;
-    //     });
+    // case NAME_SORT:
     //   return {
     //     ...state,
-    //     products: arraySort1,
+    //     products: action.payload,
     //   };
+
+    // case PRICE_SORT:
+    //   return {
+    //     ...state,
+    //     products: action.payload,
+    //   };
+
+    case NAME_SORT:
+      const asc = action.payload;
+      return {
+        ...state,
+        products: state.products.slice().sort((a, b) => {
+          if (asc === "ASC") {
+            return a.product_name.localeCompare(b.product_name);
+          }
+          return b.product_name.localeCompare(a.product_name);
+        }),
+      };
+
+    case PRICE_SORT:
+      let arraySort1 =
+        action.payload === "ASC"
+          ? state.products.slice().sort(function (a, b) {
+              if (a.cost_by_unit > b.cost_by_unit) {
+                return 1;
+              }
+              if (b.cost_by_unit > a.cost_by_unit) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.products.slice().sort(function (a, b) {
+              if (a.cost_by_unit > b.cost_by_unit) {
+                return -1;
+              }
+              if (b.cost_by_unit > a.cost_by_unit) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        products: arraySort1,
+      };
 
     case FILTER_BY_CATEGORY:
       return {
@@ -185,6 +199,12 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         cart: state.cart.filter((p) => p.id !== action.payload),
+      };
+    case GET_CLIENT:
+      localStorage.setItem("user", JSON.stringify(action.payload));
+      return {
+        ...state,
+        user: action.payload,
       };
 
     default:

@@ -4,7 +4,7 @@ import React from "react";
 import Card from "../../../cards/productCard/productCard";
 import { Link } from "react-router-dom";
 import "./market.css";
-import Filter from "../../../elements/filter/index";
+import Filter from "../../../elements/filter/filter";
 import { allProducts } from "../../../../redux/actions";
 import Pagination from "../../../features/paginate/paginate";
 

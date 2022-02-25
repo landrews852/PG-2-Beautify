@@ -1,7 +1,7 @@
 .navBarr {
   /* background-color: #fbeee6 !important; */
   background: linear-gradient(to bottom, #ffffff 5%, #fbeee6 100%);
-  overflow: hidden;
+  /* overflow: hidden; */
   border-bottom: 1px solid #ebebeb;
 }
 
@@ -62,6 +62,7 @@
   z-index: 100;
   transition: all 250ms linear;
 }
+
 
 a:link {
   color: #000000;

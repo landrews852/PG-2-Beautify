@@ -2,10 +2,12 @@ import React from "react";
 import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../../../images/logo2.png";
-import SearchBar from "../../features/searchbar/index";
-import Cart_logo from "./cart_logo";
+import SearchBar from "../../features/searchbar/searchBar";
+import ButtonLogin from "../buttons/loginButton/loginButton";
+import Cart_logo from "./cartLogo";
 import s from "./navBar.module.css";
 import { Link } from "react-router-dom";
+import UserMenu from "../userMenu/userMenu";
 import { useLocation } from "react-router-dom";
 
 export default function Navigator() {
@@ -37,6 +39,7 @@ export default function Navigator() {
           ) : null}
 
           <Cart_logo />
+          <UserMenu />
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -38,6 +38,10 @@ module.exports = (sequelize) => {
       birthday: {
         type: DataTypes.DATEONLY,
       },
+      admin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       disabled: {
         type: DataTypes.STRING,
         defaultValue: false,

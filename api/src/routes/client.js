@@ -43,7 +43,7 @@ router.get("/", async (req, res) => {
 
 
 //Utiliza el id para conseguir la info de un cliente específico
-router.get("/:id", async (req, res) => {
+router.get("/:id",verifyjwt, async (req, res) => {
   try {
     const { id } = req.params;
     if (id) {

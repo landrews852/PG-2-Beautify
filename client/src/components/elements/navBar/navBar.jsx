@@ -9,6 +9,7 @@ import s from "./navBar.module.css";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
+import Login from '../../features/login/login';
 
 
 export default function Navigator () {
@@ -17,6 +18,7 @@ export default function Navigator () {
   const { isAuthenticated } = useAuth0();
   console.log(user);
    
+  
 
   return (
     <Navbar className={s.navBarr} variant="light" expand="lg">
@@ -30,9 +32,9 @@ export default function Navigator () {
             <Link to="/aboutUs" className='nav-link'>Quienes somos</Link>
             <Link to="/market" className='nav-link'>Productos</Link>
             <Link to="/services" className='nav-link'>Servicios</Link>
-            <Link to="/login">Login</Link>
-            {isAuthenticated && user[0]?.admin && <Link to="/admin/createProduct">Crear Producto</Link>}
-            {isAuthenticated && user[0]?.admin && <Link to="/admin/createService">Crear Servicio</Link>}
+            <Login />
+            {isAuthenticated &&  <Link to="/profile">Profile</Link>}
+            
             {/* <Nav.Link> <ButtonLogin /> </Nav.Link> */}
             {/* <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item href="/product1">product 1</NavDropdown.Item>

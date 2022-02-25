@@ -4,8 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter as Router} from 'react-router-dom';
 
 //Admin Pages
-import CreateProduct from './components/pages/admin/createProduct/createProduct'
-import CreateService from './components/pages/admin/createService/createService'
+import PrivateRoute from './components/features/privateRoute/privateRoute';
+import PanelAdmin from './components/features/panel/panelAdmin';
 
 //Client Pages
 import Cart from './components/pages/client/cart/cart';
@@ -14,12 +14,13 @@ import Home from './components/pages/client/home/home'
 import Services from './components/pages/client/services/services';
 import Market from './components/pages/client/market/market';
 import ProductDetail from './components/pages/client/productDetail/productDetail';
+import PanelUser from './components/features/panel/panelUser';
 
 //Always Show
 import Navigator from './components/elements/navBar/navBar';
 import Footer from './components/elements/footer/footer';
 import Login from './components/features/login/login';
-import PrivateRoute from './components/features/privateRoute/privateRoute';
+
 import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
@@ -40,9 +41,10 @@ function App() {
           <Route  path="/services" element={<Services />}/>
           <Route  path="/aboutUs" element={<AboutUs />}/>
           <Route  path="/cart" element={<Cart />}/>
-          <Route path="/admin/:component" element={isLoading ? <span>cargando</span> : <PrivateRoute>
-            <CreateProduct />
-            <CreateService />
+          <Route path="/profile" element={isLoading ? <span>cargando</span> : 
+          <PrivateRoute>
+            <PanelAdmin/>
+            <PanelUser/>
           </PrivateRoute>}/>
           <Route  path="/login" element={<Login />}/>
         </Routes>

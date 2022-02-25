@@ -7,6 +7,7 @@ import ButtonLogin from "../buttons/loginButton/loginButton";
 import Cart_logo from "./cart_logo";
 import s from "./navBar.module.css";
 import { Link } from "react-router-dom";
+import UserMenu from "../userMenu/userMenu"
 
 export default function Navigator() {
   return (
@@ -34,6 +35,7 @@ export default function Navigator() {
           <Cart_logo />
         </Navbar.Collapse>
       </Container>
+      <UserMenu/>
     </Navbar>
   );
 }

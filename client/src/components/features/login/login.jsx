@@ -86,7 +86,7 @@ export default function Login () {
         <>  
 			
 			<button onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
-			<button onClick={callprotectedApi}>protected</button>
+			<button onClick={callprotectedApi}>Guardar</button>
 			
 			  
 	{/* <div className="sectionwraper">

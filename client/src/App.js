@@ -45,7 +45,7 @@ function App() {
               <Route path="admin/edit/aboutUs" element={<EditAboutUs />} />
               {/* <Route  path="/" element={}/>
             <Route  path="/" element={}/>  */}
-              {/* <Route path="admin/carousel" element={<EditCarousel />} /> */}
+              <Route path="admin/carousel" element={<EditCarousel />} />
             </Route>
           </Routes>
           < Footer /> {/* se agregó el footer a todas las páginas */}

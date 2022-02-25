@@ -34,7 +34,7 @@ export default function Card({
             </p>
           )}
 
-          <p className={s.amount}> <Amount /> </p>
+          <p className={s.amount}> <Amount id ={id}/> </p>
         </div>
         <button className={s.btn} onClick={(e) => handleDelete()}>
           x

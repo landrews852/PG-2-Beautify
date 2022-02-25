@@ -15,7 +15,7 @@ export default function Button({ id, quote }) {
       <span className={s.circle} aria-hidden="true">
         {/* <FontAwesomeIcon icon={faCartPlus} className={s.carticon} /> */}
       </span>
-      <span className={s["button-text"]}> {quote} </span>
+      <span className={s["button-text"]}> Añadir al carrito </span>
     </button>
   );
 }

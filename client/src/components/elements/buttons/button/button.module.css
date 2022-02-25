@@ -8,15 +8,15 @@
     border: 0;
     vertical-align: middle;
     text-decoration: none;
-    background: transparent;
+    background-color: rgb(255, 160, 160);
     padding: 12px 18px;
     font-size: inherit;
     font-family: inherit;
     width: 6rem;
-    height: auto;
+    height: 3rem;
     margin: 0.5em auto;
-    border: 1px solid #333;
-    border-radius: 20px;
+    border: none;
+    border-radius: 0.5rem;
    }
     
   

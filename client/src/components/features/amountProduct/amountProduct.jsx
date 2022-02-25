@@ -24,6 +24,7 @@ function Amount({ id }) {
 
   return (
     <div className={s.quantity}>
+      <p>CANTIDAD</p>
       <button className={s.btnn} onClick={(e) => handleClickSub(e)}>
         -
       </button>

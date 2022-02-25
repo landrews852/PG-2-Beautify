@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Abel|Aguafina+Script|Artifika|Athiti|Condiment|Dosis|Droid+Serif|Farsan|Gurajada|Josefin+Sans|Lato|Lora|Merriweather|Noto+Serif|Open+Sans+Condensed:300|Playfair+Display|Rasa|Sahitya|Share+Tech|Text+Me+One|Titillium+Web');
-
+@import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 .fa-star:before{content:"\f005"}
@@ -14,7 +13,12 @@
 	align-items: center;
 	margin: 20px;
 }
-
+.cost {
+	position: relative;
+	top: -1.5rem;
+	left: 7rem;
+	font-size: 1.9rem;
+}
 .container{
 	display: flex;
 	flex-wrap:wrap-reverse;
@@ -25,7 +29,7 @@
 	text-align: center;
 	border-radius: 10px;
 	overflow: hidden;
-	margin-top: 3rem;
+	margin-top: 0rem;
 	height: auto;
 	width: 95vw;
 }
@@ -37,20 +41,25 @@
 	text-align: center;
 	align-self:stretch;
 	padding: 20px;
-	height: auto;
+	height: 55rem;
 	width: 50%;
-	min-width: 400px;
+	min-width: 500px;
+	position: relative;
+	left: 14rem;
 	
 }
 
 /* 	Product Name */
 .container .product-details h1{
-	font-family: 'Old Standard TT', serif;
-	position:static;
+	font-family: 'Belleza', sans-serif;
+	position:relative;
 	display: inline;
 	font-size: 34px;
 	color: #344055;
 	margin: 0;
+	left: 14.5rem;
+	top: -3.3rem;
+	text-transform: uppercase;
 	
 }
 
@@ -82,26 +91,41 @@
 /*Product Rating  */
 .hint-star {
 	display: inline;
-	margin-left: 0.5em;
 	color: gold;
 	width: 50%;
+	position: relative;
+	left: 16rem;
+	top: -3.5rem;
 }
+.more {
+position: relative;
+top: 40rem;
+left: 10.5rem;
+border-bottom: #333 solid 1px;
+height: 3rem;
+font-size: 1.1rem;
+}
+
 
 
 /* The most important information about the product */
 .container .product-details > p {
-	font-family: 'Farsan', cursive;
+	font-family: 'Belleza', sans-serif;
 	text-align: justify;
-	font-size: 20px;
+	font-size: 1.1rem;
 	color: #7d7d7d;
 	width: 100%;
+	position: relative;
+	top: -2.5rem;
+	left: 22.5rem;
 }
 
 /* control */
 
 .control{
-	bottom:5rem;
-	left: 22.8%;
+	position: relative;
+	left: 6rem;
+	top: 1rem;
 	
 }
 /* the Button */
@@ -118,6 +142,7 @@
 	color: #eee;
 	padding: 0;
 	margin: 0;
+
 	
 }
 
@@ -169,16 +194,19 @@
 	min-width: 300px;
 	height: 100%;
 	border-radius:10px;
+	margin-top: -17rem;
 }
 
 .container img {width: 100%;height: 100%;}
 
 .product-image img {
 	transition: all 1s ease-out;
-	width: 100%;
-	max-height:300px; 
-	min-height: 250px;
+	height:32rem; 
+	min-height: 30rem;
+	width: 28rem;
 	border-radius:10px;
+	margin-top: -2rem;
+	margin-left: 5rem;
 
 }
 
@@ -188,9 +216,10 @@
 	position: relative;
 	overflow: hidden;
     max-width: max-content;
-	max-height: 300px;
-	/* float: right; */
-	display: inline-block;
+	max-height: 700px;
+	left: -48rem;
+	top: -7rem;
+	margin-left: 6rem;
 }
 
 .info {
@@ -219,13 +248,21 @@
 .product-image:hover img {transition: all 0.3s ease-out;}
 .product-image:hover img {transform: scale(1.2, 1.2);}
 
-.amount {
-	position: relative;
-	left: -7.5rem;
-	top: 3rem
-}
 
 .marketbutton {
 	position: relative;
-	left: 12rem;
+	left: 30rem;
+	top: -2rem;
+}
+
+.infoo {
+	position: relative;
+	top: 46rem;
+	text-align: left;
+	left: -1.1rem;
+	font-size: 1.1rem;
+}
+
+.infoo ul {
+	list-style: none;
 }

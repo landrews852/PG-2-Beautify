@@ -45,7 +45,7 @@ export default function ProductDetail() {
               </span>
             </div>
             <p className={Styles.information}>{productDetail.description}</p>
-
+<div className={Styles.cost}>$ {productDetail.cost_by_unit}</div>
             <div className={Styles.control}>
               <Amount id={productDetail.id} />
           
@@ -54,19 +54,18 @@ export default function ProductDetail() {
           </div>
 
           <div className={Styles["product-image"]}>
-            <img src={productDetail.image} alt="Omar Dsoky" />
+            <img src={productDetail.image} alt="Img not found" />
 
-            <div className={Styles.info}>
-              <h2>¿Te interesa?</h2>
-              <ul>
+        
+          </div>
+          <p className={Styles.more}>MÁS INFORMACIÓN</p>
+      <div className={Styles.infoo}>
+          <ul>
                 <li>
-                  <strong>Tenemos: </strong>
+                  <strong>STOCK: </strong>
                   {productDetail.stock} items disponibles
                 </li>
-                <li>
-                  <strong>A un precio de: </strong> {productDetail.cost_by_unit}
-                  $ c/u
-                </li>
+               
                 {productDetail.discount > 0 && (
                   <li>
                     <strong>Ahorra un: </strong> {productDetail.discount}% con
@@ -77,12 +76,11 @@ export default function ProductDetail() {
                   <strong>Marca: </strong> {productDetail.brand}
                 </li>
                 <li>
-                  <strong>Garantia por: </strong> {productDetail.warranty}{" "}
+                  <strong>Garantia: </strong> {productDetail.warranty}{" "}
                   semanas
                 </li>
               </ul>
-            </div>
-          </div>
+              </div>
         </div>
       </div>
     </>

@@ -9,7 +9,9 @@ margin: 0;
 .quantity {
     margin-left: 1rem;
 }
-
+.quantity p {
+    font-weight: bold;
+}
 .quantity input {
     text-align: center;
     height: 1rem;

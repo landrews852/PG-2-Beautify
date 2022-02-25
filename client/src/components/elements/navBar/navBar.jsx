@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../../images/logo2.png';
@@ -7,10 +7,17 @@ import SearchBar from '../../features/searchbar/index';
 import Cart_logo from './cart_logo';
 import s from "./navBar.module.css";
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 export default function Navigator () {
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  const { isAuthenticated } = useAuth0();
+  console.log(user);
+   
+
   return (
     <Navbar className={s.navBarr} variant="light" expand="lg">
       <Container>
@@ -24,6 +31,8 @@ export default function Navigator () {
             <Link to="/market" className='nav-link'>Productos</Link>
             <Link to="/services" className='nav-link'>Servicios</Link>
             <Link to="/login">Login</Link>
+            {isAuthenticated && user[0]?.admin && <Link to="/admin/createProduct">Crear Producto</Link>}
+            {isAuthenticated && user[0]?.admin && <Link to="/admin/createService">Crear Servicio</Link>}
             {/* <Nav.Link> <ButtonLogin /> </Nav.Link> */}
             {/* <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item href="/product1">product 1</NavDropdown.Item>

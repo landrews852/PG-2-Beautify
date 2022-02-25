@@ -16,6 +16,20 @@ const verifyjwt = jwt({
   algorithms: ['RS256']
 });
 
+const verifytoken = async (req) => {
+  const accesstoken = req.headers.authorization;
+  const response = await axios.get('https://dev-la4nkwuq.us.auth0.com/userinfo',{
+    headers: {
+      authorization: accesstoken
+    }
+  });
+  return response.data;
+}
 
-module.exports = verifyjwt
+
+
+module.exports = {
+  verifyjwt,
+  verifytoken,
+}
 

@@ -20,8 +20,12 @@ import ProductDetail from './components/pages/client/productDetail/productDetail
 import Navigator from './components/elements/navBar/navBar';
 import Footer from './components/elements/footer/footer';
 import Login from './components/features/login/login';
+import PrivateRoute from './components/features/privateRoute/privateRoute';
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
+  const { isLoading } = useAuth0()
+
   return (
     <>
     <Router>
@@ -37,9 +41,16 @@ function App() {
           <Route  path="/services" element={<Services />}/>
           <Route  path="/aboutUs" element={<AboutUs />}/>
           <Route  path="/cart" element={<Cart />}/>
+<<<<<<< HEAD
           <Route  path="/admin/product/create" element={<CreateProduct />}/>
           <Route  path="/admin/service/create" element={<CreateService />}/>
           <Route  path="/admin/client/create" element={<CreateClient />}/>
+=======
+          <Route path="/admin/:component" element={isLoading ? <span>cargando</span> : <PrivateRoute>
+            <CreateProduct />
+            <CreateService />
+          </PrivateRoute>}/>
+>>>>>>> 6e25a8cfb68ec6ab45543b7ad487e42b164cdcc1
           <Route  path="/login" element={<Login />}/>
         </Routes>
         < Footer /> {/* se agregó el footer a todas las páginas */}

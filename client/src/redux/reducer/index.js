@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   GET_IMG_CARRUSEL,
   GET_PRODUCTS_BY_NAME,
@@ -17,6 +18,7 @@ import {
   GET_BRANDS,
   ADD_TO_CART,
   DELETE_ITEM,
+  GET_CLIENT,
 } from "../actions";
 
 const initialState = {
@@ -179,6 +181,13 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         cart: state.cart.filter((p) => p.id !== action.payload),
+      };
+    case GET_CLIENT:
+      localStorage.setItem('user', JSON.stringify(action.payload));
+        return {
+          ...state,
+          user: action.payload,
+          
       };
 
     default:

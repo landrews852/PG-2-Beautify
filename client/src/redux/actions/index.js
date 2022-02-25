@@ -1,8 +1,11 @@
 import axios from "axios";
 
+export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
+export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
+export const DELETE_IMG_CARRUSEL = "DELETE_IMG_CARRUSEL";
+export const PUT_IMG_CARRUSEL = "PUT_IMG_CARRUSEL";
 const apiRoute = 'localhost:3001'
 // const apiRoute = '143.244.172.125'
-export const GET_IMG_CARRUSEL = "GET_IMG_CARRUSEL";
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
 export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
 export const ALL_PRODUCTS = "ALL_PRODUCTS";
@@ -21,14 +24,50 @@ export const GET_BRANDS = "GET_BRANDS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_ITEM = "DELETE_ITEM";
 
-export const getImgCarrusel = () => {
+export const getImgCarousel = () => {
   return async function (dispatch) {
     try {
-      let carrusel = await axios.get(`ruta api`);
+      let carrusel = await axios.get("http://localhost:3001/api/carousel");
       dispatch({
-        type: GET_IMG_CARRUSEL,
+        type: GET_IMG_CAROUSEL,
         payload: carrusel.data,
       });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const postImgCarousel = (payload) => {
+  return async function (dispatch) {
+    try {
+      let response = await axios.post("http://localhost:3001/api/carousel/",
+        payload
+      );
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const deleteImgCarousel = (id) => {
+  return async function (dispatch) {
+    try {
+      let response = await axios.delete(`http://localhost:3001/api/carousel/${id}`);
+      dispatch(getImgCarousel())
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const putImgCarousel = (data) => {
+  return async function (dispatch) {
+    try {
+      let response = await axios.put(`http://localhost:3001/api/carousel/${data.id}`, data);
+      return response.data;
     } catch (err) {
       console.log(err);
     }

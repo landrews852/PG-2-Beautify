@@ -1,0 +1,11 @@
+.new {
+    display: grid;
+    margin-bottom: -20px;
+    margin-top: 130px;
+    grid-template-columns: repeat(3, 50px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: space-evenly;
+}

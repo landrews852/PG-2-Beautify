@@ -104,7 +104,7 @@ export const postService = (payload) => {
 export const nameSort = (payload) => {
   return async function (dispatch) {
     let sort = await axios.get(
-      `http://localhost:3001/api/product?orderName=${payload}`
+      `http://${apiRoute}/api/product?orderName=${payload}`
     );
     return dispatch({ type: NAME_SORT, payload: sort.data });
   };

@@ -18,7 +18,12 @@ import ProductDetail from './components/pages/client/productDetail/productDetail
 //Always Show
 import Navigator from './components/elements/navBar/navBar';
 import Footer from './components/elements/footer/footer';
-import UserMenu from './components/elements/userMenu/userMenu';
+import ConfigPage from './components/pages/config/configPage/configPage'
+
+//Admin
+// import AdminNavBar from './components/elements/configSideBar/configSideBar'
+// import ConfigSideBar from './components/elements/configSideBar/configSideBar';
+
 
 function App() {
   return (
@@ -36,9 +41,13 @@ function App() {
           <Route  path="/services" element={<Services />}/>
           <Route  path="/aboutUs" element={<AboutUs />}/>
           <Route  path="/cart" element={<Cart />}/>
-          <Route  path="/admin/product/create" element={<CreateProduct />}/>
-          <Route  path="/admin/service/create" element={<CreateService />}/>
-          <Route  path="/prueba" element={<UserMenu/>}/>
+          <Route  path="config" element={<ConfigPage />}>
+            <Route index path="admin/product/create" element={<CreateProduct />}/>
+            <Route  path="admin/service/create" element={<CreateService />}/>
+            <Route  path="admin/edit/algo" element={<p>Hola</p>} />
+            {/* <Route  path="/" element={}/>
+            <Route  path="/" element={}/>  */}
+          </Route>
         </Routes>
         < Footer /> {/* se agregó el footer a todas las páginas */}
       </div>

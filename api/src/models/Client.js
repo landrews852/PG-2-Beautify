@@ -5,9 +5,12 @@ module.exports = (sequelize) => {
     "client",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         primaryKey: true,
         allowNull: false,
+      },
+      id_auth: {
+        type: DataTypes.STRING,
       },
       name_client: {
         type: DataTypes.STRING,
@@ -18,11 +21,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       profile_picture: {
-        type: DataTypes.STRING,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.TEXT,
       },
       email: {
         type: DataTypes.STRING,

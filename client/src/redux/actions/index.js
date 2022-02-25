@@ -17,6 +17,7 @@ export const GET_SERVICES = "GET_SERVICES";
 export const GET_BRANDS = "GET_BRANDS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_ITEM = "DELETE_ITEM";
+export const POST_CLIENT = "POST_CLIENT";
 
 export const getImgCarrusel = () => {
   return async function (dispatch) {
@@ -176,3 +177,13 @@ export function deleteItem(payload) {
     payload,
   };
 }
+
+export const postClient = (payload) => {
+  return async function (dispatch) {
+    var response = await axios.post(
+      "http://localhost:3001/api/client/",
+      payload
+    );
+    return response;
+  };
+};

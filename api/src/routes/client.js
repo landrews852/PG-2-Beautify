@@ -59,19 +59,19 @@ router.post("/", async (req, res) => {
       name_client,
       lastname_client,
       profile_picture,
-      password,
+      id_auth,
       email,
       address,
       phone,
       birthday,
     } = req.body;
-    if (id && name_client && lastname_client && password && email && address) {
+    if (id_auth && name_client && lastname_client && id && email && address) {
       const newClient = await Client.create({
-        id,
+        id_auth,
         name_client,
         lastname_client,
         profile_picture,
-        password,
+        id,
         email,
         address,
         phone,
@@ -92,8 +92,7 @@ router.put("/:id", async (req, res) => {
       name_client,
       lastname_client,
       profile_picture,
-      password,
-      email,
+      //email,
       address,
       phone,
       birthday,
@@ -103,7 +102,7 @@ router.put("/:id", async (req, res) => {
     if (lastname_client !== undefined) data.lastname_client = lastname_client;
     if (profile_picture !== undefined) data.profile_picture = profile_picture;
     if (password !== undefined) data.password = password;
-    if (email !== undefined) data.email = email;
+    //if (email !== undefined) data.email = email;
     if (address !== undefined) data.address = address;
     if (phone !== undefined) data.phone = phone;
     if (birthday !== undefined) data.birthday = birthday;

@@ -6,6 +6,7 @@ import { BrowserRouter as Router} from 'react-router-dom';
 //Admin Pages
 import CreateProduct from './components/pages/admin/createProduct/createProduct'
 import CreateService from './components/pages/admin/createService/createService'
+import CreateClient from './components/pages/admin/createClient/createClient.jsx'
 
 //Client Pages
 import Cart from './components/pages/client/cart/cart';
@@ -38,6 +39,7 @@ function App() {
           <Route  path="/cart" element={<Cart />}/>
           <Route  path="/admin/product/create" element={<CreateProduct />}/>
           <Route  path="/admin/service/create" element={<CreateService />}/>
+          <Route  path="/admin/client/create" element={<CreateClient />}/>
           <Route  path="/login" element={<Login />}/>
         </Routes>
         < Footer /> {/* se agregó el footer a todas las páginas */}

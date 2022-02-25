@@ -80,7 +80,7 @@ export default function Login () {
 			<button onClick={loginWithPopup}>Log in</button>
 			<button onClick={logout}>Log out</button>
 			<button onClick={callApi}>No protedigo</button>
-			<button onClick={callprotectedApi}>Protegido</button>
+			<button onClick={callprotectedApi}>Generar Usuario</button>
 			<h3>{isAuthenticated?"Logeado":"No Logeado"}</h3>
 			  
 	{/* <div className="sectionwraper">

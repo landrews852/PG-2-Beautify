@@ -57,9 +57,10 @@
 	font-size: 34px;
 	color: #344055;
 	margin: 0;
-	left: 14.5rem;
+	left: 18rem;
 	top: -3.3rem;
 	text-transform: uppercase;
+
 	
 }
 
@@ -94,7 +95,7 @@
 	color: gold;
 	width: 50%;
 	position: relative;
-	left: 16rem;
+	left: 25rem;
 	top: -3.5rem;
 }
 .more {
@@ -117,7 +118,7 @@ font-size: 1.1rem;
 	width: 100%;
 	position: relative;
 	top: -2.5rem;
-	left: 22.5rem;
+	left: 23rem;
 }
 
 /* control */

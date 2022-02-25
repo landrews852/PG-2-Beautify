@@ -42,35 +42,18 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/admin/product/create" element={<CreateProduct />} />
-            <Route path="/admin/service/create" element={<CreateService />} />
-            <Route path="/admin/carousel" element={<EditCarousel />} />
+            <Route path="config" element={<ConfigPage />}>
+              <Route index path="admin/product/create" element={<CreateProduct />} />
+              <Route path="admin/service/create" element={<CreateService />} />
+              <Route path="admin/edit/algo" element={<p>Hola</p>} />
+              <Route path="/admin/carousel" element={<EditCarousel />} />
+              {/* <Route  path="/" element={}/>
+            <Route  path="/" element={}/>  */}
+            </Route>
           </Routes>
           < Footer /> {/* se agregó el footer a todas las páginas */}
         </div>
-<<<<<<< HEAD
-      </Router >
-=======
-        <Routes>
-          <Route  path="/" element={<Home />} />
-          <Route  path="/market" element={<Market />} />          
-          <Route  path="/services" element={<Services/>}/>
-          <Route  path= "/market/:id" element={<ProductDetail/>} />
-          <Route  path="/services" element={<Services />}/>
-          <Route  path="/aboutUs" element={<AboutUs />}/>
-          <Route  path="/cart" element={<Cart />}/>
-          <Route  path="config" element={<ConfigPage />}>
-            <Route index path="admin/product/create" element={<CreateProduct />}/>
-            <Route  path="admin/service/create" element={<CreateService />}/>
-            <Route  path="admin/edit/algo" element={<p>Hola</p>} />
-            {/* <Route  path="/" element={}/>
-            <Route  path="/" element={}/>  */}
-          </Route>
-        </Routes>
-        < Footer /> {/* se agregó el footer a todas las páginas */}
-      </div>
-    </Router>
->>>>>>> a443b855f0aa244f34464a8fdfb288f8ed67722d
+      </Router>
     </>
   );
 }

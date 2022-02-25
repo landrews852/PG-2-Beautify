@@ -19,7 +19,6 @@ export default function Card({
     // });
     if (id) {
       dispatch(deleteItem(id));
-      console.log(id);
     }
   };
   return (

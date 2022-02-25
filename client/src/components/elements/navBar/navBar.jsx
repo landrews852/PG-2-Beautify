@@ -3,12 +3,14 @@ import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../../../images/logo2.png";
 import SearchBar from "../../features/searchbar/index";
-import ButtonLogin from "../buttons/loginButton/loginButton";
 import Cart_logo from "./cart_logo";
 import s from "./navBar.module.css";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function Navigator() {
+  const location = useLocation();
+  // console.log();
   return (
     <Navbar className={s.navBarr} variant="light" expand="lg">
       <Container>
@@ -30,7 +32,10 @@ export default function Navigator() {
               Servicios
             </Link>
           </Nav>
-          <SearchBar className={s.navSearch} />
+          {location.pathname !== "/" ? (
+            <SearchBar className={s.navSearch} />
+          ) : null}
+
           <Cart_logo />
         </Navbar.Collapse>
       </Container>

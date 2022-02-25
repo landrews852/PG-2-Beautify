@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const GET_IMG_CARRUSEL = "GET_IMG_CARRUSEL";
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
+export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
 export const ALL_PRODUCTS = "ALL_PRODUCTS";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const POST_PRODUCT = "POST_PRODUCT";
@@ -59,6 +60,21 @@ export const getProductsbyName = (name) => {
   };
 };
 
+export const getServicesbyName = (name) => {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(
+        `http://localhost:3001/api/service?name=${name}`
+      );
+      return dispatch({
+        type: GET_SERVICES_BY_NAME,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export const getCategories = () => {
   return async function (dispatch) {
     var info = await axios("http://localhost:3001/api/categories");

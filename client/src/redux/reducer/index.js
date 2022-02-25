@@ -1,6 +1,7 @@
 import {
   GET_IMG_CARRUSEL,
   GET_PRODUCTS_BY_NAME,
+  GET_SERVICES_BY_NAME,
   ALL_PRODUCTS,
   GET_CATEGORIES,
   POST_PRODUCT,
@@ -51,6 +52,12 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         products: action.payload,
+      };
+
+    case GET_SERVICES_BY_NAME:
+      return {
+        ...state,
+        services: action.payload,
       };
 
     case GET_CATEGORIES:

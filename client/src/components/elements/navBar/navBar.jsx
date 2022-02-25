@@ -2,11 +2,12 @@ import React from "react";
 import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../../../images/logo2.png";
-import SearchBar from "../../features/searchbar/index";
+import SearchBar from "../../features/searchBar/searchBar";
 import ButtonLogin from "../buttons/loginButton/loginButton";
-import Cart_logo from "./cart_logo";
+import Cart_logo from "./cartLogo";
 import s from "./navBar.module.css";
 import { Link } from "react-router-dom";
+import UserMenu from "../userMenu/userMenu"
 
 export default function Navigator() {
   return (
@@ -32,6 +33,7 @@ export default function Navigator() {
           </Nav>
           <SearchBar className={s.navSearch} />
           <Cart_logo />
+          <UserMenu/> 
         </Navbar.Collapse>
       </Container>
     </Navbar>

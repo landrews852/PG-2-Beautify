@@ -183,19 +183,7 @@ export function deleteItem(payload) {
   };
 }
 
-export const callprotectedApi = async (infousuario, token) => {
-  try {	
-    const response = await axios.post("http://localhost:3001/api/client",infousuario, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-  })
-    console.log(response.data)
-  }
-  catch(error){
-    console.log(error)
-  }
-}
+
 
 export function getUserInfo(token) {
   return async function (dispatch) {

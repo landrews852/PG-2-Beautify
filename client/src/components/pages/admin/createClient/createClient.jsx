@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { callprotectedApi } from "../../../../redux/actions";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import s from "./createClient.module.css"
+import axios from "axios";
+import s from "./createClient.module.css";
+import { getUserInfo } from "../../../../redux/actions";
 
 const validate = (input) => {
     let errors = {};
@@ -40,7 +41,12 @@ const validate = (input) => {
     return errors;
   };
 
+  
+  
+
+
 export default function CreateClient() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
 
@@ -52,8 +58,8 @@ export default function CreateClient() {
       phone: "",
       birthday: "",
     })
-    console.log(input)
-    console.log(errors)
+    // console.log(input)
+    // console.log(errors)
 
     // Recibe por body Client
     // id,
@@ -80,10 +86,17 @@ export default function CreateClient() {
     const {getAccessTokenSilently} = useAuth0();
 
     async function handleSubmit (e) {
+        console.log("HANDLE SUBMIT")
         e.preventDefault();
-        const token = await getAccessTokenSilently()
-        dispatch(callprotectedApi(input, token))
-        alert("Client was added successfully!")
+        const token = await getAccessTokenSilently();
+       
+        const response = await axios.post("http://localhost:3001/api/client",input, {
+            headers: {
+              authorization: `Bearer ${token}`
+            }
+        })
+        dispatch(getUserInfo(token));
+        navigate('/');
         setInput({
           name_client: "",
           lastname_client: "",
@@ -92,13 +105,14 @@ export default function CreateClient() {
           phone: "",
           birthday: "",
         })
+        
     }
 
     return (
         <div className={s.newService}>
             <Link to="/"><button className={s.button}>Volver</button></Link>
             <h3>CLIENTE NUEVO</h3>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit}>
                 <div className={s.form}>
                     <div>
                         <label>Nombre:</label>
@@ -185,7 +199,7 @@ export default function CreateClient() {
                         />
                     </div>
 
-                    <button disabled={(Object.values(errors).length > 0)} className={s.submit} type="submit">Crear</button>
+                    <button className={s.submit} type="submit">Crear</button>
 
                 </div>
             </form>

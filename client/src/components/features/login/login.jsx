@@ -25,53 +25,21 @@ export default function Login () {
 	const {loginWithPopup, logout, user, isAuthenticated, getAccessTokenSilently} = useAuth0();
 
 	const dispatch = useDispatch();
-	const userinfo = useSelector((state) => state.user);
-    const isauth = isAuthenticated?1:2;
 	const navigate = useNavigate();
-
-	// const callApi = async () => {
-	// 	const reqnoprot = await axios.get("http://localhost:3001/api/client")
-	// 	console.log(reqnoprot.data);
-	// }
-	// const [auth, setAuth] = useState(false);
 
     useEffect (async ()=>{        
 		if(isAuthenticated){ 
 			const token = await getAccessTokenSilently();
-			dispatch(getUserInfo(token));
+		    dispatch(getUserInfo(token))
+			.then(u => {
+				const user = JSON.parse(localStorage.getItem('user'));
+				if(!user.length){
+					return navigate("/admin/client/create")
+				}
+			})
 		}
     },[isAuthenticated])
 
-	// useEffect(async () => {		
-		
-				
-	//   }, [dispatch]);
-
-	const callprotectedApi = async () => {
-		try {
-		const infousuario = {
-			name_client: "Homer",
-			lastname_client: "Simpson",
-			profile_picture: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
-			address: "Av. siempre viva 123",
-			password: "asdjapisdjasd",
-			phone: "45612323",
-			birthday: "2021-07-06",
-			admin:true
-		} // info adicional para enviar a la API	
-		const token = await getAccessTokenSilently()
-		const response = await axios.post("http://localhost:3001/api/client",infousuario, {
-			headers: {
-				authorization: `Bearer ${token}`
-			}
-		})
-		console.log(response.data)
-		}
-		catch(error){
-			console.log(error)
-		}
-			
-	}
 	
 	
 	const logger = (state) =>{
@@ -86,7 +54,7 @@ export default function Login () {
         <>  
 			
 			<button onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
-			<button onClick={callprotectedApi}>protected</button>
+			{/* <button onClick={callprotectedApi}>protected</button> */}
 			
 			  
 	{/* <div className="sectionwraper">

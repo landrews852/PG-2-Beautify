@@ -1,28 +1,35 @@
-
-
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .quantity {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 .quantity p {
-    font-weight: bold;
+  font-weight: bold;
 }
 .quantity input {
-    text-align: center;
-    height: 2rem;
-    width: 2rem;
-    border: none;
+  text-align: center;
+  height: 2rem;
+  width: 2rem;
+  border: none;
 }
 
 .btnn {
-    
-    border: none;
-    height: 2rem;
-    width: 2rem;
+  border: none;
+  height: 2rem;
+  width: 2rem;
 }
 
+.marketbutton {
+  position: relative;
+  right: 3rem;
+  top: -2rem;
+}
+.marketbutton {
+  position: relative;
+  left: 30rem;
+  top: -2rem;
+}

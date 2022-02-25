@@ -45,42 +45,37 @@ export default function ProductDetail() {
               </span>
             </div>
             <p className={Styles.information}>{productDetail.description}</p>
-<div className={Styles.cost}>$ {productDetail.cost_by_unit}</div>
+            <div className={Styles.cost}>$ {productDetail.cost_by_unit}</div>
             <div className={Styles.control}>
               <Amount id={productDetail.id} />
-          
             </div>
-            <div className={Styles.marketbutton}><MarketButton amount = {productDetail.amount} id={productDetail.id}/></div>
           </div>
 
           <div className={Styles["product-image"]}>
             <img src={productDetail.image} alt="Img not found" />
-
-        
           </div>
           <p className={Styles.more}>MÁS INFORMACIÓN</p>
-      <div className={Styles.infoo}>
-          <ul>
+          <div className={Styles.infoo}>
+            <ul>
+              <li>
+                <strong>STOCK: </strong>
+                {productDetail.stock} items disponibles
+              </li>
+
+              {productDetail.discount > 0 && (
                 <li>
-                  <strong>STOCK: </strong>
-                  {productDetail.stock} items disponibles
+                  <strong>Ahorra un: </strong> {productDetail.discount}% con
+                  esta compra
                 </li>
-               
-                {productDetail.discount > 0 && (
-                  <li>
-                    <strong>Ahorra un: </strong> {productDetail.discount}% con
-                    esta compra
-                  </li>
-                )}
-                <li>
-                  <strong>Marca: </strong> {productDetail.brand}
-                </li>
-                <li>
-                  <strong>Garantia: </strong> {productDetail.warranty}{" "}
-                  semanas
-                </li>
-              </ul>
-              </div>
+              )}
+              <li>
+                <strong>Marca: </strong> {productDetail.brand}
+              </li>
+              <li>
+                <strong>Garantia: </strong> {productDetail.warranty} semanas
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>

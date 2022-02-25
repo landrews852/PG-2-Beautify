@@ -36,6 +36,9 @@ function Amount({ id }) {
       <button className={s.btnn} onClick={(e) => handleClickSum(e)}>
         +
       </button>
+      <div className={s.marketbutton}>
+        <MarketButton amount={amount} id={id} />
+      </div>
     </div>
   );
 }

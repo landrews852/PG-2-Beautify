@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Formik } from 'formik';
 import { useAuth0 } from '@auth0/auth0-react'
 import './login.css';
@@ -7,6 +7,7 @@ import { getUserInfo } from '../../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 export default function Login () {
     
 	
@@ -26,7 +27,7 @@ export default function Login () {
 	const dispatch = useDispatch();
 	const userinfo = useSelector((state) => state.user);
     const isauth = isAuthenticated?1:2;
-	
+	const navigate = useNavigate()
 
 	const callApi = async () => {
 		const reqnoprot = await axios.get("http://localhost:3001/api/client")
@@ -40,7 +41,8 @@ export default function Login () {
 		{			
 			const token = await getAccessTokenSilently()
 			const id = user.sub.split("|")[1];
-			dispatch(getUserInfo(id,token));			
+			dispatch(getUserInfo(id,token));
+			
 		}
     },[isAuthenticated])
 
@@ -58,7 +60,8 @@ export default function Login () {
 			address: "Av. siempre viva 123",
 			password: "asdjapisdjasd",
 			phone: "45612323",
-			birthday: "2021-07-06"
+			birthday: "2021-07-06",
+			admin:true
 		} // info adicional para enviar a la API	
 		const token = await getAccessTokenSilently()
 		const response = await axios.post("http://localhost:3001/api/client",infousuario, {
@@ -74,11 +77,15 @@ export default function Login () {
 			
 	}
 	
+	const logOff = (e) =>{
+		logout();
+		localStorage.clear();
+	}
 
 	return (
         <>  
 			<button onClick={loginWithPopup}>Log in</button>
-			<button onClick={logout}>Log out</button>
+			<button onClick={(e) => logOff(e)}>Log out</button>
 			<button onClick={callApi}>No protedigo</button>
 			<button onClick={callprotectedApi}>Generar Usuario</button>
 			<h3>{isAuthenticated?"Logeado":"No Logeado"}</h3>

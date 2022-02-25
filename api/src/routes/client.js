@@ -73,6 +73,7 @@ router.post("/",verifyjwt, async (req, res) => {
       address,
       phone,
       birthday,
+      admin
     } = req.body;
     if (name_client && lastname_client && address) {
       const newClient = await Client.create({
@@ -85,6 +86,7 @@ router.post("/",verifyjwt, async (req, res) => {
         address,
         phone,
         birthday,
+        admin
       });      
     }  
     res.json("Usuario Creado");  

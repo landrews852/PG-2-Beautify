@@ -177,10 +177,11 @@ export default function rootReducer(state = initialState, action) {
         cart: state.cart.filter((p) => p.id !== action.payload),
       };
     case GET_CLIENT:
-        
+      localStorage.setItem('user', JSON.stringify(action.payload));
         return {
           ...state,
           user: action.payload,
+          
       };
 
     default:

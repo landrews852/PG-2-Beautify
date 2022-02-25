@@ -3,6 +3,10 @@ import { Formik } from 'formik';
 import { useAuth0 } from '@auth0/auth0-react'
 import './login.css';
 import axios from 'axios';
+import { getUserInfo } from '../../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
 export default function Login () {
     
 	
@@ -17,12 +21,33 @@ export default function Login () {
 	// 	check[0].checked=false;		
 	// }
 
-	const {loginWithPopup, logout, user, isAuthenticated, getAccessTokenSilently} = useAuth0()
+	const {loginWithPopup, logout, user, isAuthenticated, getAccessTokenSilently} = useAuth0();
+
+	const dispatch = useDispatch();
+	const userinfo = useSelector((state) => state.user);
+    const isauth = isAuthenticated?1:2;
 	
+
 	const callApi = async () => {
 		const reqnoprot = await axios.get("http://localhost:3001/api/client")
 		console.log(reqnoprot.data);
 	}
+	const [auth, setAuth] = useState(false);
+
+    useEffect (async()=>{        
+		setAuth (isAuthenticated);
+		if (isAuthenticated&&!userinfo.length) 
+		{			
+			const token = await getAccessTokenSilently()
+			const id = user.sub.split("|")[1];
+			dispatch(getUserInfo(id,token));			
+		}
+    },[isAuthenticated])
+
+	// useEffect(async () => {		
+		
+				
+	//   }, [dispatch]);
 
 	const callprotectedApi = async () => {
 		try {
@@ -48,7 +73,6 @@ export default function Login () {
 		}
 			
 	}
-
 	
 
 	return (
@@ -57,10 +81,8 @@ export default function Login () {
 			<button onClick={logout}>Log out</button>
 			<button onClick={callApi}>No protedigo</button>
 			<button onClick={callprotectedApi}>Protegido</button>
-			<h2>User is {isAuthenticated?'Logged in' : 'Not Logged in'}</h2>
-      			{isAuthenticated &&
-      		<pre> {JSON.stringify(user,null,2)} </pre>
-			  }
+			<h3>{isAuthenticated?"Logeado":"No Logeado"}</h3>
+			  
 	{/* <div className="sectionwraper">
 		<div className="containerlogin">
 			<div className="row justify-content-center">

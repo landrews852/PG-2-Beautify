@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const GET_IMG_CARRUSEL = "GET_IMG_CARRUSEL";
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
@@ -17,6 +18,10 @@ export const GET_SERVICES = "GET_SERVICES";
 export const GET_BRANDS = "GET_BRANDS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_ITEM = "DELETE_ITEM";
+export const GET_CLIENT = "GET_CLIENT"
+
+
+
 
 export const getImgCarrusel = () => {
   return async function (dispatch) {
@@ -175,4 +180,18 @@ export function deleteItem(payload) {
     type: DELETE_ITEM,
     payload,
   };
+}
+
+export function getUserInfo(id,token) {
+  return async function (dispatch) {
+  const user = await axios.get(`http://localhost:3001/api/client/${id}`, {
+          headers: {
+            authorization: `Bearer ${token}`
+          }
+  })  
+  dispatch({
+    type: GET_CLIENT,
+    payload: user.data,
+  });
+  }
 }

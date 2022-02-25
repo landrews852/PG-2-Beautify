@@ -3,9 +3,11 @@ import s from "./button.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../../redux/actions";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 export default function MarketButton({ amount, id }) {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const products = useSelector((state) => state.products);
   const product = products.find((p) => p.id === id);
@@ -23,7 +25,11 @@ export default function MarketButton({ amount, id }) {
   return (
     <>
       <button className={s.buttoncart} onClick={(e) => handleAddToCart(e)}>
-        <span className={s["button-text"]}>Agregar al carrito</span>
+        {location.pathname === "/cart" ? (
+          <span className={s["button-text"]}>Modificar carrito</span>
+        ) : (
+          <span className={s["button-text"]}>Agregar al carrito</span>
+        )}
       </button>
     </>
   );

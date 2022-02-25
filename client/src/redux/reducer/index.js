@@ -17,6 +17,7 @@ import {
   GET_BRANDS,
   ADD_TO_CART,
   DELETE_ITEM,
+  UPDATE_CART,
 } from "../actions";
 
 export const initialState = {
@@ -172,6 +173,13 @@ export function rootReducer(state = initialState, action) {
           cart: [...state.cart, action.payload],
         };
       }
+    case UPDATE_CART:
+      state.cart.find((p, index) => {
+        if (p.id === action.payload.id) {
+          state.cart[index].amount = action.payload.amount;
+          return true;
+        }
+      });
 
     case DELETE_ITEM:
       return {

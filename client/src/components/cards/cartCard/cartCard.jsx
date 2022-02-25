@@ -3,6 +3,8 @@ import s from "./cartCard.module.css";
 import { useDispatch } from "react-redux";
 import { deleteItem } from "../../../redux/actions";
 import Amount from "../../features/amountProduct/amountProduct";
+import AmountCart from "../../features/amountProduct/amountProductCart";
+import { useLocation } from "react-router-dom";
 
 export default function Card({
   image,
@@ -13,6 +15,7 @@ export default function Card({
   total,
 }) {
   const dispatch = useDispatch();
+  const location = useLocation();
   const handleDelete = () => {
     if (id) {
       dispatch(deleteItem(id));
@@ -27,7 +30,6 @@ export default function Card({
           {cost_by_unit === total ? (
             <>
               <p className={s.cost}>$ {cost_by_unit}</p>
-              <p className={s.cost}>Cantidad : {amount}</p>
             </>
           ) : (
             <p>
@@ -37,8 +39,11 @@ export default function Card({
           )}
 
           <p className={s.amount}>
-            {" "}
-            <Amount id={id} />{" "}
+            {location.pathname === "/cart" ? (
+              <AmountCart id={id} amount={amount} />
+            ) : (
+              <Amount id={id} />
+            )}
           </p>
         </div>
         <button className={s.btn} onClick={(e) => handleDelete()}>

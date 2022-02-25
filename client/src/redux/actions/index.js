@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiRoute = 'localhost:3001'
+const apiRoute = "localhost:3001";
 // const apiRoute = '143.244.172.125'
 export const GET_IMG_CARRUSEL = "GET_IMG_CARRUSEL";
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
@@ -20,6 +20,7 @@ export const GET_SERVICES = "GET_SERVICES";
 export const GET_BRANDS = "GET_BRANDS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_ITEM = "DELETE_ITEM";
+export const UPDATE_CART = "UPDATE_CART";
 
 export const getImgCarrusel = () => {
   return async function (dispatch) {
@@ -49,9 +50,7 @@ export const allProducts = () => {
 export const getProductsbyName = (name) => {
   return async function (dispatch) {
     try {
-      let json = await axios.get(
-        `http://${apiRoute}/api/product?name=${name}`
-      );
+      let json = await axios.get(`http://${apiRoute}/api/product?name=${name}`);
       return dispatch({
         type: GET_PRODUCTS_BY_NAME,
         payload: json.data,
@@ -86,10 +85,7 @@ export const getCategories = () => {
 
 export const postProduct = (payload) => {
   return async function (dispatch) {
-    var response = await axios.post(
-      `http://${apiRoute}/api/product/`,
-      payload
-    );
+    var response = await axios.post(`http://${apiRoute}/api/product/`, payload);
     return response;
   };
 };
@@ -109,10 +105,7 @@ export const cleanProductDetail = () => {
 
 export const postService = (payload) => {
   return async function (dispatch) {
-    var response = await axios.post(
-      `http://${apiRoute}/api/service/`,
-      payload
-    );
+    var response = await axios.post(`http://${apiRoute}/api/service/`, payload);
     return response;
   };
 };
@@ -184,6 +177,13 @@ export function getBrands() {
 export function addToCart(payload) {
   return {
     type: ADD_TO_CART,
+    payload,
+  };
+}
+
+export function updateCart(payload) {
+  return {
+    type: UPDATE_CART,
     payload,
   };
 }

@@ -19,7 +19,7 @@ import ProductDetail from './components/pages/client/productDetail/productDetail
 //Always Show
 import Navigator from './components/elements/navBar/navBar';
 import Footer from './components/elements/footer/footer';
-// import EditCarousel from './components/pages/admin/editCarousel/editCarousel';
+import EditCarousel from './components/pages/admin/editCarousel/editCarousel';
 import ConfigPage from './components/pages/config/configPage/configPage'
 
 

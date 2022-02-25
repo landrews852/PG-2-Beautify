@@ -6,6 +6,7 @@ import { BrowserRouter as Router} from 'react-router-dom';
 //Admin Pages
 import CreateProduct from './components/pages/admin/createProduct/createProduct'
 import CreateService from './components/pages/admin/createService/createService'
+import EditAboutUs from './components/pages/admin/editAboutUs/editAboutUs'
 
 //Client Pages
 import Cart from './components/pages/client/cart/cart';
@@ -19,10 +20,6 @@ import ProductDetail from './components/pages/client/productDetail/productDetail
 import Navigator from './components/elements/navBar/navBar';
 import Footer from './components/elements/footer/footer';
 import ConfigPage from './components/pages/config/configPage/configPage'
-
-//Admin
-// import AdminNavBar from './components/elements/configSideBar/configSideBar'
-// import ConfigSideBar from './components/elements/configSideBar/configSideBar';
 
 
 function App() {
@@ -44,7 +41,7 @@ function App() {
           <Route  path="config" element={<ConfigPage />}>
             <Route index path="admin/product/create" element={<CreateProduct />}/>
             <Route  path="admin/service/create" element={<CreateService />}/>
-            <Route  path="admin/edit/algo" element={<p>Hola</p>} />
+            <Route  path="admin/edit/aboutUs" element={<EditAboutUs/>} />
             {/* <Route  path="/" element={}/>
             <Route  path="/" element={}/>  */}
           </Route>

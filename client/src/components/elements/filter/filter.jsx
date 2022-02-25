@@ -44,12 +44,14 @@ export default function Filter({ Paginate }) {
     dispatch(filterByOffer(e.target.value));
   }
 
+  var select = document.querySelectorAll("select")
+  var allSelect = [...select]
+
   function handleFilterReset(e) {
-    dispatch(filterByOffer(""));
     dispatch(filterBrand(""));
-    dispatch(filterCategory(""));
-    dispatch(priceSort(""));
-    dispatch(nameSort(""));
+    return allSelect.forEach((e) => {
+      e.options.selectedIndex = 1;
+    });
   }
 
   return (

@@ -9,20 +9,13 @@ export default function PrivateRoute({children}){
     const { component } = useParams();
     const { isAuthenticated } = useAuth0();
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user);
+   
   
   if (isAuthenticated && user[0].admin){
-    switch (component) {
-      case 'createProduct':
-        return children[0]
-      
-      case 'createService':
-        return children[1]
-
-      default:
-        return 'Not Found 404'
-    }       
+    return children[0]
+  }else if(isAuthenticated){
+    return children[1]
   }
-  else return <Navigate to='/login'/>
+  else return <Navigate to='/'/>
 
 }

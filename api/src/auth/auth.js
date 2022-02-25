@@ -17,10 +17,10 @@ const verifyjwt = jwt({
 });
 
 const verifytoken = async (req) => {
-  const accesstoken = req.headers.authorization.split(' ')[1];
+  const accesstoken = req.headers.authorization;
   const response = await axios.get('https://dev-la4nkwuq.us.auth0.com/userinfo',{
     headers: {
-      authorization: `Bearer ${accesstoken}`
+      authorization: accesstoken
     }
   });
   return response.data;

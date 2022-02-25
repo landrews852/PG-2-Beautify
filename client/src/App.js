@@ -42,12 +42,11 @@ function App() {
           <Route  path="/aboutUs" element={<AboutUs />}/>
           <Route  path="/cart" element={<Cart />}/>
           <Route  path="config" element={<ConfigPage />}>
-            {/* <Route index path={"home"} element={<CreateProduct />} />
-            <Route  path="product/create" element={<CreateProduct />}/>
-            <Route  path="service/create" element={<CreateService />}/> */}
+            <Route index path="admin/product/create" element={<CreateProduct />}/>
+            <Route  path="admin/service/create" element={<CreateService />}/>
+            <Route  path="admin/edit/algo" element={<p>Hola</p>} />
             {/* <Route  path="/" element={}/>
-            <Route  path="/" element={}/>
-            <Route  path="/" element={}/> */}
+            <Route  path="/" element={}/>  */}
           </Route>
         </Routes>
         < Footer /> {/* se agregó el footer a todas las páginas */}

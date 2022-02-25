@@ -21,6 +21,7 @@
   border: 1px solid #ebebeb;
   border-radius: 10px;
   background-color: #fafafa;
+  margin-bottom: 12rem;
 }
 .title {
   margin-top: 20px;
@@ -28,5 +29,6 @@
 }
 
 .total {
-  margin-left: 800px;
+  margin-left: 15rem;
+  height: 4rem;
 }

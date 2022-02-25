@@ -11,8 +11,8 @@ export default function Cart() {
     <div className={s.cart}>
       <h2 className={s.title}>Carrito de compras</h2>
       {/* <div className={s.cart}> */}
-      <Total />
       <div className={s.cartItems}>
+      
         {productos.length ? (
           productos.map((p) => (
             <Card
@@ -28,6 +28,7 @@ export default function Cart() {
         ) : (
           <p>No hay productos en el carrito.</p>
         )}
+        <div className={s.total}><Total /></div>
       </div>
       {/* </div> */}
     </div>

@@ -5,7 +5,7 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import { Link } from "react-router-dom";
-import Card from "../../../../cards/productCard/productCard";
+import Card from "../../../../cards/cardHome/cardHome";
 import { useMemo } from "react";
 
 export default function HomeProducts() {
@@ -27,7 +27,6 @@ export default function HomeProducts() {
         <OwlCarousel className="owl-theme" loop margin={10} nav>
           {product !== "nothing found" &&
             product.slice(0, 10).map((p) => (
-              <Link key={p.id} to={"/market/" + p.id}>
                 <div class="item">
                   <Card
                     id={p.id}
@@ -36,7 +35,6 @@ export default function HomeProducts() {
                     cost_by_unit={p.cost_by_unit}
                   />
                 </div>
-              </Link>
             ))}
         </OwlCarousel>
       }

@@ -3,7 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { useState } from "react";
-import { FormControl } from "react-bootstrap";
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 export default function UserMenu() {
 
@@ -19,8 +19,8 @@ export default function UserMenu() {
         onClick(e);
       }}
     >
+      <FontAwesomeIcon icon={faUser} />
       {children}
-      &#x25bc;
     </a>
   ));
 
@@ -37,13 +37,6 @@ export default function UserMenu() {
           className={className}
           aria-labelledby={labeledBy}
         >
-          {/* <FormControl
-            autoFocus
-            className="mx-3 my-2 w-auto"
-            placeholder="Type to filter..."
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
-          /> */}
           <ul className="list-unstyled">
             {React.Children.toArray(children).filter(
               (child) =>
@@ -55,20 +48,18 @@ export default function UserMenu() {
     }
   );
 
-  return (
+  return (<>
+
     <Dropdown>
-      <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-        Custom toggle
+      <Dropdown.Toggle align="end" as={CustomToggle} id="dropdown-custom-components">
       </Dropdown.Toggle>
 
-      <Dropdown.Menu as={CustomMenu}>
-        <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
-        <Dropdown.Item eventKey="3" active>
-          Orange
-        </Dropdown.Item>
-        <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+      <Dropdown.Menu align="end" as={CustomMenu} className={s.menu}>
+        <Dropdown.Item eventKey="1">Crear producto</Dropdown.Item>
+        <Dropdown.Item eventKey="2">Crear servicio</Dropdown.Item>
+        <Dropdown.Item eventKey="3">Modificar página</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
+  </>
   );
 }

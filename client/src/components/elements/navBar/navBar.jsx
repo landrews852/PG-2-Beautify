@@ -34,8 +34,8 @@ export default function Navigator() {
           <SearchBar className={s.navSearch} />
           <Cart_logo />
         </Navbar.Collapse>
+        <UserMenu/>
       </Container>
-      <UserMenu/>
     </Navbar>
   );
 }

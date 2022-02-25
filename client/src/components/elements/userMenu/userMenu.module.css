@@ -1,3 +1,9 @@
+.container{
+  position: absolute;
+  right: 5%;
+  top: 43%;
+}
+
 .menu{
-  inset: 25px 0px auto auto;
+  inset: 35px 0px auto auto;
 }

@@ -4,8 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { useState } from "react";
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { Link, useLocation } from "react-router-dom";
 
 export default function UserMenu() {
+
+  let location = useLocation();
 
   const [value, setValue] = useState("");
   // The forwardRef is important!!
@@ -50,14 +53,14 @@ export default function UserMenu() {
 
   return (<>
 
-    <Dropdown>
+    <Dropdown className={s.container}>
       <Dropdown.Toggle align="end" as={CustomToggle} id="dropdown-custom-components">
       </Dropdown.Toggle>
 
       <Dropdown.Menu align="end" as={CustomMenu} className={s.menu}>
-        <Dropdown.Item eventKey="1">Crear producto</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Crear servicio</Dropdown.Item>
-        <Dropdown.Item eventKey="3">Modificar página</Dropdown.Item>
+      <Dropdown.Item as={Link} to="/admin/product/create" active={location.pathname === "/admin/product/create"}>Crear producto</Dropdown.Item>
+      <Dropdown.Item as={Link} to="/admin/service/create" active={location.pathname === "/admin/service/create"}>Crear servicio</Dropdown.Item>
+      <Dropdown.Item as={Link} to="/admin/config" active={location.pathname === "/admin/config"}>Modificar página</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   </>

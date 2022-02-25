@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 //Admin Pages
 import CreateProduct from './components/pages/admin/createProduct/createProduct'
@@ -18,30 +18,31 @@ import ProductDetail from './components/pages/client/productDetail/productDetail
 //Always Show
 import Navigator from './components/elements/navBar/navBar';
 import Footer from './components/elements/footer/footer';
+import EditCarousel from './components/pages/admin/editCarousel/editCarousel';
 
 function App() {
   return (
     <>
-    <Router>
-      <div className="App">
-        <div className="navigator">
-        < Navigator className="navigator" /> {/* se agregó la barra a todas las páginas */}
+      <Router>
+        <div className="App">
+          <div className="navigator">
+            < Navigator className="navigator" /> {/* se agregó la barra a todas las páginas */}
+          </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/market" element={<Market />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/market/:id" element={<ProductDetail />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/admin/product/create" element={<CreateProduct />} />
+            <Route path="/admin/service/create" element={<CreateService />} />
+            <Route path="/admin/carousel" element={<EditCarousel />} />
+          </Routes>
+          < Footer /> {/* se agregó el footer a todas las páginas */}
         </div>
-        <Routes>
-          <Route  path="/" element={<Home />} />
-          <Route  path="/market" element={<Market />} />          
-          <Route  path="/services" element={<Services/>}/>
-          <Route  path= "/market/:id" element={<ProductDetail/>} />
-          <Route  path="/services" element={<Services />}/>
-          <Route  path="/aboutUs" element={<AboutUs />}/>
-          <Route  path="/cart" element={<Cart />}/>
-          <Route  path="/admin/product/create" element={<CreateProduct />}/>
-          <Route  path="/admin/service/create" element={<CreateService />}/>
-          
-        </Routes>
-        < Footer /> {/* se agregó el footer a todas las páginas */}
-      </div>
-    </Router>
+      </Router>
     </>
   );
 }

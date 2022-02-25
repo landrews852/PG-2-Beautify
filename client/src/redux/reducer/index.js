@@ -1,5 +1,5 @@
 import {
-  GET_IMG_CARRUSEL,
+  GET_IMG_CAROUSEL,
   GET_PRODUCTS_BY_NAME,
   ALL_PRODUCTS,
   GET_CATEGORIES,
@@ -34,7 +34,7 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_IMG_CARRUSEL:
+    case GET_IMG_CAROUSEL:
       return {
         ...state,
         carrusel: action.payload,

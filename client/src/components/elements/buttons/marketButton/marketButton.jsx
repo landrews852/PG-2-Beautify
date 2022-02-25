@@ -36,7 +36,6 @@ export default function MarketButton({ amount, id }) {
       text: "Ve al carrito para ver los productos agregados",
     });
   };
-  console.log(cartLocal);
 
   return (
     <>

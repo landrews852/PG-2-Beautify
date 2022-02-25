@@ -41,16 +41,13 @@ function App() {
           <Route  path="/services" element={<Services />}/>
           <Route  path="/aboutUs" element={<AboutUs />}/>
           <Route  path="/cart" element={<Cart />}/>
-<<<<<<< HEAD
           <Route  path="/admin/product/create" element={<CreateProduct />}/>
           <Route  path="/admin/service/create" element={<CreateService />}/>
           <Route  path="/admin/client/create" element={<CreateClient />}/>
-=======
           <Route path="/admin/:component" element={isLoading ? <span>cargando</span> : <PrivateRoute>
             <CreateProduct />
             <CreateService />
           </PrivateRoute>}/>
->>>>>>> 6e25a8cfb68ec6ab45543b7ad487e42b164cdcc1
           <Route  path="/login" element={<Login />}/>
         </Routes>
         < Footer /> {/* se agregó el footer a todas las páginas */}

@@ -76,7 +76,7 @@ router.post("/",verifyjwt, async (req, res) => {
       birthday,
       admin
     } = req.body;
-    if (id_auth && name_client && lastname_client && id && email && address) {
+    if (name_client && lastname_client && id && email && address) {
       const newClient = await Client.create({
         id_auth,
         name_client,
@@ -105,7 +105,7 @@ router.put("/:id", async (req, res) => {
       name_client,
       lastname_client,
       profile_picture,
-      //email,
+      email,
       address,
       phone,
       birthday,
@@ -115,7 +115,7 @@ router.put("/:id", async (req, res) => {
     if (lastname_client !== undefined) data.lastname_client = lastname_client;
     if (profile_picture !== undefined) data.profile_picture = profile_picture;
     if (password !== undefined) data.password = password;
-    //if (email !== undefined) data.email = email;
+    if (email !== undefined) data.email = email;
     if (address !== undefined) data.address = address;
     if (phone !== undefined) data.phone = phone;
     if (birthday !== undefined) data.birthday = birthday;

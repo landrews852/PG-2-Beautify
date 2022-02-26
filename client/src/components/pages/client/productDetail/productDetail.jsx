@@ -35,6 +35,9 @@ export default function ProductDetail() {
     <>
       <div className={Styles.ProductDetail}>
         <div className={Styles.container}>
+          <div className={Styles["product-image"]}>
+            <img src={productDetail.image} alt="Img not found" />
+          </div>
           <div className={Styles["product-details"]}>
             <div className={Styles["title-stars"]}>
               <h1>{productDetail.product_name}</h1>
@@ -49,14 +52,12 @@ export default function ProductDetail() {
             <div className={Styles.control}>
               <Amount id={productDetail.id} />
             </div>
-          </div>
-
-          <div className={Styles["product-image"]}>
-            <img src={productDetail.image} alt="Img not found" />
-          </div>
-          <p className={Styles.more}>MÁS INFORMACIÓN</p>
-          <div className={Styles.infoo}>
+          </div> 
+          
+        </div>
+        <div className={Styles.infoo}>
             <ul>
+            <p className={Styles.more}>MÁS INFORMACIÓN</p>
               <li>
                 <strong>STOCK: </strong>
                 {productDetail.stock} items disponibles
@@ -76,7 +77,6 @@ export default function ProductDetail() {
               </li>
             </ul>
           </div>
-        </div>
       </div>
     </>
   );

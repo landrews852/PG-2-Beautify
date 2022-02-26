@@ -11,8 +11,7 @@ const client_id = "cAkrYWSsneDsy2bOTV2iiLppFYJBeL2Y"
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-    
+    <React.StrictMode>    
     <App /> 
     </React.StrictMode>
   </Provider>,

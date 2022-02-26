@@ -34,6 +34,7 @@ export default function Navigator () {
             <Link to="/services" className='nav-link'>Servicios</Link>
             <Login />
             {isAuthenticated &&  <Link to="/profile">Profile</Link>}
+            
           </Nav>
             <SearchBar className={s.navSearch} />
             <Cart_logo />

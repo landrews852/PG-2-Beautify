@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import PanelUser from './components/features/panel/panelUser';
+import Login from './components/features/login/login';
 
 //Admin Pages
 import PrivateRoute from './components/features/privateRoute/privateRoute';
@@ -24,6 +27,7 @@ import ConfigPage from './components/pages/config/configPage/configPage'
 
 
 function App() {
+  const {isLoading} = useAuth0();
   return (
     <>
       <Router>

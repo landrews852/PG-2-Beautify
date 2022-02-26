@@ -2,11 +2,14 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import PanelUser from './components/features/panel/panelUser';
+import Login from './components/features/login/login';
 
 //Admin Pages
-import CreateProduct from './components/pages/admin/createProduct/createProduct'
-import CreateService from './components/pages/admin/createService/createService'
-import EditAboutUs from './components/pages/admin/editAboutUs/editAboutUs'
+import PrivateRoute from './components/features/privateRoute/privateRoute';
+import PanelAdmin from './components/features/panel/panelAdmin';
+import CreateClient from './components/pages/admin/createClient/createClient';
 
 //Client Pages
 import Cart from './components/pages/client/cart/cart';
@@ -24,6 +27,7 @@ import ConfigPage from './components/pages/config/configPage/configPage'
 
 
 function App() {
+  const {isLoading} = useAuth0();
   return (
     <>
       <Router>
@@ -32,25 +36,24 @@ function App() {
             < Navigator className="navigator" /> {/* se agregó la barra a todas las páginas */}
           </div>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/market" element={<Market />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/market/:id" element={<ProductDetail />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/aboutUs" element={<AboutUs />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="config" element={<ConfigPage />}>
-              <Route index path="admin/product/create" element={<CreateProduct />} />
-              <Route path="admin/service/create" element={<CreateService />} />
-              <Route path="admin/edit/aboutUs" element={<EditAboutUs />} />
-              {/* <Route  path="/" element={}/>
-            <Route  path="/" element={}/>  */}
-              <Route path="admin/carousel" element={<EditCarousel />} />
-            </Route>
-          </Routes>
+            <Route  path="/" element={<Home />} />
+            <Route  path="/market" element={<Market />} />          
+            <Route  path="/services" element={<Services/>}/>
+            <Route  path= "/market/:id" element={<ProductDetail/>} />
+            <Route  path="/services" element={<Services />}/>
+            <Route  path="/aboutUs" element={<AboutUs />}/>
+            <Route  path="/cart" element={<Cart />}/>
+            <Route  path="/admin/client/create" element={<CreateClient />}/>
+            <Route path="/profile" element={isLoading ? <span>cargando</span> : 
+            <PrivateRoute>
+              <PanelAdmin/>
+              <PanelUser/>
+            </PrivateRoute>}/>
+            <Route  path="/login" element={<Login />}/>
+        </Routes>
           < Footer /> {/* se agregó el footer a todas las páginas */}
         </div>
-      </Router>
+    </Router>
     </>
   );
 }

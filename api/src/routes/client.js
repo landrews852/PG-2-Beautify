@@ -1,22 +1,47 @@
 const { Router } = require("express");
 const { Client } = require("../db");
-
+const {verifyjwt, verifytoken} = require('../auth/auth.js');
+const { default: axios } = require("axios");
 const router = Router();
 
+// const authvalidate = router.use(verifyjwt)
+
 //Trae la información de todos los clientes
-router.get("/", async (req, res) => {
-  try {
-    const allData = await Client.findAll();
-    res.json(allData);
-  } catch (err) {
-    res.json(err);
-  }
+router.get("/",verifyjwt, async (req, res) => {
+  
 });
 
+// router.post("/protected",  async (req, res) => {
+//   // try {
+//   //   const allData = await Client.findAll();
+//   //   res.json(allData);
+//   // } catch (err) {
+//   //   res.json(err);
+//   // }  
+//   // const { objeto } = req.body
+  
+//   res.json(userinfo)
+// });
+
+
+// id:
+// name_client:
+// lastname_client:
+// profile_picture:
+// password:
+// email:
+// address:
+// phone:
+// birthday: 
+// disabled:
+
+
 //Utiliza el id para conseguir la info de un cliente específico
-router.get("/:id", async (req, res) => {
+router.get("/info",verifyjwt, async (req, res) => {
   try {
-    const { id } = req.params;
+    const userinfo = await verifytoken(req);
+    const { sub } = userinfo;
+    const id = sub.split('|')[1];
     if (id) {
       const dataClient = await Client.findAll({
         where: {
@@ -31,36 +56,37 @@ router.get("/:id", async (req, res) => {
 });
 
 //Envia la data de un cliente para agregarla a la BD y retorna toda la data
-router.post("/", async (req, res) => {
+router.post("/",verifyjwt, async (req, res) => {
   try {
+    const userinfo = await verifytoken(req);
+    const { email, sub } = userinfo;
+    const idsub = sub.split('|')[1];
     const {
-      id,
       name_client,
       lastname_client,
       profile_picture,
-      password,
-      email,
       address,
       phone,
-      birthday,
+      birthday
     } = req.body;
-    if (id && name_client && lastname_client && password && email && address) {
+    if (name_client && lastname_client && email && address) {
       const newClient = await Client.create({
-        id,
+        id: idsub,
         name_client,
         lastname_client,
         profile_picture,
-        password,
         email,
         address,
         phone,
         birthday,
-      });
-      res.json("created");
-    }
+       // admin:true
+      });      
+    }  
+    res.json("Usuario Creado");  
   } catch (err) {
     res.json(err);
   }
+  
 });
 
 // Utiliza el id para identificar al cliente y modificar cualquier otro dato que se le haya pasado y retorna los datos actualizados
@@ -71,7 +97,6 @@ router.put("/:id", async (req, res) => {
       name_client,
       lastname_client,
       profile_picture,
-      password,
       email,
       address,
       phone,

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import s from "./editCarousel.module.css"
 import AddImageCarousel from "./addImageCarousel/addImageCarousel";
 import RemoveImageCarousel from "./removeImageCarousel/removeImageCarousel";
-import OrderImageCarousel from "./orderImageCarousel/orderImageCarousel";
+//import OrderImageCarousel from "./orderImageCarousel/orderImageCarousel";
 
 export default function EditCarousel() {
   const [action, setAction] = useState('')

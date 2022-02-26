@@ -12,6 +12,8 @@ const carouselRouter = require('./carousel.js')
 
 const router = Router();
 
+
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.use('/api/product', productRouter);

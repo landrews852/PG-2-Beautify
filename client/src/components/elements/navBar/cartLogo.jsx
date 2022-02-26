@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import s from "./navBar.module.css";
 
 
-export default function Cart_logo() {
+export default function CartLogo() {
 
   const cart = useSelector(state => state.cart);
 

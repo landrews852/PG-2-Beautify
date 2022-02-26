@@ -21,10 +21,11 @@ export default function HomeProducts() {
     dispatch(allProducts());
   }, [dispatch]);
 
+  
   return (
     <>
       {
-        <OwlCarousel className="owl-theme" loop margin={10} nav>
+        <OwlCarousel className="owl-theme" nav items={4}>
           {product !== "nothing found" &&
             product.slice(0, 10).map((p) => (
                 <div class="item">

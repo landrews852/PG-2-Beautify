@@ -7,8 +7,8 @@ import { Auth0Provider } from '@auth0/auth0-react'
 import { Provider } from 'react-redux';
 import { store } from './store/index';
 
-const domain = "dev-la4nkwuq.us.auth0.com"
-const client_id = "cAkrYWSsneDsy2bOTV2iiLppFYJBeL2Y"
+const domain = "beautify.us.auth0.com"
+const client_id = "ae6Z5gbTJfzSVNvlut5Q4JKngbb5kyFY"
 
 ReactDOM.render(
   <Provider store={store}>
@@ -17,7 +17,7 @@ ReactDOM.render(
       domain={domain} 
       clientId={client_id} 
       redirectUri={window.location.origin}
-      audience='https://beautify-api'
+      audience='https://beautify-api-pg/'
       scope='openid profile email'
     >
       <App />

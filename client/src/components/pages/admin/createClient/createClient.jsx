@@ -6,6 +6,9 @@ import axios from "axios";
 import s from "./createClient.module.css";
 import { getUserInfo } from "../../../../redux/actions";
 
+const apiRoute = "http://localhost:3001";
+// const apiRoute = 'https://143.244.172.125'
+
 const validate = (input) => {
     let errors = {};
     if (!input.name_client) {
@@ -90,7 +93,7 @@ export default function CreateClient() {
         e.preventDefault();
         const token = await getAccessTokenSilently();
        
-        const response = await axios.post("http://localhost:3001/api/client",input, {
+        const response = await axios.post(`${apiRoute}/api/client`,input, {
             headers: {
               authorization: `Bearer ${token}`
             }

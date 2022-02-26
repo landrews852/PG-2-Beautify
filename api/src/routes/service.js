@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { Service, Category } = require("../db");
+// const { Op } = require("sequelize");
 const { Op } = require("../db");
 
 const router = Router();
@@ -51,7 +52,6 @@ router.delete("/:id", async (req, res) => {
 
 router.get("/", async (req, res) => {
   const { category } = req.query;
-  const { name } = req.query;
 
   try {
     if (category) {
@@ -60,16 +60,8 @@ router.get("/", async (req, res) => {
       });
       let services = await Service.findAll({
         where: { categoryId: categoryy[0].id },
-        include: { model: Category, attributes: ["name_category"] },
       });
       return res.json(services);
-    }
-    if (name) {
-      let service = await Service.findAll({
-        where: { name_service: { [Op.substring]: name.toLowerCase() } },
-        include: { model: Category, attributes: ["name_category"] },
-      });
-      return res.json(service);
     } else {
       let services = await Service.findAll();
       return res.json(services);

@@ -27,7 +27,6 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "^3.0.1",
     "redux-devtools-extension": "^2.13.9",
-    "redux-localstorage": "^0.4.1",
     "redux-thunk": "^2.4.1",
     "sweetalert2": "^11.4.4",
     "web-vitals": "^2.1.4",

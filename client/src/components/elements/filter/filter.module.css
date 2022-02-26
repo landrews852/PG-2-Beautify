@@ -1,5 +1,5 @@
 .filter {
-  /* align-self: center; */
+  align-self: center;
   width: 90%;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -9,11 +9,9 @@
   padding: 15px;
   justify-content: space-between;
   background-color: #fbeee6;
-  align-items: center;
 }
 
 .selectDiv {
-  align-items: center;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -39,58 +37,21 @@
   color: #333;
 }
 
-.btnContainer {
-  width: 100%;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn {
-  margin: 5px;
+.selectContainer button {
   width: 160px;
   height: 25px;
   border: 1px solid #ccc;
   border-radius: 6px;
   padding: 0 5px;
   font-size: 14px;
-  /* margin-top: 12px; */
-  background: linear-gradient(
-    to bottom,
-    rgb(253, 238, 230) 5%,
-    rgb(251, 222, 218) 100%
-  );
+  margin-top: 12px;
 }
 
-.btn:hover {
-  background: linear-gradient(
-    to bottom,
-    rgb(253, 230, 224) 5%,
-    rgb(253, 238, 230) 100%
-  );
-}
-
-.btn:active {
-  background: linear-gradient(
-    to bottom,
-    rgb(253, 230, 224) 5%,
-    rgb(253, 238, 230) 100%
-  );
-  position: relative;
-  top: 1px;
-}
-
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 680px) {
   .filter {
     width: 200px;
   }
   .selectDiv {
     flex-direction: column;
-  }
-
-  .btnContainer {
-    margin-top: 20px;
   }
 }

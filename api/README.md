@@ -44,12 +44,10 @@
 
 ### Service
 
-| TYPE | DETAIL              | ROUTE                             | SEND  | INFO                                                  |
-| ---- | ------------------- | --------------------------------- | ----- | ----------------------------------------------------- |
-| GET  | get all services    | http://localhost:3001/api/service |       |
-| GET  | get service by name | http://localhost:3001/api/service | query | name                                                  |
-| GET  | filter category     | http://localhost:3001/api/service | query | category                                              |
-| POST | post service        | http://localhost:3001/api/service | body  | name_service*, price, description*, image*, category* |
+| TYPE | DETAIL           | ROUTE                             | SEND | INFO                                                  |
+| ---- | ---------------- | --------------------------------- | ---- | ----------------------------------------------------- |
+| GET  | get all services | http://localhost:3001/api/service |      |                                                       |
+| POST | post service     | http://localhost:3001/api/service | body | name_service*, price, description*, image*, category* |
 
 ### Review
 

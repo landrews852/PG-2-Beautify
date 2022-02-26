@@ -1,30 +1,25 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import s from "./button.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../../../redux/actions";
+import { getProductDetail } from "../../../../redux/actions";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-export default function Button({ amount, id }) {
-  const dispatch = useDispatch();
+export default function Button({ id, quote }) {
+  let dispatch = useDispatch();
 
-  const products = useSelector((state) => state.products);
-  const product = products.find((p) => p.id === id);
-
-  const handleAddToCart = (e) => {
-    e.preventDefault();
-    dispatch(addToCart({ ...product, amount: amount }));
-    Swal.fire({
-      icon: "success",
-      title: "¡Buena elección!",
-      text: "Ve al carrito para ver los productos agregados",
-    });
+  const handleClick = () => {
+    dispatch(getProductDetail(id));
   };
 
   return (
-    <>
-      <button className={s.buttoncart} onClick={(e) => handleAddToCart(e)}>
-        <span className={s["button-text"]}>Agregar al carrito</span>
-      </button>
-    </>
+    <button className={s.buttoncart} onClick={handleClick}>
+      <span className={s.circle} aria-hidden="true">
+        {/* <FontAwesomeIcon icon={faCartPlus} className={s.carticon} /> */}
+      </span>
+      <span className={s["button-text"]}> {quote} </span>
+    </button>
   );
 }

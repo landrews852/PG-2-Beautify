@@ -1,14 +1,8 @@
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
-export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
-export const DELETE_IMG_CARRUSEL = "DELETE_IMG_CARRUSEL";
-export const PUT_IMG_CARRUSEL = "PUT_IMG_CARRUSEL";
-const apiRoute = "localhost:3001";
-// const apiRoute = '143.244.172.125'
+export const GET_IMG_CARRUSEL = "GET_IMG_CARRUSEL";
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
-export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
 export const ALL_PRODUCTS = "ALL_PRODUCTS";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const POST_PRODUCT = "POST_PRODUCT";
@@ -24,16 +18,18 @@ export const GET_SERVICES = "GET_SERVICES";
 export const GET_BRANDS = "GET_BRANDS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_ITEM = "DELETE_ITEM";
-export const UPDATE_CART = "UPDATE_CART";
-export const GET_CLIENT = "GET_CLIENT";
 export const POST_CLIENT = "POST_CLIENT";
+export const GET_CLIENT = "GET_CLIENT"
 
-export const getImgCarousel = () => {
+
+
+
+export const getImgCarrusel = () => {
   return async function (dispatch) {
     try {
-      let carrusel = await axios.get("http://localhost:3001/api/carousel");
+      let carrusel = await axios.get(`ruta api`);
       dispatch({
-        type: GET_IMG_CAROUSEL,
+        type: GET_IMG_CARRUSEL,
         payload: carrusel.data,
       });
     } catch (err) {
@@ -42,51 +38,9 @@ export const getImgCarousel = () => {
   };
 };
 
-export const postImgCarousel = (payload) => {
-  return async function (dispatch) {
-    try {
-      let response = await axios.post(
-        "http://localhost:3001/api/carousel/",
-        payload
-      );
-      return response.data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-};
-
-export const deleteImgCarousel = (id) => {
-  return async function (dispatch) {
-    try {
-      let response = await axios.delete(
-        `http://localhost:3001/api/carousel/${id}`
-      );
-      dispatch(getImgCarousel());
-      return response.data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-};
-
-export const putImgCarousel = (data) => {
-  return async function (dispatch) {
-    try {
-      let response = await axios.put(
-        `http://localhost:3001/api/carousel/${data.id}`,
-        data
-      );
-      return response.data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-};
-
 export const allProducts = () => {
   return async function (dispatch) {
-    var json = await axios.get(`http://${apiRoute}/api/product`);
+    var json = await axios.get("http://localhost:3001/api/product");
 
     return dispatch({
       type: "ALL_PRODUCTS",
@@ -98,7 +52,9 @@ export const allProducts = () => {
 export const getProductsbyName = (name) => {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`http://${apiRoute}/api/product?name=${name}`);
+      let json = await axios.get(
+        `http://localhost:3001/api/product?name=${name}`
+      );
       return dispatch({
         type: GET_PRODUCTS_BY_NAME,
         payload: json.data,
@@ -109,38 +65,26 @@ export const getProductsbyName = (name) => {
   };
 };
 
-export const getServicesbyName = (name) => {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        `http://localhost:3001/api/service?name=${name}`
-      );
-      return dispatch({
-        type: GET_SERVICES_BY_NAME,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
 export const getCategories = () => {
   return async function (dispatch) {
-    var info = await axios(`http://${apiRoute}/api/categories`);
+    var info = await axios("http://localhost:3001/api/categories");
     return dispatch({ type: "GET_CATEGORIES", payload: info.data });
   };
 };
 
 export const postProduct = (payload) => {
   return async function (dispatch) {
-    var response = await axios.post(`http://${apiRoute}/api/product/`, payload);
+    var response = await axios.post(
+      "http://localhost:3001/api/product/",
+      payload
+    );
     return response;
   };
 };
 
 export const getProductDetail = (id) => {
   return async function (dispatch) {
-    let detail = await axios.get(`http://${apiRoute}/api/product/${id}`);
+    let detail = await axios.get(`http://localhost:3001/api/product/${id}`);
     return dispatch({ type: GET_PRODUCT_DETAIL, payload: detail.data });
   };
 };
@@ -153,41 +97,36 @@ export const cleanProductDetail = () => {
 
 export const postService = (payload) => {
   return async function (dispatch) {
-    var response = await axios.post(`http://${apiRoute}/api/service/`, payload);
+    var response = await axios.post(
+      "http://localhost:3001/api/service/",
+      payload
+    );
     return response;
   };
 };
 
 export const nameSort = (payload) => {
-  // return async function (dispatch) {
-  //   let sort = await axios.get(
-  //     `http://${apiRoute}/api/product?orderName=${payload}`
-  //   );
-  //   return dispatch({ type: NAME_SORT, payload: sort.data });
-  // };
-  return {
-    type: NAME_SORT,
-    payload,
+  return async function (dispatch) {
+    let sort = await axios.get(
+      `http://localhost:3001/api/product?orderName=${payload}`
+    );
+    return dispatch({ type: NAME_SORT, payload: sort.data });
   };
 };
 
 export const priceSort = (payload) => {
-  // return async function (dispatch) {
-  //   let sort = await axios.get(
-  //     `http://${apiRoute}/api/product?orderPrice=${payload}`
-  //   );
-  //   return dispatch({ type: PRICE_SORT, payload: sort.data });
-  // };
-  return {
-    type: PRICE_SORT,
-    payload,
+  return async function (dispatch) {
+    let sort = await axios.get(
+      `http://localhost:3001/api/product?orderPrice=${payload}`
+    );
+    return dispatch({ type: PRICE_SORT, payload: sort.data });
   };
 };
 
 export const filterCategory = (payload) => {
   return async function (dispatch) {
     let filter = await axios.get(
-      `http://${apiRoute}/api/product?categoryId=${payload}`
+      `http://localhost:3001/api/product?categoryId=${payload}`
     );
     return dispatch({ type: FILTER_BY_CATEGORY, payload: filter.data });
   };
@@ -196,7 +135,7 @@ export const filterCategory = (payload) => {
 export const filterBrand = (payload) => {
   return async function (dispatch) {
     let filter = await axios.get(
-      `http://${apiRoute}/api/product?brand=${payload}`
+      `http://localhost:3001/api/product?brand=${payload}`
     );
     return dispatch({ type: FILTER_BY_BRAND, payload: filter.data });
   };
@@ -204,14 +143,14 @@ export const filterBrand = (payload) => {
 
 export const filterByOffer = (payload) => {
   return async function (dispatch) {
-    let filter = await axios.get(`http://${apiRoute}/api/product/discounts`);
+    let filter = await axios.get(`http://localhost:3001/api/product/discounts`);
     return dispatch({ type: FILTER_BY_OFFER, payload: filter.data });
   };
 };
 
 export const getServices = () => {
   return async function (dispatch) {
-    const services = await axios.get(`http://${apiRoute}/api/service`);
+    const services = await axios.get(`http://localhost:3001/api/service`);
     return dispatch({
       type: GET_SERVICES,
       payload: services.data,
@@ -221,7 +160,7 @@ export const getServices = () => {
 
 export function getBrands() {
   return async function (dispatch) {
-    var json = await axios.get(`http://${apiRoute}/api/product`);
+    var json = await axios.get("http://localhost:3001/api/product");
 
     dispatch({
       type: GET_BRANDS,
@@ -237,19 +176,14 @@ export function addToCart(payload) {
   };
 }
 
-export function updateCart(payload) {
-  return {
-    type: UPDATE_CART,
-    payload,
-  };
-}
-
 export function deleteItem(payload) {
   return {
     type: DELETE_ITEM,
     payload,
   };
 }
+
+
 
 export function getUserInfo(token) {
   return async function (dispatch) {

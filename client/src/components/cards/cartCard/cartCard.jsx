@@ -1,10 +1,9 @@
 import React from "react";
 import s from "./cartCard.module.css";
-import { useDispatch } from "react-redux";
+import img from "../../../images/logo.png";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteItem } from "../../../redux/actions";
 import Amount from "../../features/amountProduct/amountProduct";
-import AmountCart from "../../features/amountProduct/amountProductCart";
-import { useLocation } from "react-router-dom";
 
 export default function Card({
   image,
@@ -15,10 +14,14 @@ export default function Card({
   total,
 }) {
   const dispatch = useDispatch();
-  const location = useLocation();
   const handleDelete = () => {
+    // setGame({
+    //   ...cart,
+    //   cart: cart.id.filter((p) => p !== e),
+    // });
     if (id) {
       dispatch(deleteItem(id));
+      console.log(id);
     }
   };
   return (
@@ -26,11 +29,9 @@ export default function Card({
       <img className={s.image} src={image} alt="Img not found" />
       <div className={s.card}>
         <div className={s.text}>
-          <h5 className={s.product_name}>{product_name}</h5>
+          <h5>{product_name}</h5>
           {cost_by_unit === total ? (
-            <>
-              <p className={s.cost}>$ {cost_by_unit}</p>
-            </>
+            <p>Valor:{cost_by_unit}</p>
           ) : (
             <p>
               Valor: <del>{cost_by_unit}</del>
@@ -38,13 +39,7 @@ export default function Card({
             </p>
           )}
 
-          <p className={s.amount}>
-            {location.pathname === "/cart" ? (
-              <AmountCart id={id} amount={amount} />
-            ) : (
-              <Amount id={id} />
-            )}
-          </p>
+          <p>Cantidad : {amount}</p>
         </div>
         <button className={s.btn} onClick={(e) => handleDelete()}>
           x

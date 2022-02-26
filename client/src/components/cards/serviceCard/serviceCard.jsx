@@ -9,7 +9,7 @@ export default function CardService() {
     dispatch(getServices());
   }, []);
   const services = useSelector((state) => state.services);
-
+  console.log(services);
   return (
     <div id={Style.cont}>
       {services.map((service) => (

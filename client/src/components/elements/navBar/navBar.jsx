@@ -6,7 +6,7 @@ import SearchBar from '../../features/searchbar/searchBar';
 import ButtonLogin from '../buttons/loginButton/loginButton';
 import CartLogo from './cartLogo';
 import s from "./navBar.module.css";
-import UserMenu from '../../features/panel/panelUser';
+import UserMenu from '../../elements/userMenu/userMenu';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';

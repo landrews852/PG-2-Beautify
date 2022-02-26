@@ -5,8 +5,8 @@ export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
 export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
 export const DELETE_IMG_CARRUSEL = "DELETE_IMG_CARRUSEL";
 export const PUT_IMG_CARRUSEL = "PUT_IMG_CARRUSEL";
-const apiRoute = "localhost:3001";
-// const apiRoute = '143.244.172.125'
+const apiRoute = "http://localhost:3001";
+// const apiRoute = 'https://143.244.172.125'
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
 export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
 export const ALL_PRODUCTS = "ALL_PRODUCTS";
@@ -31,7 +31,7 @@ export const POST_CLIENT = "POST_CLIENT";
 export const getImgCarousel = () => {
   return async function (dispatch) {
     try {
-      let carrusel = await axios.get("http://localhost:3001/api/carousel");
+      let carrusel = await axios.get(`${apiRoute}/api/carousel`);
       dispatch({
         type: GET_IMG_CAROUSEL,
         payload: carrusel.data,
@@ -46,7 +46,7 @@ export const postImgCarousel = (payload) => {
   return async function (dispatch) {
     try {
       let response = await axios.post(
-        "http://localhost:3001/api/carousel/",
+        `${apiRoute}/api/carousel/`,
         payload
       );
       return response.data;
@@ -60,7 +60,7 @@ export const deleteImgCarousel = (id) => {
   return async function (dispatch) {
     try {
       let response = await axios.delete(
-        `http://localhost:3001/api/carousel/${id}`
+        `${apiRoute}/api/carousel/${id}`
       );
       dispatch(getImgCarousel());
       return response.data;
@@ -74,7 +74,7 @@ export const putImgCarousel = (data) => {
   return async function (dispatch) {
     try {
       let response = await axios.put(
-        `http://localhost:3001/api/carousel/${data.id}`,
+        `${apiRoute}/api/carousel/${data.id}`,
         data
       );
       return response.data;
@@ -86,7 +86,7 @@ export const putImgCarousel = (data) => {
 
 export const allProducts = () => {
   return async function (dispatch) {
-    var json = await axios.get(`http://${apiRoute}/api/product`);
+    var json = await axios.get(`${apiRoute}/api/product`);
 
     return dispatch({
       type: "ALL_PRODUCTS",
@@ -98,7 +98,7 @@ export const allProducts = () => {
 export const getProductsbyName = (name) => {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`http://${apiRoute}/api/product?name=${name}`);
+      let json = await axios.get(`${apiRoute}/api/product?name=${name}`);
       return dispatch({
         type: GET_PRODUCTS_BY_NAME,
         payload: json.data,
@@ -113,7 +113,7 @@ export const getServicesbyName = (name) => {
   return async function (dispatch) {
     try {
       let json = await axios.get(
-        `http://localhost:3001/api/service?name=${name}`
+        `${apiRoute}/api/service?name=${name}`
       );
       return dispatch({
         type: GET_SERVICES_BY_NAME,
@@ -126,21 +126,21 @@ export const getServicesbyName = (name) => {
 };
 export const getCategories = () => {
   return async function (dispatch) {
-    var info = await axios(`http://${apiRoute}/api/categories`);
+    var info = await axios(`${apiRoute}/api/categories`);
     return dispatch({ type: "GET_CATEGORIES", payload: info.data });
   };
 };
 
 export const postProduct = (payload) => {
   return async function (dispatch) {
-    var response = await axios.post(`http://${apiRoute}/api/product/`, payload);
+    var response = await axios.post(`${apiRoute}/api/product/`, payload);
     return response;
   };
 };
 
 export const getProductDetail = (id) => {
   return async function (dispatch) {
-    let detail = await axios.get(`http://${apiRoute}/api/product/${id}`);
+    let detail = await axios.get(`${apiRoute}/api/product/${id}`);
     return dispatch({ type: GET_PRODUCT_DETAIL, payload: detail.data });
   };
 };
@@ -153,7 +153,7 @@ export const cleanProductDetail = () => {
 
 export const postService = (payload) => {
   return async function (dispatch) {
-    var response = await axios.post(`http://${apiRoute}/api/service/`, payload);
+    var response = await axios.post(`${apiRoute}/api/service/`, payload);
     return response;
   };
 };
@@ -187,7 +187,7 @@ export const priceSort = (payload) => {
 export const filterCategory = (payload) => {
   return async function (dispatch) {
     let filter = await axios.get(
-      `http://${apiRoute}/api/product?categoryId=${payload}`
+      `${apiRoute}/api/product?categoryId=${payload}`
     );
     return dispatch({ type: FILTER_BY_CATEGORY, payload: filter.data });
   };
@@ -196,7 +196,7 @@ export const filterCategory = (payload) => {
 export const filterBrand = (payload) => {
   return async function (dispatch) {
     let filter = await axios.get(
-      `http://${apiRoute}/api/product?brand=${payload}`
+      `${apiRoute}/api/product?brand=${payload}`
     );
     return dispatch({ type: FILTER_BY_BRAND, payload: filter.data });
   };
@@ -204,14 +204,14 @@ export const filterBrand = (payload) => {
 
 export const filterByOffer = (payload) => {
   return async function (dispatch) {
-    let filter = await axios.get(`http://${apiRoute}/api/product/discounts`);
+    let filter = await axios.get(`${apiRoute}/api/product/discounts`);
     return dispatch({ type: FILTER_BY_OFFER, payload: filter.data });
   };
 };
 
 export const getServices = () => {
   return async function (dispatch) {
-    const services = await axios.get(`http://${apiRoute}/api/service`);
+    const services = await axios.get(`${apiRoute}/api/service`);
     return dispatch({
       type: GET_SERVICES,
       payload: services.data,
@@ -221,7 +221,7 @@ export const getServices = () => {
 
 export function getBrands() {
   return async function (dispatch) {
-    var json = await axios.get(`http://${apiRoute}/api/product`);
+    var json = await axios.get(`${apiRoute}/api/product`);
 
     dispatch({
       type: GET_BRANDS,
@@ -253,7 +253,7 @@ export function deleteItem(payload) {
 
 export function getUserInfo(token) {
   return async function (dispatch) {
-    const user = await axios.get(`http://localhost:3001/api/client/info`, {
+    const user = await axios.get(`${apiRoute}/api/client/info`, {
             headers: {
               authorization: `Bearer ${token}`
             }

@@ -18,6 +18,7 @@ import {
   GET_BRANDS,
   ADD_TO_CART,
   DELETE_ITEM,
+  UPDATE_CART,
   GET_CLIENT,
 } from "../actions";
 
@@ -116,25 +117,25 @@ export function rootReducer(state = initialState, action) {
 
     case PRICE_SORT:
       let arraySort1 =
-      action.payload === "ASC"
-        ? state.products.slice().sort(function (a, b) {
-          if (a.cost_by_unit > b.cost_by_unit) {
-            return 1;
-          }
-          if (b.cost_by_unit > a.cost_by_unit) {
-            return -1;
-          }
-          return 0;
-        })
-        : state.products.slice().sort(function (a, b) {
-          if (a.cost_by_unit > b.cost_by_unit) {
-            return -1;
-          }
-          if (b.cost_by_unit > a.cost_by_unit) {
-            return 1;
-          }
-          return 0;
-        });
+        action.payload === "ASC"
+          ? state.products.slice().sort(function (a, b) {
+              if (a.cost_by_unit > b.cost_by_unit) {
+                return 1;
+              }
+              if (b.cost_by_unit > a.cost_by_unit) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.products.slice().sort(function (a, b) {
+              if (a.cost_by_unit > b.cost_by_unit) {
+                return -1;
+              }
+              if (b.cost_by_unit > a.cost_by_unit) {
+                return 1;
+              }
+              return 0;
+            });
       return {
         ...state,
         products: arraySort1,
@@ -186,6 +187,13 @@ export function rootReducer(state = initialState, action) {
           cart: [...state.cart, action.payload],
         };
       }
+    case UPDATE_CART:
+      state.cart.find((p, index) => {
+        if (p.id === action.payload.id) {
+          state.cart[index].amount = action.payload.amount;
+          return true;
+        }
+      });
 
     case DELETE_ITEM:
       return {
@@ -193,11 +201,10 @@ export function rootReducer(state = initialState, action) {
         cart: state.cart.filter((p) => p.id !== action.payload),
       };
     case GET_CLIENT:
-      localStorage.setItem('user', JSON.stringify(action.payload));
-        return {
-          ...state,
-          user: action.payload,
-          
+      localStorage.setItem("user", JSON.stringify(action.payload));
+      return {
+        ...state,
+        user: action.payload,
       };
 
     default:

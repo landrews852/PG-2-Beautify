@@ -55,9 +55,9 @@ export default function ProductDetail() {
           </div> 
           
         </div>
-        <div className={Styles.infoo}>
+            <div className={Styles.more}><p>MÁS INFORMACIÓN</p></div>
+        <div className={Styles.info}>
             <ul>
-            <p className={Styles.more}>MÁS INFORMACIÓN</p>
               <li>
                 <strong>STOCK: </strong>
                 {productDetail.stock} items disponibles

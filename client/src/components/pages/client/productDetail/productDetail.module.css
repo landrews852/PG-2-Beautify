@@ -31,7 +31,7 @@
 .cost {
   position: relative;
   top: -1.5rem;
-  left: 7rem;
+  left: 0.5rem;
   font-size: 1.9rem;
 }
 .container {
@@ -56,16 +56,39 @@
   flex-wrap: wrap;
   text-align: center;
   align-self: stretch;
-  padding: 20px;
+  padding: 15px;
   width: 50%;
   }
+
+  @media screen and (max-width: 900px) {
+    .product-details {
+      width: 100%;
+    }
+    .cost {
+      position: relative;
+      top: -0.5rem;
+    }
+    
+  
+  }
+  @media screen and (min-width: 700) {
+    .control {
+      position: relative;
+      left: -5rem;
+    }
+    .hint-star {
+      position: relative;
+      left: 6rem;
+  }
+}
+
 
 /* 	Product Name */
 .container .product-details h1 {
   font-family: "Belleza", sans-serif;
   position: relative;
   display: inline;
-  font-size: 34px;
+  font-size: 2.5rem;
   color: #344055;
   text-transform: uppercase;
 }
@@ -100,16 +123,17 @@
   color: gold;
   width: 50%;
   position: relative;
-  left: 25rem;
-  top: -3.5rem;
+  left: -33rem;
+  top: 2rem;
+
 }
-.more {
+.more p {
   position: relative;
-  top: 40rem;
-  left: 10.5rem;
+  top: 1vw;
+  left: -1.5vw;
   border-bottom: #333 solid 1px;
   height: 3rem;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 /* The most important information about the product */
@@ -127,8 +151,8 @@
 
 .control {
   position: relative;
-  left: 6rem;
-  top: 1rem;
+  left: -6rem;
+  top: 3.5vw;
 }
 /* the Button */
 .btns {
@@ -222,36 +246,12 @@
   overflow: hidden;
 }
 
-.info {
-  background: rgba(27, 26, 26, 0.9);
-  font-family: "Farsan", cursive;
-  transition: all 0.3s ease-out;
-  transform: translateX(-100%);
-  position: absolute;
-  line-height: 1.9;
-  text-align: left;
-  font-size: 120%;
-  cursor: no-drop;
-  color: #fff;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-}
 
-.info h2 {
-  text-align: center;
-}
 .product-image:hover .info {
   transform: translateX(0);
 }
 
-.info ul li {
-  transition: 0.3s ease;
-}
-.info ul li:hover {
-  transform: translateX(50px) scale(1.3);
-}
+
 
 .product-image:hover img {
   transition: all 0.3s ease-out;
@@ -266,12 +266,17 @@
 	top: -2rem;
 } */
 
-.infoo {
+.info {
   position: relative;
   text-align: left;
   font-size: 1.1rem;
+  
+  position: relative;
+  left: -1.8vw;
+  top: 2vw
+  
 }
 
-.infoo ul {
+.info ul {
   list-style: none;
 }

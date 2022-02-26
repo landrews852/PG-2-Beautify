@@ -4,9 +4,7 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.quantity {
-  margin-left: 1rem;
-}
+
 .quantity p {
   font-weight: bold;
 }
@@ -33,7 +31,8 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .marketbutton {
   position: relative;
-  left: 10rem;
-  top: -2.6rem;
-  
+  left: 12.5rem;
+  top: -2.8rem;
+  width: 2rem;
 }
+

@@ -14,7 +14,7 @@
 
 .cards img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   border-radius: 10px 10px 0 0;
   transition: all 1s ease-out;
 }
@@ -47,7 +47,7 @@
 .cardcontenedor {
   width: 13vw;
   box-shadow: 0 1px 6px 2px rgba(0, 0, 0, 0.3);
-margin: 2rem;
+  margin: 2rem;
   border-radius: 15px;
   min-width: 250px;
 }
@@ -57,13 +57,24 @@ margin: 2rem;
 }
 
 .amount {
-  margin-left: -8rem;
-  margin-top: 1.5rem;
+ 
   position: relative;
-  top: -0.5rem;
-  left: 0.1rem;
+  top: 1rem;
+  left: -3.5rem;
 }
 
+@media screen and (max-width: 650px) {
+  .amount {
+    position: relative;
+    top: 1rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .amount {
+    position: relative;
+    top: -1rem;
+  }
+}
 .button {
   margin-left: 6rem;
   margin-right: 6rem;

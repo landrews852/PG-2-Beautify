@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../elements/buttons/button/button";
 import { Link } from "react-router-dom";
 import s from "./productCard.module.css";
-import Amount from "../../features/amountProduct/amountProduct";
+import Amount from "../../features/amountProduct/amountProductMarket";
 
 export default function Card({
   image,

@@ -1,4 +1,3 @@
-/*************** BUTTON CART ********************/
 
 .buttoncart {
   position: relative;
@@ -8,34 +7,45 @@
   border: 0;
   vertical-align: middle;
   text-decoration: none;
-  background: transparent;
-  padding: 12px 18px;
-  font-size: inherit;
-  font-family: inherit;
-  width: 10rem;
-  height: 45px;
-  margin: 0.5em auto;
-  background: rgb(3, 3, 3);
-  position: relative;
-  left: -21.5rem;
-  top: 4rem;
-}
+  background: url("../../../../images/carrito2.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center;
+  background-color: rgb(255, 160, 160);
+  padding: 5px 8px;
+  width: 4rem;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+ }
+  
 
-.buttoncart:hover {
-  background-color: #6e6e6e;
-  transition: 0.5s ease;
-}
-
-.buttoncart .button-text {
+ 
+ .buttoncart .button-text {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
   position: absolute;
-  top: 0.5rem;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  color: whitesmoke;
-  font-weight: 500;
+  color: #333;
+  font-weight: 700;
   line-height: 1.6;
-  font-size: 1.2rem;
+  font-size: 0px;
   text-align: center;
-}
+  text-transform: uppercase;
+ }
+ 
+ .buttoncart:hover {
+  background-color: #333;
+  width: 6rem;
+
+ }
+ 
+ 
+ 
+ .buttoncart:hover .button-text {
+  color:beige;
+  font-size: 14px;
+ }
+ 

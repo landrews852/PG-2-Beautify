@@ -26,6 +26,7 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_ITEM = "DELETE_ITEM";
 export const UPDATE_CART = "UPDATE_CART";
 export const GET_CLIENT = "GET_CLIENT";
+export const POST_CLIENT = "POST_CLIENT";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -253,13 +254,13 @@ export function deleteItem(payload) {
 export function getUserInfo(token) {
   return async function (dispatch) {
     const user = await axios.get(`http://localhost:3001/api/client/info`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
+            headers: {
+              authorization: `Bearer ${token}`
+            }
+    })  
     dispatch({
       type: GET_CLIENT,
       payload: user.data,
     });
-  };
+  }
 }

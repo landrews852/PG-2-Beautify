@@ -7,6 +7,7 @@ import {
   GET_CATEGORIES,
   POST_PRODUCT,
   POST_SERVICE,
+  POST_CLIENT,
   PRICE_SORT,
   NAME_SORT,
   FILTER_BY_OFFER,
@@ -79,6 +80,11 @@ export function rootReducer(state = initialState, action) {
         ...state,
       };
 
+    case POST_CLIENT:
+      return {
+        ...state,
+      };
+    
     case GET_PRODUCT_DETAIL:
       return {
         ...state,

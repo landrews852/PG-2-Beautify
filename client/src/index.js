@@ -8,15 +8,15 @@ import { Provider } from 'react-redux';
 import { store } from './store/index';
 
 const domain = "beautify.us.auth0.com"
-const client_id = "ae6Z5gbTJfzSVNvlut5Q4JKngbb5kyFY"
-
+const client_id = "OrdQlvZeTosg7ug3kDik9EeY3k9hEolh"
+const domainurl = "https://143.244.172.125/"
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
     <Auth0Provider 
       domain={domain} 
       clientId={client_id} 
-      redirectUri={window.location.origin}
+      redirectUri={domainurl}
       audience='https://beautify-api-pg/'
       scope='openid profile email'
     >

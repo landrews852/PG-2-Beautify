@@ -18,10 +18,10 @@
 
 .cart_img {
   position: absolute;
-  width: 35px;
+  width: 45px;
   padding: 5px;
-  right: 8%;
-  top: 37%;
+  right: 7.5%;
+  top: 33%;
   bottom: 40%;
   /* right: 30px; */
   display: block;
@@ -29,7 +29,7 @@
   /* transition: all 250ms linear; */
   /* border: #000000 solid 1px;
   border-radius: 11px; */
-  opacity: 0.6;
+  /* opacity: 0.6; */
 }
 
 .cart_img:hover {
@@ -51,7 +51,11 @@
   z-index: 1;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-52%, -52%);
+  background: #d329e1;
+  border-radius: 100%;
+  color: white;
+  font-weight: bold;
 }
 
 .navSearch {

@@ -56,13 +56,16 @@
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  border-radius: 100%;
   width: 25px;
   height: 25px;
   align-self: center;
   position: relative;
   left: 13rem;
   top: 0.2rem;
+}
+.btn:hover {
+  background-color: rgba(160, 28, 28, 0.815);
 }
 
 .amount {

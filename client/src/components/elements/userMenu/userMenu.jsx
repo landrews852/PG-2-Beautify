@@ -17,7 +17,7 @@ export default function UserMenu() {
   const user= JSON.parse(localStorage.getItem('user'))
   
   useMemo(()=>{
-    if (user){
+    if (user &&JSON.parse(localStorage.getItem('user'))[0]){
       profile =  JSON.parse(localStorage.getItem('user'))[0].profile_picture
       console.log (profile)
     }
@@ -38,7 +38,7 @@ export default function UserMenu() {
         onClick(e);
       }}
     >
-     {profile?<img src= {profile}/>:<FontAwesomeIcon  icon={faUser} />}
+     {profile?<img className= {s.imgprofile}  src= {profile}/>:<FontAwesomeIcon  icon={faUser} />}
       {/* {children} */}
     </a>
   ));

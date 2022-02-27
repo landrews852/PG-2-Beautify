@@ -4,11 +4,9 @@ import React from "react";
 import Card from "../../../cards/productCard/productCard";
 import { Link } from "react-router-dom";
 import "./market.css";
-import Filter from "../../../elements/filter/index";
+import Filter from "../../../elements/filter/filter";
 import { allProducts } from "../../../../redux/actions";
 import Pagination from "../../../features/paginate/paginate";
-
-// let allProducts = require('../../datamock/Products.json')
 
 export default function Market() {
   const dispatch = useDispatch();
@@ -21,8 +19,9 @@ export default function Market() {
   let paginatedProducts =
     products !== "nothing found" ? products.slice(firstItem, lastItem) : [];
 
-  useEffect(async () => {
-    if (typeof products === 'string') dispatch(allProducts());
+  useEffect(() => {
+    if (typeof products === "string" || products.length == 0)
+      dispatch(allProducts());
   }, []);
 
   const Paginate = (page) => {
@@ -44,14 +43,13 @@ export default function Market() {
           />
           <div className="Container Market">
             {paginatedProducts.map((product) => (
-              <Link key={product.id} to={"/market/" + product.id}>
                 <Card
                   id={product.id}
                   product_name={product.product_name}
                   image={product.image}
                   cost_by_unit={product.cost_by_unit}
                 />
-              </Link>
+              
             ))}
           </div>
         </>

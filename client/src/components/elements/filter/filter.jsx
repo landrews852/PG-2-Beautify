@@ -44,6 +44,16 @@ export default function Filter({ Paginate }) {
     dispatch(filterByOffer(e.target.value));
   }
 
+  var select = document.querySelectorAll("select")
+  var allSelect = [...select]
+
+  function handleFilterReset(e) {
+    dispatch(filterBrand(""));
+    return allSelect.forEach((e) => {
+      e.options.selectedIndex = 1;
+    });
+  }
+
   return (
     <div className={s.filter} onChange={() => Paginate(1)}>
       <div className={s.selectDiv}>
@@ -114,11 +124,13 @@ export default function Filter({ Paginate }) {
               : null}
           </select>
         </div>
-        <div className={s.selectContainer}>
-          <button name="offert" onClick={handleFilterOffer}>
+        <div className={s.btnContainer}>
+          <button className={s.btn} name='offert' onClick={handleFilterOffer}>
             Ver ofertas
           </button>
-          {/* <label className="label-filter">ofertas</label>           */}
+          <button className={s.btn} name='offert' onClick={handleFilterReset}>
+            Limpiar filtros
+          </button>
         </div>
       </div>
     </div>

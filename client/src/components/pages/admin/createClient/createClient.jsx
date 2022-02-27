@@ -6,6 +6,9 @@ import axios from "axios";
 import s from "./createClient.module.css";
 import { getUserInfo } from "../../../../redux/actions";
 
+//const apiRoute = "http://localhost:3001";
+const apiRoute = process.env.REACT_APP_APP_ROOT
+
 const validate = (input) => {
     let errors = {};
     if (!input.name_client) {
@@ -90,13 +93,13 @@ export default function CreateClient() {
         e.preventDefault();
         const token = await getAccessTokenSilently();
        
-        const response = await axios.post("http://localhost:3001/api/client",input, {
+        const response = await axios.post(`${apiRoute}/api/client`,input, {
             headers: {
               authorization: `Bearer ${token}`
             }
         })
         dispatch(getUserInfo(token));
-        navigate('/');
+       
         setInput({
           name_client: "",
           lastname_client: "",
@@ -105,6 +108,7 @@ export default function CreateClient() {
           phone: "",
           birthday: "",
         })
+        navigate('/');
         
     }
 

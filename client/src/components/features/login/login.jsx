@@ -29,12 +29,12 @@ export default function Login () {
 
     useEffect (async ()=>{        
 		if(isAuthenticated){ 
-			const token = await getAccessTokenSilently();
-		    dispatch(getUserInfo(token))
+			const token = await getAccessTokenSilently();		    
+dispatch(getUserInfo(token))
 			.then(u => {
 				const user = JSON.parse(localStorage.getItem('user'));
 				if(!user.length){
-					return navigate("/admin/client/create")
+					navigate('/admin/client/create');
 				}
 			})
 		}

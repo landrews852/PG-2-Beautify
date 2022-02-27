@@ -1,7 +1,7 @@
 .new {
     margin-bottom: -20px;
     background-image: url(https://img.freepik.com/foto-gratis/crema-base-maquillaje-desenfoque-fondo-textura-mascara-arcilla-roja_332273-1227.jpg?w=740);
-    height: 1100px;
+    height: 800px;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -18,18 +18,21 @@
 .form {
     background-color: rgba(255, 255, 255, 0.267);
     background-repeat: no-repeat;
-    margin-left: 380px;
+    margin-left: 412px;
     margin-right: 200px;
     margin-top: 100px;
     height: 950px;
     width: 600px;
-    border-radius: 10px ;
+    border-radius: 10px;
+    position: relative;
+    left: -6rem;
 }
+
 
 .new h1 {
 position: absolute;
 top: 30%;
-left:32%
+left:36%
 }
 
 .new button {
@@ -46,6 +49,8 @@ left:32%
     cursor: pointer;
     margin: 2px;
     align-content: space-between;
+    position: relative;
+    left: 1rem;
     
 
 }
@@ -69,20 +74,19 @@ left:32%
 }
 .form label {
     position: absolute;
-    left: 30%;
-    background:moccasin;
+    left: 5%;
     color: black;
     font-weight: bold;
-    width: 14%;
+    width: 29%;
     height: 6%;
     border-radius: 5%;
-    margin-top: 10px;
+    margin-top: 18px;
 }
 
 .form .submit {
     position: absolute;
-    top: 174%;
-    left: 45%;
+    top: 90%;
+    left: 38%;
     height: 50px;
     border-radius: 10px;
 }

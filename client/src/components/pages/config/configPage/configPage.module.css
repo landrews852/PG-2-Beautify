@@ -1,0 +1,18 @@
+.container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5%;
+    
+}
+
+.sidebar{
+    display: flex;
+    flex: 1 1 auto;
+    max-width: 250px;
+}
+
+.panel{
+    display: flex;
+    flex: 4 1 auto;
+}

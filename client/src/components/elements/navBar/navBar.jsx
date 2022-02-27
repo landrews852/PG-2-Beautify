@@ -2,24 +2,25 @@ import React, { useEffect } from 'react';
 import { Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../../images/logo2.png';
-import SearchBar from '../../features/searchbar/index';
-// import ButtonLogin from '../buttons/loginButton/loginButton';
-import Cart_logo from './cart_logo';
+import SearchBar from '../../features/searchbar/searchBar';
+import ButtonLogin from '../buttons/loginButton/loginButton';
+import CartLogo from './cartLogo';
 import s from "./navBar.module.css";
+import UserMenu from '../../elements/userMenu/userMenu';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 import Login from '../../features/login/login';
+import { useLocation } from 'react-router-dom';
 
 
 export default function Navigator () {
 
+  let location = useLocation()
+
   const user = JSON.parse(localStorage.getItem('user'));
   const { isAuthenticated } = useAuth0();
   console.log(user);
-   
-  
-
   return (
     <Navbar className={s.navBarr} variant="light" expand="lg">
       <Container>
@@ -36,11 +37,14 @@ export default function Navigator () {
             {isAuthenticated &&  <Link to="/profile">Profile</Link>}
             
           </Nav>
+          {location.pathname !== "/" ? (
             <SearchBar className={s.navSearch} />
-            <Cart_logo />
+          ) : null}
+
+          <CartLogo />
+          <UserMenu />
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
+  );
 }
-//

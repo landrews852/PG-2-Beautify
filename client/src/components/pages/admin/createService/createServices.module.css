@@ -18,18 +18,20 @@
 .form {
     background-color: rgba(255, 255, 255, 0.267);
     background-repeat: no-repeat;
-    margin-left: 380px;
+    margin-left: 412px;
     margin-right: 200px;
-    margin-top: 70px;
+    margin-top: 100px;
     height: 600px;
     width: 600px;
     border-radius: 10px ;
+    position: relative;
+    left: -6rem;
 }
 
 .newService h1 {
 position: absolute;
-top: 26%;
-left:32%
+top: 30%;
+left:37%
 }
 
 .newService button {
@@ -71,11 +73,10 @@ left:32%
 }
 .form label {
     position: absolute;
-    left: 30%;
-    background:moccasin;
+    left: 5%;
     color: black;
     font-weight: bold;
-    width: 14%;
+    width: 29%;
     height: 6%;
     border-radius: 5%;
     margin-top: 45px;
@@ -83,8 +84,8 @@ left:32%
 
 .form .submit {
     position: absolute;
-    top: 116%;
-    left: 58%;
+    top: 90%;
+    left: 38%;
     height: 50px;
     border-radius: 10px;
 }

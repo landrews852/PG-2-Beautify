@@ -1,7 +1,7 @@
 .new {
     display: grid;
     margin-bottom: -20px;
-    margin-top: 130px;
+    margin-top:1em;
     grid-template-columns: repeat(3, 50px);
     background-repeat: no-repeat;
     background-size: cover;

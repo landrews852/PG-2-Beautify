@@ -17,10 +17,12 @@ const handleSubmit = (e) => {
 
   return (
     <div className={s.container}>
-        <h1>Edite aqui su mensaje acerca de la empresa:</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                    <label name="about" id="about">Sobre nosotros</label>
+        <h2 className={s.about}>Edite aqui su mensaje acerca de la empresa:</h2>
+            <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
+                <div className={s.aboutContainer}>
+                    <div>
+                        <label name="about" id="about">Aquí podra escribir un mensaje describiendo a que se dedica la empresa, su historia, su visión y misión.</label>
+                    </div>
                     <textarea onChange={handleOnChange} type="text" name="about" id="about" />
                 </div>
                 <button type="submit">Modificar</button>

@@ -1,0 +1,41 @@
+.container {
+    background-image: url("https://stylenet.com/images/bg.jpg");
+    background-repeat: no-repeat;
+    min-height: 400px;
+}
+
+.about {
+border-bottom:2px solid;
+}
+.aboutContainer {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.aboutContainer div {
+    width: 30%;
+    padding: 1em;
+    background-color: #f3efefb5;
+}
+
+.aboutContainer label {
+    font-size: 18px;
+}
+.container textarea {
+    width: 50%;
+    height: 50%;
+    max-height: 400px;
+    min-height: 30vh;
+}
+
+.form button {
+    background: rgb(218, 210, 200);
+    margin:1em 0 1em 0;
+    transition: all 0.5s ease;
+}
+.form button:hover {
+    background: rgb(212, 191, 204);
+    transition: all 0.5s ease;
+
+}

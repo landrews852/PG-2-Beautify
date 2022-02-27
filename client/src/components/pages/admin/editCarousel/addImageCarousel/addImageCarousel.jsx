@@ -67,7 +67,7 @@ export default function AddImageCarousel() {
 
   return (
     <div className={s.new}>
-      <h1>AGREGAR AL CARRUSEL</h1>
+      <h2>Agregar banner al carrusel</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className={s.form}>
           <div>

@@ -29,15 +29,16 @@ export default function Login () {
 
     useEffect (async ()=>{        
 		if(isAuthenticated){ 
-			const token = await getAccessTokenSilently();
-				dispatch(getUserInfo(token))
-				.then(u => {
-					const user = JSON.parse(localStorage.getItem('user'));
-					if(!user.length){
-						return navigate("/admin/client/create")
-					}
-				})
-			}
+			const token = await getAccessTokenSilently();		    
+			dispatch(getUserInfo(token))
+			.then(u => {
+				const user = JSON.parse(localStorage.getItem('user'));
+				console.log (user)
+				if(!user.length){
+					navigate('/admin/client/create');
+				}
+			})
+		}
     },[isAuthenticated])
 
 	
@@ -51,8 +52,9 @@ export default function Login () {
 	}
 
 	return (
-      <>  
-				<button onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
+        <>  
+			
+			<button className={isAuthenticated?"buttonlogin":""} onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
 			{/* <button onClick={callprotectedApi}>protected</button> */}
 			
 	{/* <div className="sectionwraper">

@@ -22,7 +22,7 @@ export default function EditCarousel() {
 
   return (
     <div className={s.new}>
-      <Link to="/"><button className={s.button}>Volver</button></Link>
+      {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
       <div className={s.carousel}>
         <label>Seleccione si desea Agregar o Eliminar</label>
         <select className={s.cat} onChange={(e) => handleSelect(e)}>

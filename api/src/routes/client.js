@@ -7,9 +7,9 @@ const router = Router();
 // const authvalidate = router.use(verifyjwt)
 
 //Trae la información de todos los clientes
-router.get("/",verifyjwt, async (req, res) => {
-  
-});
+///router.get("/",verifyjwt, async (req, res) => {
+
+//});
 
 // router.post("/protected",  async (req, res) => {
 //   // try {

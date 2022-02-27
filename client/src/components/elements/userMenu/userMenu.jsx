@@ -6,18 +6,24 @@ import { useState } from "react";
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { Link, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector } from "react-redux";
 
 
 export default function UserMenu() {
+  const { isAuthenticated, isLoading } = useAuth0();
+  const [reload, setReload]= useState ()
   let profile;
-  const {isAuthenticated}=useAuth0()
-  useMemo (()=>{
-    if (isAuthenticated){
-      profile=JSON.parse(localStorage.getItem('user'))&& JSON.parse(localStorage.getItem('user'))[0].profile_picture
-    }else  profile= null
-  },[isAuthenticated])
 
-   
+  const user= JSON.parse(localStorage.getItem('user'))
+  
+  useMemo(()=>{
+    if (user){
+      profile =  JSON.parse(localStorage.getItem('user'))[0].profile_picture
+      console.log (profile)
+    }
+  },[user])
+
+   console.log (profile)
   let location = useLocation();
 
   const [value, setValue] = useState("");

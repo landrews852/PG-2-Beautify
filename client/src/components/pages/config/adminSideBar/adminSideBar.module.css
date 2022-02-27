@@ -1,0 +1,70 @@
+.Contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;    
+}
+
+.containerBar {
+    width: 20%;
+    height: 100%;
+}
+
+.containerOp {
+    width: 78% ;
+    height: 100%;
+}
+
+.buttonNav {
+
+    display: inline-flex;
+    height: 120%;
+    width: 125%;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:transparent;
+    border-bottom:none;
+    border-top:none;
+    margin:0px;
+  }
+
+
+
+.buttonNav {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+.buttonNav span {
+    position: relative;
+    transition: all .45s ease-Out;
+  }
+  
+  .translate {
+    transform: rotate(50deg);
+    width: 100%;
+    height: 250%;
+    left: -200px;
+    top: -30px;
+    background: #D1BF95;
+    position: absolute;
+    z-index: -1;
+    transition: all .3s ease-Out;
+  }
+  .activo {
+    background: #D1BF95;
+    z-index: -1;
+    transition: all .3s ease-Out;
+  }
+  .buttonNav:hover .translate {
+    left: -5px;
+  }
+  
+  .buttonNav:hover  {
+    color: #2D3142;
+  }

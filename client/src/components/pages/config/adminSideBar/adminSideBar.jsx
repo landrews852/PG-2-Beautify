@@ -1,18 +1,88 @@
 import React from "react";
 import s from './adminSideBar.module.css'
-import { ButtonGroup, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Nav, Navbar, Container } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
+import CreateProduct from '../../../pages/admin/createProduct/createProduct';
+import CreateService from "../../admin/createService/createService";
+import EditCarousel from "../../admin/editCarousel/editCarousel";
+import { useState } from "react";
 
 export default function AdminSideBar() {
+const locationpath = useLocation()
+
+const [ops,setOps] = useState(0);
+const [active,setActive] = useState(0);
+console.log(locationpath.pathname)
+  var components = "chau" 
+
+
+  const handleLocation = (e) => {
+  if (e.target.value === "1") {
+    setOps(<CreateProduct/>);
+    setActive(1) ;
+    }
+  else if (e.target.value === "2") {
+    setOps(<CreateService/>);
+    setActive(2);
+    }
+  else if (e.target.value === "3")
+    {
+    setOps(<EditCarousel/>);
+    setActive(3);
+    }
+  else {components = "hola"}  
+  }
+ 
   return (
-    <div className={s.container}>
-      <ButtonGroup vertical>
-        <Button variant="secondary" as={Link} to={"admin/product/create"}>Crear producto</Button>
-        <Button variant="secondary" as={Link} to={"admin/service/create"}>Crear Servicio</Button>
-        <Button variant="secondary" as={Link} to={"admin/carousel"}>Carrusel</Button>
-        <Button variant="secondary" as={Link} to={"admin/edit/aboutUs"}>Sobre Nosotros</Button>
-        <Button variant="secondary" as={Link} to={"admin/edit/algo"}>Algo mas que no recuerdo</Button>
-      </ButtonGroup>
-    </div>
+    <>
+    <div className={s.Contenedor}> 
+      <div className={s.containerBar}>
+
+      <Navbar variant="light" expand="lg">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="flex-column">
+            <Link className='nav-link' to="/profile"><button className={active==1?s.buttonNav+" "+s.activo:s.buttonNav}
+              value="1" 
+              onClick={(e) => {handleLocation(e)}}
+              >
+                <div className={s.translate}></div>
+              Producto</button></Link>
+            <Link className='nav-link' to="/profile"><button className={active==2?s.buttonNav+" "+s.activo:s.buttonNav}
+              value="2" 
+              onClick={(e) => {handleLocation(e)}} 
+              >
+                <div className={s.translate}></div>
+                Servicios</button></Link>
+                <Link className='nav-link' to="/profile"><button className={active==3?s.buttonNav+" "+s.activo:s.buttonNav}
+              value="3" 
+              onClick={(e) => {handleLocation(e)}} 
+              >
+                <div className={s.translate}></div>
+                Carrusel</button></Link>
+            <Link className='nav-link' to="/admin/edit/aboutUs"><button className={active==4?s.buttonNav+" "+s.activo:s.buttonNav}
+              value="4" 
+              onClick={(e) => {handleLocation(e)}} 
+              >
+                <div className={s.translate}></div>
+                Sobre nosotros</button></Link>
+            <Link className='nav-link' to="/admin/estadisticas"><button className={active==5?s.buttonNav+" "+s.activo:s.buttonNav}
+              value="5" 
+              onClick={(e) => {handleLocation(e)}} 
+              >
+                <div className={s.translate}></div>
+                Estadisticas</button></Link>
+          </Nav>
+          </Navbar.Collapse>       
+       </Navbar>       
+      
+      </div>
+      <div className={s.containerOp}>
+        
+        {ops}
+        
+      </div>
+    </div>    
+    </>
   );
 }

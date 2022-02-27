@@ -29,8 +29,7 @@ export default function Login () {
 
     useEffect (async ()=>{        
 		if(isAuthenticated){ 
-			const token = await getAccessTokenSilently();
-console.log("token",token);		    
+			const token = await getAccessTokenSilently();		    
 dispatch(getUserInfo(token))
 			.then(u => {
 				const user = JSON.parse(localStorage.getItem('user'));

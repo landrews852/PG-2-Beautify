@@ -16,7 +16,7 @@ ReactDOM.render(
     <Auth0Provider 
       domain={domain} 
       clientId={client_id} 
-      redirectUri={domainurl}
+      redirectUri={window.location.origin}
       audience='https://beautify-api-pg/'
       scope='openid profile email'
     >

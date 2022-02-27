@@ -7,7 +7,7 @@ import s from "./createClient.module.css";
 import { getUserInfo } from "../../../../redux/actions";
 
 //const apiRoute = "http://localhost:3001";
-const apiRoute = 'https://143.244.172.125'
+const apiRoute = process.env.REACT_APP_APP_ROOT
 
 const validate = (input) => {
     let errors = {};
@@ -99,7 +99,7 @@ export default function CreateClient() {
             }
         })
         dispatch(getUserInfo(token));
-        navigate('/');
+       
         setInput({
           name_client: "",
           lastname_client: "",
@@ -108,6 +108,7 @@ export default function CreateClient() {
           phone: "",
           birthday: "",
         })
+        navigate('/');
         
     }
 

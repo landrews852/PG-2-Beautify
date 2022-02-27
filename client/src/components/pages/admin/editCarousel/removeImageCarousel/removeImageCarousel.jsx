@@ -14,11 +14,14 @@ export default function RemoveImageCarousel() {
   }, [])
 
   return (
+    <>
+    <h2>Eliminar banner del carrusel</h2>
     <div className={s.new}>
-      <h1>ELIMINAR IMAGEN CARRUSEL</h1>
+      
       {
         carrusel.length > 0 && carrusel.map((item, idx) => <CarouselCard key={item.id} id={item.id} image={item.image} idx={idx} />)
       }
     </div>
+    </>
   )
 }

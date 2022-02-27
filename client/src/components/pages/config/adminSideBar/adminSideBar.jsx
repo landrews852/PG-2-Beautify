@@ -6,6 +6,7 @@ import CreateProduct from '../../../pages/admin/createProduct/createProduct';
 import CreateService from "../../admin/createService/createService";
 import EditCarousel from "../../admin/editCarousel/editCarousel";
 import { useState } from "react";
+import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
 
 export default function AdminSideBar() {
 const locationpath = useLocation()
@@ -29,6 +30,11 @@ console.log(locationpath.pathname)
     {
     setOps(<EditCarousel/>);
     setActive(3);
+    }
+    else if (e.target.value === "4")
+    {
+    setOps(<AdminAboutUs/>);
+    setActive(4);
     }
   else {components = "hola"}  
   }
@@ -60,13 +66,13 @@ console.log(locationpath.pathname)
               >
                 <div className={s.translate}></div>
                 Carrusel</button></Link>
-            <Link className='nav-link' to="/admin/edit/aboutUs"><button className={active==4?s.buttonNav+" "+s.activo:s.buttonNav}
+            <Link className='nav-link' to="/profile"><button className={active==4?s.buttonNav+" "+s.activo:s.buttonNav}
               value="4" 
               onClick={(e) => {handleLocation(e)}} 
               >
                 <div className={s.translate}></div>
                 Sobre nosotros</button></Link>
-            <Link className='nav-link' to="/admin/estadisticas"><button className={active==5?s.buttonNav+" "+s.activo:s.buttonNav}
+            <Link className='nav-link' to="/profile"><button className={active==5?s.buttonNav+" "+s.activo:s.buttonNav}
               value="5" 
               onClick={(e) => {handleLocation(e)}} 
               >

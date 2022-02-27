@@ -9,8 +9,8 @@ import { useState } from "react";
 
 export default function AdminSideBar() {
 const locationpath = useLocation()
-
-const [ops,setOps] = useState(0);
+const welcome = "Bienvenido al panel administrativo de tu E-commerce"
+const [ops,setOps] = useState(welcome);
 const [active,setActive] = useState(0);
 console.log(locationpath.pathname)
   var components = "chau" 
@@ -77,10 +77,8 @@ console.log(locationpath.pathname)
        </Navbar>       
       
       </div>
-      <div className={s.containerOp}>
-        
-        {ops}
-        
+      <div className={s.containerOp}>        
+        {ops}      
       </div>
     </div>    
     </>

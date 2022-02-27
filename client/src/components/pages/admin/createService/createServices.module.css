@@ -1,37 +1,35 @@
 .newService {
     margin-bottom: -20px;
-    background-image: url(https://img.freepik.com/foto-gratis/crema-base-maquillaje-desenfoque-fondo-textura-mascara-arcilla-roja_332273-1227.jpg?w=740);
+    background-image: url("../../../../images/beautyservice.jpg");
     height: 800px;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .cat {
-    margin-top: 40px;
+    margin-top: 10px;
     width: 360px;
-    height: 50px;
+    height: 40px;
     margin-left: 220px;
     border-radius: 10px;
-    background-color: rgba(255, 127, 80, 0.342)
+    background-color: rgba(228, 225, 224, 0.883);
+    padding: 0 1em;
 }
 
 .form {
-    background-color: rgba(255, 255, 255, 0.267);
+    background-color: rgba(231, 223, 221, 0.67);
     background-repeat: no-repeat;
-    margin-left: 412px;
-    margin-right: 200px;
-    margin-top: 100px;
-    height: 600px;
+    margin:1em auto;
+    height:70%;
     width: 600px;
-    border-radius: 10px ;
+    border-radius: 10px;
     position: relative;
-    left: -6rem;
+    box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
 }
 
-.newService h1 {
-position: absolute;
-top: 30%;
-left:37%
+
+.newService h2 {
+border-bottom:2px solid;
 }
 
 .newService button {
@@ -58,18 +56,20 @@ left:37%
 
 .form input {
     width: 360px;
-    height: 50px;
-    padding: 0 20px;
+    height: 30px;
+    padding:1em;
     font-size: 18px;
     color: black;
     outline: none;
     border: 1px solid silver;
-    border-radius: 10px; 
+    border-radius: 10px;
     opacity: 60%;
     position: relative;
     left: 110px;
-    top: 40px;
-    background-color: rgba(255, 127, 80, 0.507);
+    box-shadow: 0 0 3px 1px rgba(0,0,0,0.3);
+    top: 8px;
+    background-color: rgba(228, 225, 224, 0.883);
+    margin:7px 0;
 }
 .form label {
     position: absolute;
@@ -79,15 +79,18 @@ left:37%
     width: 29%;
     height: 6%;
     border-radius: 5%;
-    margin-top: 45px;
+    margin-top: 20px;
 }
 
 .form .submit {
-    position: absolute;
-    top: 90%;
-    left: 38%;
-    height: 50px;
-    border-radius: 10px;
+    background: rgb(218, 210, 200);
+    margin:1em 0 1em 0;
+    transition: all 0.5s ease;
+}
+.form .submit:hover {
+    background: rgb(212, 191, 204);
+    transition: all 0.5s ease;
+
 }
 
 .form .category {
@@ -132,7 +135,7 @@ left:37%
     font-weight: bold;
     position: relative;
     left: 320px;
-    top: 40px;
+    top: 8px;
     width: 180px;
 } 
 .errorcat {

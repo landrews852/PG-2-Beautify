@@ -116,8 +116,8 @@ export default function CreateService() {
 
     return (
         <div className={s.newService}>
-            <Link to="/"><button className={s.button}>Volver</button></Link>
-            <h1>AGREGAR NUEVO SERVICIO</h1>
+            {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
+            <h2>Agregar nuevo servicio</h2>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className={s.form}>
                     <div>

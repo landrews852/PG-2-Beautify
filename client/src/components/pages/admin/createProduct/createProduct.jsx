@@ -135,8 +135,8 @@ export default function CreateProduct() {
 
     return (
         <div className={s.new}>
-            <Link to="/"><button className={s.button}>Volver</button></Link>
-            <h1>AGREGAR NUEVO PRODUCTO</h1>
+            {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
+            <h2>Agregar nuevo producto</h2>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className={s.form}>
                     <div>

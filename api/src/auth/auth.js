@@ -26,10 +26,7 @@ const verifytoken = async (req) => {
   return response.data;
 }
 
-
-
 module.exports = {
   verifyjwt,
   verifytoken,
 }
-

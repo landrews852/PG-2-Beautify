@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 export default function Login () {
-    
-	
+
 	// const handleClickCreate = (e) => {
 	// 	e.preventDefault();
 	// 	let check = document.getElementsByClassName("checkbox");		
@@ -30,14 +30,14 @@ export default function Login () {
     useEffect (async ()=>{        
 		if(isAuthenticated){ 
 			const token = await getAccessTokenSilently();
-		    dispatch(getUserInfo(token))
-			.then(u => {
-				const user = JSON.parse(localStorage.getItem('user'));
-				if(!user.length){
-					return navigate("/admin/client/create")
-				}
-			})
-		}
+				dispatch(getUserInfo(token))
+				.then(u => {
+					const user = JSON.parse(localStorage.getItem('user'));
+					if(!user.length){
+						return navigate("/admin/client/create")
+					}
+				})
+			}
     },[isAuthenticated])
 
 	
@@ -51,12 +51,10 @@ export default function Login () {
 	}
 
 	return (
-        <>  
-			
-			<button onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
+      <>  
+				<button onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
 			{/* <button onClick={callprotectedApi}>protected</button> */}
 			
-			  
 	{/* <div className="sectionwraper">
 		<div className="containerlogin">
 			<div className="row justify-content-center">

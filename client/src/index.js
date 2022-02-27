@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { store } from './store/index';
 
 const domain = "beautify.us.auth0.com"
-const client_id = "ae6Z5gbTJfzSVNvlut5Q4JKngbb5kyFY"
+const client_id = "OrdQlvZeTosg7ug3kDik9EeY3k9hEolh"
 
 ReactDOM.render(
   <Provider store={store}>

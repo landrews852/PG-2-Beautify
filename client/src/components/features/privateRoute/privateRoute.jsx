@@ -11,11 +11,13 @@ export default function PrivateRoute({children}){
     const user = JSON.parse(localStorage.getItem('user'));
    
   
-  if (isAuthenticated && user[0].admin){
+  if (isAuthenticated){
+    if (user&&user[0].admin){
     return children[0]
-  }else if(isAuthenticated){
+    }
+    else if(isAuthenticated){
     return children[1]
   }
   else return <Navigate to='/'/>
-
+ } 
 }

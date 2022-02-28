@@ -10,7 +10,6 @@ function AmountCart({ amount, id }) {
 
   const handleClickSum = (e) => {
     e.preventDefault();
-    if (amount <= 1) return null;
     dispatch(updateCart({ ...product, amount: parseInt(amount) + 1 }));
   };
 

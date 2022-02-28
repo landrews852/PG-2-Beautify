@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import Card from "../../../cards/productCard/productCard";
-import { Link } from "react-router-dom";
+
 import "./market.css";
 import Filter from "../../../elements/filter/filter";
 import { allProducts } from "../../../../redux/actions";
@@ -46,7 +46,7 @@ export default function Market() {
               <Card
                 id={product.id}
                 product_name={product.product_name}
-                image={product.image}
+                image={product.image[0]}
                 cost_by_unit={product.cost_by_unit}
                 key={product.id}
               />

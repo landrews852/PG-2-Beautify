@@ -1,58 +1,58 @@
 .container {
-    background-image: url("https://stylenet.com/images/bg.jpg");
-    background-repeat: no-repeat;
-    min-height: 400px;
+  background-image: url("https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078919/beautify/form/bg_mnofxc.jpg");
+  background-repeat: no-repeat;
+  min-height: 400px;
 }
 
 .about {
-border-bottom:2px solid;
+  border-bottom: 2px solid;
 }
 .aboutContainer {
-    display: grid;
-    grid-template-columns: 2fr minmax(50%,8fr);
-    grid-template-rows: repeat(4, auto);
-    column-gap: 10px;
-    row-gap: 1em;
-    margin-bottom: 1em;
+  display: grid;
+  grid-template-columns: 2fr minmax(50%, 8fr);
+  grid-template-rows: repeat(4, auto);
+  column-gap: 10px;
+  row-gap: 1em;
+  margin-bottom: 1em;
 }
 
 .aboutContainer div {
-    width: 30%;
-    padding: 1em;
-    background-color: #f3efefb5;
+  width: 30%;
+  padding: 1em;
+  background-color: #f3efefb5;
 }
 
 .aboutContainer label {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .container input {
-    width: 30%;
-    height: auto;
-    border: solid 1px gray;
+  width: 30%;
+  height: auto;
+  border: solid 1px gray;
 }
 
 .container textarea {
-    width: 70%;
-    height: 50%;
-    max-height: 600px;
-    min-height: 30vh;
+  width: 70%;
+  height: 50%;
+  max-height: 600px;
+  min-height: 30vh;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form button {
-    background: rgb(218, 210, 200);
-    margin:1em 0 1em 0;
-    transition: all 0.5s ease;
-    max-width: 150px;
+  background: rgb(218, 210, 200);
+  margin: 1em 0 1em 0;
+  transition: all 0.5s ease;
+  max-width: 150px;
 }
 .form button:hover {
-    background: rgb(212, 191, 204);
-    transition: all 0.5s ease;
+  background: rgb(212, 191, 204);
+  transition: all 0.5s ease;
 }

@@ -9,12 +9,10 @@ import {
 import React from "react";
 import Styles from "./productDetail.module.css";
 import Amount from "../../../features/amountProduct/amountProduct";
-import MarketButton from "../../../elements/buttons/marketButton/marketButton";
 
 export default function ProductDetail() {
   let { id } = useParams();
   const dispatch = useDispatch();
-  let productDetail = useSelector((state) => state.productDetail);
 
   const ranking = 2.5;
   let ranking_starts = [1, 2, 3, 4, 5];
@@ -31,12 +29,14 @@ export default function ProductDetail() {
     return dispatch(cleanProductDetail());
   }, [dispatch]);
 
+  let productDetail = useSelector((state) => state.productDetail);
+
   return (
     <>
       <div className={Styles.ProductDetail}>
         <div className={Styles.container}>
           <div className={Styles["product-image"]}>
-            <img src={productDetail.image} alt="Img not found" />
+            <img src={productDetail.image} />
           </div>
           <div className={Styles["product-details"]}>
             <div className={Styles["title-stars"]}>
@@ -52,31 +52,32 @@ export default function ProductDetail() {
             <div className={Styles.control}>
               <Amount id={productDetail.id} />
             </div>
-          </div> 
-          
-        </div>
-            <div className={Styles.more}><p>MÁS INFORMACIÓN</p></div>
-        <div className={Styles.info}>
-            <ul>
-              <li>
-                <strong>STOCK: </strong>
-                {productDetail.stock} items disponibles
-              </li>
-
-              {productDetail.discount > 0 && (
-                <li>
-                  <strong>Ahorra un: </strong> {productDetail.discount}% con
-                  esta compra
-                </li>
-              )}
-              <li>
-                <strong>Marca: </strong> {productDetail.brand}
-              </li>
-              <li>
-                <strong>Garantia: </strong> {productDetail.warranty} semanas
-              </li>
-            </ul>
           </div>
+        </div>
+        <div className={Styles.more}>
+          <p>MÁS INFORMACIÓN</p>
+        </div>
+        <div className={Styles.info}>
+          <ul>
+            <li>
+              <strong>STOCK: </strong>
+              {productDetail.stock} items disponibles
+            </li>
+
+            {productDetail.discount > 0 && (
+              <li>
+                <strong>Ahorra un: </strong> {productDetail.discount}% con esta
+                compra
+              </li>
+            )}
+            <li>
+              <strong>Marca: </strong> {productDetail.brand}
+            </li>
+            <li>
+              <strong>Garantia: </strong> {productDetail.warranty} semanas
+            </li>
+          </ul>
+        </div>
       </div>
     </>
   );

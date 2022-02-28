@@ -76,47 +76,17 @@
     cursor: pointer;
     margin: 7px;
     align-content: space-between;
-    
-
 }
-
-.form input {
-    width: 360px;
-    height: 30px;
-    padding:1em;
-    font-size: 18px;
-    color: black;
-    outline: none;
-    border: 1px solid silver;
-    border-radius: 10px;
-    opacity: 0.6;
-    position: relative;
-    text-align: left!important;
-    left: 110px;
-    box-shadow: 0 0 3px 1px rgba(0,0,0,0.3);
-    top: 8px;
-    background-color: rgba(228, 225, 224, 0.883);
-    margin:7px 0;
-}
-
-.putdate {
-    
-    padding:.5em!important;
-    height: 35px !important;
-}
-
-
-
 
 .form label {
-    position: absolute;
+    display: block;
     left: 5%;
     color: black;
-    font-weight: bold;
-    width: 29%;
+    width: 60%;
     height: 6%;
-    border-radius: 5%;
-    margin-top: 18px;
+    margin: 0px 40px 0px 60px;
+    padding-top: 10px;
+    text-align: justify;
 }
 
 .form .submit {
@@ -127,7 +97,6 @@
 .form .submit:hover {
     background: rgb(212, 191, 204);
     transition: all 0.5s ease;
-
 }
 
 .divCats {
@@ -140,37 +109,3 @@
     background-color: rgb(255, 180, 94);
     font-weight: bold;
 }
-
-.errorsteps {
-    color: tomato;
-    background-color: rgba(17, 4, 4, 0.774);
-    font-weight: bold;
-    position: relative;
-    left: 50px;
-}
-.errorsum {
-    color: tomato;
-    background-color: rgba(17, 4, 4, 0.774);
-    font-weight: bold;
-    position: relative;
-    left: 50px;
-}
-
-.error {
-    color: tomato;
-    background-color: rgba(17, 4, 4, 0.774);
-    font-weight: bold;
-    position: relative;
-    left: 320px;
-    top: 8px;
-    width: 180px;
-} 
-.errorcat {
-    color: tomato;
-    background-color: rgba(17, 4, 4, 0.774);
-    font-weight: bold;
-    position: relative;
-    left: 320px;
-    top: 2px;
-    width: 180px;
-} 

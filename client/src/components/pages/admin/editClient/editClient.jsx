@@ -109,7 +109,6 @@ export default function EditClient() {
     return (
         <>
         <div className={s.newService}>
-            {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
             <h2>Editar Perfil</h2>
             <div className={s.container}>
             <div className={s.profilepicture}>
@@ -145,19 +144,6 @@ export default function EditClient() {
                     {errors.lastname_client && (
                         <p className={s.error}>{errors.lastname_client}</p>
                     )}
-
-                    {/* <div>
-                        <label>E-mail:</label>
-                        <input
-                            type="email"
-                            value={input.email}
-                            name="email"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    {errors.email && (
-                        <p className={s.error}>{errors.email}</p>
-                    )} */}
 
                     <div>
                         <label>Foto Perfil:</label>
@@ -207,6 +193,7 @@ export default function EditClient() {
                     </div>
 
                     <button className={s.submit} type="submit">Guardar cambios</button>
+                    <Link to="/profile"><button className={s.submit} >Volver</button></Link>
 
                 </div>
             </form>

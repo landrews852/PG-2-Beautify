@@ -8,9 +8,12 @@
 border-bottom:2px solid;
 }
 .aboutContainer {
-    display: flex;
-    flex-wrap: wrap;
-
+    display: grid;
+    grid-template-columns: 2fr minmax(50%,8fr);
+    grid-template-rows: repeat(4, auto);
+    column-gap: 10px;
+    row-gap: 1em;
+    margin-bottom: 1em;
 }
 
 .aboutContainer div {
@@ -22,20 +25,34 @@ border-bottom:2px solid;
 .aboutContainer label {
     font-size: 18px;
 }
+
+.container input {
+    width: 30%;
+    height: auto;
+    border: solid 1px gray;
+}
+
 .container textarea {
-    width: 50%;
+    width: 70%;
     height: 50%;
-    max-height: 400px;
+    max-height: 600px;
     min-height: 30vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .form button {
     background: rgb(218, 210, 200);
     margin:1em 0 1em 0;
     transition: all 0.5s ease;
+    max-width: 150px;
 }
 .form button:hover {
     background: rgb(212, 191, 204);
     transition: all 0.5s ease;
-
 }

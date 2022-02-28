@@ -114,8 +114,8 @@ export default function CreateClient() {
 
     return (
         <div className={s.newService}>
-            <Link to="/"><button className={s.button}>Volver</button></Link>
-            <h3>CLIENTE NUEVO</h3>
+            {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
+            <h2>Cliente nuevo</h2>
             <form onSubmit={handleSubmit}>
                 <div className={s.form}>
                     <div>
@@ -196,6 +196,7 @@ export default function CreateClient() {
                     <div>
                         <label>Fecha de Cumpleaños:</label>
                         <input
+                            className={s.putdate}
                             type="date"
                             value={input.birthday}
                             name="birthday"

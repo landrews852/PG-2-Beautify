@@ -19,28 +19,54 @@ export default function AdminSideBar() {
 
 
   const handleLocation = (e) => {
-    if (e.target.value === "1") {
-      setOps(<CreateProduct />);
-      setActive(1);
+    switch (e.target.value) {
+      case "1":
+        setOps(<CreateProduct location={handleLocation} />);
+        setActive(1);
+      break;
+
+      case "2":
+        setOps(<CreateService location={handleLocation}/>);
+        setActive(2);
+      break;
+
+      case "3":
+        setOps(<EditCarousel />);
+        setActive(3);
+      break;
+      
+      case "4":
+        setOps(<AdminAboutUs />);
+        setActive(4);
+      break;
+      
+      case "5":
+      // reservada para estadisticas
+        // setOps(<CreateProduct location={handleLocation} />);
+        // setActive(1);
+      break;
+      
+      case "6":
+        setOps(<GiveAdmin />);
+        setActive(6);
+      break;
+      
+      case "7":
+        // Colocamos el componente de modificar producto y pasamos la funcion handleLocation
+        //setOps(<CreateProduct location={handleLocation} />);
+        setActive(7);
+      break;
+      
+      case "8":
+        // Colocamos el componente de modificar servicio y pasamos la funcion handleLocation
+        //setOps(<CreateProduct location={handleLocation} />);
+        setActive(8);
+      break;
+        
+      default:
+        break;
     }
-    else if (e.target.value === "2") {
-      setOps(<CreateService />);
-      setActive(2);
-    }
-    else if (e.target.value === "3") {
-      setOps(<EditCarousel />);
-      setActive(3);
-    }
-    else if (e.target.value === "4") {
-      setOps(<AdminAboutUs />);
-      setActive(4);
-    }
-    else if (e.target.value === "6") {
-      setOps(<GiveAdmin />);
-      setActive(6);
-    }
-    else { components = "hola" }
-  }
+}
 
   return (
     <>

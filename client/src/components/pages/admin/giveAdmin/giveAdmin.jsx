@@ -29,13 +29,15 @@ function GiveAdmin() {
   return (
     <div className={s.permissionAdmin}>
       <form onSubmit={handleSubmit}>
-        <h2>Buscar por correo:</h2>
-        <input
-          type="text"
-          name="search_name"
-          value={input}
-          onChange={handleChange} />
-        <button type="submit" >Buscar</button>
+        <div className='form'>
+          <h2>Buscar por correo:</h2>
+          <input
+            type="text"
+            name="search_name"
+            value={input}
+            onChange={handleChange} />
+          <button className="submit" type="submit" >Buscar</button>
+        </div>
       </form>
       <div className={s.containerData}>
         {/* <label>{`Tengo en data: ${data.length} usuarios`}</label> */}

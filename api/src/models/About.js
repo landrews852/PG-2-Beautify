@@ -6,13 +6,21 @@ module.exports = (sequelize) => {
   sequelize.define(
     "about",
     {
-      description: {
+      title: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      slogan: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       image: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
       }
     },
     {

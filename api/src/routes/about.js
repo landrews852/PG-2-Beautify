@@ -29,43 +29,22 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.put("/", async (req, res, next) => {
   try {
-    const { id } = req.params;
-    if (id) {
-      const { image, description } = req.body;
+      const { image, description,title, slogan } = req.body;
       const data = {
         image,
-        description
+        description,
+        title,
+        slogan
       }
       await About.update(data, {
         where: {
-          id,
+          id : 1,
         },
         returning: true,
       });
       res.status(200).send("updated");
-    }
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.delete("/:id", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (id) {
-      const data = await Carousel.findAll();
-      if (data.length === 2) {
-        return res.status(200).send("minimum images")
-      }
-      await Carousel.destroy({
-        where: {
-          id
-        }
-      });
-      res.status(200).send("deleted");
-    }
   } catch (err) {
     next(err);
   }

@@ -54,7 +54,7 @@ export default function Navigator () {
           ) : null}
 
           <CartLogo />
-          <UserMenu user={user} />
+          {isAuthenticated && <UserMenu user={user} clientname={clientname}/>}
           <span className={s.welcome}>{isAuthenticated?clientname:""}</span>          
         </Navbar.Collapse>
       </Container>

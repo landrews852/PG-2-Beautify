@@ -37,7 +37,7 @@ export default function Navigator () {
             {isAuthenticated &&  <Link to="/profile">Profile</Link>}
             
           </Nav>
-          {location.pathname !== "/" ? (
+          {(location.pathname !== "/" && location.pathname !== "/aboutUs" && location.pathname !== "/config")? (
             <SearchBar className={s.navSearch} />
           ) : null}
 

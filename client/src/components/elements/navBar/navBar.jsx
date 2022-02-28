@@ -47,9 +47,9 @@ export default function Navigator () {
             <Link to="/market" className={s.linkbar}>Productos</Link>
             <Link to="/services" className={s.linkbar}>Servicios</Link>
             <Login />
-            
           </Nav>
-          {location.pathname !== "/" ? (
+          
+          {(location.pathname !== "/" && location.pathname !== "/aboutUs" && location.pathname !== "/profile" && location.pathname !== "/config" && location.pathname !== "/cart") ? (
             <SearchBar className={s.navSearch} />
           ) : null}
 

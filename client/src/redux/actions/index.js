@@ -275,7 +275,7 @@ export function editUserInfo(id,token,payload) {
     })  
     dispatch({
       type: EDIT_CLIENT,
-      payload: payload,
+      payload: [payload],
     });
   }
 }

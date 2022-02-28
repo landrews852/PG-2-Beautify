@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import axios from "axios";
+import Swal from "sweetalert2";
 import s from "./editClient.module.css";
 import { editUserInfo, getUserInfo } from "../../../../redux/actions";
 
@@ -50,13 +50,14 @@ const validate = (input) => {
 
 
 export default function EditClient() {  
-    
+    const navigate = useNavigate();
     const {getAccessTokenSilently, isAuthenticated} = useAuth0();
     const dispatch = useDispatch();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user'));  
+    const { id, name_client , lastname_client , address , birthday , phone, profile_picture } = user[0]
     const [errors, setErrors] = useState({});    
-    const { id, name_client , lastname_client , address , birthday , phone } = user[0]  
-    console.log("Perfil",user[0].length)
+     
+    console.log("Perfil",user)
     const [input, setInput] = useState({
       name_client: name_client,
       lastname_client: lastname_client,
@@ -68,6 +69,8 @@ export default function EditClient() {
 
     useEffect(()=>{
         setErrors(validate(input));
+
+        
     },[input])
     // console.log(input)
     // console.log(errors)
@@ -82,31 +85,39 @@ export default function EditClient() {
     // address,
     // phone,
     // birthday,
- 
+    
+    
     function handleChange(e) {
         setInput({
             ...input,
             [e.target.name]: e.target.value
         })
     }
-    
-
-    async function handleSubmit (e) {
+     async function handleSubmit (e) {
         console.log("HANDLE SUBMIT")
         e.preventDefault();
         const token = await getAccessTokenSilently();       
-        // const response = await axios.post(`${apiRoute}/api/client`,input,
-        //     headers: {
-        //       authorization: `Bearer ${token}`
-        //     }
-        // })
-        dispatch(editUserInfo(id,token,input));        
-    }
-
+        dispatch(editUserInfo(id,token,input)); 
+        Swal.fire({
+            icon: "success",
+            title: "¡Genial!",
+            text: "Ya has editado tus Perfil",
+          });
+                   
+    };
+    
     return (
+        <>
         <div className={s.newService}>
             {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
             <h2>Editar Perfil</h2>
+            <div className={s.container}>
+            <div className={s.profilepicture}>
+                <div>
+                    <img src={profile_picture}/>
+                </div>
+            </div>
+            <div className={s.profileform}>
             <form onSubmit={handleSubmit}>
                 <div className={s.form}>
                     <div>
@@ -199,6 +210,9 @@ export default function EditClient() {
 
                 </div>
             </form>
+            </div>
+            </div>
         </div>
+        </>
     )
 }

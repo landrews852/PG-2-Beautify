@@ -37,7 +37,7 @@ export default function Navigator () {
             <Login />
             {/* <span>{isAuthenticated?{username}:"Logeate"}</span>            */}
           </Nav>
-          {location.pathname !== "/" ? (
+          {(location.pathname !== "/" && location.pathname !== "/aboutUs" && location.pathname !== "/config")? (
             <SearchBar className={s.navSearch} />
           ) : null}
 

@@ -5,8 +5,8 @@
 
 .home h2 {
   font-family: 'Belleza', sans-serif;
-  font-size: 70px;
+  font-size: 4vw;
   background-color: #facdb6;
-  height: 100px;
+  height: auto;
   text-shadow: 1px 1px 6px black;
 }

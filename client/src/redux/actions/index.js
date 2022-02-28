@@ -27,6 +27,7 @@ export const DELETE_ITEM = "DELETE_ITEM";
 export const UPDATE_CART = "UPDATE_CART";
 export const GET_CLIENT = "GET_CLIENT";
 export const POST_CLIENT = "POST_CLIENT";
+export const EDIT_CLIENT = "EDIT_CLIENT";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -261,6 +262,20 @@ export function getUserInfo(token) {
     dispatch({
       type: GET_CLIENT,
       payload: user.data,
+    });
+  }
+}
+
+export function editUserInfo(id,token,payload) {
+  return async function (dispatch) {
+    const userupdate = await axios.put(`${apiRoute}/api/client/` + id, payload, {
+            headers: {
+              authorization: `Bearer ${token}`
+            }
+    })  
+    dispatch({
+      type: EDIT_CLIENT,
+      payload: payload,
     });
   }
 }

@@ -48,31 +48,31 @@ console.log(locationpath.pathname)
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="flex-column">
-            <Link className='nav-link' to="/profile"><button className={active==1?s.buttonNav+" "+s.activo:s.buttonNav}
+            <Link className='nav-link' to="/panel"><button className={active==1?s.buttonNav+" "+s.activo:s.buttonNav}
               value="1" 
               onClick={(e) => {handleLocation(e)}}
               >
                 <div className={s.translate}></div>
               Producto</button></Link>
-            <Link className='nav-link' to="/profile"><button className={active==2?s.buttonNav+" "+s.activo:s.buttonNav}
+            <Link className='nav-link' to="/panel"><button className={active==2?s.buttonNav+" "+s.activo:s.buttonNav}
               value="2" 
               onClick={(e) => {handleLocation(e)}} 
               >
                 <div className={s.translate}></div>
                 Servicios</button></Link>
-                <Link className='nav-link' to="/profile"><button className={active==3?s.buttonNav+" "+s.activo:s.buttonNav}
+                <Link className='nav-link' to="/panel"><button className={active==3?s.buttonNav+" "+s.activo:s.buttonNav}
               value="3" 
               onClick={(e) => {handleLocation(e)}} 
               >
                 <div className={s.translate}></div>
                 Carrusel</button></Link>
-            <Link className='nav-link' to="/profile"><button className={active==4?s.buttonNav+" "+s.activo:s.buttonNav}
+            <Link className='nav-link' to="/panel"><button className={active==4?s.buttonNav+" "+s.activo:s.buttonNav}
               value="4" 
               onClick={(e) => {handleLocation(e)}} 
               >
                 <div className={s.translate}></div>
                 Sobre nosotros</button></Link>
-            <Link className='nav-link' to="/profile"><button className={active==5?s.buttonNav+" "+s.activo:s.buttonNav}
+            <Link className='nav-link' to="/panel"><button className={active==5?s.buttonNav+" "+s.activo:s.buttonNav}
               value="5" 
               onClick={(e) => {handleLocation(e)}} 
               >

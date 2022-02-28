@@ -21,6 +21,7 @@ import {
   DELETE_ITEM,
   UPDATE_CART,
   GET_CLIENT,
+  EDIT_CLIENT,
 } from "../actions";
 
 export const initialState = {
@@ -208,6 +209,12 @@ export function rootReducer(state = initialState, action) {
       };
     case GET_CLIENT:
       localStorage.setItem("user", JSON.stringify(action.payload));
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case EDIT_CLIENT:
+        localStorage.setItem("user", JSON.stringify(action.payload));
       return {
         ...state,
         user: action.payload,

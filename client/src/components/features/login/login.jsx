@@ -54,7 +54,7 @@ export default function Login () {
 	return (
         <>  
 			
-			<button className={isAuthenticated?"buttonlogin":""} onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
+			<button className={isAuthenticated?"buttonlogin":"button"} onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
 			{/* <button onClick={callprotectedApi}>protected</button> */}
 			
 			  

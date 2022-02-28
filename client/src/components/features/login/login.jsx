@@ -30,9 +30,10 @@ export default function Login () {
     useEffect (async ()=>{        
 		if(isAuthenticated){ 
 			const token = await getAccessTokenSilently();		    
-dispatch(getUserInfo(token))
+			dispatch(getUserInfo(token))
 			.then(u => {
 				const user = JSON.parse(localStorage.getItem('user'));
+				console.log (user)
 				if(!user.length){
 					navigate('/admin/client/create');
 				}
@@ -53,7 +54,7 @@ dispatch(getUserInfo(token))
 	return (
         <>  
 			
-			<button onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
+			<button className={isAuthenticated?"buttonlogin":""} onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
 			{/* <button onClick={callprotectedApi}>protected</button> */}
 			
 			  

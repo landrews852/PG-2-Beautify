@@ -15,6 +15,7 @@ export const store = createStore(
       merge: (initialState, persistedState) => {
         return { ...initialState, cart: persistedState ? persistedState : [] };
       },
-    })
+    }
+    )
   )
 );

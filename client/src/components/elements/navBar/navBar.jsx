@@ -42,7 +42,7 @@ export default function Navigator () {
           ) : null}
 
           <CartLogo />
-          <UserMenu />
+          <UserMenu user={user} />
         </Navbar.Collapse>
       </Container>
     </Navbar>

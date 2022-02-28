@@ -14,7 +14,7 @@
 
 .cards img {
   width: 100%;
-  height: 200px;
+  height: 100px;
   border-radius: 10px 10px 0 0;
   transition: all 1s ease-out;
 }
@@ -23,7 +23,6 @@
 
 .cards h3 {
   font-size: 1.5rem;
-  height: 60px;
   color: #333;
   text-transform: uppercase;
   text-overflow: clip;
@@ -33,15 +32,19 @@
 
 
 .cardcontenedor {
-  width: 13vw;
+  width: 10vw;
   margin: 1em 2em;
   box-shadow: 0 1px 6px 2px rgba(0, 0, 0, 0.3);
- 
   border-radius: 15px;
-  min-width: 250px;
 }
 
 .carouselCardButton  button {
-  text-align: center;
-  width: 50px;
+  background: rgb(218, 210, 200);
+  margin:1em 0 1em 0;
+  transition: all 0.5s ease;
+}
+.carouselCardButton  button:hover {
+  background: rgb(212, 191, 204);
+  transition: all 0.5s ease;
+
 }

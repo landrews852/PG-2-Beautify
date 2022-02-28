@@ -362,3 +362,15 @@ h6 span {
 .pt-5 {
   padding-top: 0px !important;
 }
+
+button {  
+  border:none;
+}
+button:hover {  
+  background: none;
+}
+
+.buttonlogin {
+  background-color: rgba(224, 198, 175, 0.794);
+  transition: all 0.5s ease;
+}

@@ -28,6 +28,7 @@ export const UPDATE_CART = "UPDATE_CART";
 export const GET_CLIENT = "GET_CLIENT";
 export const POST_CLIENT = "POST_CLIENT";
 export const EDIT_CLIENT = "EDIT_CLIENT";
+export const EDIT_ABOUT = "EDIT_ABOUT";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -255,10 +256,10 @@ export function deleteItem(payload) {
 export function getUserInfo(token) {
   return async function (dispatch) {
     const user = await axios.get(`${apiRoute}/api/client/info`, {
-            headers: {
-              authorization: `Bearer ${token}`
-            }
-    })  
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
     dispatch({
       type: GET_CLIENT,
       payload: user.data,
@@ -266,16 +267,59 @@ export function getUserInfo(token) {
   }
 }
 
-export function editUserInfo(id,token,payload) {
+export function editUserInfo(id, token, payload) {
   return async function (dispatch) {
     const userupdate = await axios.put(`${apiRoute}/api/client/` + id, payload, {
-            headers: {
-              authorization: `Bearer ${token}`
-            }
-    })  
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
     dispatch({
       type: EDIT_CLIENT,
       payload: [payload],
     });
+  }
+}
+
+export function editAbout(payload) {
+  return async function (dispatch) {
+    const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload)  
+    dispatch({
+      type: EDIT_ABOUT,
+      payload: payload
+    });
+  }
+}
+
+export function searchEmail(email, token) {
+  return async function (dispatch) {
+    const data = await axios.get(`${apiRoute}/api/client/search?email=${email}`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+    return data;
+  }
+}
+
+export function updateClient(info, token) {
+  return async function (dispatch) {
+    const response = await axios.put(`${apiRoute}/api/client/${info.id}`, { admin: info.data }, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  }
+}
+
+export function getClient(token) {
+  return async function (dispatch) {
+    const user = await axios.get(`${apiRoute}/api/client/info`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+    return user;
   }
 }

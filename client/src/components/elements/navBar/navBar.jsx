@@ -35,9 +35,12 @@ export default function Navigator () {
             <Link to="/market" className='nav-link'>Productos</Link>
             <Link to="/services" className='nav-link'>Servicios</Link>
             <Login />
-            {/* <span>{isAuthenticated?{username}:"Logeate"}</span>            */}
+            {/* 
+            
+            
+            */}
           </Nav>
-          {(location.pathname !== "/" && location.pathname !== "/aboutUs" && location.pathname !== "/config")? (
+          {location.pathname !== "/" ? (
             <SearchBar className={s.navSearch} />
           ) : null}
 

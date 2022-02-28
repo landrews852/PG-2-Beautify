@@ -83,3 +83,20 @@
   top: -0.5rem;
   left: 2rem;
 }
+
+
+input {
+  text-align: center;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  
+}
+
+ input[type=number]::-webkit-inner-spin-button,
+ input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+ input[type=number] { -moz-appearance:textfield; }

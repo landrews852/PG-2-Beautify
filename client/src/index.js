@@ -14,7 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
     <Auth0Provider 
-      domain={domain} 
+      domain={domain}  
       clientId={client_id} 
       redirectUri={window.location.origin}
       audience='https://beautify-api-pg/'

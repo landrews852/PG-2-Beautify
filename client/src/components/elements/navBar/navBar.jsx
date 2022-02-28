@@ -19,6 +19,7 @@ export default function Navigator () {
   let location = useLocation()
 
   const user = JSON.parse(localStorage.getItem('user'));
+  // const username = !user.length&&user[0].name_client
   const { isAuthenticated } = useAuth0();
   console.log(user);
   return (
@@ -34,15 +35,14 @@ export default function Navigator () {
             <Link to="/market" className='nav-link'>Productos</Link>
             <Link to="/services" className='nav-link'>Servicios</Link>
             <Login />
-            {isAuthenticated &&  <Link to="/profile">Profile</Link>}
-            
+            {/* <span>{isAuthenticated?{username}:"Logeate"}</span>            */}
           </Nav>
           {location.pathname !== "/" ? (
             <SearchBar className={s.navSearch} />
           ) : null}
 
           <CartLogo />
-          <UserMenu user={user} />
+          <UserMenu user={user} />          
         </Navbar.Collapse>
       </Container>
     </Navbar>

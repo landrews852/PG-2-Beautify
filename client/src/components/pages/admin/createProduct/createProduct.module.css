@@ -50,23 +50,6 @@
   left: 1rem;
 }
 .form input {
-<<<<<<< HEAD
-  width: 360px;
-  height: 30px;
-  padding: 1em;
-  font-size: 18px;
-  color: black;
-  outline: none;
-  border: 1px solid silver;
-  border-radius: 10px;
-  opacity: 61%;
-  position: relative;
-  left: 110px;
-  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
-  top: 8px;
-  background-color: rgba(228, 225, 224, 0.883);
-  margin: 7px 0;
-=======
     width: 360px;
     height: 30px;
     padding:1em;
@@ -82,7 +65,6 @@
     top: 8px;
     background-color: rgba(228, 225, 224, 0.883);
     margin:7px 0;
->>>>>>> d75c0786ef79e0abf762b3ec403a213b19aa0cc4
 }
 .form label {
   position: absolute;

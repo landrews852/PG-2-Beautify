@@ -22,6 +22,7 @@ import {
   UPDATE_CART,
   GET_CLIENT,
   EDIT_CLIENT,
+  EDIT_ABOUT
 } from "../actions";
 
 export const initialState = {
@@ -36,6 +37,7 @@ export const initialState = {
   categories: [],
   services: [],
   brands: [],
+  about: {}
 };
 
 export function rootReducer(state = initialState, action) {
@@ -219,6 +221,12 @@ export function rootReducer(state = initialState, action) {
         ...state,
         user: action.payload,
       };
+    case EDIT_ABOUT:
+      return {
+        ...state,
+        about: action.payload,
+      };
+      
 
     default:
       return state;

@@ -1,8 +1,13 @@
 import React from "react";
 import s from './editAboutUs.module.css'
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { editAbout } from "../../../../redux/actions";
+import AboutUs from "../../client/aboutUs/aboutUs"
 
 export default function AdminAboutUs() {
+
+const dispatch = useDispatch()
 
 const [about,setAbout] = useState({
     title : "",
@@ -21,9 +26,10 @@ const handleOnChange = (e) => {
 const handleSubmit = (e) => { 
     e.preventDefault();
     console.log(about)
+    dispatch(editAbout(about))
 }
 
-  return (
+  return ( <>
     <div className={s.container}>
         <h2 className={s.about}>Edite aqui su mensaje acerca de la empresa:</h2>
             <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
@@ -47,5 +53,10 @@ const handleSubmit = (e) => {
                 <button type="submit">Modificar</button>
             </form>
     </div>
+    <h2 className={s.about}>Preview</h2>
+    <div className={s.example}>
+        <AboutUs />
+    </div>
+  </>
   );
 }

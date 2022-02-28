@@ -28,6 +28,7 @@ export const UPDATE_CART = "UPDATE_CART";
 export const GET_CLIENT = "GET_CLIENT";
 export const POST_CLIENT = "POST_CLIENT";
 export const EDIT_CLIENT = "EDIT_CLIENT";
+export const EDIT_ABOUT = "EDIT_ABOUT";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -276,6 +277,16 @@ export function editUserInfo(id,token,payload) {
     dispatch({
       type: EDIT_CLIENT,
       payload: [payload],
+    });
+  }
+}
+
+export function editAbout(payload) {
+  return async function (dispatch) {
+    const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload)  
+    dispatch({
+      type: EDIT_ABOUT,
+      payload: payload
     });
   }
 }

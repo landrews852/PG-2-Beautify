@@ -5,10 +5,10 @@ import { getCategories } from "../../../redux/actions";
 
 export default function CardCateServices() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
-  const categories = useSelector((state) => state.categories);
+  // useEffect(() => {
+  //   dispatch(getCategories());
+  // }, []);
+  // const categories = use}Selector((state) => state.categories);
 
   return (
     <div className="content-wrapper">

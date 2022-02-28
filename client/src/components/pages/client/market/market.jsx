@@ -43,13 +43,13 @@ export default function Market() {
           />
           <div className="Container Market">
             {paginatedProducts.map((product) => (
-                <Card
-                  id={product.id}
-                  product_name={product.product_name}
-                  image={product.image}
-                  cost_by_unit={product.cost_by_unit}
-                />
-              
+              <Card
+                id={product.id}
+                product_name={product.product_name}
+                image={product.image}
+                cost_by_unit={product.cost_by_unit}
+                key={product.id}
+              />
             ))}
           </div>
         </>

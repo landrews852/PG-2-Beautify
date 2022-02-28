@@ -2,17 +2,20 @@ const { Carousel } = require("../src/db.js");
 
 const data = [
   {
-    image: "https://herbalia.rs/slike/7-1.jpg",
+    image:
+      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646060173/beautify/7-1_p0ueor.jpg",
     title: "Belleza Natural",
     description: "Potenciá tu belleza natural con el mejor cuidado",
   },
   {
-    image: "https://img.freepik.com/foto-gratis/retrato-hombre-guapo-aplicando-parches-ojos_23-2149206716.jpg?w=1380",
+    image:
+      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646060548/beautify/img2_j3zpmq.jpg",
     title: "Cuida tu piel con Aloe Vera",
     description: "Belleza de adentro hacia afuera",
   },
   {
-    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.marcoaldany.com%2Fwp-content%2Fuploads%2F2018%2F09%2Fbanner-pestanas.jpg&f=1&nofb=1",
+    image:
+      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646060172/beautify/download_mfhvwr.jpg",
     title: "Pestañas y Cejas",
     description: "Conocé nuestras ofertas en productos y servicios",
   },
@@ -20,12 +23,12 @@ const data = [
 
 const loadCarousel = async () => {
   try {
-    await Carousel.bulkCreate(data)
+    await Carousel.bulkCreate(data);
   } catch (error) {
     return error;
   }
-}
+};
 
 module.exports = {
-  loadCarousel
-}
+  loadCarousel,
+};

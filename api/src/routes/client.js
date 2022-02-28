@@ -90,7 +90,7 @@ router.post("/",verifyjwt, async (req, res) => {
 });
 
 // Utiliza el id para identificar al cliente y modificar cualquier otro dato que se le haya pasado y retorna los datos actualizados
-router.put("/:id", async (req, res) => {
+router.put("/:id",verifyjwt, async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -102,20 +102,20 @@ router.put("/:id", async (req, res) => {
       phone,
       birthday,
     } = req.body;
+    
     let data = {};
     if (name_client !== undefined) data.name_client = name_client;
     if (lastname_client !== undefined) data.lastname_client = lastname_client;
     if (profile_picture !== undefined) data.profile_picture = profile_picture;
-    if (password !== undefined) data.password = password;
     if (email !== undefined) data.email = email;
     if (address !== undefined) data.address = address;
     if (phone !== undefined) data.phone = phone;
     if (birthday !== undefined) data.birthday = birthday;
+       
     const updateClient = await Client.update(data, {
       where: {
-        id,
-      },
-      returning: true,
+        id: id,
+      }      
     });
     res.json(updateClient[1]);
   } catch (err) {

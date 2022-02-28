@@ -43,9 +43,9 @@ export default function Navigator () {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={s.me_auto}>
-            <Link to="/aboutUs" className='nav-link'>Quienes somos</Link>
-            <Link to="/market" className='nav-link'>Productos</Link>
-            <Link to="/services" className='nav-link'>Servicios</Link>
+            <Link to="/aboutUs" className={s.linkbar}>Quienes somos</Link>
+            <Link to="/market" className={s.linkbar}>Productos</Link>
+            <Link to="/services" className={s.linkbar}>Servicios</Link>
             <Login />
             
           </Nav>

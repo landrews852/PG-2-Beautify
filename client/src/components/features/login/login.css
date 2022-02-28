@@ -364,13 +364,22 @@ h6 span {
 }
 
 button {  
-  border:none;
+  border-bottom:2px solid transparent;
+  border-right:none;
+  border-top: none;
+  border-left: none;
+  color: rgba(0,0,0,.55);
+  display: block;
+  padding: .5rem 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
 button:hover {  
-  background: none;
+  border-bottom:2px solid black;
 }
 
 .buttonlogin {
-  background-color: rgba(224, 198, 175, 0.794);
+  border-bottom:2px solid black;
   transition: all 0.5s ease;
 }

@@ -101,6 +101,7 @@ router.put("/:id", verifyjwt, async (req, res) => {
       address,
       phone,
       birthday,
+      admin
     } = req.body;
 
     let data = {};
@@ -111,7 +112,7 @@ router.put("/:id", verifyjwt, async (req, res) => {
     if (address !== undefined) data.address = address;
     if (phone !== undefined) data.phone = phone;
     if (birthday !== undefined) data.birthday = birthday;
-
+    if (admin !== undefined) data.admin = admin;
     const updateClient = await Client.update(data, {
       where: {
         id: id,

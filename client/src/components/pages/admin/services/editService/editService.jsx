@@ -4,8 +4,7 @@ import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import s from "./editService.module.css";
-import { editUserInfo, getUserInfo } from "../../../../redux/actions";
-
+import { editService } from "../../../../../redux/actions";
 
 const validate = (input) => {
   let errors = {};
@@ -80,11 +79,6 @@ export default function EditService() {
             {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
             <h2>Editar Servicio</h2>
             <div className={s.container}>
-            <div className={s.profilepicture}>
-                <div>
-                    <img src={profile_picture}/>
-                </div>
-            </div>
             <div className={s.profileform}>
             <form onSubmit={handleSubmit}>
                 <div className={s.form}>

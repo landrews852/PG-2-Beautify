@@ -3,11 +3,12 @@ import s from './adminSideBar.module.css'
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import CreateProduct from '../../../pages/admin/createProduct/createProduct';
-import CreateService from "../../admin/createService/createService";
+import CreateService from "../../admin/services/createService/createService";
 import EditCarousel from "../../admin/editCarousel/editCarousel";
 import GiveAdmin from "../../admin/giveAdmin/giveAdmin"
 import { useState } from "react";
 import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
+import EditService from "../../admin/services/editService/editService";
 
 export default function AdminSideBar() {
   const locationpath = useLocation()
@@ -52,8 +53,7 @@ export default function AdminSideBar() {
       break;
       
       case "7":
-        // Colocamos el componente de modificar producto y pasamos la funcion handleLocation
-        //setOps(<CreateProduct location={handleLocation} />);
+        setOps(<EditService location={handleLocation} />);
         setActive(7);
       break;
       

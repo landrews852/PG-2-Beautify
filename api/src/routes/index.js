@@ -8,6 +8,7 @@ const reviewRouter = require('./review.js');
 const adminRouter = require('./admin.js')
 const clientRouter = require('./client.js')
 const carouselRouter = require('./carousel.js')
+const aboutRouter = require('./about.js')
 
 
 const router = Router();
@@ -23,5 +24,6 @@ router.use('/api/review', reviewRouter);
 router.use('/api/admin', adminRouter);
 router.use('/api/client', clientRouter);
 router.use('/api/carousel', carouselRouter);
+router.use('/api/about', aboutRouter);
 
 module.exports = router;

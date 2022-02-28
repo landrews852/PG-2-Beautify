@@ -25,19 +25,6 @@ function PermissionCard({ id, name, lastname, admin }) {
 
   }
 
-  // useEffect(async () => {
-  //   let clientObject = { id, status }
-  //   const token = await getAccessTokenSilently();
-  //   dispatch(updateClient(clientObject, token))
-  //   .then(()=> {
-  //     const user = await axios.get(`${apiRoute}/api/client/info`, {
-  //       headers: {
-  //         authorization: `Bearer ${token}`
-  //       }
-  //     })
-  //   })
-  // }, [status])
-
   return (
     <div className="containerPermission">
       <div className="textPermission">
@@ -45,7 +32,7 @@ function PermissionCard({ id, name, lastname, admin }) {
       </div>
       <div className="buttonPermission">
         {
-          status.admin ? <button type="button" onClick={handleClick} value={false}>Quitar admin</button> : <button type="button" onClick={handleClick} value={true}>Dar admin</button>
+          status.admin ? <button id="buttonStatus" type="button" onClick={handleClick} value={false}>Quitar admin</button> : <button id="buttonStatus" type="button" onClick={handleClick} value={true}>Dar admin</button>
         }
       </div>
     </div>

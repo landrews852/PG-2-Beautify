@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./login.css";
@@ -16,6 +17,31 @@ export default function Login() {
   // 	let check = document.getElementsByClassName("checkbox");
   // 	check[0].checked=false;
   // }
+=======
+import React, { useMemo } from 'react';
+import { Formik } from 'formik';
+import { useAuth0 } from '@auth0/auth0-react'
+import './login.css';
+import axios from 'axios';
+import { getUserInfo } from '../../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+export default function Login () {
+
+	// const handleClickCreate = (e) => {
+	// 	e.preventDefault();
+	// 	let check = document.getElementsByClassName("checkbox");		
+	// 	check[0].checked=true;		
+	// }
+	// const handleClickLogin = (e) => {
+	// 	e.preventDefault();
+	// 	let check = document.getElementsByClassName("checkbox");		
+	// 	check[0].checked=false;		
+	// }
+>>>>>>> d75c0786ef79e0abf762b3ec403a213b19aa0cc4
 
   const {
     loginWithPopup,
@@ -41,6 +67,7 @@ export default function Login() {
     }
   }, [isAuthenticated]);
 
+<<<<<<< HEAD
   const logger = (state) => {
     if (state === "Login") return loginWithPopup();
     else {
@@ -60,6 +87,15 @@ export default function Login() {
       {/* <button onClick={callprotectedApi}>protected</button> */}
 
       {/* <div className="sectionwraper">
+=======
+	return (
+        <>  
+			
+			<button className={isAuthenticated?"buttonlogin":"button"} onClick={(e) => logger(e.target.textContent)} >{isAuthenticated?"Logout":"Login"}</button>
+			{/* <button onClick={callprotectedApi}>protected</button> */}
+			
+	{/* <div className="sectionwraper">
+>>>>>>> d75c0786ef79e0abf762b3ec403a213b19aa0cc4
 		<div className="containerlogin">
 			<div className="row justify-content-center">
 				<div className="col-12 text-center align-self-center">

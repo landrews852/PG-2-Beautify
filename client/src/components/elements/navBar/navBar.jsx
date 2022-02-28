@@ -65,8 +65,13 @@ export default function Navigator() {
           ) : null}
 
           <CartLogo />
+<<<<<<< HEAD
           <UserMenu user={user} />
           <span className={s.welcome}>{isAuthenticated ? clientname : ""}</span>
+=======
+          {isAuthenticated && <UserMenu user={user} clientname={clientname}/>}
+          <span className={s.welcome}>{isAuthenticated?clientname:""}</span>          
+>>>>>>> d75c0786ef79e0abf762b3ec403a213b19aa0cc4
         </Navbar.Collapse>
       </Container>
     </Navbar>

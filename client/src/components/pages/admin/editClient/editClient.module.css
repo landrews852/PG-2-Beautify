@@ -74,7 +74,7 @@
   padding: 5px;
   width: 150px;
   cursor: pointer;
-  margin: 2px;
+  margin: 7px;
   align-content: space-between;
 }
 
@@ -87,7 +87,7 @@
   outline: none;
   border: 1px solid silver;
   border-radius: 10px;
-  opacity: 61%;
+  opacity: 0.6;
   position: relative;
   text-align: left !important;
   left: 110px;
@@ -115,7 +115,7 @@
 
 .form .submit {
   background: rgb(218, 210, 200);
-  margin: 1em 0 1em 0;
+  margin: 1em 7px 1em 7px;
   transition: all 0.5s ease;
 }
 .form .submit:hover {

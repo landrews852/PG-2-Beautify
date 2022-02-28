@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Style from "./serviceCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getServices } from "../../../redux/actions";
+import Loading from "../../elements/loading/loading";
 
 export default function CardService() {
   const dispatch = useDispatch();
@@ -9,10 +10,11 @@ export default function CardService() {
     dispatch(getServices());
   }, []);
   const services = useSelector((state) => state.services);
+  const isLoading = useSelector((state) => state.isLoading);
 
   return (
     <div id={Style.cont}>
-      {services.map((service) => (
+      {isLoading?<Loading/>:services.map((service) => (
         <div key={service.id} id={Style.container}>
           <div className={Style["product-details"]}>
             <div className={Style["title-stars"]}>

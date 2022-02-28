@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import s from "./editClient.module.css";
-import { editUserInfo } from "../../../../redux/actions";
+import { editUserInfo, getUserInfo } from "../../../../redux/actions";
 
 //const apiRoute = "http://localhost:3001";
 const apiRoute = process.env.REACT_APP_APP_ROOT;
@@ -30,7 +30,7 @@ const validate = (input) => {
   if (!input.email) {
     errors.email = "El correo electronico es requerido";
   } else if (
-    !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+    !/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/.test(
       input.email
     )
   ) {
@@ -110,7 +110,6 @@ export default function EditClient() {
   return (
     <>
       <div className={s.newService}>
-        {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
         <h2>Editar Perfil</h2>
         <div className={s.container}>
           <div className={s.profilepicture}>
@@ -146,19 +145,6 @@ export default function EditClient() {
                 {errors.lastname_client && (
                   <p className={s.error}>{errors.lastname_client}</p>
                 )}
-
-                {/* <div>
-                        <label>E-mail:</label>
-                        <input
-                            type="email"
-                            value={input.email}
-                            name="email"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    {errors.email && (
-                        <p className={s.error}>{errors.email}</p>
-                    )} */}
 
                 <div>
                   <label>Foto Perfil:</label>
@@ -206,6 +192,9 @@ export default function EditClient() {
                 <button className={s.submit} type="submit">
                   Guardar cambios
                 </button>
+                <Link to="/profile">
+                  <button className={s.submit}>Volver</button>
+                </Link>
               </div>
             </form>
           </div>

@@ -13,12 +13,14 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const { image, description } = req.body;
+    const { image, description,title,slogan } = req.body;
     if (image && description) {
       const data = await About.findAll();
       await About.create({
         image,
-        description
+        description,
+        title,
+        slogan
       });
       res.status(200).send("created");
     }

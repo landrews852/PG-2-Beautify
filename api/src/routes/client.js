@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Client } = require("../db");
+const { Client, Op } = require("../db");
 const { verifyjwt, verifytoken } = require('../auth/auth.js');
 const { default: axios } = require("axios");
 const router = Router();
@@ -116,7 +116,8 @@ router.put("/:id", verifyjwt, async (req, res) => {
     const updateClient = await Client.update(data, {
       where: {
         id: id,
-      }
+      },
+      returning: true
     });
     res.json(updateClient[1]);
   } catch (err) {
@@ -141,10 +142,10 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.get("/search", async (req, res) => {
-  const { email } = req.query
-  const search = `%${email}%`
+router.get("/search", verifyjwt, async (req, res) => {
   try {
+    const { email } = req.query
+    const search = `%${email}%`
     const data = await Client.findAll({
       where: {
         email: {

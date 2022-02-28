@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useAuth0 } from '@auth0/auth0-react'
 import { searchEmail } from '../../../../redux/actions'
 import PermissionCard from '../../../cards/permissionCard/permissionCard'
 import s from "./giveAdmin.module.css"
@@ -8,16 +9,19 @@ function GiveAdmin() {
   const dispatch = useDispatch()
   const [input, setInput] = useState("")
   const [data, setData] = useState([])
+  const { getAccessTokenSilently } = useAuth0();
 
   const handleChange = (e) => {
     const { value } = e.target
     setInput(value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    dispatch(searchEmail(input))
+    const token = await getAccessTokenSilently();
+    dispatch(searchEmail(input, token))
       .then(res => {
+        console.log(res.data)
         setData(res.data)
       })
   }

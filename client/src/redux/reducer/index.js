@@ -22,7 +22,8 @@ import {
   UPDATE_CART,
   GET_CLIENT,
   EDIT_CLIENT,
-  EDIT_ABOUT
+  EDIT_ABOUT,
+  IS_LOADING,
 } from "../actions";
 
 export const initialState = {
@@ -37,7 +38,8 @@ export const initialState = {
   categories: [],
   services: [],
   brands: [],
-  about: {}
+  about: {},
+  isLoading : false,
 };
 
 export function rootReducer(state = initialState, action) {
@@ -209,12 +211,14 @@ export function rootReducer(state = initialState, action) {
         ...state,
         cart: state.cart.filter((p) => p.id !== action.payload),
       };
+
     case GET_CLIENT:
       localStorage.setItem("user", JSON.stringify(action.payload));
       return {
         ...state,
         user: action.payload,
       };
+
     case EDIT_CLIENT:
         localStorage.setItem("user", JSON.stringify(action.payload));
       return {
@@ -227,6 +231,12 @@ export function rootReducer(state = initialState, action) {
         about: action.payload,
       };
       
+
+    case IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload
+      }
 
     default:
       return state;

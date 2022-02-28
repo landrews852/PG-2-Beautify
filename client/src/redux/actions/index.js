@@ -5,7 +5,7 @@ export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
 export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
 export const DELETE_IMG_CARRUSEL = "DELETE_IMG_CARRUSEL";
 export const PUT_IMG_CARRUSEL = "PUT_IMG_CARRUSEL";
-//const apiRoute = "http://localhost:3001";
+// const apiRoute = "http://localhost:3001";
 const apiRoute = process.env.REACT_APP_APP_ROOT
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
 export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
@@ -29,6 +29,7 @@ export const GET_CLIENT = "GET_CLIENT";
 export const POST_CLIENT = "POST_CLIENT";
 export const EDIT_CLIENT = "EDIT_CLIENT";
 export const EDIT_ABOUT = "EDIT_ABOUT";
+export const IS_LOADING = "IS_LOADING";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -88,7 +89,9 @@ export const putImgCarousel = (data) => {
 
 export const allProducts = () => {
   return async function (dispatch) {
+      dispatch({ type: IS_LOADING, payload: true });
     var json = await axios.get(`${apiRoute}/api/product`);
+      dispatch({ type: IS_LOADING, payload: false });
 
     return dispatch({
       type: "ALL_PRODUCTS",
@@ -100,12 +103,15 @@ export const allProducts = () => {
 export const getProductsbyName = (name) => {
   return async function (dispatch) {
     try {
+      dispatch({ type: IS_LOADING, payload: true });
       let json = await axios.get(`${apiRoute}/api/product?name=${name}`);
+      dispatch({ type: IS_LOADING, payload: false });
       return dispatch({
         type: GET_PRODUCTS_BY_NAME,
         payload: json.data,
       });
     } catch (error) {
+      dispatch({ type: IS_LOADING, payload: false });
       console.log(error);
     }
   };
@@ -114,14 +120,17 @@ export const getProductsbyName = (name) => {
 export const getServicesbyName = (name) => {
   return async function (dispatch) {
     try {
+      dispatch({ type: IS_LOADING, payload: true });
       let json = await axios.get(
         `${apiRoute}/api/service?name=${name}`
       );
+      dispatch({ type: IS_LOADING, payload: false });
       return dispatch({
         type: GET_SERVICES_BY_NAME,
         payload: json.data,
       });
     } catch (error) {
+      dispatch({ type: IS_LOADING, payload: false });
       console.log(error);
     }
   };
@@ -142,7 +151,9 @@ export const postProduct = (payload) => {
 
 export const getProductDetail = (id) => {
   return async function (dispatch) {
+      dispatch({ type: IS_LOADING, payload: true });
     let detail = await axios.get(`${apiRoute}/api/product/${id}`);
+      dispatch({ type: IS_LOADING, payload: false });
     return dispatch({ type: GET_PRODUCT_DETAIL, payload: detail.data });
   };
 };
@@ -213,7 +224,9 @@ export const filterByOffer = (payload) => {
 
 export const getServices = () => {
   return async function (dispatch) {
+    dispatch({ type: IS_LOADING, payload: true });
     const services = await axios.get(`${apiRoute}/api/service`);
+    dispatch({ type: IS_LOADING, payload: false });
     return dispatch({
       type: GET_SERVICES,
       payload: services.data,

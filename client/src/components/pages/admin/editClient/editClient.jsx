@@ -66,7 +66,7 @@ export default function EditClient() {
   const [input, setInput] = useState({
     name_client: name_client,
     lastname_client: lastname_client,
-    profile_picture: "",
+    profile_picture: profile_picture,
     address: address,
     phone: phone,
     birthday: birthday,

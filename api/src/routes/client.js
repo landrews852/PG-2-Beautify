@@ -79,7 +79,6 @@ router.post("/", verifyjwt, async (req, res) => {
         address,
         phone,
         birthday,
-        admin: true
       });
     }
     res.json("Usuario Creado");

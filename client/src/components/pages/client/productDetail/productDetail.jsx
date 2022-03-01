@@ -37,6 +37,7 @@ export default function ProductDetail() {
         <div className={Styles.container}>
           <div className={Styles["product-image"]}>
             <img src={productDetail.image} />
+            {console.log(productDetail)}
           </div>
           <div className={Styles["product-details"]}>
             <div className={Styles["title-stars"]}>

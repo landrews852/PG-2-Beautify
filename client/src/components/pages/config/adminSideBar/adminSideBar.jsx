@@ -54,18 +54,8 @@ export default function AdminSideBar() {
         break;
 
       case "7":
-        setOps(<EditService location={handleLocation} />);
-        setActive(7);
-        break;
-
-      case "8":
-        // Colocamos el componente de modificar servicio y pasamos la funcion handleLocation
-        //setOps(<CreateProduct location={handleLocation} />);
-        setActive(8);
-        break;
-      case "9":
         setOps(<EditSocialMedia />);
-        setActive(9);
+        setActive(7);
 
       default:
         break;
@@ -167,9 +157,9 @@ export default function AdminSideBar() {
                 <Link className="nav-link" to="/panel">
                   <button
                     className={
-                      active == 9 ? s.buttonNav + " " + s.activo : s.buttonNav
+                      active == 7 ? s.buttonNav + " " + s.activo : s.buttonNav
                     }
-                    value="9"
+                    value="7"
                     onClick={(e) => {
                       handleLocation(e);
                     }}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import s from "./editProduct.module.css";
-import { allProducts, editService, getCategories, getProductDetail } from "../../../../../redux/actions";
+import { allProducts, editProduct, getCategories, getProductDetail } from "../../../../../redux/actions";
 
 export default function EditService() {
   const dispatch = useDispatch();
@@ -89,6 +89,10 @@ export default function EditService() {
     });
   }
 
+  function selectProduct(e) {
+    dispatch(getProductDetail(e.target.value))
+  }
+
   function handleChange(e) {
     setInput({
       ...input,
@@ -96,10 +100,10 @@ export default function EditService() {
     });
   }
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     console.log("HANDLE SUBMIT");
     e.preventDefault();
-    // dispatch(editProduct(id, input));
+    dispatch(editProduct(productDetail.id, input));
     Swal.fire({
       icon: "success",
       title: "¡Genial!",
@@ -111,7 +115,6 @@ export default function EditService() {
     <>
       {productDetail ? (
         <div className={s.new}>
-        {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
         <h2>Editar un producto</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className={s.form}>
@@ -232,7 +235,7 @@ export default function EditService() {
       </div>
       ) : <>
         <div className={s.new}>
-          <select name="productos" id="productos">
+          <select name="productos" id="productos" onChange={(e) => selectProduct(e)}>
             <option value="">Seleccione un producto</option>
             {products?.map( (p) => {
               return <option value={ p.id }>{ p.product_name }</option>

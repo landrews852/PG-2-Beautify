@@ -347,3 +347,13 @@ export function getClient(token) {
     return user;
   }
 }
+
+export function editProduct(id, payload) {
+  return async function (dispatch) {
+    const producteUpdate = await axios.put(`${apiRoute}/api/product/${id}`, payload)  
+    // dispatch({
+    //   type: EDIT_SERVICE,
+    //   payload: payload
+    // });
+  }
+}

@@ -16,19 +16,13 @@ export default function EditService() {
       let errors = {};
       if (!input.name_service) {
         errors.name_service = "El nombre es requerido";
-      } else if (!/^[A-Z][\s\w\:]{1,35}$/.test(input.name_service)) {
-        errors.name_service =
-          "El nombre debe empezar en mayuscula y debe tener menos de 35 caracteres y solo acepta el signo ':'";
       }
   
       if (!input.description) {
         errors.description = "La descripción es requerida";
-      } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
-        errors.description =
-          "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";
       }
   
-      if (input.image.length < 1) {
+      if (!input.image) {
         errors.image = "La imagen es requerida";
       }
   
@@ -36,7 +30,7 @@ export default function EditService() {
         errors.price = "El costo es requerido";
       }     
   
-      if (input.category.length < 1) {
+      if (!input.category) {
           errors.category = "Selecciona una categoria";
       }
   
@@ -53,7 +47,7 @@ export default function EditService() {
     })},[serviceDetail])
 
     useEffect(()=>{
-        setErrors(validate(input));
+      setErrors(validate(input));
     },[input])
 
     useEffect(() => {
@@ -76,8 +70,10 @@ export default function EditService() {
       });
     }
 
-    function selectProduct(e) {
-      
+    function selectService(e) {
+      let id = e.target.value
+      let find = services.find(service => service.id == id)
+      setDetail(find)
     }
 
     async function handleSubmit (e) {
@@ -92,8 +88,16 @@ export default function EditService() {
 
     return (
         <>
+        {services.length > 0 ? (
+          <div className={s.new}>
+            <select name="service" id="service" onChange={(e) => selectService(e)}>
+              <option value="">Seleccione un servicio</option>
+              {services?.map( (service) => <option value={ service.id }>{ service.name_service }</option>)}
+            </select>
+          </div>
+        ): null}
+      { typeof input.name_service === 'string' ? (
         <div className={s.newService}>
-            {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
             <h2>Editar Servicio</h2>
             <div className={s.container}>
             <div className={s.profileform}>
@@ -171,6 +175,7 @@ export default function EditService() {
             </div>
             </div>
         </div>
+        ) : null}
         </>
     )
 }

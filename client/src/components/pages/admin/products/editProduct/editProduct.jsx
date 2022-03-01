@@ -215,7 +215,7 @@ export default function EditService() {
               <label>Seleccione las Categorias</label>
 
               <select className={s.cat} onChange={(e) => handleSelect(e) }>
-                <option>Selecciones una categoria</option>
+                <option>Seleccione una categoria</option>
                 {console.log(input.name_category)}
                 {categories.map((category) => {
                   return <option key={category.id} value={category.name_category} selected={ (input.category.name_category === category.name_category) }>

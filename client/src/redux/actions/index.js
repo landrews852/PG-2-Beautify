@@ -31,6 +31,8 @@ export const EDIT_CLIENT = "EDIT_CLIENT";
 export const EDIT_ABOUT = "EDIT_ABOUT";
 export const IS_LOADING = "IS_LOADING";
 export const EDIT_SERVICE = "EDIT_SERVICE";
+export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
+export const GET_SOCIAL = "GET_SOCIAL";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -90,9 +92,9 @@ export const putImgCarousel = (data) => {
 
 export const allProducts = () => {
   return async function (dispatch) {
-      dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: IS_LOADING, payload: true });
     var json = await axios.get(`${apiRoute}/api/product`);
-      dispatch({ type: IS_LOADING, payload: false });
+    dispatch({ type: IS_LOADING, payload: false });
 
     return dispatch({
       type: "ALL_PRODUCTS",
@@ -152,9 +154,9 @@ export const postProduct = (payload) => {
 
 export const getProductDetail = (id) => {
   return async function (dispatch) {
-      dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: IS_LOADING, payload: true });
     let detail = await axios.get(`${apiRoute}/api/product/${id}`);
-      dispatch({ type: IS_LOADING, payload: false });
+    dispatch({ type: IS_LOADING, payload: false });
     return dispatch({ type: GET_PRODUCT_DETAIL, payload: detail.data });
   };
 };
@@ -297,7 +299,7 @@ export function editUserInfo(token, payload) {
 
 export function editAbout(payload) {
   return async function (dispatch) {
-    const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload)  
+    const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload)
     dispatch({
       type: EDIT_ABOUT,
       payload: payload
@@ -345,6 +347,27 @@ export function getClient(token) {
       }
     })
     return user;
+  }
+}
+
+export function getSocial() {
+  return async function (dispatch) {
+    const social = await axios.get(`${apiRoute}/api/social`)
+    console.log(social.data[0])
+    dispatch({
+      type: GET_SOCIAL,
+      payload: social.data[0]
+    })
+  }
+}
+export function updateSocial(data) {
+  return async function (dispatch) {
+    const social = await axios.put(`${apiRoute}/api/social`, data)
+    dispatch({
+      type: UPDATE_SOCIAL,
+      payload: data
+    })
+
   }
 }
 

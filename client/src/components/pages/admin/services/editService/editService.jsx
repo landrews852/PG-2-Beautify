@@ -42,7 +42,7 @@ export default function EditService({id}) {
         name_service: serviceDetail.name_service,
         description: serviceDetail.description,
         price: serviceDetail.price,
-        image: serviceDetail.image,
+        image: [serviceDetail.image],
         categoryId: serviceDetail.categoryId,
         disabled: serviceDetail.disabled
     })},[serviceDetail])
@@ -62,6 +62,13 @@ export default function EditService({id}) {
             ...input,
             [e.target.name]: e.target.value
         })
+    }
+
+    function handleChangeimg(e) {
+      setInput({
+        ...input,
+        image: [e.target.value],
+      });
     }
 
     function handleSelect(e) {
@@ -134,9 +141,9 @@ export default function EditService({id}) {
                         <label>Imagen del servicio:</label>
                         <input
                             type="text"
-                            value={input.image}
+                            value={input.image[0]}
                             name="image"
-                            onChange={handleChange}
+                            onChange={handleChangeimg}
                         />
                     </div>
                     {errors.image && (
@@ -156,18 +163,18 @@ export default function EditService({id}) {
                         <p className={s.error}>{errors.price}</p>
                     )}
 
-                    <div>
+                    <div hidden={true}>
                         <label>Inactivo:</label>
                         <select className={s.cat} name="disabled" id="disabled" onChange={handleChange}>
                           <option value="false" selected={`${!input.disabled}`}>activo</option>
                           <option value="true" selected={`${input.disabled}`}>desactivado</option>
                         </select>
-                    </div>
                     {errors.disabled && (
-                        <p className={s.error}>{errors.disabled}</p>
-                    )}
+                      <p className={s.error}>{errors.disabled}</p>
+                      )}
+                      </div>
 
-<div>
+            <div hidden={true}>
               <label>Seleccione las Categorias</label>
 
               <select className={s.cat} onChange={(e) => handleSelect(e)}>
@@ -178,9 +185,9 @@ export default function EditService({id}) {
                           </option>
                 })}
               </select>
+            {errors.category && <p className={s.error}>{errors.category}</p>}
             </div>
 
-            {errors.category && <p className={s.error}>{errors.category}</p>}
 
                     <button className={s.submit} type="submit">Guardar cambios</button>
 

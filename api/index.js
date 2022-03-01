@@ -27,13 +27,13 @@ const { loadCarousel } = require("../api/loadData/carouselLoad.js");
 
 // Syncing all the models at once.
 
-conn.sync({force:true}).then(() => {
+conn.sync({force:false}).then(() => {
   server.listen(3001, async () => {
-    await loadCarousel();
-    await loadCategories();
-    await loadProducts();
+    // await loadCarousel();
+    // await loadCategories();
+    // await loadProducts();
     //await clientLoad();
-    await loadServices();
+    // await loadServices();
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });

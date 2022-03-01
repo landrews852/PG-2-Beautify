@@ -211,20 +211,20 @@ export default function EditProduct({id}) {
               />
             </div>
             {errors.brand && <p className={s.error}>{errors.brand}</p>}
-            <div>
+            <div hidden={true}>
               <label>Seleccione las Categorias</label>
 
               <select className={s.cat} onChange={(e) => handleSelect(e) }>
                 <option>Seleccione una categoria</option>
                 {categories.map((category) => {
-                  return <option key={category.id} value={category.name_category} selected={ (input.category.name_category === category.name_category) }>
+                  return <option key={category.id} value={category.id} selected={ (input.category.name_category === category.name_category) }>
                             {category.name_category}
                           </option>
                 })}
               </select>
-            </div>
 
             {errors.category && <p className={s.error}>{errors.category}</p>}
+            </div>
 
             <button
               disabled={Object.values(errors).length > 0}

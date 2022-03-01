@@ -79,4 +79,32 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      name_service,
+      price,
+      description,
+      image,
+      disabled,
+    } = req.body;
+    let data = {};
+    if (name_service !== undefined) data.name_service = name_service;
+    if (price !== undefined) data.price = price;
+    if (description !== undefined) data.description = description;
+    if (image !== undefined) data.image = image;
+    if (disabled !== undefined) data.disabled = disabled;
+    const updateService = await Service.update(data, {
+      where: {
+        id,
+      },
+      returning: true,
+    });
+    res.json(updateService[1]);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 module.exports = router;

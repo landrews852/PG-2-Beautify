@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
-import logo from "../../../images/logo2.png";
+import React from "react";
 import s from "./footer.module.css";
 import { Link } from "react-router-dom";
-import ig from "../../../images/instagram.png";
-import fb from "../../../images/facebook.png";
-import mail from "../../../images/mail.png";
 import { Toaster, toast } from "react-hot-toast";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useDispatch } from "react-redux";
@@ -35,20 +31,28 @@ export default function Footer() {
     <div className={s.container}>
       <div className={s.img}>
         <Link to="/">
-          <img src={logo} alt="logo" height="100px" />
+          <img
+            src="https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078440/beautify/form/logo2_bqgepw.png"
+            alt="logo"
+            height="100px"
+          />
         </Link>
       </div>
       <ul className={s.lista}>
         <li className={s.li}>
-          {/* <a href="https://www.instagram.com/" target="_blank"> */}
           <a href={info.instagram} target="_blank">
-            <img width="30px" src={ig} />
+            <img
+              width="30px"
+              src="https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078439/beautify/form/instagram_q3hv4c.png"
+            />
           </a>
         </li>
         <li className={s.li}>
-          {/* <a href="https://www.facebook.com/" target="_blank"> */}
           <a href={info.facebook} target="_blank">
-            <img width="28px" src={fb} />
+            <img
+              width="28px"
+              src="https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078439/beautify/form/facebook_vxpkp0.png"
+            />
           </a>
         </li>
         <li className={s.li}>
@@ -58,13 +62,16 @@ export default function Footer() {
               <p
                 onClick={() => toast.success("Correo copiado al portapapeles")}
               >
-                <img width="30px" src={mail} />
+                <img
+                  width="30px"
+                  src="https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078438/beautify/form/mail_mtugid.png"
+                />
               </p>
             </CopyToClipboard>
             <Toaster position="bottom-center" reverseOrder={false} />
           </div>
         </li>
-      </ul>
-    </div>
+      </ul >
+    </div >
   );
 }

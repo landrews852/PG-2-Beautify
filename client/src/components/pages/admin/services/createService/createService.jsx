@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getCategories, postService } from "../../../../redux/actions";
+import { getCategories, postService } from "../../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./createServices.module.css"
 

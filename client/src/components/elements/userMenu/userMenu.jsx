@@ -8,12 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 
-<<<<<<< HEAD
-export default function UserMenu() {
-=======
-
-export default function UserMenu( {clientname} ) {
->>>>>>> d75c0786ef79e0abf762b3ec403a213b19aa0cc4
+export default function UserMenu({ clientname }) {
   const { isAuthenticated, isLoading } = useAuth0();
   const [reload, setReload] = useState();
   let profile;
@@ -82,43 +77,32 @@ export default function UserMenu( {clientname} ) {
           id="dropdown-custom-components"
         ></Dropdown.Toggle>
 
-<<<<<<< HEAD
         <Dropdown.Menu align="end" /* as={CustomMenu} */ className={s.menu}>
-          {/* <Dropdown.Item as={Link} to="/config/admin/product/create" active={location.pathname === "/config/admin/product/create"}>Crear producto</Dropdown.Item>
-      <Dropdown.Item as={Link} to="/config/admin/service/create" active={location.pathname === "/config/admin/service/create"}>Crear servicio</Dropdown.Item> */}
-          <Dropdown.Item
-            as={Link}
-            to="/profile"
-            active={location.pathname === "/profile"}
-          >
-            Perfil
-          </Dropdown.Item>
-          {isAuthenticated && (
-            <Dropdown.Item
-              as={Link}
-              to="/panel"
-              active={location.pathname.includes("/panel")}
-            >
-              Panel
+          {isAuthenticated && clientname ? (
+            <>
+              <Dropdown.Item
+                as={Link}
+                to="/profile"
+                active={location.pathname === "/profile"}
+              >
+                Perfil
+              </Dropdown.Item>
+              <Dropdown.Item
+                as={Link}
+                to="/panel"
+                active={location.pathname.includes("/panel")}
+              >
+                Panel
+              </Dropdown.Item>
+            </>
+          ) : (
+            <Dropdown.Item as={Link} to="/admin/client/create">
+              Registre sus datos aqui
             </Dropdown.Item>
           )}
-          <Dropdown.Item>Logout</Dropdown.Item>
+          {/* <Dropdown.Item>Logout</Dropdown.Item> */}
         </Dropdown.Menu>
       </Dropdown>
     </>
-=======
-      <Dropdown.Menu align="end" /* as={CustomMenu} */ className={s.menu}>
-        {isAuthenticated && clientname ? (<>
-          <Dropdown.Item as={Link} to="/profile" active={location.pathname === "/profile"}>Perfil</Dropdown.Item>
-          <Dropdown.Item as={Link} to="/panel" active={location.pathname.includes("/panel")}>Panel</Dropdown.Item>
-        </>
-        ) : (
-          <Dropdown.Item as={Link} to="/admin/client/create">Registre sus datos aqui</Dropdown.Item>
-        )}
-      {/* <Dropdown.Item>Logout</Dropdown.Item> */}
-      </Dropdown.Menu>
-    </Dropdown>
-  </>
->>>>>>> d75c0786ef79e0abf762b3ec403a213b19aa0cc4
   );
 }

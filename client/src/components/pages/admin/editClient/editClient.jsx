@@ -59,17 +59,18 @@ export default function EditClient() {
     birthday,
     phone,
     profile_picture,
+    email,
   } = user[0];
   const [errors, setErrors] = useState({});
 
-  console.log("Perfil", user);
   const [input, setInput] = useState({
     name_client: name_client,
     lastname_client: lastname_client,
-    profile_picture: "",
+    profile_picture: profile_picture,
     address: address,
     phone: phone,
     birthday: birthday,
+    email,
   });
 
   useEffect(() => {

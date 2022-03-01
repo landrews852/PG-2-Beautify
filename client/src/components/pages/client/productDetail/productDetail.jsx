@@ -36,7 +36,14 @@ export default function ProductDetail() {
       <div className={Styles.ProductDetail}>
         <div className={Styles.container}>
           <div className={Styles["product-image"]}>
-            <img src={productDetail.image} />
+            <img
+              src={
+                Array.isArray(productDetail.image) === true
+                  ? productDetail.image[0]
+                  : null
+              }
+              alt="img no found"
+            />
           </div>
           <div className={Styles["product-details"]}>
             <div className={Styles["title-stars"]}>

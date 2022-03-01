@@ -10,6 +10,7 @@ import { store } from './store/index';
 const domain = "beautify.us.auth0.com"
 const client_id = "OrdQlvZeTosg7ug3kDik9EeY3k9hEolh"
 const domainurl = "https://143.244.172.125/"
+
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

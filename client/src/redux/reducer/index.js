@@ -24,6 +24,7 @@ import {
   EDIT_CLIENT,
   EDIT_ABOUT,
   IS_LOADING,
+  EDIT_SERVICE,
 } from "../actions";
 
 export const initialState = {
@@ -230,7 +231,11 @@ export function rootReducer(state = initialState, action) {
         ...state,
         about: action.payload,
       };
-      
+
+    case EDIT_SERVICE:
+      return {
+        ...state
+      };
 
     case IS_LOADING:
       return {

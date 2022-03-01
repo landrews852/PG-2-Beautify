@@ -30,6 +30,7 @@ export const POST_CLIENT = "POST_CLIENT";
 export const EDIT_CLIENT = "EDIT_CLIENT";
 export const EDIT_ABOUT = "EDIT_ABOUT";
 export const IS_LOADING = "IS_LOADING";
+export const EDIT_SERVICE = "EDIT_SERVICE";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -280,9 +281,9 @@ export function getUserInfo(token) {
   }
 }
 
-export function editUserInfo(id, token, payload) {
+export function editUserInfo(token, payload) {
   return async function (dispatch) {
-    const userupdate = await axios.put(`${apiRoute}/api/client/` + id, payload, {
+    const userupdate = await axios.put(`${apiRoute}/api/client/` + payload.id, payload, {
       headers: {
         authorization: `Bearer ${token}`
       }
@@ -299,6 +300,16 @@ export function editAbout(payload) {
     const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload)  
     dispatch({
       type: EDIT_ABOUT,
+      payload: payload
+    });
+  }
+}
+
+export function editService(id, payload) {
+  return async function (dispatch) {
+    const serviceUpdate = await axios.put(`${apiRoute}/api/service/${id}`, payload)  
+    dispatch({
+      type: EDIT_SERVICE,
       payload: payload
     });
   }

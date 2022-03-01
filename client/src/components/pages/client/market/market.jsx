@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import Card from "../../../cards/productCard/productCard";
-import { Link } from "react-router-dom";
+
 import "./market.css";
 import Filter from "../../../elements/filter/filter";
 import { allProducts } from "../../../../redux/actions";
@@ -18,7 +18,7 @@ export default function Market() {
   let [page, setPage] = useState(1);
   let firstItem = (page - 1) * 9;
   let lastItem = page * 9;
-  let lastPage = 1 + Math.floor(products.length / 9);
+  let lastPage = 1 + Math.floor((products.length + 1) / 9);
   let paginatedProducts =
     products !== "nothing found" ? products.slice(firstItem, lastItem) : [];
 
@@ -35,7 +35,9 @@ export default function Market() {
     <div className="main">
       <Filter Paginate={Paginate} />
       <br />
-      {isLoading ? <Loading/> : (
+      {isLoading ? (
+        <Loading />
+      ) : (
         <>
           <Pagination
             firstItem={firstItem}
@@ -45,8 +47,8 @@ export default function Market() {
             page={page}
           />
           <div className="Container Market">
-
-            {paginatedProducts.length?paginatedProducts.map((product) => (
+            {paginatedProducts.length ? (
+              paginatedProducts.map((product) => (
                 <Card
                   id={product.id}
                   product_name={product.product_name}
@@ -54,8 +56,10 @@ export default function Market() {
                   cost_by_unit={product.cost_by_unit}
                   key={product.id}
                 />
-            )):(<p>No se han encontrado resultados para tu busqueda</p>)}
-
+              ))
+            ) : (
+              <p>No se han encontrado resultados para tu busqueda</p>
+            )}
           </div>
         </>
       )}

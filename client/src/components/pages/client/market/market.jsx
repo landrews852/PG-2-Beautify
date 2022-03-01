@@ -18,7 +18,7 @@ export default function Market() {
   let [page, setPage] = useState(1);
   let firstItem = (page - 1) * 9;
   let lastItem = page * 9;
-  let lastPage = 1 + Math.floor((products.length + 1) / 9);
+  let lastPage = 1 + Math.floor((products.length - 1) / 9);
   let paginatedProducts =
     products !== "nothing found" ? products.slice(firstItem, lastItem) : [];
 
@@ -39,13 +39,14 @@ export default function Market() {
         <Loading />
       ) : (
         <>
+          {paginatedProducts.length ? (
           <Pagination
             firstItem={firstItem}
             lastItem={lastItem}
             lastPage={lastPage}
             Paginate={Paginate}
             page={page}
-          />
+          />) : null}
           <div className="Container Market">
             {paginatedProducts.length ? (
               paginatedProducts.map((product) => (

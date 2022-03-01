@@ -53,19 +53,19 @@
 }
 
 .form input {
-    width: 360px;
-    height: 50px;
-    padding: 0 20px;
-    font-size: 18px;
-    color: black;
-    outline: none;
-    border: 1px solid silver;
-    border-radius: 10px; 
-    opacity: 0.6;
-    position: relative;
-    left: 110px;
-    top: 8px;
-    background-color: rgba(255, 127, 80, 0.507);
+  width: 360px;
+  height: 50px;
+  padding: 0 20px;
+  font-size: 18px;
+  color: black;
+  outline: none;
+  border: 1px solid silver;
+  border-radius: 10px;
+  opacity: 0.6;
+  position: relative;
+  left: 110px;
+  top: 8px;
+  background-color: rgba(255, 127, 80, 0.507);
 }
 .form label {
   position: absolute;

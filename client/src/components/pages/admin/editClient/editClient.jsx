@@ -64,6 +64,7 @@ export default function EditClient() {
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
+    id: id,
     name_client: name_client,
     lastname_client: lastname_client,
     profile_picture: profile_picture,
@@ -97,10 +98,9 @@ export default function EditClient() {
     });
   }
   async function handleSubmit(e) {
-    console.log("HANDLE SUBMIT");
     e.preventDefault();
     const token = await getAccessTokenSilently();
-    dispatch(editUserInfo(id, token, input));
+    dispatch(editUserInfo(token, input));
     Swal.fire({
       icon: "success",
       title: "¡Genial!",

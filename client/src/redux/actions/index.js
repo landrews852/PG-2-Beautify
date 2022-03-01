@@ -281,9 +281,9 @@ export function getUserInfo(token) {
   }
 }
 
-export function editUserInfo(id, token, payload) {
+export function editUserInfo(token, payload) {
   return async function (dispatch) {
-    const userupdate = await axios.put(`${apiRoute}/api/client/` + id, payload, {
+    const userupdate = await axios.put(`${apiRoute}/api/client/` + payload.id, payload, {
       headers: {
         authorization: `Bearer ${token}`
       }

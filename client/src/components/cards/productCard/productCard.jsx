@@ -8,7 +8,8 @@ export default function Card({ image, product_name, cost_by_unit, id }) {
     <div className={s.cardcontenedor}>
       <div className={s.cards}>
         <Link key={id} to={"/market/" + id}>
-          <img src={image} alt="Img not found" />
+          <img src={image[0]} alt="Img not found" />
+
           <h3>{product_name}</h3>
         </Link>
         <span className={s.cardcost}>$ {cost_by_unit}</span>

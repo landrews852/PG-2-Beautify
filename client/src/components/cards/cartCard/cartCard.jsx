@@ -32,10 +32,12 @@ export default function Card({
               <p className={s.cost}>$ {cost_by_unit}</p>
             </>
           ) : (
-            <p className={s.cost}>
-              Valor: <del>{cost_by_unit}</del>
-              con descuento: {total}
-            </p>
+            <div className={s.cost}>
+              <p>
+                Valor: <del>{cost_by_unit}</del>
+              </p>
+              <p>on descuento: {total}</p>
+            </div>
           )}
 
           <p className={s.amount}>

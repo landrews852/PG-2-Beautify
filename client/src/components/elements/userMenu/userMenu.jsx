@@ -8,8 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 
-
-export default function UserMenu( {clientname} ) {
+export default function UserMenu({ clientname }) {
   const { isAuthenticated, isLoading } = useAuth0();
   const [reload, setReload] = useState();
   let profile;
@@ -78,17 +77,32 @@ export default function UserMenu( {clientname} ) {
           id="dropdown-custom-components"
         ></Dropdown.Toggle>
 
-      <Dropdown.Menu align="end" /* as={CustomMenu} */ className={s.menu}>
-        {isAuthenticated && clientname ? (<>
-          <Dropdown.Item as={Link} to="/profile" active={location.pathname === "/profile"}>Perfil</Dropdown.Item>
-          <Dropdown.Item as={Link} to="/panel" active={location.pathname.includes("/panel")}>Panel</Dropdown.Item>
-        </>
-        ) : (
-          <Dropdown.Item as={Link} to="/admin/client/create">Registre sus datos aqui</Dropdown.Item>
-        )}
-      {/* <Dropdown.Item>Logout</Dropdown.Item> */}
-      </Dropdown.Menu>
-    </Dropdown>
-  </>
+        <Dropdown.Menu align="end" /* as={CustomMenu} */ className={s.menu}>
+          {isAuthenticated && clientname ? (
+            <>
+              <Dropdown.Item
+                as={Link}
+                to="/profile"
+                active={location.pathname === "/profile"}
+              >
+                Perfil
+              </Dropdown.Item>
+              <Dropdown.Item
+                as={Link}
+                to="/panel"
+                active={location.pathname.includes("/panel")}
+              >
+                Panel
+              </Dropdown.Item>
+            </>
+          ) : (
+            <Dropdown.Item as={Link} to="/admin/client/create">
+              Registre sus datos aqui
+            </Dropdown.Item>
+          )}
+          {/* <Dropdown.Item>Logout</Dropdown.Item> */}
+        </Dropdown.Menu>
+      </Dropdown>
+    </>
   );
 }

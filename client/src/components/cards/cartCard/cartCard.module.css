@@ -46,7 +46,7 @@
   align-self: center;
   position: relative;
   left: -18vw;
-  top: 0rem
+  top: 0rem;
 }
 
 .btn {
@@ -79,5 +79,10 @@
   top: 2rem;
   left: 26rem;
   font-size: 1.6rem;
+}
 
+.cost p {
+  top: 2rem;
+  left: 26rem;
+  font-size: 1rem;
 }

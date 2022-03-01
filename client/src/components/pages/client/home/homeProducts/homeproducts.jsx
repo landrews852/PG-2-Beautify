@@ -10,11 +10,11 @@ import Card from "../../../../cards/cardHome/cardHome";
 export default function HomeProducts() {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(allProducts());
-  // }, []);
+  useEffect(() => {
+     dispatch(allProducts());
+  }, [dispatch]);
 
-  let product = useSelector((state) => state.products);
+  let product = useSelector((state) => state.allProducts);
 
   useEffect(() => {
     dispatch(allProducts());

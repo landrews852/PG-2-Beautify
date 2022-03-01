@@ -89,9 +89,9 @@ export const putImgCarousel = (data) => {
 
 export const allProducts = () => {
   return async function (dispatch) {
-      dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: IS_LOADING, payload: true });
     var json = await axios.get(`${apiRoute}/api/product`);
-      dispatch({ type: IS_LOADING, payload: false });
+    dispatch({ type: IS_LOADING, payload: false });
 
     return dispatch({
       type: "ALL_PRODUCTS",
@@ -151,9 +151,9 @@ export const postProduct = (payload) => {
 
 export const getProductDetail = (id) => {
   return async function (dispatch) {
-      dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: IS_LOADING, payload: true });
     let detail = await axios.get(`${apiRoute}/api/product/${id}`);
-      dispatch({ type: IS_LOADING, payload: false });
+    dispatch({ type: IS_LOADING, payload: false });
     return dispatch({ type: GET_PRODUCT_DETAIL, payload: detail.data });
   };
 };
@@ -296,7 +296,7 @@ export function editUserInfo(id, token, payload) {
 
 export function editAbout(payload) {
   return async function (dispatch) {
-    const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload)  
+    const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload)
     dispatch({
       type: EDIT_ABOUT,
       payload: payload
@@ -336,3 +336,18 @@ export function getClient(token) {
     return user;
   }
 }
+
+export function getSocial() {
+  return async function (dispatch) {
+    const social = await axios.get(`${apiRoute}/api/social`)
+    return social;
+  }
+}
+export function updateSocial(data) {
+  return async function (dispatch) {
+    const social = await axios.put(`${apiRoute}/api/social`, data)
+    return social;
+  }
+}
+
+

@@ -8,6 +8,7 @@ import EditCarousel from "../../admin/editCarousel/editCarousel";
 import GiveAdmin from "../../admin/giveAdmin/giveAdmin"
 import { useState } from "react";
 import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
+import EditSocialMedia from "../../admin/editSocialMedia/editSocialMedia";
 
 export default function AdminSideBar() {
   const locationpath = useLocation()
@@ -38,6 +39,10 @@ export default function AdminSideBar() {
     else if (e.target.value === "6") {
       setOps(<GiveAdmin />);
       setActive(6);
+    }
+    else if (e.target.value === "7") {
+      setOps(<EditSocialMedia />);
+      setActive(7);
     }
     else { components = "hola" }
   }
@@ -87,6 +92,12 @@ export default function AdminSideBar() {
                 >
                   <div className={s.translate}></div>
                   Permisos</button></Link>
+                <Link className='nav-link' to="/panel"><button className={active == 7 ? s.buttonNav + " " + s.activo : s.buttonNav}
+                  value="7"
+                  onClick={(e) => { handleLocation(e) }}
+                >
+                  <div className={s.translate}></div>
+                  Social</button></Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>

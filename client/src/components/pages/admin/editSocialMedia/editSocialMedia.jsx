@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Swal from "sweetalert2";
-import { getSocial, updateSocial } from '../../../../redux/actions'
+import { updateSocial } from '../../../../redux/actions'
 import s from "./editSocialMedia.module.css"
 
 function EditSocialMedia() {
   const dispatch = useDispatch()
   const [errors, setErrors] = useState({})
-  const [input, setInput] = useState({
-    facebook: "",
-    instagram: "",
-    email: "",
-  })
+  const [input, setInput] = useState(useSelector(state => state.social))
 
   const validate = (data) => {
     let errors = {}
@@ -56,15 +52,6 @@ function EditSocialMedia() {
 
   useEffect(() => {
     setErrors(validate(input));
-    dispatch(getSocial())
-      .then(res => {
-        setInput({
-          ...input,
-          facebook: res.data[0].facebook,
-          instagram: res.data[0].instagram,
-          email: res.data[0].email
-        })
-      })
   }, [])
 
   useEffect(() => {

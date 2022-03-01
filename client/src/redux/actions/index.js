@@ -31,6 +31,8 @@ export const EDIT_CLIENT = "EDIT_CLIENT";
 export const EDIT_ABOUT = "EDIT_ABOUT";
 export const IS_LOADING = "IS_LOADING";
 export const EDIT_SERVICE = "EDIT_SERVICE";
+export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
+export const GET_SOCIAL = "GET_SOCIAL";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -351,13 +353,21 @@ export function getClient(token) {
 export function getSocial() {
   return async function (dispatch) {
     const social = await axios.get(`${apiRoute}/api/social`)
-    return social;
+    console.log(social.data[0])
+    dispatch({
+      type: GET_SOCIAL,
+      payload: social.data[0]
+    })
   }
 }
 export function updateSocial(data) {
   return async function (dispatch) {
     const social = await axios.put(`${apiRoute}/api/social`, data)
-    return social;
+    dispatch({
+      type: UPDATE_SOCIAL,
+      payload: data
+    })
+
   }
 }
 

@@ -4,6 +4,15 @@
   top: 43%;
 }
 
+.container a {
+  color:black
+}
+
+.container a:hover {
+  background-color: rgb(224, 203, 143);
+  transition:all .16s ease;
+}
+
 .menu{
   inset: 35px 0px auto auto;
 }

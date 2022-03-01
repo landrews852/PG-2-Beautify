@@ -1,14 +1,13 @@
 import "./cardCateServices.css";
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../../../redux/actions";
 
 export default function CardCateServices() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
-  const categories = useSelector((state) => state.categories);
+  // useEffect(() => {
+  //   dispatch(getCategories());
+  // }, []);
+  // const categories = use}Selector((state) => state.categories);
 
   return (
     <div className="content-wrapper">

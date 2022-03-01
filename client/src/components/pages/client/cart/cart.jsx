@@ -21,7 +21,7 @@ export default function Cart() {
                 product_name={p.product_name}
                 id={p.id}
                 cost_by_unit={p.cost_by_unit}
-                image={p.image}
+                image={p.image[0]}
                 key={p.id}
                 amount={p.amount}
                 total={p.total}

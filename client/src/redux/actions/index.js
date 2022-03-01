@@ -5,7 +5,7 @@ export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
 export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
 export const DELETE_IMG_CARRUSEL = "DELETE_IMG_CARRUSEL";
 export const PUT_IMG_CARRUSEL = "PUT_IMG_CARRUSEL";
-//const apiRoute = "http://localhost:3001";
+// const apiRoute = "http://localhost:3001";
 const apiRoute = process.env.REACT_APP_APP_ROOT
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
 export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
@@ -27,6 +27,10 @@ export const DELETE_ITEM = "DELETE_ITEM";
 export const UPDATE_CART = "UPDATE_CART";
 export const GET_CLIENT = "GET_CLIENT";
 export const POST_CLIENT = "POST_CLIENT";
+export const EDIT_CLIENT = "EDIT_CLIENT";
+export const EDIT_ABOUT = "EDIT_ABOUT";
+export const IS_LOADING = "IS_LOADING";
+export const EDIT_SERVICE = "EDIT_SERVICE";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -86,7 +90,9 @@ export const putImgCarousel = (data) => {
 
 export const allProducts = () => {
   return async function (dispatch) {
+      dispatch({ type: IS_LOADING, payload: true });
     var json = await axios.get(`${apiRoute}/api/product`);
+      dispatch({ type: IS_LOADING, payload: false });
 
     return dispatch({
       type: "ALL_PRODUCTS",
@@ -98,12 +104,15 @@ export const allProducts = () => {
 export const getProductsbyName = (name) => {
   return async function (dispatch) {
     try {
+      dispatch({ type: IS_LOADING, payload: true });
       let json = await axios.get(`${apiRoute}/api/product?name=${name}`);
+      dispatch({ type: IS_LOADING, payload: false });
       return dispatch({
         type: GET_PRODUCTS_BY_NAME,
         payload: json.data,
       });
     } catch (error) {
+      dispatch({ type: IS_LOADING, payload: false });
       console.log(error);
     }
   };
@@ -112,14 +121,17 @@ export const getProductsbyName = (name) => {
 export const getServicesbyName = (name) => {
   return async function (dispatch) {
     try {
+      dispatch({ type: IS_LOADING, payload: true });
       let json = await axios.get(
         `${apiRoute}/api/service?name=${name}`
       );
+      dispatch({ type: IS_LOADING, payload: false });
       return dispatch({
         type: GET_SERVICES_BY_NAME,
         payload: json.data,
       });
     } catch (error) {
+      dispatch({ type: IS_LOADING, payload: false });
       console.log(error);
     }
   };
@@ -140,7 +152,9 @@ export const postProduct = (payload) => {
 
 export const getProductDetail = (id) => {
   return async function (dispatch) {
+      dispatch({ type: IS_LOADING, payload: true });
     let detail = await axios.get(`${apiRoute}/api/product/${id}`);
+      dispatch({ type: IS_LOADING, payload: false });
     return dispatch({ type: GET_PRODUCT_DETAIL, payload: detail.data });
   };
 };
@@ -211,7 +225,9 @@ export const filterByOffer = (payload) => {
 
 export const getServices = () => {
   return async function (dispatch) {
+    dispatch({ type: IS_LOADING, payload: true });
     const services = await axios.get(`${apiRoute}/api/service`);
+    dispatch({ type: IS_LOADING, payload: false });
     return dispatch({
       type: GET_SERVICES,
       payload: services.data,
@@ -254,13 +270,80 @@ export function deleteItem(payload) {
 export function getUserInfo(token) {
   return async function (dispatch) {
     const user = await axios.get(`${apiRoute}/api/client/info`, {
-            headers: {
-              authorization: `Bearer ${token}`
-            }
-    })  
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
     dispatch({
       type: GET_CLIENT,
       payload: user.data,
     });
+  }
+}
+
+export function editUserInfo(token, payload) {
+  return async function (dispatch) {
+    const userupdate = await axios.put(`${apiRoute}/api/client/` + payload.id, payload, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+    dispatch({
+      type: EDIT_CLIENT,
+      payload: [payload],
+    });
+  }
+}
+
+export function editAbout(payload) {
+  return async function (dispatch) {
+    const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload)  
+    dispatch({
+      type: EDIT_ABOUT,
+      payload: payload
+    });
+  }
+}
+
+export function editService(id, payload) {
+  return async function (dispatch) {
+    const serviceUpdate = await axios.put(`${apiRoute}/api/service/${id}`, payload)  
+    dispatch({
+      type: EDIT_SERVICE,
+      payload: payload
+    });
+  }
+}
+
+export function searchEmail(email, token) {
+  return async function (dispatch) {
+    const data = await axios.get(`${apiRoute}/api/client/search?email=${email}`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+    return data;
+  }
+}
+
+export function updateClient(info, token) {
+  return async function (dispatch) {
+    const response = await axios.put(`${apiRoute}/api/client/${info.id}`, { admin: info.data }, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  }
+}
+
+export function getClient(token) {
+  return async function (dispatch) {
+    const user = await axios.get(`${apiRoute}/api/client/info`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+    return user;
   }
 }

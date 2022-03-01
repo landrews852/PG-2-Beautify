@@ -119,7 +119,7 @@ h6 span {
   width: 100%;
   height: 100%;
   background-color: #2a2b38;
-  background-image: url("../../../images/loginform02.jpg");
+  background-image: url("https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078439/beautify/form/loginform_maems9.jpg");
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 300%;
@@ -363,14 +363,29 @@ h6 span {
   padding-top: 0px !important;
 }
 
-button {  
-  border:none;
+.button {
+  border-bottom: 2px solid transparent;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.55);
+  display: block;
+  padding: 0.5rem 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
 }
-button:hover {  
-  background: none;
+.button:hover {
+  border-bottom: 2px solid black;
 }
 
 .buttonlogin {
-  background-color: rgba(224, 198, 175, 0.794);
+  border-bottom: 2px solid black;
+  background-color: transparent;
+  border-right: none;
+  border-top: none;
+  border-left: none;
   transition: all 0.5s ease;
 }

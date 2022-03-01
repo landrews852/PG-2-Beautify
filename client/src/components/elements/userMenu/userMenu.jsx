@@ -1,29 +1,28 @@
 import s from "./userMenu.module.css";
-import React, {  useEffect, useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { useState } from "react";
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 
-
-export default function UserMenu() {
+export default function UserMenu({ clientname }) {
   const { isAuthenticated, isLoading } = useAuth0();
-  const [reload, setReload]= useState ()
+  const [reload, setReload] = useState();
   let profile;
 
-  const user= JSON.parse(localStorage.getItem('user'))
-  
-  useMemo(()=>{
-    if (user &&JSON.parse(localStorage.getItem('user'))[0]){
-      profile =  JSON.parse(localStorage.getItem('user'))[0].profile_picture
-      console.log (profile)
-    }
-  },[user])
+  const user = JSON.parse(localStorage.getItem("user"));
 
-   console.log (profile)
+  useMemo(() => {
+    if (user && JSON.parse(localStorage.getItem("user"))[0]) {
+      profile = JSON.parse(localStorage.getItem("user"))[0].profile_picture;
+      // console.log (profile)
+    }
+  }, [user]);
+
+  // console.log(profile);
   let location = useLocation();
 
   const [value, setValue] = useState("");
@@ -38,7 +37,11 @@ export default function UserMenu() {
         onClick(e);
       }}
     >
-     {profile?<img className= {s.imgprofile}  src= {profile}/>:<FontAwesomeIcon  icon={faUser} />}
+      {profile ? (
+        <img className={s.imgprofile} src={profile} />
+      ) : (
+        <FontAwesomeIcon icon={faUser} />
+      )}
       {/* {children} */}
     </a>
   ));
@@ -47,8 +50,6 @@ export default function UserMenu() {
   // Dropdown needs access to the DOM of the Menu to measure it
   const CustomMenu = React.forwardRef(
     ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
-
-
       return (
         <div
           ref={ref}
@@ -67,19 +68,41 @@ export default function UserMenu() {
     }
   );
 
-  return (<>
+  return (
+    <>
+      <Dropdown className={s.container}>
+        <Dropdown.Toggle
+          align="end"
+          as={CustomToggle}
+          id="dropdown-custom-components"
+        ></Dropdown.Toggle>
 
-    <Dropdown className={s.container}>
-      <Dropdown.Toggle align="end" as={CustomToggle} id="dropdown-custom-components">
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu align="end" /* as={CustomMenu} */ className={s.menu}>
-      {/* <Dropdown.Item as={Link} to="/config/admin/product/create" active={location.pathname === "/config/admin/product/create"}>Crear producto</Dropdown.Item>
-      <Dropdown.Item as={Link} to="/config/admin/service/create" active={location.pathname === "/config/admin/service/create"}>Crear servicio</Dropdown.Item> */}
-      <Dropdown.Item as={Link} to="/config" active={location.pathname === "/config"}>Configuracion</Dropdown.Item>
-      <Dropdown.Item>Logout</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  </>
+        <Dropdown.Menu align="end" /* as={CustomMenu} */ className={s.menu}>
+          {isAuthenticated && clientname ? (
+            <>
+              <Dropdown.Item
+                as={Link}
+                to="/profile"
+                active={location.pathname === "/profile"}
+              >
+                Perfil
+              </Dropdown.Item>
+              <Dropdown.Item
+                as={Link}
+                to="/panel"
+                active={location.pathname.includes("/panel")}
+              >
+                Panel
+              </Dropdown.Item>
+            </>
+          ) : (
+            <Dropdown.Item as={Link} to="/admin/client/create">
+              Registre sus datos aqui
+            </Dropdown.Item>
+          )}
+          {/* <Dropdown.Item>Logout</Dropdown.Item> */}
+        </Dropdown.Menu>
+      </Dropdown>
+    </>
   );
 }

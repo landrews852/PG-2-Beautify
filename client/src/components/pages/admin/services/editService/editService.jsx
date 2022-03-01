@@ -1,59 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import s from "./editService.module.css";
-import { editService } from "../../../../../redux/actions";
-
-const validate = (input) => {
-  let errors = {};
-
-  if (!input.name_service) {
-    errors.name_service = "El nombre es requerido";
-  } else if (!/^[A-Z][\s\w\:]{1,20}$/.test(input.name_service)) {
-    errors.name_service =
-      "El nombre debe empezar en mayuscula";
-  }
-  
-  if (!input.price){
-      errors.price = "El precio es requerido";
-  } else if(!/^[0-9]{1,12}$/.test(input.price)){
-      errors.price = "El precio debe ser numerico";
-  }
-
-  if (!input.description) {
-    errors.description = "La descripción es requerida";
-  } else if (!/^[A-Z][\s\w\W]{1,20}$/.test(input.description)) {
-    errors.description =
-      "La descripción debe empezar en mayuscula";
-  }
-
-  if (!input.image) {
-    errors.image = "La imagen es requerida";
-  }
-  
-  return errors;
-};
+import { editService, getServices, getCategories  } from "../../../../../redux/actions";
 
 export default function EditService() {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const user = JSON.parse(localStorage.getItem('user'));  
-    const { id, name_service , price , description , image , disabled } = user[0]
     const [errors, setErrors] = useState({});   
+    const categories = useSelector((state) => state.categories);
+    const [input, setInput] = useState('')
+    const [serviceDetail,setDetail] = useState('')
+    const services = useSelector((state) => state.services)
 
-    const [input, setInput] = useState({
-        name_service: name_service,
-        price: price,
-        description: description,
-        image: "",
-        disabled: disabled,
-    })
+    const validate = (input) => {
+      let errors = {};
+      if (!input.name_service) {
+        errors.name_service = "El nombre es requerido";
+      } else if (!/^[A-Z][\s\w\:]{1,35}$/.test(input.name_service)) {
+        errors.name_service =
+          "El nombre debe empezar en mayuscula y debe tener menos de 35 caracteres y solo acepta el signo ':'";
+      }
+  
+      if (!input.description) {
+        errors.description = "La descripción es requerida";
+      } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
+        errors.description =
+          "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";
+      }
+  
+      if (input.image.length < 1) {
+        errors.image = "La imagen es requerida";
+      }
+  
+      if (!input.price) {
+        errors.price = "El costo es requerido";
+      }     
+  
+      if (input.category.length < 1) {
+          errors.category = "Selecciona una categoria";
+      }
+  
+      return errors;
+    };
+    
+    useEffect(()=>{
+      setInput({
+        name_service: serviceDetail.name_service,
+        description: serviceDetail.description,
+        price: serviceDetail.price,
+        image: serviceDetail.image,
+        category: serviceDetail.category
+    })},[serviceDetail])
 
     useEffect(()=>{
         setErrors(validate(input));
     },[input])
+
+    useEffect(() => {
+      dispatch(getCategories());
+      !serviceDetail.name_service && dispatch(getServices())
+    }, []);
+
 
     function handleChange(e) {
         setInput({
@@ -62,10 +69,20 @@ export default function EditService() {
         })
     }
 
+    function handleSelect(e) {
+      setInput({
+        ...input,
+        category: [e.target.value],
+      });
+    }
+
+    function selectProduct(e) {
+      
+    }
+
     async function handleSubmit (e) {
-        console.log("HANDLE SUBMIT")
         e.preventDefault();     
-        dispatch(editService(id,input)); 
+        dispatch(editService(serviceDetail.id,input)); 
         Swal.fire({
             icon: "success",
             title: "¡Genial!",

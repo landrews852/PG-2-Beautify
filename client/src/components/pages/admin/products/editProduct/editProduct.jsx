@@ -24,6 +24,7 @@ export default function EditService() {
       category: productDetail.category, // Array
     });
   },[productDetail])
+  
   const products = useSelector( state => state.allProducts )
 
   const validate = (input) => {
@@ -68,7 +69,6 @@ export default function EditService() {
   }, [input]);
 
   useEffect(() => {
-    // input && setErrors(validate(input));
     dispatch(getCategories());
     !productDetail.product_name && dispatch(allProducts())
   }, []);
@@ -99,13 +99,12 @@ export default function EditService() {
   }
 
   function handleSubmit(e) {
-    console.log("HANDLE SUBMIT");
     e.preventDefault();
     dispatch(editProduct(productDetail.id, input));
     Swal.fire({
       icon: "success",
       title: "¡Genial!",
-      text: "Servicio editado con exito",
+      text: "Producto editado con exito",
     });
   }
 
@@ -233,7 +232,7 @@ export default function EditService() {
               className={s.submit}
               type="submit"
             >
-              Agregar Producto
+              Modificar Producto
             </button>
           </div>
         </form>

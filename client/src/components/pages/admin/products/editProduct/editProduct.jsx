@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import s from "./editProduct.module.css";
 import { allProducts, editProduct, getCategories, getProductDetail } from "../../../../../redux/actions";
 
-export default function EditService() {
+export default function EditProduct({id}) {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   const categories = useSelector((state) => state.categories);
@@ -111,9 +111,9 @@ export default function EditService() {
   return (
     <>
       <div className={s.new}>
-          <select name="productos" id="productos" onChange={(e) => selectProduct(e)}>
+          <select className={s.cat} name="productos" id="productos" onChange={(e) => selectProduct(e)}>
             <option value="">Seleccione un producto</option>
-            {products?.map( (p) => <option value={ p.id }>{ p.product_name }</option>)}
+            {products?.map( (p) => <option value={ p.id } selected={ id ? (p.id == id) :false}>{ p.product_name }</option>)}
           </select>
       </div>
       { typeof input.product_name === 'string' ? (
@@ -216,7 +216,6 @@ export default function EditService() {
 
               <select className={s.cat} onChange={(e) => handleSelect(e) }>
                 <option>Seleccione una categoria</option>
-                {console.log(input.name_category)}
                 {categories.map((category) => {
                   return <option key={category.id} value={category.name_category} selected={ (input.category.name_category === category.name_category) }>
                             {category.name_category}

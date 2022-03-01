@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import s from "./editService.module.css";
 import { editService, getServices, getCategories  } from "../../../../../redux/actions";
 
-export default function EditService() {
+export default function EditService({id}) {
     const dispatch = useDispatch();
     const [errors, setErrors] = useState({});   
     const categories = useSelector((state) => state.categories);
@@ -43,7 +43,8 @@ export default function EditService() {
         description: serviceDetail.description,
         price: serviceDetail.price,
         image: serviceDetail.image,
-        category: serviceDetail.category
+        categoryId: serviceDetail.categoryId,
+        disabled: serviceDetail.disabled
     })},[serviceDetail])
 
     useEffect(()=>{
@@ -90,9 +91,9 @@ export default function EditService() {
         <>
         {services.length > 0 ? (
           <div className={s.new}>
-            <select name="service" id="service" onChange={(e) => selectService(e)}>
+            <select className={s.cat} name="service" id="service" onChange={(e) => selectService(e)}>
               <option value="">Seleccione un servicio</option>
-              {services?.map( (service) => <option value={ service.id }>{ service.name_service }</option>)}
+              {services?.map( (service) => <option value={ service.id } selected={ id ? (service.id == id) :false}>{ service.name_service }</option>)}
             </select>
           </div>
         ): null}
@@ -157,16 +158,29 @@ export default function EditService() {
 
                     <div>
                         <label>Inactivo:</label>
-                        <input
-                            type="checkbox"
-                            value={input.disabled}
-                            name="disabled"
-                            onChange={handleChange}
-                        />
+                        <select className={s.cat} name="disabled" id="disabled" onChange={handleChange}>
+                          <option value="false" selected={`${!input.disabled}`}>activo</option>
+                          <option value="true" selected={`${input.disabled}`}>desactivado</option>
+                        </select>
                     </div>
                     {errors.disabled && (
                         <p className={s.error}>{errors.disabled}</p>
                     )}
+
+<div>
+              <label>Seleccione las Categorias</label>
+
+              <select className={s.cat} onChange={(e) => handleSelect(e)}>
+                <option>Seleccione una categoria</option>
+                {categories.map((category) => {
+                  return <option name="categoryId" key={category.id} value={category.id} selected={ (input.categoryId == category.id) }>
+                            {category.name_category}
+                          </option>
+                })}
+              </select>
+            </div>
+
+            {errors.category && <p className={s.error}>{errors.category}</p>}
 
                     <button className={s.submit} type="submit">Guardar cambios</button>
 

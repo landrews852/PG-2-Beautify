@@ -2,14 +2,15 @@ import React from "react";
 import s from "./adminSideBar.module.css";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import CreateProduct from "../../../pages/admin/createProduct/createProduct";
-import CreateService from "../../admin/services/createService/createService";
+// import CreateProduct from "../../../pages/admin/createProduct/createProduct";
+// import CreateService from "../../admin/services/createService/createService";
 import EditCarousel from "../../admin/editCarousel/editCarousel";
 import GiveAdmin from "../../admin/giveAdmin/giveAdmin";
 import { useState } from "react";
 import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
+import Service from "../../admin/services/services";
+import Product from "../../admin/products/product"
 import EditSocialMedia from "../../admin/editSocialMedia/editSocialMedia";
-import EditService from "../../admin/services/editService/editService";
 
 export default function AdminSideBar() {
   const locationpath = useLocation();
@@ -22,12 +23,12 @@ export default function AdminSideBar() {
   const handleLocation = (e) => {
     switch (e.target.value) {
       case "1":
-        setOps(<CreateProduct location={handleLocation} />);
+        setOps(<Product />);
         setActive(1);
         break;
 
       case "2":
-        setOps(<CreateService location={handleLocation} />);
+        setOps(<Service />);
         setActive(2);
         break;
 

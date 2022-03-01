@@ -8,37 +8,35 @@ export default function EditService() {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   const categories = useSelector((state) => state.categories);
-  const [input, setInput] = useState({
-    product_name: "", // string
-    description: "", // TEXT
-    stock: "", // integer
-    cost_by_unit: "", // float
-    image: "", // Array (text)
-    warranty: "", // integer
-    brand: "", // string
-    discount: "", // INTEGER
-    category: [], // Array
-  });
   let productDetail = useSelector( state => state.productDetail )
+  const [input, setInput] = useState('')
+  useEffect(()=>{
+    setInput({
+      ...input,
+      product_name: productDetail.product_name, // string
+      description: productDetail.description, // TEXT
+      stock: productDetail.stock, // integer
+      cost_by_unit: productDetail.cost_by_unit, // float
+      image: productDetail.image, // Array (text)
+      warranty: productDetail.warranty, // integer
+      brand: productDetail.brand, // string
+      discount: productDetail.discount, // INTEGER
+      category: productDetail.category, // Array
+    });
+  },[productDetail])
   const products = useSelector( state => state.allProducts )
 
   const validate = (input) => {
     let errors = {};
     if (!input.product_name) {
       errors.product_name = "El nombre es requerido";
-    } else if (!/^[A-Z][\s\w\:]{1,35}$/.test(input.product_name)) {
-      errors.product_name =
-        "El nombre debe empezar en mayuscula y debe tener menos de 35 caracteres y solo acepta el signo ':'";
-    }
+    } 
 
     if (!input.description) {
       errors.description = "La descripción es requerida";
-    } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
-      errors.description =
-        "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";
-    }
+    } 
 
-    if (input.image.length < 1) {
+    if (!input.image) {
       errors.image = "La imagen es requerida";
     }
 
@@ -58,7 +56,7 @@ export default function EditService() {
       errors.brand = "La marca es requerido";
     }
 
-    if (input.category.length < 1) {
+    if (input.category < 1) {
       errors.category = "Selecciona una categoria";
     }
 
@@ -70,9 +68,9 @@ export default function EditService() {
   }, [input]);
 
   useEffect(() => {
-    setErrors(validate(input));
+    // input && setErrors(validate(input));
     dispatch(getCategories());
-    !productDetail.name && dispatch(allProducts())
+    !productDetail.product_name && dispatch(allProducts())
   }, []);
 
   function handleChangeimg(e) {
@@ -113,7 +111,13 @@ export default function EditService() {
 
   return (
     <>
-      {productDetail ? (
+      <div className={s.new}>
+          <select name="productos" id="productos" onChange={(e) => selectProduct(e)}>
+            <option value="">Seleccione un producto</option>
+            {products?.map( (p) => <option value={ p.id }>{ p.product_name }</option>)}
+          </select>
+      </div>
+      { typeof input.product_name === 'string' ? (
         <div className={s.new}>
         <h2>Editar un producto</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
@@ -153,7 +157,7 @@ export default function EditService() {
                 onChange={handleChange}
               />
             </div>
-            {errors.stock && <p className={s.error}>{errors.stock}</p>}
+            {errors.stock && <p className={s.error}>{productDetail.stock}</p>}
             <div>
               <label>Descuento:</label>
               <input
@@ -211,13 +215,14 @@ export default function EditService() {
             <div>
               <label>Seleccione las Categorias</label>
 
-              <select className={s.cat} onChange={(e) => handleSelect(e)}>
+              <select className={s.cat} onChange={(e) => handleSelect(e) }>
                 <option>Selecciones una categoria</option>
-                {categories.map((category, index) => (
-                  <option key={category.id} value={category.name_category}>
-                    {category.name_category}
-                  </option>
-                ))}
+                {console.log(input.name_category)}
+                {categories.map((category) => {
+                  return <option key={category.id} value={category.name_category} selected={ (input.category.name_category === category.name_category) }>
+                            {category.name_category}
+                          </option>
+                })}
               </select>
             </div>
 
@@ -233,17 +238,7 @@ export default function EditService() {
           </div>
         </form>
       </div>
-      ) : <>
-        <div className={s.new}>
-          <select name="productos" id="productos" onChange={(e) => selectProduct(e)}>
-            <option value="">Seleccione un producto</option>
-            {products?.map( (p) => {
-              return <option value={ p.id }>{ p.product_name }</option>
-            })}
-          </select>
-        </div>
-      </> }
-      
+      ) : null }
     </>
   );
 }

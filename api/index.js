@@ -27,7 +27,7 @@ const { loadCarousel } = require("../api/loadData/carouselLoad.js");
 
 // Syncing all the models at once.
 
-conn.sync().then(() => {
+conn.sync({force:true}).then(() => {
   server.listen(3001, async () => {
     await loadCarousel();
     await loadCategories();

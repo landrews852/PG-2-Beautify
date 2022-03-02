@@ -5,27 +5,26 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Card from "../../../../cards/cardHome/cardHome";
-// import { useMemo } from "react";
+//import { useMemo } from "react";
 
 export default function HomeProducts() {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(allProducts());
-  // }, []);
+  useEffect(() => {
+     dispatch(allProducts());
+  }, [dispatch]);
+
+  let product = useSelector((state) => state.allProducts);
 
   useEffect(() => {
     dispatch(allProducts());
   }, []);
 
-  let product = useSelector((state) => state.products);
-
   return (
     <>
-      {
+      { product !== "nothing found" ? (
         <OwlCarousel className="owl-theme" nav items={4}>
-          {product !== "nothing found" &&
-            product.slice(0, 10).map((p) => (
+          {product?.slice(0, 10).map((p) => (
               <div class="item">
                 <Card
                   id={p.id}
@@ -37,7 +36,7 @@ export default function HomeProducts() {
               </div>
             ))}
         </OwlCarousel>
-      }
+      ) : null}
     </>
   );
 }

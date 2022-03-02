@@ -50,8 +50,6 @@ export default function CreateService() {
         image: [],
         category: []
     })
-    console.log(input)
-    console.log(errors)
 
     useEffect(() => {
         setErrors(validate(input));
@@ -75,11 +73,6 @@ export default function CreateService() {
             ...input,
             [e.target.name]: e.target.value
         })
-
-        // setErrors(validate({
-        //     ...input,
-        //     [e.target.name]: e.target.value
-        // }));
     }
 
     function handleSelect(e) {

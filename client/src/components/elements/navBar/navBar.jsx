@@ -12,6 +12,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Login from "../../features/login/login";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import CalendarLogo from "./calendarLogo";
 
 export default function Navigator() {
   const { isAuthenticated, getAccessTokenSilently, isLoading } = useAuth0();
@@ -59,12 +60,12 @@ export default function Navigator() {
             <Login />
           </Nav>
 
-          {location.pathname === "/market" ||
+          { location.pathname === "/market" ||
           location.pathname === "/services" ? (
             <SearchBar className={s.navSearch} />
-          ) : null}
-
+          ) : null }
           <CartLogo />
+          <CalendarLogo />
           {isAuthenticated && <UserMenu user={user} clientname={clientname} />}
           <span className={s.welcome}>{isAuthenticated ? clientname : ""}</span>
         </Navbar.Collapse>

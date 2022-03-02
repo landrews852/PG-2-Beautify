@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { postProduct, getCategories } from "../../../../redux/actions";
+import { postProduct, getCategories } from "../../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./createProduct.module.css";
 

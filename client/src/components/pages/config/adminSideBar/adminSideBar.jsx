@@ -2,13 +2,14 @@ import React from "react";
 import s from "./adminSideBar.module.css";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import CreateProduct from "../../../pages/admin/createProduct/createProduct";
-import CreateService from "../../admin/services/createService/createService";
+// import CreateProduct from "../../../pages/admin/createProduct/createProduct";
+// import CreateService from "../../admin/services/createService/createService";
 import EditCarousel from "../../admin/editCarousel/editCarousel";
 import GiveAdmin from "../../admin/giveAdmin/giveAdmin";
 import { useState } from "react";
 import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
-import EditService from "../../admin/services/editService/editService";
+import Service from "../../admin/services/services";
+import Product from "../../admin/products/product"
 
 export default function AdminSideBar() {
   const locationpath = useLocation();
@@ -21,12 +22,12 @@ export default function AdminSideBar() {
   const handleLocation = (e) => {
     switch (e.target.value) {
       case "1":
-        setOps(<CreateProduct location={handleLocation} />);
+        setOps(<Product />);
         setActive(1);
         break;
 
       case "2":
-        setOps(<CreateService location={handleLocation} />);
+        setOps(<Service />);
         setActive(2);
         break;
 
@@ -49,17 +50,6 @@ export default function AdminSideBar() {
       case "6":
         setOps(<GiveAdmin />);
         setActive(6);
-        break;
-
-      case "7":
-        setOps(<EditService location={handleLocation} />);
-        setActive(7);
-        break;
-
-      case "8":
-        // Colocamos el componente de modificar servicio y pasamos la funcion handleLocation
-        //setOps(<CreateProduct location={handleLocation} />);
-        setActive(8);
         break;
 
       default:

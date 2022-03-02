@@ -5,7 +5,7 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Card from "../../../../cards/cardHome/cardHome";
-import { useMemo } from "react";
+// import { useMemo } from "react";
 
 export default function HomeProducts() {
   const dispatch = useDispatch();
@@ -14,11 +14,11 @@ export default function HomeProducts() {
   //   dispatch(allProducts());
   // }, []);
 
-  let product = useSelector((state) => state.products);
-
-  useMemo(() => {
+  useEffect(() => {
     dispatch(allProducts());
-  }, [dispatch]);
+  }, []);
+
+  let product = useSelector((state) => state.products);
 
   return (
     <>

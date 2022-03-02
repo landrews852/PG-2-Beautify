@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CreateService from "./createService/createService";
-import EditService from "./editService";
+import EditService from "./editService/editService";
 import s from "./services.module.css"
 
 

@@ -1,59 +1,61 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import s from "./editService.module.css";
-import { editService } from "../../../../../redux/actions";
+import { editService, getServices, getCategories  } from "../../../../../redux/actions";
 
-const validate = (input) => {
-  let errors = {};
-
-  if (!input.name_service) {
-    errors.name_service = "El nombre es requerido";
-  } else if (!/^[A-Z][\s\w\:]{1,20}$/.test(input.name_service)) {
-    errors.name_service =
-      "El nombre debe empezar en mayuscula";
-  }
-  
-  if (!input.price){
-      errors.price = "El precio es requerido";
-  } else if(!/^[0-9]{1,12}$/.test(input.price)){
-      errors.price = "El precio debe ser numerico";
-  }
-
-  if (!input.description) {
-    errors.description = "La descripción es requerida";
-  } else if (!/^[A-Z][\s\w\W]{1,20}$/.test(input.description)) {
-    errors.description =
-      "La descripción debe empezar en mayuscula";
-  }
-
-  if (!input.image) {
-    errors.image = "La imagen es requerida";
-  }
-  
-  return errors;
-};
-
-export default function EditService() {
-    const navigate = useNavigate();
+export default function EditService({id}) {
     const dispatch = useDispatch();
-    const user = JSON.parse(localStorage.getItem('user'));  
-    const { id, name_service , price , description , image , disabled } = user[0]
     const [errors, setErrors] = useState({});   
+    const categories = useSelector((state) => state.categories);
+    const [input, setInput] = useState('')
+    const [serviceDetail,setDetail] = useState('')
+    const services = useSelector((state) => state.services)
 
-    const [input, setInput] = useState({
-        name_service: name_service,
-        price: price,
-        description: description,
-        image: "",
-        disabled: disabled,
-    })
+    const validate = (input) => {
+      let errors = {};
+      if (!input.name_service) {
+        errors.name_service = "El nombre es requerido";
+      }
+  
+      if (!input.description) {
+        errors.description = "La descripción es requerida";
+      }
+  
+      if (!input.image) {
+        errors.image = "La imagen es requerida";
+      }
+  
+      if (!input.price) {
+        errors.price = "El costo es requerido";
+      }     
+  
+      if (!input.category) {
+          errors.category = "Selecciona una categoria";
+      }
+  
+      return errors;
+    };
+    
+    useEffect(()=>{
+      setInput({
+        name_service: serviceDetail.name_service,
+        description: serviceDetail.description,
+        price: serviceDetail.price,
+        image: [serviceDetail.image],
+        categoryId: serviceDetail.categoryId,
+        disabled: serviceDetail.disabled
+    })},[serviceDetail])
 
     useEffect(()=>{
-        setErrors(validate(input));
+      setErrors(validate(input));
     },[input])
+
+    useEffect(() => {
+      dispatch(getCategories());
+      !serviceDetail.name_service && dispatch(getServices())
+    }, []);
+
 
     function handleChange(e) {
         setInput({
@@ -62,10 +64,29 @@ export default function EditService() {
         })
     }
 
+    function handleChangeimg(e) {
+      setInput({
+        ...input,
+        image: [e.target.value],
+      });
+    }
+
+    function handleSelect(e) {
+      setInput({
+        ...input,
+        category: [e.target.value],
+      });
+    }
+
+    function selectService(e) {
+      let id = e.target.value
+      let find = services.find(service => service.id == id)
+      setDetail(find)
+    }
+
     async function handleSubmit (e) {
-        console.log("HANDLE SUBMIT")
         e.preventDefault();     
-        dispatch(editService(id,input)); 
+        dispatch(editService(serviceDetail.id,input)); 
         Swal.fire({
             icon: "success",
             title: "¡Genial!",
@@ -75,8 +96,16 @@ export default function EditService() {
 
     return (
         <>
+        {services.length > 0 ? (
+          <div className={s.new}>
+            <select className={s.cat} name="service" id="service" onChange={(e) => selectService(e)}>
+              <option value="">Seleccione un servicio</option>
+              {services?.map( (service) => <option value={ service.id } selected={ id ? (service.id == id) :false}>{ service.name_service }</option>)}
+            </select>
+          </div>
+        ): null}
+      { typeof input.name_service === 'string' ? (
         <div className={s.newService}>
-            {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
             <h2>Editar Servicio</h2>
             <div className={s.container}>
             <div className={s.profileform}>
@@ -112,9 +141,9 @@ export default function EditService() {
                         <label>Imagen del servicio:</label>
                         <input
                             type="text"
-                            value={input.image}
+                            value={input.image[0]}
                             name="image"
-                            onChange={handleChange}
+                            onChange={handleChangeimg}
                         />
                     </div>
                     {errors.image && (
@@ -134,18 +163,31 @@ export default function EditService() {
                         <p className={s.error}>{errors.price}</p>
                     )}
 
-                    <div>
+                    <div hidden={true}>
                         <label>Inactivo:</label>
-                        <input
-                            type="checkbox"
-                            value={input.disabled}
-                            name="disabled"
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <select className={s.cat} name="disabled" id="disabled" onChange={handleChange}>
+                          <option value="false" selected={`${!input.disabled}`}>activo</option>
+                          <option value="true" selected={`${input.disabled}`}>desactivado</option>
+                        </select>
                     {errors.disabled && (
-                        <p className={s.error}>{errors.disabled}</p>
-                    )}
+                      <p className={s.error}>{errors.disabled}</p>
+                      )}
+                      </div>
+
+            <div hidden={true}>
+              <label>Seleccione las Categorias</label>
+
+              <select className={s.cat} onChange={(e) => handleSelect(e)}>
+                <option>Seleccione una categoria</option>
+                {categories.map((category) => {
+                  return <option name="categoryId" key={category.id} value={category.id} selected={ (input.categoryId == category.id) }>
+                            {category.name_category}
+                          </option>
+                })}
+              </select>
+            {errors.category && <p className={s.error}>{errors.category}</p>}
+            </div>
+
 
                     <button className={s.submit} type="submit">Guardar cambios</button>
 
@@ -154,6 +196,7 @@ export default function EditService() {
             </div>
             </div>
         </div>
+        ) : null}
         </>
     )
 }

@@ -2,13 +2,15 @@ import React from "react";
 import s from "./adminSideBar.module.css";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import CreateProduct from "../../../pages/admin/createProduct/createProduct";
-import CreateService from "../../admin/services/createService/createService";
+// import CreateProduct from "../../../pages/admin/createProduct/createProduct";
+// import CreateService from "../../admin/services/createService/createService";
 import EditCarousel from "../../admin/editCarousel/editCarousel";
 import GiveAdmin from "../../admin/giveAdmin/giveAdmin";
 import { useState } from "react";
 import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
-import EditService from "../../admin/services/editService/editService";
+import Service from "../../admin/services/services";
+import Product from "../../admin/products/product"
+import EditSocialMedia from "../../admin/editSocialMedia/editSocialMedia";
 
 export default function AdminSideBar() {
   const locationpath = useLocation();
@@ -21,12 +23,12 @@ export default function AdminSideBar() {
   const handleLocation = (e) => {
     switch (e.target.value) {
       case "1":
-        setOps(<CreateProduct location={handleLocation} />);
+        setOps(<Product />);
         setActive(1);
         break;
 
       case "2":
-        setOps(<CreateService location={handleLocation} />);
+        setOps(<Service />);
         setActive(2);
         break;
 
@@ -52,15 +54,8 @@ export default function AdminSideBar() {
         break;
 
       case "7":
-        setOps(<EditService location={handleLocation} />);
+        setOps(<EditSocialMedia />);
         setActive(7);
-        break;
-
-      case "8":
-        // Colocamos el componente de modificar servicio y pasamos la funcion handleLocation
-        //setOps(<CreateProduct location={handleLocation} />);
-        setActive(8);
-        break;
 
       default:
         break;
@@ -159,12 +154,26 @@ export default function AdminSideBar() {
                     Permisos
                   </button>
                 </Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </div>
+                <Link className="nav-link" to="/panel">
+                  <button
+                    className={
+                      active == 7 ? s.buttonNav + " " + s.activo : s.buttonNav
+                    }
+                    value="7"
+                    onClick={(e) => {
+                      handleLocation(e);
+                    }}
+                  >
+                    <div className={s.translate}></div>
+                    Redes Sociales
+                  </button>
+                </Link>
+              </Nav >
+            </Navbar.Collapse >
+          </Navbar >
+        </div >
         <div className={s.containerOp}>{ops}</div>
-      </div>
+      </div >
     </>
   );
 }

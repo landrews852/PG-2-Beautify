@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateClient } from '../../../redux/actions'
+import Swal from "sweetalert2";
 import { useAuth0 } from '@auth0/auth0-react'
 import "./permissionCard.css"
 
@@ -20,7 +21,15 @@ function PermissionCard({ id, name, lastname, admin }) {
           ...status,
           admin: res[0].admin
         })
-        res[0].admin ? alert("Permiso de admin concedido") : alert("Permiso de admin denegado")
+        res[0].admin ? Swal.fire({
+          icon: "success",
+          title: "¡Genial!",
+          text: "Permiso de admin concedido",
+        }) : Swal.fire({
+          icon: "success",
+          title: "¡Genial!",
+          text: "Permiso de admin denegado",
+        })
       })
 
   }

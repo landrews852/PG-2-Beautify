@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
-import { deleteItem } from "../../../../redux/actions";
+import { deleteItem, payProducts } from "../../../../redux/actions";
+import { useMercadopago } from 'react-sdk-mercadopago';
 
 export default function Cart() {
   const productos = useSelector((state) => state.cart);
+  console.log(productos)
   const dispatch = useDispatch();
+  const mercadopago = useMercadopago.v2("TEST-cb9b9b61-ff85-42dc-95eb-12aadba13dfc", {
+    locale: 'es-CO'
+  });
+
+  const handleClick = () => {
+    dispatch(payProducts(productos))
+    .then(res => {
+      console.log(res.data.id)
+      mercadopago.checkout({
+        preference: {
+            // id: 'YOUR_PREFERENCE_ID'
+            id: res.data.id
+        },
+        autoOpen: true
+      })
+    })
+    // pago.open()
+  }
 
   return (
     <div className={s.cart}>
@@ -38,6 +58,9 @@ export default function Cart() {
         </div>
       </div>
       {/* </div> */}
+      <div>
+        <button onClick={handleClick}>Pagar</button>
+      </div>
     </div>
   );
 }

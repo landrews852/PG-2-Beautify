@@ -33,6 +33,7 @@ export const IS_LOADING = "IS_LOADING";
 export const EDIT_SERVICE = "EDIT_SERVICE";
 export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 export const GET_SOCIAL = "GET_SOCIAL";
+export const PAYMENT = "PAYMENT"
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -378,5 +379,12 @@ export function editProduct(id, payload) {
     //   type: EDIT_SERVICE,
     //   payload: payload
     // });
+  }
+}
+
+export function payProducts(payload) {
+  return async function (dispatch) {
+    const data = await axios.post(`${apiRoute}/api/payment/create_preference`,payload)  
+    return data;
   }
 }

@@ -10,8 +10,8 @@ export default function Cart() {
   const productos = useSelector((state) => state.cart);
   console.log(productos)
   const dispatch = useDispatch();
-  const mercadopago = useMercadopago.v2("TEST-cb9b9b61-ff85-42dc-95eb-12aadba13dfc", {
-    locale: 'es-CO'
+  const mercadopago = useMercadopago.v2("TEST-569bdb9e-aeea-45cc-bf09-6bf696036b74", {
+    locale: 'es-PE'
   });
 
   const handleClick = () => {

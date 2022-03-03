@@ -4,29 +4,59 @@ import s from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
 import { deleteItem, payProducts } from "../../../../redux/actions";
-import { useMercadopago } from 'react-sdk-mercadopago';
+// import { useMercadopago } from 'react-sdk-mercadopago';
 
 export default function Cart() {
+  const publicKey = "APP_USR-a73655fd-5cba-4fa1-a67a-46c005d55732"
   const productos = useSelector((state) => state.cart);
-  console.log(productos)
   const dispatch = useDispatch();
-  const mercadopago = useMercadopago.v2("TEST-569bdb9e-aeea-45cc-bf09-6bf696036b74", {
-    locale: 'es-PE'
-  });
+  let mercadopago
+  // const mercadopago = useMercadopago.v2(publicKey, {
+  //   locale: 'es-PE'
+  // });
+
+  // useEffect(() => {
+  //   const script = document.createElement('script')
+  //   script.type = "text/javascript"
+  //   script.src = "https://sdk.mercadopago.com/js/v2";
+  //   script.addEventListener('load', ()=> {
+  //     const mercadopago = new window.MercadoPago(publicKey, {
+  //       locale: "es-PE"
+  //     })
+  //   });
+  //   document.body.appendChild(script);
+  //   console.log("agregado script")
+  // }, [])
 
   const handleClick = () => {
-    dispatch(payProducts(productos))
-    .then(res => {
-      console.log(res.data.id)
-      mercadopago.checkout({
-        preference: {
-            // id: 'YOUR_PREFERENCE_ID'
-            id: res.data.id
-        },
-        autoOpen: true
+    const script = document.createElement('script')
+    script.type = "text/javascript"
+    script.src = "https://sdk.mercadopago.com/js/v2";
+    script.addEventListener('load', ()=> {
+      mercadopago = new window.MercadoPago(publicKey, {
+        locale: "es-PE"
       })
-    })
-    // pago.open()
+    });
+    document.body.appendChild(script);
+    console.log("agregado")
+      dispatch(payProducts(productos))
+      .then(res => {
+        console.log(res)
+        console.log(res.data.id)
+        mercadopago.checkout({
+          preference: {
+              // id: 'YOUR_PREFERENCE_ID'
+              id: res.data.id
+          },
+          // render: {
+          //   container: "#test",
+          //   label: "Pagar"
+          // }
+          autoOpen: true
+        })
+      })
+    // });
+    // document.body.appendChild(script);
   }
 
   return (
@@ -60,6 +90,8 @@ export default function Cart() {
       {/* </div> */}
       <div>
         <button onClick={handleClick}>Pagar</button>
+      </div>
+      <div id="test">
       </div>
     </div>
   );

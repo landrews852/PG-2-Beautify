@@ -7,7 +7,8 @@ import { deleteItem, payProducts } from "../../../../redux/actions";
 import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`
+  const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`;
+  const locale = `${process.env.REACT_APP_LOCALE}`;
   const productos = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   let mercadopago
@@ -19,7 +20,7 @@ export default function Cart() {
     script.src = "https://sdk.mercadopago.com/js/v2";
     script.addEventListener('load', ()=> {
       mercadopago = new window.MercadoPago(publicKey, {
-        locale: "es-PE"
+        locale: locale
       })
     });
     document.body.appendChild(script);

@@ -50,7 +50,7 @@ export default function CardService() {
             <div className={Style.control}>
            {console.log(service.name_service.replace(/\s+/g, "-"))}
 
-            <a href={ `https://calendly.com/beautify_pg/${service.name_service.replace(/\s+/g, "-")}`} target="_blank">Agenda tu cita</a>
+            <a href={ `https://calendly.com/beautify_pg/${service.name_service.replace(/\s+/g, "-")}`} target="_blank"><button>Agenda tu cita</button></a>
             </div>
           </div>
 

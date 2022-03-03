@@ -391,7 +391,7 @@ export function payProducts(payload) {
 
 export function postOrder(order) {
   return async function (dispatch) {
-    const data = await axios.get(`${apiRoute}/api/payment/create_preference`,payload)  
+    const data = await axios.get(`${apiRoute}/api/payment/create_preference`,order)  
     return data;
   }
 }

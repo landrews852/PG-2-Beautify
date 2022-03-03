@@ -36,7 +36,7 @@ export default function Cart() {
         })
       })
     
-    navigate('/order');
+    // navigate('/order');
   }
 
   return (

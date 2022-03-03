@@ -20,7 +20,8 @@ import Services from './components/pages/client/services/services';
 import Market from './components/pages/client/market/market';
 import ProductDetail from './components/pages/client/productDetail/productDetail';
 import InfoClient from './components/pages/client/infoClient/infoClient'
-import Calendly from './components/features/calendly/calendly'
+import Calendly from './components/features/calendly/calendly';
+import CalendlyPerService from './components/features/calendly/calendlyPerService';
 
 //Always Show
 import Navigator from './components/elements/navBar/navBar';
@@ -40,6 +41,7 @@ function App() {
           <Routes>
             <Route  path="/" element={<Home />} />
             <Route  path="/calendario" element={<Calendly />} />
+            <Route  path="/agendar" element={<CalendlyPerService />} />
             <Route  path="/market" element={<Market />} />          
             <Route  path="/services" element={<Services/>}/>
             <Route  path="/market/:id" element={<ProductDetail/>} />

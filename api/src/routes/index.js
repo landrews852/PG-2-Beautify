@@ -9,6 +9,7 @@ const adminRouter = require('./admin.js')
 const clientRouter = require('./client.js')
 const carouselRouter = require('./carousel.js')
 const aboutRouter = require('./about.js')
+const socialRouter = require('./social.js')
 
 
 const router = Router();
@@ -25,5 +26,6 @@ router.use('/api/admin', adminRouter);
 router.use('/api/client', clientRouter);
 router.use('/api/carousel', carouselRouter);
 router.use('/api/about', aboutRouter);
+router.use('/api/social', socialRouter)
 
 module.exports = router;

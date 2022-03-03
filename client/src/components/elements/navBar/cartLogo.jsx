@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import s from "./navBar.module.css";
+import logo from "../../../images/logo_calendar.png";
 
 export default function CartLogo() {
   const cart = useSelector((state) => state.cart);
@@ -22,6 +23,15 @@ export default function CartLogo() {
           </div>
         </div>
       </Link>
+      {/* <Link to="/calendario">
+        <div className={s.div_cart}>
+          <img
+            src={logo}
+            alt="calendar_logo"
+            className={s.cart_img}
+          />
+        </div>
+      </Link> */}
     </div>
   );
 }

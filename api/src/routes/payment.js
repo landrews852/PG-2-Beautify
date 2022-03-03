@@ -4,13 +4,6 @@ const { ACCESS_TOKEN, APP_ROOT } = process.env;
 const router = Router();
 const axios = require("axios");
 
-router.get("/", async (req,res) => {
-  const { payment_id } = req.query;
-  const response= await axios.get(`https://api.mercadopago.com/v1/payments/${payment_id}/?access_token=${ACCESS_TOKEN}`)
-  console.log(response.data)
-  res.redirect("http://localhost:3000/")
-})
-
 router.post("/create_preference", (req, res) => {
   try {
     const data = req.body
@@ -19,18 +12,13 @@ router.post("/create_preference", (req, res) => {
       for(const item of data ){
         const {id, product_name, categoryId, amount, cost_by_unit} = item
         cartItems.push({
-          // "id": "item-ID-1234",
           id:id,
-          // "title": "Mi producto",
           title: product_name,
           currency_id: "PEN",
           picture_url: "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
           description: "Descripción del Item",
-          // "category_id": "art",
           category_id: categoryId.name_category,
-          // "quantity": 1,
           quantity: amount,
-          // "unit_price": 75.76
           unit_price: parseInt(cost_by_unit)
         })
       }
@@ -55,7 +43,7 @@ router.post("/create_preference", (req, res) => {
         statement_descriptor: "BEAUTIFY",
         items: cartItems,
         back_urls: {
-          "success": `http://localhost:3001/api/payment`,
+          "success": `http://localhost:3001/api/feedback/success`,
           "failure": `${APP_ROOT}`,
           "pending": `${APP_ROOT}`
         },

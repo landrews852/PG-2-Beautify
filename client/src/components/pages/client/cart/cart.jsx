@@ -4,30 +4,15 @@ import s from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
 import { deleteItem, payProducts } from "../../../../redux/actions";
-// import { useMercadopago } from 'react-sdk-mercadopago';
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  const publicKey = "APP_USR-a73655fd-5cba-4fa1-a67a-46c005d55732"
+  const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`
   const productos = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   let mercadopago
-  // const mercadopago = useMercadopago.v2(publicKey, {
-  //   locale: 'es-PE'
-  // });
-
-  // useEffect(() => {
-  //   const script = document.createElement('script')
-  //   script.type = "text/javascript"
-  //   script.src = "https://sdk.mercadopago.com/js/v2";
-  //   script.addEventListener('load', ()=> {
-  //     const mercadopago = new window.MercadoPago(publicKey, {
-  //       locale: "es-PE"
-  //     })
-  //   });
-  //   document.body.appendChild(script);
-  //   console.log("agregado script")
-  // }, [])
-
+  const navigate = useNavigate();
+  
   const handleClick = () => {
     const script = document.createElement('script')
     script.type = "text/javascript"
@@ -45,18 +30,13 @@ export default function Cart() {
         console.log(res.data.id)
         mercadopago.checkout({
           preference: {
-              // id: 'YOUR_PREFERENCE_ID'
               id: res.data.id
           },
-          // render: {
-          //   container: "#test",
-          //   label: "Pagar"
-          // }
           autoOpen: true
         })
       })
-    // });
-    // document.body.appendChild(script);
+    
+    navigate('/order');
   }
 
   return (

@@ -1,0 +1,12 @@
+/* body {
+  background-color: #ffe5d8;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
+
+.home h2 {
+  font-family: 'Belleza', sans-serif;
+  font-size: 4vw;
+  background-color: #facdb6;
+  height: auto;
+  text-shadow: 1px 1px 6px black;
+}

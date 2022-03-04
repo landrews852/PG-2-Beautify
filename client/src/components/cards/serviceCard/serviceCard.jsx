@@ -49,9 +49,9 @@ export default function CardService() {
             
 
             <div className={Style.control}>
-           {console.log(service.name_service.replace(/\s+/g, "-"))}
+           {/* {console.log(service.name_service.replace(/\s+/g, "-"))} */}
 
-            <Link to= "/agendar"><button>Agenda tu cita</button></Link>
+            <Link to= {`/agendar/${service.id}`}><button>Agenda tu cita</button></Link>
             </div>
           </div>
 

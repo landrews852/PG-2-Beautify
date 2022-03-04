@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CalendlyEventListener, InlineWidget } from "react-calendly";
 // import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { getServices } from "../../../redux/actions";
 import Loading from "../../elements/loading/loading";
 
@@ -56,13 +57,13 @@ export default function App() {
   function handleEventScheduled() {
     setDoneScheduling(true);
   }
-
+const {id} = useParams()
   return (
     <CalendlyEventListener
       onDateAndTimeSelected={handleDateAndTimeSelected}
       onEventScheduled={handleEventScheduled}
       >
-        {isLoading ? <Loading /> : services.map((service) => (
+        {isLoading ? <Loading /> : services.filter((service) => service.id === id (
           <InlineWidget
           url={`https://calendly.com/beautify_pg/${service.name_service.replace(/\s+/g, "-")}`}
           // pageSettings={pageSettings.current}

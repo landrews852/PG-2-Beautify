@@ -7,9 +7,9 @@ module.exports = (sequelize) => {
       order_date: {
         type: DataTypes.DATE,
       },
-      delivery_date: {
-        type: DataTypes.DATE,
-      },
+      // delivery_date: {
+      //   type: DataTypes.DATE,
+      // },
       total_amount: {
         type: DataTypes.FLOAT,
       },

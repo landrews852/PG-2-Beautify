@@ -9,11 +9,13 @@ import { Navigate, useNavigate } from "react-router-dom";
 export default function Cart() {
   const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`;
   const locale = `${process.env.REACT_APP_LOCALE}`;
-  const productos = useSelector((state) => state.cart);
+  let productos = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   let mercadopago;
   const navigate = useNavigate();
 
+  const user = JSON.parse(localStorage.getItem('user'));
+  let Items= {productos:productos,user:user[0]}
   const handleClick = () => {
     const script = document.createElement("script");
     script.type = "text/javascript";
@@ -24,6 +26,7 @@ export default function Cart() {
       });
     });
     document.body.appendChild(script);
+<<<<<<< HEAD
     console.log("agregado");
     dispatch(payProducts(productos)).then((res) => {
       console.log(res);
@@ -36,6 +39,20 @@ export default function Cart() {
       });
     });
 
+=======
+
+      dispatch(payProducts(Items))
+      .then(res => {
+          mercadopago.checkout({
+          preference: {
+              id: res.data.id
+          },
+          autoOpen: true,
+
+        })
+      })
+    
+>>>>>>> 73ba75aa3802fff6cd15736c5acca82b39dba9a9
     // navigate('/order');
   };
 

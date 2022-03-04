@@ -6,7 +6,12 @@ const axios = require("axios");
 
 router.post("/create_preference", (req, res) => {
   try {
-    const data = req.body
+    const data = req.body.productos
+    const user = req.body.user
+
+
+    console.log ('user',user)
+    console.log ('productos',data)
     if(data.length>0){
       let cartItems = []
       for(const item of data ){
@@ -19,33 +24,21 @@ router.post("/create_preference", (req, res) => {
           description: "Descripción del Item",
           category_id: categoryId.name_category,
           quantity: amount,
-          unit_price: parseInt(cost_by_unit)
+          unit_price: parseFloat(cost_by_unit)
         })
       }
 
       let preference = {
-        payer: {
-          // email: "charles@hotmail.com",
-          // "phone": {
-          //   area_code: "",
-          //   number: 949128866
-          // },
-          identification: {
-            type: "DNI",
-            number: "12345678",
-          },   
-          address: {
-            street_name: "Cuesta Miguel Armendáriz",
-            street_number: 1004,
-            zip_code: "11020"
-          }
+        payer:{
+
+          email:'test_user_49993619@testuser.com',
         },
         statement_descriptor: "BEAUTIFY",
         items: cartItems,
         back_urls: {
           "success": `http://localhost:3001/api/feedback/success`,
-          "failure": `${APP_ROOT}`,
-          "pending": `${APP_ROOT}`
+          "failure": `http://localhost:3001/api/feedback/error`,
+          /* "pending": `${APP_ROOT}` */
         },
         payment_methods: {
           excluded_payment_methods: [
@@ -64,7 +57,12 @@ router.post("/create_preference", (req, res) => {
           installments: 1
       },
         auto_return: "approved",
-        additional_info : `name: Charles`
+        additional_info : `name: Charles`,
+        metadata:{
+        name:user.name_client,
+        id:user.id,
+        address: user.address
+      }
       };
       mercadopago.preferences.create(preference)
           .then(function (response) {

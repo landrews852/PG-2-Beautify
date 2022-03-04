@@ -9,11 +9,13 @@ import { Navigate, useNavigate } from "react-router-dom";
 export default function Cart() {
   const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`;
   const locale = `${process.env.REACT_APP_LOCALE}`;
-  const productos = useSelector((state) => state.cart);
+  let productos = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   let mercadopago
   const navigate = useNavigate();
-  
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  let Items= {productos:productos,user:user[0]}
   const handleClick = () => {
     const script = document.createElement('script')
     script.type = "text/javascript"
@@ -24,16 +26,15 @@ export default function Cart() {
       })
     });
     document.body.appendChild(script);
-    console.log("agregado")
-      dispatch(payProducts(productos))
+
+      dispatch(payProducts(Items))
       .then(res => {
-        console.log(res)
-        console.log(res.data.id)
-        mercadopago.checkout({
+          mercadopago.checkout({
           preference: {
               id: res.data.id
           },
-          autoOpen: true
+          autoOpen: true,
+
         })
       })
     

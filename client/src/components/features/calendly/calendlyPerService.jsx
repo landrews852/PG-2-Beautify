@@ -58,7 +58,7 @@ export default function App() {
     setDoneScheduling(true);
   }
 const {id} = useParams()
-const valor = "red carpet facial"
+
   return (
     <>
     <h2>Agenda tu cita</h2>

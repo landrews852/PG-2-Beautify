@@ -13,6 +13,7 @@ export default function Card({
   id,
   amount,
   total,
+  stock,
 }) {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -42,7 +43,7 @@ export default function Card({
 
           <p className={s.amount}>
             {location.pathname === "/cart" ? (
-              <AmountCart id={id} amount={amount} />
+              <AmountCart id={id} amount={amount} stock={stock} />
             ) : (
               <Amount id={id} />
             )}

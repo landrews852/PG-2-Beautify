@@ -19,7 +19,7 @@ function Amount({ id }) {
   };
 
   const handleInputChange = (e) => {
-    setAmount(e.target.value);
+    setAmount(parseInt(e.target.value));
   };
 
   return (

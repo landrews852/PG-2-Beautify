@@ -26,7 +26,8 @@ import {
   IS_LOADING,
   EDIT_SERVICE,
   GET_SOCIAL,
-  UPDATE_SOCIAL
+  UPDATE_SOCIAL,
+  CLEAN_CART
 } from "../actions";
 
 export const initialState = {
@@ -257,6 +258,11 @@ export function rootReducer(state = initialState, action) {
         ...state,
         social: action.payload
       }
+    case CLEAN_CART:
+      return {
+        ...state, 
+        cart: []
+      }  
 
     default:
       return state;

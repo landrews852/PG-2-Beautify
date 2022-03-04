@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-
+export const CLEAN_CART = 'CLEAN_CART';
 export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
 export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
 export const DELETE_IMG_CARRUSEL = "DELETE_IMG_CARRUSEL";
@@ -394,4 +394,9 @@ export function postOrder(order) {
     const data = await axios.get(`${apiRoute}/api/payment/create_preference`,order)  
     return data;
   }
+}
+export function cleanCart (){
+  return {
+    type: CLEAN_CART,
+  };
 }

@@ -59,9 +59,8 @@ router.post("/create_preference", (req, res) => {
         auto_return: "approved",
         additional_info : `name: Charles`,
         metadata:{
-        name:user.name_client,
         id:user.id,
-        address: user.address
+        email:user.email
       }
       };
       mercadopago.preferences.create(preference)
@@ -76,7 +75,7 @@ router.post("/create_preference", (req, res) => {
     }
     // res.json(`${ACCESS_TOKEN}: este es el access_token y ${APP_ROOT} es la dirección`)
   } catch (error) {
-    res.json(error)
+    C
   }
 });
 

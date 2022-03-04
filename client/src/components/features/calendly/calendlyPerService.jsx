@@ -58,21 +58,29 @@ export default function App() {
     setDoneScheduling(true);
   }
 const {id} = useParams()
+const valor = "red carpet facial"
   return (
+    <>
+    <h2>Agenda tu cita</h2>
     <CalendlyEventListener
       onDateAndTimeSelected={handleDateAndTimeSelected}
       onEventScheduled={handleEventScheduled}
       >
-        {isLoading ? <Loading /> : services.filter((service) => service.id === id (
-          <InlineWidget
-          url={`https://calendly.com/beautify_pg/${service.name_service.replace(/\s+/g, "-")}`}
-          // pageSettings={pageSettings.current}
-          // prefill={prefill.current}
-          pageSettings={pageSettings}
-          prefill={prefill}
-          styles={getCalendlyHeightToEnsureNoCrop()}
-          />))}
+        {isLoading ? <Loading /> : services.map((s) => s.id == id?
+            (
+            <InlineWidget
+            url={`https://calendly.com/beautify_pg/${s.name_service.replace(/\s+/g, "-")}`}
+            // pageSettings={pageSettings.current}
+            // prefill={prefill.current}
+            pageSettings={pageSettings}
+            prefill={prefill}
+            styles={getCalendlyHeightToEnsureNoCrop()}
+            />
+            )  
+        :"") 
+        }
     </CalendlyEventListener>
+    </>
   );
         
         

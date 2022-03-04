@@ -9,6 +9,7 @@ import {
 import React from "react";
 import Styles from "./productDetail.module.css";
 import Amount from "../../../features/amountProduct/amountProduct";
+import Reviews from "../reviews/reviews";
 
 export default function ProductDetail() {
   let { id } = useParams();
@@ -30,7 +31,18 @@ export default function ProductDetail() {
   }, [dispatch]);
 
   let productDetail = useSelector((state) => state.productDetail);
-
+  const array = [
+    {
+      author: "Rodrigo",
+      created: "22-10-2012",
+      review: "lre asd as dpoasdasd asjdkljasdl kjasdlkas",
+    },
+    {
+      author: "Marcos",
+      created: "06-07-2018",
+      review: "lre asd as dpoasdasd asjdkljasdl kjasdllre asd as dpoasdasd asjdkljasdl kjasdlkaslre asd as dpoasd lre asd as dpoasdasd asjdkljasdl kjasdlkasasd asjdkl lre asd as dpoasdasd asjdkljasdl kjasdlkasjasdl kjasdlkas lre asd as dpoasdasd asjdk lre asd as dpoasdasd asjdkljasdl kjasdlkasljasdl kjasdlkas lre asd as dpoasdasd asjdkljasdl kjasdlkaskas",
+    }
+  ]
   return (
     <>
       <div className={Styles.ProductDetail}>
@@ -60,31 +72,39 @@ export default function ProductDetail() {
               <Amount id={productDetail.id} />
             </div>
           </div>
-        </div>
-        <div className={Styles.more}>
-          <p>MÁS INFORMACIÓN</p>
-        </div>
-        <div className={Styles.info}>
-          <ul>
-            <li>
-              <strong>STOCK: </strong>
-              {productDetail.stock} items disponibles
-            </li>
-
-            {productDetail.discount > 0 && (
+          <div className={Styles.moredetails}>
+          <div className={Styles.more}>
+            <p>MÁS INFORMACIÓN</p>
+          </div>
+          <div className={Styles.info}>
+            <ul>
               <li>
-                <strong>Ahorra un: </strong> {productDetail.discount}% con esta
-                compra
+                <strong>STOCK: </strong>
+                {productDetail.stock} items disponibles
               </li>
-            )}
-            <li>
-              <strong>Marca: </strong> {productDetail.brand}
-            </li>
-            <li>
-              <strong>Garantia: </strong> {productDetail.warranty} semanas
-            </li>
-          </ul>
+              {productDetail.discount > 0 && (
+              <li>
+                  <strong>Ahorra un: </strong> {productDetail.discount}% con esta
+                  compra
+              </li>
+              )}
+              <li>
+                <strong>Marca: </strong> {productDetail.brand}
+              </li>
+              <li>
+                <strong>Garantia: </strong> {productDetail.warranty} semanas
+              </li>
+            </ul>
+          </div>
+        </div>           
+      </div>      
+      <div className={Styles.reviews}>
+        <h2>Reviews</h2>
+        {
+         array?array.map(r => < Reviews author={r.author} created={r.created} review={r.review}/>):"Sin reviews de compradores"          
+        }               
         </div>
+ 
       </div>
     </>
   );

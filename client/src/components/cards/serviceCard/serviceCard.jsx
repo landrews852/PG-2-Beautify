@@ -3,6 +3,7 @@ import Style from "./serviceCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getServices } from "../../../redux/actions";
 import Loading from "../../elements/loading/loading";
+import {Link} from "react-router-dom"
 
 
 export default function CardService() {
@@ -48,9 +49,9 @@ export default function CardService() {
             
 
             <div className={Style.control}>
-           {console.log(service.name_service.replace(/\s+/g, "-"))}
+           {/* {console.log(service.name_service.replace(/\s+/g, "-"))} */}
 
-            <a href={ `https://calendly.com/beautify_pg/${service.name_service.replace(/\s+/g, "-")}`} target="_blank">Agenda tu cita</a>
+            <Link to= {`/agendar/${service.id}`}><button>Agenda tu cita</button></Link>
             </div>
           </div>
 

@@ -14,7 +14,8 @@ router.post("/create_preference", (req, res) => {
     if (data.length > 0) {
       let cartItems = [];
       for (const item of data) {
-        const { id, product_name, categoryId, amount, cost_by_unit } = item;
+        const { id, product_name, categoryId, amount, cost_by_unit, total } =
+          item;
         cartItems.push({
           id: id,
           title: product_name,
@@ -24,7 +25,7 @@ router.post("/create_preference", (req, res) => {
           description: "Descripción del Item",
           category_id: categoryId.name_category,
           quantity: amount,
-          unit_price: parseFloat(cost_by_unit),
+          unit_price: parseFloat(total),
         });
       }
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useSelector } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { cleanCart, getOrders } from "../../../redux/actions";
 import CardOrder from "../../cards/cardOrder/CardOrder.jsx";
@@ -7,14 +7,15 @@ import CardOrder from "../../cards/cardOrder/CardOrder.jsx";
 export default function PanelUser() {
   const dispatch = useDispatch();
   const location = useLocation().search;
-  let user = useSelector((state) => state.user.id);
+  const userlocal = JSON.parse(localStorage.getItem("user"));
+  let { id } = userlocal[0];
   let orders = useSelector((state) => state.orders);
-  console.log(location);
+  console.log(orders);
   if (location.toString() === "?true") dispatch(cleanCart());
 
   useEffect(() => {
-    dispatch(getOrders(user));
-  });
+    dispatch(getOrders(id));
+  }, []);
   return (
     <>
       {orders.length ? (
@@ -24,6 +25,7 @@ export default function PanelUser() {
             key={o.id}
             total_amount={o.total_amount}
             products={o.products}
+            address={o.address}
           />
         ))
       ) : (

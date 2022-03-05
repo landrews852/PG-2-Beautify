@@ -417,7 +417,7 @@ export function cleanCart() {
 
 export function getOrders(id) {
   return async function (dispatch) {
-    var json = await axios.get(`${apiRoute}/api/order${id}`);
+    var json = await axios.get(`${apiRoute}/api/order?id=${id}`);
 
     dispatch({
       type: GET_ORDERS,

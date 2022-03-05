@@ -54,6 +54,9 @@ Service.belongsTo(Category);
 const order_product = sequelize.define("order_product",{
   quantity: {
     type: DataTypes.INTEGER
+  },
+  price: {
+    type: DataTypes.FLOAT
   }
 },{ timestamps: false})
 

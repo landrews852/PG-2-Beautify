@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { ACCESS_TOKEN, APP_ROOT } = process.env;
+const { ACCESS_TOKEN, APP_ROOT, API_ROOT } = process.env;
 const router = Router();
 const axios = require("axios");
 
@@ -17,7 +17,7 @@ router.get("/success", async (req,res) => {
       id_order:order.id,
       items: additional_info.items,
     }
-    await axios.post (`${APP_ROOT}/api/order`,orderPost)   
+    await axios.post (`${API_ROOT}/api/order`,orderPost)   
     res.redirect(`${APP_ROOT}/panel?true`)
   }catch (err){
     res.json (err)

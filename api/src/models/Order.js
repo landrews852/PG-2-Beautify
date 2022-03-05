@@ -4,6 +4,11 @@ module.exports = (sequelize) => {
   sequelize.define(
     "order",
     {
+      id: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        allowNull: false,
+      },
       order_date: {
         type: DataTypes.DATE,
       },
@@ -14,7 +19,7 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
       },
       status: {
-        type: DataTypes.ENUM("paid", "process", "rejected", "delivered"),
+        type: DataTypes.ENUM("approved", "process", "rejected", "delivered"),
       },
       disabled: {
         type: DataTypes.STRING,

@@ -29,7 +29,7 @@ router.get('/', async (req,res) => {
             ["order_date", "DESC"]
         ]
     })
-    res.json(data)
+        res.json(data)
     } catch (error) {
         console.log(error)
     }

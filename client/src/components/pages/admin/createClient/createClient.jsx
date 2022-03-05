@@ -5,8 +5,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import s from "./createClient.module.css";
 import { getUserInfo } from "../../../../redux/actions";
+import Swal from "sweetalert2";
 
-//const apiRoute = "http://localhost:3001";
+
 const apiRoute = process.env.REACT_APP_APP_ROOT;
 
 const validate = (input) => {
@@ -27,21 +28,21 @@ const validate = (input) => {
     errors.address = "La dirección es requerida";
   }
 
-  if (!input.email) {
-    errors.email = "El correo electronico es requerido";
-  } else if (
-    !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-      input.email
-    )
-  ) {
-    errors.email = "El correo debe ser tipo info@info.com";
-  }
+  // if (!input.email) {
+  //   errors.email = "El correo electronico es requerido";
+  // } else if (
+  //   !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+  //     input.email
+  //   )
+  // ) {
+  //   errors.email = "El correo debe ser tipo info@info.com";
+  // }
 
-  if (!input.id) {
-    errors.id = "La identificación es requerida";
-  } else if (!/^[0-9]{1,12}$/.test(input.id)) {
-    errors.id = "La identificación debe ser numerica";
-  }
+  // if (!input.id) {
+  //   errors.id = "La identificación es requerida";
+  // } else if (!/^[0-9]{1,12}$/.test(input.id)) {
+  //   errors.id = "La identificación debe ser numerica";
+  // }
 
   return errors;
 };
@@ -87,26 +88,41 @@ export default function CreateClient() {
   const { getAccessTokenSilently } = useAuth0();
 
   async function handleSubmit(e) {
-    console.log("HANDLE SUBMIT");
     e.preventDefault();
     const token = await getAccessTokenSilently();
-
-    const response = await axios.post(`${apiRoute}/api/client`, input, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    dispatch(getUserInfo(token));
-
-    setInput({
-      name_client: "",
-      lastname_client: "",
-      profile_picture: "",
-      address: "",
-      phone: "",
-      birthday: "",
-    });
-    navigate("/");
+    if(Object.keys(errors).length !== 0) 
+    {
+      Swal.fire({
+        icon: "error",
+        title: "¡Error!",
+        text: "Debes completar los datos requeridos",
+      });      
+    }
+    else {      
+      const response = await axios.post(`${apiRoute}/api/client`, input, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch(getUserInfo(token));
+      setInput({
+        name_client: "",
+        lastname_client: "",
+        profile_picture: "",
+        address: "",
+        phone: "",
+        birthday: "",
+      });
+      Swal.fire({
+        icon: "success",
+        title: "Bien",
+        text: "Has completado tus datos de perfil",
+      });
+      setTimeout(() => {
+        navigate('/profile')
+      },3000)
+      
+      }    
   }
 
   return (

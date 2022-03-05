@@ -10,6 +10,7 @@ import { useState } from "react";
 import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
 import Service from "../../admin/services/services";
 import Product from "../../admin/products/product"
+import EditSocialMedia from "../../admin/editSocialMedia/editSocialMedia";
 
 export default function AdminSideBar() {
   const locationpath = useLocation();
@@ -51,6 +52,10 @@ export default function AdminSideBar() {
         setOps(<GiveAdmin />);
         setActive(6);
         break;
+
+      case "7":
+        setOps(<EditSocialMedia />);
+        setActive(7);
 
       default:
         break;
@@ -149,12 +154,26 @@ export default function AdminSideBar() {
                     Permisos
                   </button>
                 </Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </div>
+                <Link className="nav-link" to="/panel">
+                  <button
+                    className={
+                      active == 7 ? s.buttonNav + " " + s.activo : s.buttonNav
+                    }
+                    value="7"
+                    onClick={(e) => {
+                      handleLocation(e);
+                    }}
+                  >
+                    <div className={s.translate}></div>
+                    Redes Sociales
+                  </button>
+                </Link>
+              </Nav >
+            </Navbar.Collapse >
+          </Navbar >
+        </div >
         <div className={s.containerOp}>{ops}</div>
-      </div>
+      </div >
     </>
   );
 }

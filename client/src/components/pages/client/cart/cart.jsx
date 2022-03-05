@@ -15,7 +15,6 @@ export default function Cart() {
   const dispatch = useDispatch();
   let mercadopago;
   const { user, isAuthenticated } = useAuth0();
-  console.log(user);
   const userlocal = JSON.parse(localStorage.getItem("user"));
   let Items = userlocal ? { productos: productos, user: userlocal[0] } : null;
   const handleClick = () => {
@@ -64,21 +63,18 @@ export default function Cart() {
       {/* <div className={s.cart}> */}
       <div className={s.cartItems}>
         {productos.length ? (
-          productos.map((p) =>
-            p.amount !== 0 ? (
-              <Card
-                product_name={p.product_name}
-                id={p.id}
-                cost_by_unit={p.cost_by_unit}
-                image={p.image[0]}
-                key={p.id}
-                amount={p.amount}
-                total={p.total}
-              />
-            ) : (
-              dispatch(deleteItem(p.id))
-            )
-          )
+          productos.map((p) => (
+            <Card
+              product_name={p.product_name}
+              id={p.id}
+              cost_by_unit={p.cost_by_unit}
+              image={p.image[0]}
+              key={p.id}
+              amount={p.amount}
+              total={p.total}
+              stock={p.stock}
+            />
+          ))
         ) : (
           <p>No hay productos en el carrito.</p>
         )}

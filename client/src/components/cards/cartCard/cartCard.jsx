@@ -45,7 +45,7 @@ export default function Card({
             {location.pathname === "/cart" ? (
               <AmountCart id={id} amount={amount} stock={stock} />
             ) : (
-              <Amount id={id} />
+              <Amount id={id} amount={amount} stock={stock} />
             )}
           </p>
         </div>

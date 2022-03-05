@@ -5,12 +5,9 @@ import s from "./amountMarket.module.css";
 function Amount({ id, stock }) {
   const [amount, setAmount] = useState(1);
 
-  // console.log(stock);
-
   const handleClickSum = (e) => {
     e.preventDefault();
-    // if (amount < stock)
-    setAmount(amount + 1);
+    if (amount < stock) setAmount(amount + 1);
   };
 
   const handleClickSub = (e) => {
@@ -22,7 +19,9 @@ function Amount({ id, stock }) {
   };
 
   const handleInputChange = (e) => {
-    setAmount(e.target.value);
+    let newAmount = parseInt(e.target.value);
+    if (stock > newAmount) setAmount(newAmount);
+    else setAmount(stock);
   };
 
   return (

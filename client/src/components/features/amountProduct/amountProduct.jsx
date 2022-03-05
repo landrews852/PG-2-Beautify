@@ -19,7 +19,9 @@ function Amount({ id, stock }) {
   };
 
   const handleInputChange = (e) => {
-    setAmount(parseInt(e.target.value));
+    let newAmount = parseInt(e.target.value);
+    if (stock > newAmount) setAmount(newAmount);
+    else setAmount(stock);
   };
 
   return (

@@ -19,6 +19,13 @@ export default function ProductDetail() {
   //REVIEWS STATE//
   const reviews = useSelector(state => state.reviews)
 
+  const sortAsc = (a,b) => {
+    if (a.createdAt > b.createdAt) return -1
+    else if (a.createdAt < b.createdAt) return 1
+    else return 0   
+  }
+  reviews.sort(sortAsc)
+
   const ranking = 2.5;
   let ranking_starts = [1, 2, 3, 4, 5];
   // Ranking dinamico para estrellas.
@@ -36,18 +43,7 @@ export default function ProductDetail() {
   }, [dispatch]);
 
   let productDetail = useSelector((state) => state.productDetail);
-  const array = [
-    {
-      author: "Rodrigo",
-      created: "22-10-2012",
-      review: "lre asd as dpoasdasd asjdkljasdl kjasdlkas",
-    },
-    {
-      author: "Marcos",
-      created: "06-07-2018",
-      review: "lre asd as dpoasdasd asjdkljasdl kjasdllre asd as dpoasdasd asjdkljasdl kjasdlkaslre asd as dpoasd lre asd as dpoasdasd asjdkljasdl kjasdlkasasd asjdkl lre asd as dpoasdasd asjdkljasdl kjasdlkasjasdl kjasdlkas lre asd as dpoasdasd asjdk lre asd as dpoasdasd asjdkljasdl kjasdlkasljasdl kjasdlkas lre asd as dpoasdasd asjdkljasdl kjasdlkaskas",
-    }
-  ]
+  
   return (
     <>
       <div className={Styles.ProductDetail}>
@@ -106,7 +102,7 @@ export default function ProductDetail() {
       <div className={Styles.reviews}>
         <h2>Reviews</h2>
         {
-         reviews.length?reviews.map(r => < Reviews author={r.author} created={r.createdAt} rank={r.rank} review={r.comment}/>):"Sin reviews de compradores"          
+         reviews.length?reviews.map(r => < Reviews author={r.client.name_client} created={r.createdAt} rank={r.rank} review={r.comment}/>):"Sin reviews de compradores"          
         }               
         </div>
  

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import MarketButton from "../../elements/buttons/marketButton/marketButton";
 import s from "./amountProduct.module.css";
 
-function Amount({ id }) {
+function Amount({ id, stock }) {
   const [amount, setAmount] = useState(1);
 
   const handleClickSum = (e) => {
     e.preventDefault();
-    setAmount(amount + 1);
+    if (stock > amount) setAmount(amount + 1);
   };
 
   const handleClickSub = (e) => {

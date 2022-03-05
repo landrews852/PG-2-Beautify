@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import MarketButton from "../../elements/buttons/marketButton/marketButton";
 import s from "./amountMarket.module.css";
 
-function Amount({ id }) {
+function Amount({ id, stock }) {
   const [amount, setAmount] = useState(1);
+
+  // console.log(stock);
 
   const handleClickSum = (e) => {
     e.preventDefault();
+    // if (amount < stock)
     setAmount(amount + 1);
   };
 

@@ -9,6 +9,12 @@ function Amount({ id, stock }) {
     e.preventDefault();
     if (amount < stock) setAmount(amount + 1);
   };
+  const handleInputBlur= (e)=>{
+    let newAmount = e.target.value;
+    console.log (newAmount)
+    if (newAmount=== '') setAmount (1)
+    else if (parseInt(newAmount) < 1 ) setAmount (1)
+  }
 
   const handleClickSub = (e) => {
     e.preventDefault();
@@ -19,8 +25,10 @@ function Amount({ id, stock }) {
   };
 
   const handleInputChange = (e) => {
-    let newAmount = parseInt(e.target.value);
+    let newAmount = parseInt(e.target.value)
     if (stock > newAmount) setAmount(newAmount);
+    else if (!newAmount || newAmount<1 ) setAmount (' ');
+    else if  (newAmount=== '') setAmount (1);
     else setAmount(stock);
   };
 
@@ -34,6 +42,7 @@ function Amount({ id, stock }) {
         type="number"
         value={amount}
         onChange={(e) => handleInputChange(e)}
+        onBlur= {(e)=>handleInputBlur (e)}
       />
       <button className={s.btnn} onClick={(e) => handleClickSum(e)}>
         +

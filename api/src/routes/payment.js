@@ -60,7 +60,8 @@ router.post("/create_preference", (req, res) => {
         additional_info : `name: Charles`,
         metadata:{
         id:user.id,
-        email:user.email
+        email:user.email,
+        address:user.address
       }
       };
       mercadopago.preferences.create(preference)

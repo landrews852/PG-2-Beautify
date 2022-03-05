@@ -18,6 +18,12 @@ module.exports = (sequelize) => {
       total_amount: {
         type: DataTypes.FLOAT,
       },
+      email: {
+        type: DataTypes.STRING,
+      },
+      address: {
+        type: DataTypes.STRING,
+      },
       status: {
         type: DataTypes.ENUM("approved", "process", "rejected", "delivered"),
       },

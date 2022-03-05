@@ -3,14 +3,21 @@ const { Order, Client, Product} = require("../db");
 
 const router = Router();
 
-// router.get('/all', async (req,res) => {
-//     const data = await Order.findAll({
-//         where: {
-
-//         }
-//     })
-//     res.json(data)
-// })
+router.get('/all', async (req,res) => {
+    try {
+        const data = await Order.findAll({
+            include: {
+                model: Product,
+                attributes: [
+                    "product_name", "image"
+                ]
+            }
+        })
+        res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 router.get('/', async (req,res) => {
     try {
@@ -59,6 +66,23 @@ router.post('/', async (req, res) => {
             }})
         }
         res.send("OK")
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.put('/:id', async (req, res) =>{
+    try {
+        const { id } = req.params
+        const { status } = req.body
+        const response = await Order.update({status},{
+            where: {
+                id
+            },
+            returning: true
+        })
+        const data = response[1][0]
+        res.json(data)
     } catch (error) {
         console.log(error)
     }

@@ -104,7 +104,7 @@ export default function EditClient() {
     Swal.fire({
       icon: "success",
       title: "¡Genial!",
-      text: "Ya has editado tus Perfil",
+      text: "Ya has editado tu Perfil",
     });
   }
 

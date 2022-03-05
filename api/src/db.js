@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Sequelize, Op } = require("sequelize");
+const { Sequelize, Op, DataTypes } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
@@ -51,8 +51,17 @@ Product.belongsTo(Category);
 Category.hasMany(Service);
 Service.belongsTo(Category);
 
-Product.belongsToMany(Order, { through: "order_product" });
-Order.belongsToMany(Product, { through: "order_product" });
+const order_product = sequelize.define("order_product",{
+  quantity: {
+    type: DataTypes.INTEGER
+  },
+  price: {
+    type: DataTypes.FLOAT
+  }
+},{ timestamps: false})
+
+Product.belongsToMany(Order, { through: order_product });
+Order.belongsToMany(Product, { through: order_product });
 
 Client.hasMany(Order);
 Order.belongsTo(Client);

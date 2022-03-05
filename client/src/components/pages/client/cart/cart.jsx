@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
 import { deleteItem, payProducts } from "../../../../redux/actions";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import Swal from "sweetalert2";
 
 export default function Cart() {
   const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`;
@@ -12,11 +14,30 @@ export default function Cart() {
   let productos = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   let mercadopago
-  const navigate = useNavigate();
-
-  const user = JSON.parse(localStorage.getItem('user'));
-  let Items= {productos:productos,user:user[0]}
+  const {user,isAuthenticated} = useAuth0 () 
+  console.log (user)
+  const userlocal = JSON.parse(localStorage.getItem('user'));
+  let Items= userlocal?{productos:productos,user:userlocal[0]}:null
   const handleClick = () => {
+    if (!isAuthenticated) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Espera!!",
+        text: "Por favor inicia sesión...",
+      })      
+    }else if (!user.email_verified){
+      return Swal.fire({
+        icon: "warning",
+        title: "Espera!!",
+        text: "Por favor verifica tu correo, revisa no deseados...",
+      })
+    }else if (!productos.length){
+      return Swal.fire({
+        icon: "warning",
+        title: "Espera!!",
+        text: "Agrega productos al carrito...",
+      })
+    }
     const script = document.createElement('script')
     script.type = "text/javascript"
     script.src = "https://sdk.mercadopago.com/js/v2";
@@ -35,10 +56,8 @@ export default function Cart() {
           },
           autoOpen: true,
 
-        })
-      })
-    
-    // navigate('/order');
+          })
+      })   // navigate('/order');
   }
 
   return (

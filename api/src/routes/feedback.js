@@ -7,7 +7,7 @@ router.get("/success", async (req,res) => {
   try{
     const { payment_id } = req.query;
     const response= await axios.get(`https://api.mercadopago.com/v1/payments/${payment_id}/?access_token=${ACCESS_TOKEN}`)
-    const {date_approved,metadata,status,transaction_amount,order, additional_info}= response.data
+    const {date_approved,metadata,status,transaction_amount,order, additional_info, }= response.data
     const orderPost={
       date_approved,
       id_client:metadata.id,

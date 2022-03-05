@@ -33,7 +33,7 @@ conn.sync({force:false}).then(() => {
     // await loadCarousel();
     // await loadCategories();
     // await loadProducts();
-    //await clientLoad();
+    // await clientLoad();
     // await loadServices();
     // await loadSocial();
     console.log("%s listening at 3001"); // eslint-disable-line no-console

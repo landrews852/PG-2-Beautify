@@ -8,8 +8,6 @@ router.post("/create_preference", (req, res) => {
   try {
     const data = req.body.productos
     const user = req.body.user
-
-
     console.log ('user',user)
     console.log ('productos',data)
     if(data.length>0){
@@ -76,7 +74,7 @@ router.post("/create_preference", (req, res) => {
     }
     // res.json(`${ACCESS_TOKEN}: este es el access_token y ${APP_ROOT} es la dirección`)
   } catch (error) {
-    C
+    console.log (error)
   }
 });
 

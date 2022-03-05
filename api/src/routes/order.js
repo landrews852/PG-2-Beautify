@@ -37,11 +37,13 @@ router.get('/', async (req,res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { date_approved, id_client, email, status, transaction_amount, id_order, items } = req.body;
+        const { date_approved, id_client, email, address, status, transaction_amount, id_order, items } = req.body;
         const newOrder = await Order.create({
         id: id_order,
         order_date: date_approved,
         total_amount: transaction_amount,
+        email: email,
+        address: address,
         status,
         })
         await newOrder.setClient(id_client)

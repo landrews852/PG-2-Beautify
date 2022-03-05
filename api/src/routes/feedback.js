@@ -16,6 +16,7 @@ router.get("/success", async (req,res) => {
       transaction_amount,
       id_order:order.id,
       items: additional_info.items,
+      address: metadata.address
     }
     await axios.post (`${API_ROOT}/api/order`,orderPost)   
     res.redirect(`${APP_ROOT}/panel?true`)

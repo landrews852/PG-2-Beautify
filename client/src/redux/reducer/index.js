@@ -27,7 +27,8 @@ import {
   EDIT_SERVICE,
   GET_SOCIAL,
   UPDATE_SOCIAL,
-  CLEAN_CART
+  CLEAN_CART,
+  GET_ORDERS,
 } from "../actions";
 
 export const initialState = {
@@ -35,7 +36,7 @@ export const initialState = {
   products: [],
   productDetail: {},
   allProducts: [],
-  order: [],
+  orders: [],
   orderDetail: {},
   cart: [],
   carrusel: [],
@@ -43,8 +44,8 @@ export const initialState = {
   services: [],
   brands: [],
   about: {},
-  isLoading : false,
-  social: {facebook:"",instagram:"",email:""}
+  isLoading: false,
+  social: { facebook: "", instagram: "", email: "" },
 };
 
 export function rootReducer(state = initialState, action) {
@@ -94,7 +95,7 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-    
+
     case GET_PRODUCT_DETAIL:
       return {
         ...state,
@@ -225,7 +226,7 @@ export function rootReducer(state = initialState, action) {
       };
 
     case EDIT_CLIENT:
-        localStorage.setItem("user", JSON.stringify(action.payload));
+      localStorage.setItem("user", JSON.stringify(action.payload));
       return {
         ...state,
         user: action.payload,
@@ -238,31 +239,37 @@ export function rootReducer(state = initialState, action) {
 
     case EDIT_SERVICE:
       return {
-        ...state
+        ...state,
       };
 
     case IS_LOADING:
       return {
         ...state,
-        isLoading: action.payload
-      }
+        isLoading: action.payload,
+      };
 
     case GET_SOCIAL:
       return {
         ...state,
-        social: action.payload
-      }
+        social: action.payload,
+      };
 
     case UPDATE_SOCIAL:
       return {
         ...state,
-        social: action.payload
-      }
+        social: action.payload,
+      };
     case CLEAN_CART:
       return {
-        ...state, 
-        cart: []
-      }  
+        ...state,
+        cart: [],
+      };
+
+    case GET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+      };
 
     default:
       return state;

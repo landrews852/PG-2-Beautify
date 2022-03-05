@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
-import { deleteItem, payProducts } from "../../../../redux/actions";
-import { Navigate, useNavigate } from "react-router-dom";
+import { payProducts } from "../../../../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`;
@@ -14,8 +14,8 @@ export default function Cart() {
   let mercadopago;
   const navigate = useNavigate();
 
-  const user = JSON.parse(localStorage.getItem('user'));
-  let Items= {productos:productos,user:user[0]}
+  const user = JSON.parse(localStorage.getItem("user"));
+  let Items = { productos: productos, user: user[0] };
   const handleClick = () => {
     const script = document.createElement("script");
     script.type = "text/javascript";
@@ -26,11 +26,8 @@ export default function Cart() {
       });
     });
     document.body.appendChild(script);
-<<<<<<< HEAD
-    console.log("agregado");
-    dispatch(payProducts(productos)).then((res) => {
-      console.log(res);
-      console.log(res.data.id);
+
+    dispatch(payProducts(Items)).then((res) => {
       mercadopago.checkout({
         preference: {
           id: res.data.id,
@@ -39,20 +36,6 @@ export default function Cart() {
       });
     });
 
-=======
-
-      dispatch(payProducts(Items))
-      .then(res => {
-          mercadopago.checkout({
-          preference: {
-              id: res.data.id
-          },
-          autoOpen: true,
-
-        })
-      })
-    
->>>>>>> 73ba75aa3802fff6cd15736c5acca82b39dba9a9
     // navigate('/order');
   };
 

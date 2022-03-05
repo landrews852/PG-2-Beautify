@@ -26,7 +26,8 @@ import {
   IS_LOADING,
   EDIT_SERVICE,
   GET_SOCIAL,
-  UPDATE_SOCIAL
+  UPDATE_SOCIAL,
+  GET_REVIEWS
 } from "../actions";
 
 export const initialState = {
@@ -42,6 +43,7 @@ export const initialState = {
   services: [],
   brands: [],
   about: {},
+  reviews: [],
   isLoading : false,
   social: {facebook:"",instagram:"",email:""}
 };
@@ -256,6 +258,11 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         social: action.payload
+      }
+    case GET_REVIEWS:
+        return {
+          ...state,
+          reviews: action.payload
       }
 
     default:

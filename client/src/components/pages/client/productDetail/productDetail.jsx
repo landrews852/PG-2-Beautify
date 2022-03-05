@@ -5,6 +5,7 @@ import {
   getProductDetail,
   cleanProductDetail,
   allProducts,
+  getReviews,
 } from "../../../../redux/actions";
 import React from "react";
 import Styles from "./productDetail.module.css";
@@ -14,6 +15,9 @@ import Reviews from "../reviews/reviews";
 export default function ProductDetail() {
   let { id } = useParams();
   const dispatch = useDispatch();
+
+  //REVIEWS STATE//
+  const reviews = useSelector(state => state.reviews)
 
   const ranking = 2.5;
   let ranking_starts = [1, 2, 3, 4, 5];
@@ -27,6 +31,7 @@ export default function ProductDetail() {
   useEffect(() => {
     dispatch(getProductDetail(id));
     dispatch(allProducts());
+    dispatch(getReviews(id));
     return dispatch(cleanProductDetail());
   }, [dispatch]);
 
@@ -101,7 +106,7 @@ export default function ProductDetail() {
       <div className={Styles.reviews}>
         <h2>Reviews</h2>
         {
-         array?array.map(r => < Reviews author={r.author} created={r.created} review={r.review}/>):"Sin reviews de compradores"          
+         reviews.length?reviews.map(r => < Reviews author={r.author} created={r.createdAt} rank={r.rank} review={r.comment}/>):"Sin reviews de compradores"          
         }               
         </div>
  

@@ -33,6 +33,7 @@ export const IS_LOADING = "IS_LOADING";
 export const EDIT_SERVICE = "EDIT_SERVICE";
 export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 export const GET_SOCIAL = "GET_SOCIAL";
+export const GET_REVIEWS = "GET_REVIEWS";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -378,5 +379,15 @@ export function editProduct(id, payload) {
     //   type: EDIT_SERVICE,
     //   payload: payload
     // });
+  }
+}
+
+export function getReviews(id) {
+  return async function (dispatch) {
+    const reviews = await axios.get(`${apiRoute}/api/review?idProduct=${id}`)
+    dispatch({
+      type: GET_REVIEWS,
+      payload: reviews.data
+    })
   }
 }

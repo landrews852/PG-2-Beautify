@@ -7,7 +7,7 @@ import s from "./createClient.module.css";
 import { getUserInfo } from "../../../../redux/actions";
 import Swal from "sweetalert2";
 
-//const apiRoute = "http://localhost:3001";
+
 const apiRoute = process.env.REACT_APP_APP_ROOT;
 
 const validate = (input) => {

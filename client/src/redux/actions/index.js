@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-export const CLEAN_CART = 'CLEAN_CART';
+export const CLEAN_CART = "CLEAN_CART";
 export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
 export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
 export const DELETE_IMG_CARRUSEL = "DELETE_IMG_CARRUSEL";
 export const PUT_IMG_CARRUSEL = "PUT_IMG_CARRUSEL";
 // const apiRoute = "http://localhost:3001";
-const apiRoute = process.env.REACT_APP_APP_ROOT
+const apiRoute = process.env.REACT_APP_APP_ROOT;
 export const GET_PRODUCTS_BY_NAME = "GET_PRODUCTS_BY_NAME";
 export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
 export const ALL_PRODUCTS = "ALL_PRODUCTS";
@@ -33,7 +33,8 @@ export const IS_LOADING = "IS_LOADING";
 export const EDIT_SERVICE = "EDIT_SERVICE";
 export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 export const GET_SOCIAL = "GET_SOCIAL";
-export const PAYMENT = "PAYMENT"
+export const PAYMENT = "PAYMENT";
+export const GET_ORDERS = "GET_ORDERS";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -52,10 +53,7 @@ export const getImgCarousel = () => {
 export const postImgCarousel = (payload) => {
   return async function (dispatch) {
     try {
-      let response = await axios.post(
-        `${apiRoute}/api/carousel/`,
-        payload
-      );
+      let response = await axios.post(`${apiRoute}/api/carousel/`, payload);
       return response.data;
     } catch (err) {
       console.log(err);
@@ -66,9 +64,7 @@ export const postImgCarousel = (payload) => {
 export const deleteImgCarousel = (id) => {
   return async function (dispatch) {
     try {
-      let response = await axios.delete(
-        `${apiRoute}/api/carousel/${id}`
-      );
+      let response = await axios.delete(`${apiRoute}/api/carousel/${id}`);
       dispatch(getImgCarousel());
       return response.data;
     } catch (err) {
@@ -125,9 +121,7 @@ export const getServicesbyName = (name) => {
   return async function (dispatch) {
     try {
       dispatch({ type: IS_LOADING, payload: true });
-      let json = await axios.get(
-        `${apiRoute}/api/service?name=${name}`
-      );
+      let json = await axios.get(`${apiRoute}/api/service?name=${name}`);
       dispatch({ type: IS_LOADING, payload: false });
       return dispatch({
         type: GET_SERVICES_BY_NAME,
@@ -212,9 +206,7 @@ export const filterCategory = (payload) => {
 
 export const filterBrand = (payload) => {
   return async function (dispatch) {
-    let filter = await axios.get(
-      `${apiRoute}/api/product?brand=${payload}`
-    );
+    let filter = await axios.get(`${apiRoute}/api/product?brand=${payload}`);
     return dispatch({ type: FILTER_BY_BRAND, payload: filter.data });
   };
 };
@@ -274,129 +266,162 @@ export function getUserInfo(token) {
   return async function (dispatch) {
     const user = await axios.get(`${apiRoute}/api/client/info`, {
       headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
+        authorization: `Bearer ${token}`,
+      },
+    });
     dispatch({
       type: GET_CLIENT,
       payload: user.data,
     });
-  }
+  };
 }
 
 export function editUserInfo(token, payload) {
   return async function (dispatch) {
-    const userupdate = await axios.put(`${apiRoute}/api/client/` + payload.id, payload, {
-      headers: {
-        authorization: `Bearer ${token}`
+    const userupdate = await axios.put(
+      `${apiRoute}/api/client/` + payload.id,
+      payload,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
     dispatch({
       type: EDIT_CLIENT,
       payload: [payload],
     });
-  }
+  };
 }
 
 export function editAbout(payload) {
   return async function (dispatch) {
-    const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload)
+    const aboutupdate = await axios.put(`${apiRoute}/api/about`, payload);
     dispatch({
       type: EDIT_ABOUT,
-      payload: payload
+      payload: payload,
     });
-  }
+  };
 }
 
 export function editService(id, payload) {
   return async function (dispatch) {
-    const serviceUpdate = await axios.put(`${apiRoute}/api/service/${id}`, payload)  
+    const serviceUpdate = await axios.put(
+      `${apiRoute}/api/service/${id}`,
+      payload
+    );
     dispatch({
       type: EDIT_SERVICE,
-      payload: payload
+      payload: payload,
     });
-  }
+  };
 }
 
 export function searchEmail(email, token) {
   return async function (dispatch) {
-    const data = await axios.get(`${apiRoute}/api/client/search?email=${email}`, {
-      headers: {
-        authorization: `Bearer ${token}`
+    const data = await axios.get(
+      `${apiRoute}/api/client/search?email=${email}`,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
     return data;
-  }
+  };
 }
 
 export function updateClient(info, token) {
   return async function (dispatch) {
-    const response = await axios.put(`${apiRoute}/api/client/${info.id}`, { admin: info.data }, {
-      headers: {
-        authorization: `Bearer ${token}`
+    const response = await axios.put(
+      `${apiRoute}/api/client/${info.id}`,
+      { admin: info.data },
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       }
-    });
+    );
     return response.data;
-  }
+  };
 }
 
 export function getClient(token) {
   return async function (dispatch) {
     const user = await axios.get(`${apiRoute}/api/client/info`, {
       headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
+        authorization: `Bearer ${token}`,
+      },
+    });
     return user;
-  }
+  };
 }
 
 export function getSocial() {
   return async function (dispatch) {
-    const social = await axios.get(`${apiRoute}/api/social`)
-    console.log(social.data[0])
+    const social = await axios.get(`${apiRoute}/api/social`);
+    console.log(social.data[0]);
     dispatch({
       type: GET_SOCIAL,
-      payload: social.data[0]
-    })
-  }
+      payload: social.data[0],
+    });
+  };
 }
 export function updateSocial(data) {
   return async function (dispatch) {
-    const social = await axios.put(`${apiRoute}/api/social`, data)
+    const social = await axios.put(`${apiRoute}/api/social`, data);
     dispatch({
       type: UPDATE_SOCIAL,
-      payload: data
-    })
-
-  }
+      payload: data,
+    });
+  };
 }
 
 export function editProduct(id, payload) {
   return async function (dispatch) {
-    const producteUpdate = await axios.put(`${apiRoute}/api/product/${id}`, payload)  
+    const producteUpdate = await axios.put(
+      `${apiRoute}/api/product/${id}`,
+      payload
+    );
     // dispatch({
     //   type: EDIT_SERVICE,
     //   payload: payload
     // });
-  }
+  };
 }
 
 export function payProducts(payload) {
   return async function (dispatch) {
-    const data = await axios.post(`${apiRoute}/api/payment/create_preference`,payload)  
+    const data = await axios.post(
+      `${apiRoute}/api/payment/create_preference`,
+      payload
+    );
     return data;
-  }
+  };
 }
 
 export function postOrder(order) {
   return async function (dispatch) {
-    const data = await axios.get(`${apiRoute}/api/payment/create_preference`,order)  
+    const data = await axios.get(
+      `${apiRoute}/api/payment/create_preference`,
+      order
+    );
     return data;
-  }
+  };
 }
-export function cleanCart (){
+export function cleanCart() {
   return {
     type: CLEAN_CART,
+  };
+}
+
+export function getOrders(id) {
+  return async function (dispatch) {
+    var json = await axios.get(`${apiRoute}/api/order?id=${id}`);
+
+    dispatch({
+      type: GET_ORDERS,
+      payload: json.data,
+    });
   };
 }

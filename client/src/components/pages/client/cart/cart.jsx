@@ -13,52 +13,50 @@ export default function Cart() {
   const locale = `${process.env.REACT_APP_LOCALE}`;
   let productos = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  let mercadopago
-  const {user,isAuthenticated} = useAuth0 () 
-  console.log (user)
-  const userlocal = JSON.parse(localStorage.getItem('user'));
-  let Items= userlocal?{productos:productos,user:userlocal[0]}:null
+  let mercadopago;
+  const { user, isAuthenticated } = useAuth0();
+  console.log(user);
+  const userlocal = JSON.parse(localStorage.getItem("user"));
+  let Items = userlocal ? { productos: productos, user: userlocal[0] } : null;
   const handleClick = () => {
     if (!isAuthenticated) {
       return Swal.fire({
         icon: "warning",
         title: "Espera!!",
         text: "Por favor inicia sesión...",
-      })      
-    }else if (!user.email_verified){
+      });
+    } else if (!user.email_verified) {
       return Swal.fire({
         icon: "warning",
         title: "Espera!!",
         text: "Por favor verifica tu correo, revisa no deseados...",
-      })
-    }else if (!productos.length){
+      });
+    } else if (!productos.length) {
       return Swal.fire({
         icon: "warning",
         title: "Espera!!",
         text: "Agrega productos al carrito...",
-      })
+      });
     }
-    const script = document.createElement('script')
-    script.type = "text/javascript"
+    const script = document.createElement("script");
+    script.type = "text/javascript";
     script.src = "https://sdk.mercadopago.com/js/v2";
-    script.addEventListener('load', ()=> {
+    script.addEventListener("load", () => {
       mercadopago = new window.MercadoPago(publicKey, {
-        locale: locale
-      })
+        locale: locale,
+      });
     });
     document.body.appendChild(script);
 
-      dispatch(payProducts(Items))
-      .then(res => {
-          mercadopago.checkout({
-          preference: {
-              id: res.data.id
-          },
-          autoOpen: true,
-
-          })
-      })   // navigate('/order');
-  }
+    dispatch(payProducts(Items)).then((res) => {
+      mercadopago.checkout({
+        preference: {
+          id: res.data.id,
+        },
+        autoOpen: true,
+      });
+    }); // navigate('/order');
+  };
 
   return (
     <div className={s.cart}>
@@ -92,8 +90,7 @@ export default function Cart() {
       <div>
         <button onClick={handleClick}>Pagar</button>
       </div>
-      <div id="test">
-      </div>
+      <div id="test"></div>
     </div>
   );
 }

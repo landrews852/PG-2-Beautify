@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./userSideBar.module.css";
-import { Nav, Navbar, Container } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-// import CreateProduct from "../../../pages/admin/createProduct/createProduct";
-// import CreateService from "../../admin/services/createService/createService";
 import { useState } from "react";
 import Orders from "../orders/orders";
 import Compras from "../../client/compras/compras";
+import { cleanCart } from "../../../../redux/actions";
+import { useDispatch } from "react-redux";
 
 
 export default function UserSideBar() {
+    const dispatch=useDispatch()
     const locationpath = useLocation();
-    const welcome = "Bienvenido al panel administrativo de tu E-commerce";
+    const welcome = "Bienvenido al panel de usuario, aca podés revisar tus compras y citas.";
     const [ops, setOps] = useState(welcome);
+    const location = useLocation().search;
     const [active, setActive] = useState(0);
+    useEffect(()=>{
+      if (location.toString() === "?true") {
+        dispatch(cleanCart());
+        setOps(<Orders />);
+        setActive(1);
+      }
+    },[])
   
     var components = "chau";
   
@@ -57,7 +66,7 @@ export default function UserSideBar() {
                       }}
                     >
                       <div className={s.translate}></div>
-                      Ordenes
+                      Compras
                     </button>
                   </Link>
                   <Link className="nav-link" to="/panel">
@@ -71,7 +80,7 @@ export default function UserSideBar() {
                       }}
                     >
                       <div className={s.translate}></div>
-                      Compras
+                      Citas
                     </button>
                   </Link>
                   <Link className="nav-link" to="/panel">

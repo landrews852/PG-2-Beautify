@@ -99,7 +99,7 @@ export default function Cart() {
       <ConfirmarCompra
         show={modalShow}
         onHide={() => setModalShow(false)}
-        onPay= {()=> onPay () }
+        onPay= {()=> onPay() }
         productos={productos}
         /* fullscreen={true} */
         scrollable={true}

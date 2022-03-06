@@ -1,18 +1,16 @@
 import React, { useEffect} from 'react';
 import CardOrder from '../../../cards/cardOrder/CardOrder';
-import { cleanCart, getOrders } from "../../../../redux/actions";
+import { getOrders } from "../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 
 
 export default function Orders() {
     const dispatch = useDispatch();
-    const location = useLocation().search;
+
     const userlocal = JSON.parse(localStorage.getItem("user"));
     let { id } = userlocal[0];
     let orders = useSelector((state) => state.orders);
     console.log(orders);
-    if (location.toString() === "?true") dispatch(cleanCart());
   
     useEffect(() => {
       dispatch(getOrders(id));

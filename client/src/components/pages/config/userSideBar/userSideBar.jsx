@@ -5,12 +5,9 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import Orders from "../orders/orders";
 import Compras from "../../client/compras/compras";
-<<<<<<< HEAD
 import PostReview from "../../client/postreview/postreview";
-=======
 import { cleanCart } from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
->>>>>>> 957c100ed80229858f5aece5f6d1f83b57868815
 
 
 export default function UserSideBar() {

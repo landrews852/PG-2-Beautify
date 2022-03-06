@@ -1,4 +1,5 @@
 import React from "react";
+import ModalComp from "../../elements/modal/modal";
 import s from "./cardOrder.module.css";
 
 function CardOrder({ products, total_amount, address, order_date }) {
@@ -6,7 +7,7 @@ function CardOrder({ products, total_amount, address, order_date }) {
     <div>
       <div>
         <h1>{order_date.slice(0, 10)}</h1>
-        {products.map((p) => (
+        {products?products.map((p) => (
           <>
             <img src={p.image[0]} style={{ width: 100 + "px" }} />
             <span></span>
@@ -15,11 +16,13 @@ function CardOrder({ products, total_amount, address, order_date }) {
             <span>{p.order_product.quantity}</span>
             <h3>Price</h3>
             <span>{p.order_product.price}</span>
+            < ModalComp key={p.id} id={p.id} product={p.product_name} />
           </>
-        ))}
+        )):<p>Sin productos</p>}
         <span>total de la compra: {total_amount}</span>
         <span>Dirección</span>
         <span>{address}</span>
+        
       </div>
     </div>
   );

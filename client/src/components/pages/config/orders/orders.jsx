@@ -10,7 +10,7 @@ export default function Orders() {
     const userlocal = JSON.parse(localStorage.getItem("user"));
     let { id } = userlocal[0];
     let orders = useSelector((state) => state.orders);
-    console.log(orders);
+    console.log("Orden",orders);
   
     useEffect(() => {
       dispatch(getOrders(id));
@@ -25,8 +25,8 @@ export default function Orders() {
             key={o.id}
             total_amount={o.total_amount}
             status = {o.status}
-            // products={o.products}
-            // address={o.address}
+            products={o.products}
+            address={o.address}
           />
         ))
       ) : (

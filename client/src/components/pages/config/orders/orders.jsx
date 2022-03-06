@@ -20,14 +20,15 @@ export default function Orders() {
         <>
         {orders.length ? (
         orders.map((o) => (
+        <div key={o.id}>
           <CardOrder
             order_date={o.order_date}
-            key={o.id}
+            id={o.id}
             total_amount={o.total_amount}
             status = {o.status}
-            products={o.products}
             address={o.address}
           />
+        </div>
         ))
       ) : (
         <p>No tienes ordenes.</p>

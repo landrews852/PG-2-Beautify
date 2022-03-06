@@ -36,6 +36,7 @@ export const GET_SOCIAL = "GET_SOCIAL";
 export const GET_REVIEWS = "GET_REVIEWS";
 export const PAYMENT = "PAYMENT";
 export const GET_ORDERS = "GET_ORDERS";
+export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -430,4 +431,14 @@ export function getReviews(id) {
       payload: reviews.data
     })
   }
+}
+
+export function getOrderDetail(id) {
+  return async function (dispatch) {
+    var json = await axios.get(`${apiRoute}/api/order/${id}`);
+    dispatch({
+      type: GET_ORDER_DETAIL,
+      payload: json.data,
+    });
+  };
 }

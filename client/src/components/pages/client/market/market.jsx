@@ -40,13 +40,14 @@ export default function Market() {
       ) : (
         <>
           {paginatedProducts.length ? (
-          <Pagination
-            firstItem={firstItem}
-            lastItem={lastItem}
-            lastPage={lastPage}
-            Paginate={Paginate}
-            page={page}
-          />) : null}
+            <Pagination
+              firstItem={firstItem}
+              lastItem={lastItem}
+              lastPage={lastPage}
+              Paginate={Paginate}
+              page={page}
+            />
+          ) : null}
           <div className="Container Market">
             {paginatedProducts.length ? (
               paginatedProducts.map((product) => (
@@ -55,6 +56,7 @@ export default function Market() {
                   product_name={product.product_name}
                   image={product.image}
                   cost_by_unit={product.cost_by_unit}
+                  stock={product.stock}
                   key={product.id}
                 />
               ))

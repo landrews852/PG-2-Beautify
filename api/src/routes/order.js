@@ -1,17 +1,29 @@
+const axios = require("axios");
 const { Router } = require("express");
 const { Order, Client, Product} = require("../db");
+const { API_ROOT } = process.env;
+
 
 const router = Router();
 
-// router.get('/all', async (req,res) => {
-//     const data = await Order.findAll({
-//         where: {
+// Obtiene todas las ordenes de todos los cliente
+router.get('/all', async (req,res) => {
+    try {
+        const data = await Order.findAll({
+            include: {
+                model: Product,
+                attributes: [
+                    "product_name", "image"
+                ]
+            }
+        })
+        res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+})
 
-//         }
-//     })
-//     res.json(data)
-// })
-
+//Obtiene todas las ordenes de un cliente en especifico, solo la informacion de la orden, sin productos.
 router.get('/', async (req,res) => {
     try {
         const { id } = req.query;
@@ -19,12 +31,12 @@ router.get('/', async (req,res) => {
         where: {
             clientId: id
         },
-        include: {
-            model: Product,
-            attributes: [
-                "product_name", "image"
-            ]
-        },
+        // include: {
+        //     model: Product,
+        //     attributes: [
+        //         "product_name", "image"
+        //     ]
+        // },
         order: [
             ["order_date", "DESC"]
         ]
@@ -57,8 +69,27 @@ router.post('/', async (req, res) => {
                 quantity: parseInt(item.quantity),
                 price: parseFloat((Number(item.unit_price)).toFixed(2))
             }})
+            await axios.put (`${API_ROOT}/api/product/changestock/${item.id}/${item.quantity}`)
         }
+        // console.log (items)
         res.send("OK")
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.put('/:id', async (req, res) =>{
+    try {
+        const { id } = req.params
+        const { status } = req.body
+        const response = await Order.update({status},{
+            where: {
+                id
+            },
+            returning: true
+        })
+        const data = response[1][0]
+        res.json(data)
     } catch (error) {
         console.log(error)
     }

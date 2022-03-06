@@ -4,9 +4,7 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.quantity {
-  margin-left: 1rem;
-}
+
 .quantity p {
   font-weight: bold;
 }
@@ -15,7 +13,18 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 2rem;
   width: 2rem;
   border: none;
+  
 }
+
+.quantity input[type=number]::-webkit-inner-spin-button,
+.quantity input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+.quantity input[type=number] { -moz-appearance:textfield; }
+
+
 @media screen and (max-width: 600px) {
   .quantity {
     position: relative;
@@ -33,7 +42,8 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .marketbutton {
   position: relative;
-  left: 10rem;
-  top: -2.6rem;
-  
+  left: 12.5rem;
+  top: -2.8rem;
+  width: 2rem;
 }
+

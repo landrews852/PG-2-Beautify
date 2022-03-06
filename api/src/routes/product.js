@@ -162,4 +162,23 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.put ("/changestock/:id/:stock", async (req,res)=>{
+  const { id , stock } = req.params;
+  try{
+    let product= await Product.findByPk (id,{
+      attributes: ['stock']
+    })
+    let newStock = product.stock - stock
+
+    await Product.update({stock:newStock}, {
+      where: {
+        id,
+      },
+    });
+     return res.json ('Stock actualizado')
+  }catch (err){
+    console.log (err)
+  }
+});
+
 module.exports = router;

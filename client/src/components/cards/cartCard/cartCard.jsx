@@ -3,7 +3,7 @@ import s from "./cartCard.module.css";
 import { useDispatch } from "react-redux";
 import { deleteItem } from "../../../redux/actions";
 import Amount from "../../features/amountProduct/amountProduct";
-import AmountCart from "../../features/amountProduct/amountProductCart";
+import AmountCart from "../../features/amountProduct/amountProduct";
 import { useLocation } from "react-router-dom";
 
 export default function Card({
@@ -43,9 +43,9 @@ export default function Card({
 
           <p className={s.amount}>
             {location.pathname === "/cart" ? (
-              <AmountCart id={id} amount={amount} stock={stock} />
+              <AmountCart id={id} amountCart={amount} stock={stock} cart={true} />
             ) : (
-              <Amount id={id} />
+              <Amount id={id} amount={amount} stock={stock} />
             )}
           </p>
         </div>

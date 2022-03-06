@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import Orders from "../orders/orders";
 import Compras from "../../client/compras/compras";
+import PostReview from "../../client/postreview/postreview";
 
 
 export default function UserSideBar() {
@@ -22,20 +23,19 @@ export default function UserSideBar() {
         case "1":
           setOps(<Orders />);
           setActive(1);
-          break;
-  
+          break;  
         case "2":
           setOps(< Compras />);
           setActive(2);
           break;
-        case "2":
-            setOps();
-            setActive(2);
+        case "3":
+          setOps(< PostReview />);
+          setActive(3);
             break;  
   
         default:
           break;
-      }
+      } 
     };
   
     return (

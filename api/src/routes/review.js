@@ -40,10 +40,8 @@ router.get("/", async (req, res) => {
       let reviews = await Review.findAll({ 
         where: 
           {  productId: idProduct }, 
-          include: { model: Client, attributes: ["name_client"] },
-        
-        }
-          
+          include: { model: Client, attributes: ["name_client"] },        
+        }          
       );
       return res.json(reviews);
     } else {

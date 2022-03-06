@@ -103,6 +103,10 @@ export default function Cart() {
         productos={productos}
         /* fullscreen={true} */
         scrollable={true}
+        animation={true}
+        backdrop={'static'}
+        centered={true}
+        
       />
     
     </div>

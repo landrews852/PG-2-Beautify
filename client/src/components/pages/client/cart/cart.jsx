@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,8 @@ import { deleteItem, payProducts } from "../../../../redux/actions";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
+import ConfirmarCompra from "../../../features/confirmarCompra/confirmarCompra";
+
 
 export default function Cart() {
   const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`;
@@ -17,7 +19,8 @@ export default function Cart() {
   const { user, isAuthenticated } = useAuth0();
   const userlocal = JSON.parse(localStorage.getItem("user"));
   let Items = userlocal ? { productos: productos, user: userlocal[0] } : null;
-  console.log (Items)
+  const [modalShow, setModalShow] = useState(false);
+
   const handleClick = () => {
     if (!isAuthenticated) {
       return Swal.fire({
@@ -38,6 +41,10 @@ export default function Cart() {
         text: "Agrega productos al carrito...",
       });
     }
+    setModalShow (true) 
+  };
+  const onPay = ()=>{
+    setModalShow (false)
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = "https://sdk.mercadopago.com/js/v2";
@@ -55,8 +62,8 @@ export default function Cart() {
         },
         autoOpen: true,
       });
-    }); // navigate('/order');
-  };
+    });
+  }
 
   return (
     <div className={s.cart}>
@@ -88,6 +95,16 @@ export default function Cart() {
         <button onClick={handleClick}>Pagar</button>
       </div>
       <div id="test"></div>
+      
+      <ConfirmarCompra
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        onPay= {()=> onPay () }
+        productos={productos}
+        /* fullscreen={true} */
+        scrollable={true}
+      />
+    
     </div>
   );
 }

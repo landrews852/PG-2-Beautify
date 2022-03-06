@@ -17,7 +17,7 @@ export default function InfoClient() {
     const { id, name_client , lastname_client , address , birthday , phone, profile_picture, email } = user[0]
     
 
-    console.log("Perfil",user)
+    // console.log("Perfil",user)
     const [input, setInput] = useState({
       name_client: name_client,
       lastname_client: lastname_client,

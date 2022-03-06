@@ -361,7 +361,6 @@ export function getClient(token) {
 export function getSocial() {
   return async function (dispatch) {
     const social = await axios.get(`${apiRoute}/api/social`);
-    console.log(social.data[0]);
     dispatch({
       type: GET_SOCIAL,
       payload: social.data[0],

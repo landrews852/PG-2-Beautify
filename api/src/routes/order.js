@@ -69,7 +69,7 @@ router.post('/', async (req, res) => {
             }})
             await axios.put (`${API_ROOT}/api/product/changestock/${item.id}/${item.quantity}`)
         }
-        console.log (items)
+        // console.log (items)
         res.send("OK")
     } catch (error) {
         console.log(error)

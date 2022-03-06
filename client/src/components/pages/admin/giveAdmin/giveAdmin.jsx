@@ -20,7 +20,7 @@ function GiveAdmin() {
     e.preventDefault();
     const token = await getAccessTokenSilently();
     dispatch(searchEmail(input, token)).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setData(res.data);
     });
   };

@@ -1,0 +1,27 @@
+.filas{
+  
+  display: flex;
+  justify-content:space-between;
+  margin-left: 10px;
+}
+
+.name{
+  margin: 0;
+  width: 70%;
+  align-self: center;  
+  
+}
+.amount{
+  margin-inline-end: 5%;
+  width: 30%;
+  align-self: center; 
+  
+   
+  
+}
+.total{
+  margin: 0;
+  width: 30%;
+  align-self: center;  
+  
+}

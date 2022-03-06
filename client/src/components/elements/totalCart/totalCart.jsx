@@ -15,9 +15,9 @@ export default function Total() {
     <div>
       {products.length > 0 ? (
         <>
-          <h4 className={s.totall}>Total: {parseFloat(sum.toFixed(2))}</h4>
+          <h4 style={{margin:20}} className={s.totall}>Total: {parseFloat(sum.toFixed(2))}</h4>
         </>
-      ) : (
+      ) : ( 
         <h2 className={s.msg}>¿Ya viste nuestras ofertas? Intenta agregar un producto</h2>
       )}
     </div>

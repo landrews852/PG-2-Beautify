@@ -1,5 +1,8 @@
+const axios = require("axios");
 const { Router } = require("express");
 const { Order, Client, Product} = require("../db");
+const { API_ROOT } = process.env;
+
 
 const router = Router();
 
@@ -64,7 +67,9 @@ router.post('/', async (req, res) => {
                 quantity: parseInt(item.quantity),
                 price: parseFloat((Number(item.unit_price)).toFixed(2))
             }})
+            await axios.put (`${API_ROOT}/api/product/changestock/${item.id}/${item.quantity}`)
         }
+        console.log (items)
         res.send("OK")
     } catch (error) {
         console.log(error)

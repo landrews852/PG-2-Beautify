@@ -51,7 +51,7 @@ router.get("/", async (req, res) => {
       return res.json(reviews);
     }
   } catch (e) {
-    res.json("ERROR");
+    res.json(e);
   }
 });
 

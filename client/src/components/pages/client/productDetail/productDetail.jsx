@@ -24,7 +24,11 @@ export default function ProductDetail() {
     else if (a.createdAt < b.createdAt) return 1
     else return 0   
   }
-  reviews.sort(sortAsc)
+
+  if(reviews.length > 0 ) {
+    console.log(reviews)
+    reviews.sort(sortAsc)
+  }
 
   const ranking = 2.5;
   let ranking_starts = [1, 2, 3, 4, 5];

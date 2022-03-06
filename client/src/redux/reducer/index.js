@@ -30,6 +30,7 @@ import {
   GET_REVIEWS,
   CLEAN_CART,
   GET_ORDERS,
+  GET_ORDER_DETAIL,
 } from "../actions";
 
 export const initialState = {
@@ -109,18 +110,6 @@ export function rootReducer(state = initialState, action) {
         ...state,
         productDetail: {},
       };
-
-    // case NAME_SORT:
-    //   return {
-    //     ...state,
-    //     products: action.payload,
-    //   };
-
-    // case PRICE_SORT:
-    //   return {
-    //     ...state,
-    //     products: action.payload,
-    //   };
 
     case NAME_SORT:
       const asc = action.payload;
@@ -276,6 +265,12 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         orders: action.payload,
+      };
+
+    case GET_ORDER_DETAIL:
+      return {
+        ...state,
+        orderDetail: action.payload,
       };
 
     default:

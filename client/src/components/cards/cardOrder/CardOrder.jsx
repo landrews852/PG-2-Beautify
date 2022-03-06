@@ -2,10 +2,12 @@ import React from "react";
 import ModalComp from "../../elements/modal/modal";
 import s from "./cardOrder.module.css";
 
-function CardOrder({ total_amount, address, order_date, id, status }) {
+function CardOrder({ total_amount, address, order_date, id, status, getDetail }) {
+
+
   return (
     <>
-      <div className={s.container}>
+      <div className={s.container} onClick={() => getDetail(id)}>
         <div className={s.orderId}>
           {id}
         </div>

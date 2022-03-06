@@ -24,8 +24,9 @@ export default function Orders() {
             order_date={o.order_date}
             key={o.id}
             total_amount={o.total_amount}
-            products={o.products}
-            address={o.address}
+            status = {o.status}
+            // products={o.products}
+            // address={o.address}
           />
         ))
       ) : (

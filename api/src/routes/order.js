@@ -6,6 +6,7 @@ const { API_ROOT } = process.env;
 
 const router = Router();
 
+// Obtiene todas las ordenes de todos los cliente
 router.get('/all', async (req,res) => {
     try {
         const data = await Order.findAll({
@@ -22,6 +23,7 @@ router.get('/all', async (req,res) => {
     }
 })
 
+//Obtiene todas las ordenes de un cliente en especifico, solo la informacion de la orden, sin productos.
 router.get('/', async (req,res) => {
     try {
         const { id } = req.query;
@@ -29,12 +31,12 @@ router.get('/', async (req,res) => {
         where: {
             clientId: id
         },
-        include: {
-            model: Product,
-            attributes: [
-                "product_name", "image"
-            ]
-        },
+        // include: {
+        //     model: Product,
+        //     attributes: [
+        //         "product_name", "image"
+        //     ]
+        // },
         order: [
             ["order_date", "DESC"]
         ]

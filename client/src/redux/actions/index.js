@@ -383,10 +383,6 @@ export function editProduct(id, payload) {
       `${apiRoute}/api/product/${id}`,
       payload
     );
-    // dispatch({
-    //   type: EDIT_SERVICE,
-    //   payload: payload
-    // });
   };
 }
 

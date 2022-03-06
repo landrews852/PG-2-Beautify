@@ -1,55 +1,6 @@
-// import React, { useEffect, useState } from "react";
-// import MarketButton from "../../elements/buttons/marketButton/marketButton";
-// import s from "./amountProduct.module.css";
-
-// function Amount({ id, stock }) {
-//   const [amount, setAmount] = useState(1);
-
-//   const handleClickSum = (e) => {
-//     e.preventDefault();
-//     if (stock > amount) setAmount(amount + 1);
-//   };
-
-//   const handleClickSub = (e) => {
-//     e.preventDefault();
-//     if (amount <= 1) return null;
-//     else {
-//       setAmount(amount - 1);
-//     }
-//   };
-
-
-//   const handleInputChange = (e) => {
-
-
-//   };
-
-//   return (
-//     <div className={s.quantity}>
-//       <p>CANTIDAD</p>
-//       <button className={s.btnn} onClick={(e) => handleClickSub(e)}>
-//         -
-//       </button>
-//       <input
-//         type="number"
-//         value={amount}
-//         /* onChange={(e) => handleInputChange(e)} */
-//       />
-//       <button className={s.btnn} onClick={(e) => handleClickSum(e)}>
-//         +
-//       </button>
-//       <div className={s.marketbutton}>
-//         <MarketButton amount={amount} id={id} />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Amount;
-
 import React, { useState } from "react";
 import MarketButton from "../../elements/buttons/marketButton/marketButton";
-import s from "./amountMarket.module.css";
+import s from "./amountProduct.module.css";
 
 function Amount({ id, stock }) {
   const [amount, setAmount] = useState(1);
@@ -67,7 +18,7 @@ function Amount({ id, stock }) {
 
   const handleClickSub = (e) => {
     e.preventDefault();
-    if (amount <= 1) return null;
+    if (amount <= 1) return;
     else {
       setAmount(amount - 1);
     }
@@ -83,7 +34,7 @@ function Amount({ id, stock }) {
 
   return (
     <div className={s.quantity}>
-      <p>CANTIDAD</p>
+      <p>CANTIDAD MAX : {stock}</p>
       <button className={s.btnn} onClick={(e) => handleClickSub(e)}>
         -
       </button>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import s from "./productCard.module.css";
-import Amount from "../../features/amountProduct/amountProductMarket";
+import Amount from "../../features/amountProduct/amountProduct";
 
 export default function Card({ image, product_name, cost_by_unit, id, stock }) {
   return (

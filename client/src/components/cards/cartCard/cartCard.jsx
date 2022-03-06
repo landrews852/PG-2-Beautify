@@ -3,7 +3,7 @@ import s from "./cartCard.module.css";
 import { useDispatch } from "react-redux";
 import { deleteItem } from "../../../redux/actions";
 import Amount from "../../features/amountProduct/amountProduct";
-import AmountCart from "../../features/amountProduct/amountProductCart";
+import AmountCart from "../../features/amountProduct/amountProduct";
 import { useLocation } from "react-router-dom";
 
 export default function Card({

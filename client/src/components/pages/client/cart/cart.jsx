@@ -17,6 +17,7 @@ export default function Cart() {
   const { user, isAuthenticated } = useAuth0();
   const userlocal = JSON.parse(localStorage.getItem("user"));
   let Items = userlocal ? { productos: productos, user: userlocal[0] } : null;
+  console.log (Items)
   const handleClick = () => {
     if (!isAuthenticated) {
       return Swal.fire({

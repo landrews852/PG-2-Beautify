@@ -17,7 +17,7 @@ export default function Total() {
         <>
           <h4 className={s.totall}>Total: {parseFloat(sum.toFixed(2))}</h4>
         </>
-      ) : (
+      ) : ( 
         <h2 className={s.msg}>¿Ya viste nuestras ofertas? Intenta agregar un producto</h2>
       )}
     </div>

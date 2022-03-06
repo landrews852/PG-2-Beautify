@@ -43,7 +43,7 @@ export default function Card({
 
           <p className={s.amount}>
             {location.pathname === "/cart" ? (
-              <AmountCart id={id} amount={amount} stock={stock} />
+              <AmountCart id={id} amountCart={amount} stock={stock} cart={true} />
             ) : (
               <Amount id={id} amount={amount} stock={stock} />
             )}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./adminSideBar.module.css";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
@@ -11,14 +11,29 @@ import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
 import Service from "../../admin/services/services";
 import Product from "../../admin/products/product"
 import EditSocialMedia from "../../admin/editSocialMedia/editSocialMedia";
+import Orders from "../orders/ordersAdmin";
+import { useDispatch } from "react-redux";
+import { cleanCart } from "../../../../redux/actions";
 
 export default function AdminSideBar() {
+  const dispatch=useDispatch()
   const locationpath = useLocation();
   const welcome = "Bienvenido al panel administrativo de tu E-commerce";
   const [ops, setOps] = useState(welcome);
+  const location = useLocation().search;
   const [active, setActive] = useState(0);
+  const changeOps = (ops) => setOps(ops)
 
   var components = "chau";
+  
+  useEffect(()=>{
+    if (location.toString() === "?true") {
+      dispatch(cleanCart());
+      setOps(<Orders setOps={changeOps} />);
+      setActive(1);
+    }
+  },[])
+
 
   const handleLocation = (e) => {
     switch (e.target.value) {
@@ -56,6 +71,12 @@ export default function AdminSideBar() {
       case "7":
         setOps(<EditSocialMedia />);
         setActive(7);
+        break;
+        
+      case "8":
+        setOps(<Orders setOps={changeOps} />);
+          setActive(8);
+          break;
 
       default:
         break;
@@ -98,6 +119,20 @@ export default function AdminSideBar() {
                     Servicios
                   </button>
                 </Link>
+                <Link className="nav-link" to="/panel">
+                    <button
+                      className={
+                        active == 8 ? s.buttonNav + " " + s.activo : s.buttonNav
+                      }
+                      value="8"
+                      onClick={(e) => {
+                        handleLocation(e);
+                      }}
+                    >
+                      <div className={s.translate}></div>
+                      Ventas
+                    </button>
+                  </Link>
                 <Link className="nav-link" to="/panel">
                   <button
                     className={

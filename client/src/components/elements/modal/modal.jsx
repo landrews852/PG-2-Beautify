@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
+import PostReview from '../../pages/client/postreview/postreview';
 import m from './modal.module.css'
 
 
 export default function ModalComp({id , product}) {
 
 const [modalShow, setModalShow] = useState(false);
-
+const user = JSON.parse(localStorage.getItem('user'))
 function CenteredModal(props) {
     return (
       <Modal
@@ -21,26 +22,8 @@ function CenteredModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body >
-          <div className={m.container}>
-          <div className={m.rankproduct}>
-              <p>Puntaje del producto</p>
-             <select>
-                <option disabled selected>Seleccionar puntaje</option>
-                 <option value="1">1</option>
-                 <option value="2">2</option>
-                 <option value="3">3</option>
-                 <option value="4">4</option>
-                 <option value="5">5</option>
-             </select>    
-          </div>
-            <textarea>
-            </textarea>
-          
-          </div>
+         < PostReview id={id} user={user} />
         </Modal.Body>
-        <Modal.Footer>
-                <button>Publicar review</button>
-        </Modal.Footer>
       </Modal>
     );
   }

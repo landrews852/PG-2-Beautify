@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const mercadopago = require("mercadopago");
-const { ACCESS_TOKEN, APP_ROOT } = process.env;
+const { ACCESS_TOKEN, API_ROOT } = process.env;
 const router = Router();
 const axios = require("axios");
 
@@ -36,8 +36,8 @@ router.post("/create_preference", (req, res) => {
         statement_descriptor: "BEAUTIFY",
         items: cartItems,
         back_urls: {
-          success: `${APP_ROOT}/api/feedback/success`,
-          failure: `${APP_ROOT}/api/feedback/error`,
+          success: `${API_ROOT}/api/feedback/success`,
+          failure: `${API_ROOT}/api/feedback/error`,
           /* "pending": `${APP_ROOT}` */
         },
         payment_methods: {

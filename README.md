@@ -1,4 +1,4 @@
-<img align="right" src="./client/src/images/logo2.png" width="500px">
+<img align="right" src="https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078440/beautify/form/logo2_bqgepw.png" width="500px">
 
 # PG-2: Beautify
 

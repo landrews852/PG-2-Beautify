@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
-import Card from '../../cards/cartCard/cartCard';
+import { Link } from 'react-router-dom';
 import Total from '../../elements/totalCart/totalCart';
 import s from './confirmarCompra.module.css'
 
@@ -40,8 +40,8 @@ export default function confirmarCompra(props) {
       </Modal.Body>
       <Modal.Footer>
         <div className={s.contbtn} >
-        <button className={s.close} onClick={props.onHide}>Volver</button>
-        <button className={s.pay} onClick={props.onPay}>Pagar</button>
+        <button className={s.close} onClick={props.onHide}>Volver</button>      
+        <button className={s.pay} onClick={props.onData}>Confirma datos</button>     
         </div>
       </Modal.Footer>
     </Modal>

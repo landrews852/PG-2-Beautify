@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import CreateService from "./createService/createService";
-import EditService from "./editService/editService";
-import s from "./services.module.css";
+import CreateCategory from "./createCategory/CreateCategory";
+import EditCategory from "./editCategory/EditCategory";
+import s from "./category.module.css";
 
-export default function EditCarousel() {
+export default function Category() {
   const [action, setAction] = useState("");
   let section;
 
@@ -13,9 +13,9 @@ export default function EditCarousel() {
   }
 
   if (action === "add") {
-    section = <CreateService />;
+    section = <CreateCategory />;
   } else if (action === "edit") {
-    section = <EditService />;
+    section = <EditCategory />;
   }
 
   return (

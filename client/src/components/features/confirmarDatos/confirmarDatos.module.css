@@ -1,0 +1,67 @@
+
+
+.filase{
+  display: flex;
+  justify-content:space-between;
+  padding-inline: 0px;
+  align-items: center;
+  
+  
+}
+.filase span{
+  font-size: 15px;
+  font-weight: lighter;
+ 
+}
+
+.pay{
+  border-radius: 4px;
+  background: rgb(218, 210, 200);
+  transition: all 0.5s ease;
+  border: none;
+  color: black;
+  text-shadow: black;
+  font-size: 18px;
+  width: 80px;
+  margin-left: 10px;
+  padding: 2px;
+}
+.pay:hover{
+background: rgb(212, 191, 204);
+transition: all 0.5s ease;
+}
+.close{
+  border-radius: 4px;
+  background: rgb(218, 210, 200);
+  transition: all 0.5s ease;
+  border: none;
+  color: black;
+  text-shadow: black;
+  font-size: 18px;
+  width: 80px;
+  padding: 2px;
+ 
+}
+
+.close:hover{
+background: rgb(212, 191, 204);
+transition: all 0.5s ease;
+}
+
+.edit{
+  border-radius: 4px;
+  background: rgb(218, 210, 200);
+  transition: all 0.5s ease;
+  border: none;
+  color: black;
+  text-shadow: black;
+  font-size: 18px;
+  width: 80px;
+  padding: 2px;
+  margin-left: 10px;
+}
+
+.edit:hover{
+  background: rgb(212, 191, 204);
+transition: all 0.5s ease;
+}

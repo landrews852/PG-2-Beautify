@@ -7,6 +7,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
+import Login from "../../features/login/login";
 
 export default function UserMenu({ clientname }) {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -30,6 +31,7 @@ export default function UserMenu({ clientname }) {
   // Dropdown needs access to the DOM node in order to position the Menu
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
+      className={s.vinc}
       href=""
       ref={ref}
       onClick={(e) => {
@@ -77,8 +79,8 @@ export default function UserMenu({ clientname }) {
           id="dropdown-custom-components"
         ></Dropdown.Toggle>
 
-        <Dropdown.Menu align="end" /* as={CustomMenu} */ className={s.menu}>
-          {isAuthenticated && clientname ? (
+        <Dropdown.Menu align="end" /* as={CustomMenu} */  className={s.menu}>
+          {clientname ? (
             <>
               <Dropdown.Item
                 as={Link}
@@ -100,7 +102,9 @@ export default function UserMenu({ clientname }) {
               Registre sus datos aqui
             </Dropdown.Item>
           )}
-          {/* <Dropdown.Item>Logout</Dropdown.Item> */}
+          <Dropdown.Item>
+            <Login/>
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </>

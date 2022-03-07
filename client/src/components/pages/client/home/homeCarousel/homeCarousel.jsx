@@ -24,7 +24,7 @@ export default function Slideshow() {
               <img
                 className="d-block w-100"
                 width="100%"
-                height="600px"
+                height="auto"
                 src={e.image}
                 alt="First slide"
               />

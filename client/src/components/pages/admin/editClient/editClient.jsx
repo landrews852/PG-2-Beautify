@@ -193,9 +193,9 @@ export default function EditClient() {
                 <button className={s.submit} type="submit">
                   Guardar cambios
                 </button>
-                <Link to="/profile">
-                  <button className={s.submit}>Volver</button>
-                </Link>
+
+                <button type='button' className={s.submit} onClick={()=>navigate (-1)} >Volver</button>
+
               </div>
             </form>
           </div>

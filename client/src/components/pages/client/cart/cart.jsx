@@ -8,6 +8,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import ConfirmarCompra from "../../../features/confirmarCompra/confirmarCompra";
+import ConfirmarDatos from "../../../features/confirmarDatos/confirmarDatos";
+
 
 
 export default function Cart() {
@@ -20,6 +22,8 @@ export default function Cart() {
   const userlocal = JSON.parse(localStorage.getItem("user"));
   let Items = userlocal ? { productos: productos, user: userlocal[0] } : null;
   const [modalShow, setModalShow] = useState(false);
+  const [modalShow2, setModalShow2] = useState (false)
+  const navigate = useNavigate ()
 
   const handleClick = () => {
     if (!isAuthenticated) {
@@ -64,6 +68,11 @@ export default function Cart() {
       });
     });
   }
+  const  onData = ()=>{
+    console.log  (userlocal)
+    setModalShow (false)
+    setModalShow2 (true) 
+  }
 
   return (
     <div className={s.cart}>
@@ -96,14 +105,27 @@ export default function Cart() {
       <ConfirmarCompra
         show={modalShow}
         onHide={() => setModalShow(false)}
-        onPay= {()=> onPay() }
+        onData= {()=>onData()}
         productos={productos}
         /* fullscreen={true} */
         scrollable={true}
         animation={true}
         backdrop={'static'}
-        centered={true}
-        
+        centered={true}        
+      />
+      <ConfirmarDatos
+      show={modalShow2}
+      onHide={() => {
+        setModalShow2(false)
+        setModalShow (true)
+      }}
+      user={userlocal[0]}
+      onPay= {()=> onPay() }
+      scrollable={true}
+      animation={true}
+      backdrop={'static'}
+      centered={true}    
+      onPay= {()=> onPay() } 
       />
     
     </div>

@@ -2,11 +2,26 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 60%;
+    width: 35vw;
 }
 
-.container:hover{
-    border: 1px solid salmon;
-    scale: 1.25;
+.containerorder {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid;
+}
+
+.containerorder label {
+    font-weight: bold;
+    
+}
+
+.containerorder:hover {
+    background-color: rgba(230, 197, 224, 0.561);
+    transition: all .3s linear;
     cursor: pointer;
+}
+
+.containerdata {
+    margin:2px 2em;
 }

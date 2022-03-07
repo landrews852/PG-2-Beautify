@@ -31,15 +31,27 @@ router.get('/', async (req,res) => {
         where: {
             clientId: id
         },
-        // include: {
-        //     model: Product,
-        //     attributes: [
-        //         "product_name", "image"
-        //     ]
-        // },
         order: [
             ["order_date", "DESC"]
         ]
+    })
+    res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+//Obtiene el detalle de una orden especifica
+router.get('/:id', async (req,res) => {
+    try {
+        const { id } = req.params;
+        const data = await Order.findByPk(id,
+        {include: {
+            model: Product,
+            attributes: [
+                "product_name", "image","id"
+            ]
+        }
     })
     res.json(data)
     } catch (error) {

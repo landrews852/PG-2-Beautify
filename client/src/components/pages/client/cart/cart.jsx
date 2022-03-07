@@ -6,7 +6,7 @@ import Total from "../../../elements/totalCart/totalCart";
 import { payProducts } from "../../../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
-import ConfirmarCompra from "../../../features/confirmarCompra/confirmarCompra";
+import ConfirmarCompra from "../../../features/confirmarCompra/confirmarCompra.jsx";
 
 export default function Cart() {
   const publicKey = `${process.env.REACT_APP_PUBLIC_KEY}`;

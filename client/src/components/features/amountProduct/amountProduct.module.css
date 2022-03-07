@@ -54,3 +54,11 @@ margin: 0;
   width: 2rem;
 }
 
+.agotado{
+  position: relative;
+  font-weight:bold;
+  left: 57px;
+  bottom: 10px;
+
+}
+

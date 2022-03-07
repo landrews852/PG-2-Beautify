@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MarketButton from "../../elements/buttons/marketButton/marketButton";
 import s from "./amountProduct.module.css";
 
+
 function Amount({ id, stock, amountCart=1, cart=false }) {
   let products = useSelector((state) => state.cart);
   const product = products.find((p) => p.id === id);
@@ -63,8 +64,9 @@ function Amount({ id, stock, amountCart=1, cart=false }) {
 
     
   };
-
-  return (
+  if (!stock){
+  return  <div className={s.agotado} ><h3 style={{color:'red'}}>AGOTADO!</h3></div>
+  }else return (
     <div className={s.quantity}>
       <p>CANTIDAD MAX : {stock}</p>
       <button className={s.btnn} onClick={(e) => handleClickSub(e)}>

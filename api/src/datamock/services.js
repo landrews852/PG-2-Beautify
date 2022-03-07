@@ -1,155 +1,69 @@
 const services = [
   {
-    name_service: "Peoples Financial Corporation",
-    price: 90.6,
+    name_service: "Lifting de Pestanas",
+    price: 10.6,
     description:
-      "Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum.",
-    category: ["Lotlux"],
+      "Este servicio es el “BEST SELLER” en nuestro estudio, en la actualidad es tendencia por su aporte a la salud y belleza de las pestañas. En “Beautify” somos especialistas en Lifting de pestañas, por lo que te ofrecemos un servicio totalmente innovador y diferente para tus pestañas además de nutritivo. El Lifting de Pestañas es un estiramiento y arqueo de tus propias pestañas naturales, aprovechando al máximo su longitud y volumen natural, se realiza a cualquier tamaño de pestañas y es ideal para quienes tienen pestañitas rectas y caídas. A lo largo de nuestra amplia experiencia, estudio y actualizaciones alrededor del mundo, hemos logrado innovar con nuestro servicio, haciéndolo único en el mercado. En la actualidad ofrecemos un lifting totalmente nutritivo y adaptable a todos los gustos gracias a nuestra técnica variable en cuanto a curva y diseños.",
+    category: ["Pestanas"],
     image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063393/beautify/services/pexels-photo-8558244_qjdije.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063392/beautify/services/pexels-photo-8031804_jnff8q.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063392/beautify/services/pexels-photo-8092944_tgleax.jpg",
-    ],
-  },
-  {
-    name_service: "Wells Fargo & Company",
-    price: 93.27,
-    description:
-      "Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis.",
-    category: ["Lotlux"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063391/beautify/services/pexels-photo-5128233_fbmupf.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063392/beautify/services/pexels-photo-6978043_yb2ejr.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063391/beautify/services/pexels-photo-7313967_foeohw.jpg",
-    ],
-  },
-  {
-    name_service: "Easterly Government Properties, Inc.",
-    price: 8.0,
-    description:
-      "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.",
-    category: ["Lotlux"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063389/beautify/services/pexels-photo-4814915_ruo5zg.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063389/beautify/services/pexels-photo-7236744_uqebrp.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-5240291_ydzm1b.jpg",
-    ],
-  },
-  {
-    name_service: "Cascadian Therapeutics, Inc.",
-    price: 39.99,
-    description:
-      "Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    category: ["Lotlux"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063391/beautify/services/pexels-photo-7313967_foeohw.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063390/beautify/services/pexels-photo-7538807_fhtg2c.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063390/beautify/services/pexels-photo-7607268_vmzaqg.jpg",
-    ],
-  },
-  {
-    name_service: "Frontier Communications Corporation",
-    price: 95.96,
-    description: "Maecenas pulvinar lobortis est. Phasellus sit amet erat.",
-    category: ["Lotlux"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063389/beautify/services/pexels-photo-4814915_ruo5zg.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063389/beautify/services/pexels-photo-7236744_uqebrp.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-5240291_ydzm1b.jpg",
-    ],
-  },
-  {
-    name_service: "Petrobras Argentina S.A.",
-    price: 96.5,
-    description:
-      "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-    category: ["Lotlux"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-6621075_jm309l.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-6935237_bfwznk.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-6781240_wm4aml.jpg",
-    ],
-  },
-  {
-    name_service: "MSCI Inc",
-    price: 13.31,
-    description: "In hac habitasse platea dictumst.",
-    category: ["Lotlux"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063385/beautify/services/pexels-photo-6663571_t0f9cj.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063385/beautify/services/pexels-photo-6663365_edmppi.jpg",
+      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063383/beautify/services/pexels-photo-5128220_matwiy.jpg",
       "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063384/beautify/services/pexels-photo-5128221_uthogr.jpg",
     ],
   },
   {
-    name_service: "Utah Medical Products, Inc.",
-    price: 53.77,
+    name_service: "Extensiones de Pestanas",
+    price: 13.27,
     description:
-      "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.",
-    category: ["Lotlux"],
+      "Hay días que nos despertamos y no tenemos ganas de maquillarnos, que queremos ahorrar tiempo en nuestra rutina, que queremos hacer notar más nuestras pestañas o que simplemente queremos más longitud en ellas porque las notamos cortas. No pensamos que exista nada tan perfecto que cubra todas esas necesidades, hasta que conocemos el amor a través de las extensiones de pestañas… si, es así, este servicio llega para quedarse y para ser la solución para muchas o como dicen ustedes, para ser “un viaje de ida”. Les presentamos las tan amadas Extensiones de Pestañas, consiste en adherir extensiones de seda premium a cada pestaña natural sana a milímetros de la piel, es decir, no tocamos el párpado, por lo que no supone un peligro o daño alguno a la misma, ya que ésta continúa su ciclo de crecimiento normalmente siendo este el motivo por el cual debemos asistir cada 15 – 20 días a un centro de belleza. En el centro de belleza vamos a reemplazar las extensiones que por el crecimiento van quedando expuestas en la punta. Repondremos las que por factores externos se van cayendo y se reubican las que lo necesitan, quedando así un nuevo set totalmente nuevo.",
+    category: ["Pestanas"],
     image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063383/beautify/services/pexels-photo-5069494_j3o4yl.jpg",
+      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063391/beautify/services/pexels-photo-5128233_fbmupf.jpg",
       "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063383/beautify/services/pexels-photo-5128220_matwiy.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063383/beautify/services/pexels-photo-5069588_cuyrvs.jpg",
-    ],
-  },
-  {
-    name_service: "BlackRock Science and Technology Trust",
-    price: 50.85,
-    description: "Curabitur at ipsum ac tellus semper interdum.",
-    category: ["Lotlux"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063383/beautify/services/pexels-photo-4006693_jxekea.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063383/beautify/services/pexels-photo-4006693_jxekea.jpg",
       "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063379/beautify/services/pexels-photo-3762663_x7icz1.jpg",
     ],
   },
   {
-    name_service: "VictoryShares US 500 Enhanced Volatility Wtd ETF",
-    price: 58.2,
+    name_service: "Red Carpet Facial",
+    price: 8.0,
     description:
-      "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus.",
-    category: ["Lotlux"],
+      "Nueva limpieza de entre 45min y 1 hora ideal para previas a eventos importantes. Esta limpieza no incluye extracciones pero deja la piel lista para el maquillaje y todo el glow que necesitas para tu fecha especial. Apta todo tipo de piel.",
+    category: ["Cuidado Facial"],
     image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063379/beautify/services/pexels-photo-3997986_ukv1ks.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063378/beautify/services/pexels-photo-4340053_n6yjee.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063378/beautify/services/eye-eyelashes-face-woman-63320_kbidj.jpg",
-    ],
-  },
-  {
-    name_service: "Model N, Inc.",
-    price: 27.84,
-    description:
-      "In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.",
-    category: ["Namfix"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063379/beautify/services/pexels-photo-3762663_x7icz1.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063379/beautify/services/pexels-photo-3997986_ukv1ks.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063378/beautify/services/pexels-photo-4340053_n6yjee.jpg",
-    ],
-  },
-  {
-    name_service: "Huttig Building Products, Inc.",
-    price: 67.01,
-    description:
-      "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
-    category: ["Namfix"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-5240291_ydzm1b.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-6621075_jm309l.jpg",
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-6935237_bfwznk.jpg",
-    ],
-  },
-  {
-    name_service: "Mallinckrodt plc",
-    price: 95.93,
-    description:
-      "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",
-    category: ["Namfix"],
-    image: [
-      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-6781240_wm4aml.jpg",
       "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063385/beautify/services/pexels-photo-6663571_t0f9cj.jpg",
+      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063383/beautify/services/pexels-photo-5069494_j3o4yl.jpg",
+      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063387/beautify/services/pexels-photo-5240291_ydzm1b.jpg",
+    ],
+  },
+  {
+    name_service: "Limpieza Facial Premium",
+    price: 19.99,
+    description:
+      "Tratamiento de entre 45 minutos y 1 hora que incluye limpieza facial profunda, extracciones de ser necesario y masajes faciales con y sin elementos. Se utilizan productos importados profesionales de alta gama.",
+    category: ["Cuidado Facial"],
+    image: [
+      "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063390/beautify/services/pexels-photo-7607268_vmzaqg.jpg",
       "https://res.cloudinary.com/estdia/image/upload/f_auto/v1646063385/beautify/services/pexels-photo-6663365_edmppi.jpg",
+    ],
+  },
+  {
+    name_service: "Tintura para cejas",
+    price: 5.96,
+    description: "¡En Beautify creemos que hay un color especial esperándote! En este proceso se utiliza colorantes especialmente desarrollados para el área de los ojos, libres de amoníaco. El colorante difiere del procedimiento de henna, debido a la utilización sólo de la coloración de los pelos, sin llegar a la piel, generando un aspecto natural. ",
+    category: ["Cejas"],
+    image: [
+      "https://www.cocinavital.mx/wp-content/uploads/2021/06/tinte-casero-para-cejas.jpg",
+      "https://img.bekiabelleza.com/articulos/portada/18000/18143.jpg",
+    ],
+  },
+  {
+    name_service: "Laminado de cejas",
+    price: 16.5,
+    description:
+      "¿Eres de las personas que debe peinar todo el dia sus cejas? O que ¿por más que las peines u ordenes siempre lucen desordenadas? En Beautify tenemos la solución para ti. Laminado de Cejas; este servicio ordena esos vellos rebeldes y los mantiene en su lugar, da una apariencia de recién peinadas y de grosor. Ahora tus cejas estarán más obedientes y dispuestas a tomar la dirección que le des. Gracias a la aplicación de Keratina y Botox, ayudamos a estimular el crecimiento de las cejas aportando a su vez grosor al vello, nutrición y brillo!",
+    category: ["Cejas"],
+    image: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO5Qp770wqQEGSaXz-y9p87keuwiJWXAIdsw&usqp=CAU",
+      "https://i0.wp.com/solotendencias.net/wp-content/uploads/2021/03/image-71.png?ssl=1",
     ],
   },
 ];

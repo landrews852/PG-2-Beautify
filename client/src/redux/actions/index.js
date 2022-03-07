@@ -12,6 +12,7 @@ export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
 export const ALL_PRODUCTS = "ALL_PRODUCTS";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const POST_PRODUCT = "POST_PRODUCT";
+export const POST_CATEGORY = "POST_CATEGORY";
 export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
 export const CLEAN_PRODUCT_DETAIL = "CLEAN_PRODUCT_DETAIL";
 export const POST_SERVICE = "POST_SERVICE";
@@ -415,6 +416,13 @@ export function cleanCart() {
   };
 }
 
+export function postCategory(category) {
+  return async function (dispatch) {
+    const data = await axios.post(`${apiRoute}/api/categories`, category);
+    return data;
+  };
+}
+
 export function getOrders(id) {
   return async function (dispatch) {
     var json = await axios.get(`${apiRoute}/api/order?id=${id}`);
@@ -423,5 +431,14 @@ export function getOrders(id) {
       type: GET_ORDERS,
       payload: json.data,
     });
+  };
+}
+
+export function putCategory(id, payload) {
+  return async function (dispatch) {
+    const categoryUpdate = await axios.put(
+      `${apiRoute}/api/categories/${id}`,
+      payload
+    );
   };
 }

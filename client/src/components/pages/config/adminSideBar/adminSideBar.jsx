@@ -2,15 +2,14 @@ import React from "react";
 import s from "./adminSideBar.module.css";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-// import CreateProduct from "../../../pages/admin/createProduct/createProduct";
-// import CreateService from "../../admin/services/createService/createService";
 import EditCarousel from "../../admin/editCarousel/editCarousel";
 import GiveAdmin from "../../admin/giveAdmin/giveAdmin";
 import { useState } from "react";
 import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
 import Service from "../../admin/services/services";
-import Product from "../../admin/products/product"
+import Product from "../../admin/products/product";
 import EditSocialMedia from "../../admin/editSocialMedia/editSocialMedia";
+import Category from "../../admin/category/Category.jsx";
 
 export default function AdminSideBar() {
   const locationpath = useLocation();
@@ -23,37 +22,42 @@ export default function AdminSideBar() {
   const handleLocation = (e) => {
     switch (e.target.value) {
       case "1":
-        setOps(<Product />);
+        setOps(<Category />);
         setActive(1);
         break;
 
       case "2":
+        setOps(<Product />);
+        setActive(1);
+        break;
+
+      case "3":
         setOps(<Service />);
         setActive(2);
         break;
 
-      case "3":
+      case "4":
         setOps(<EditCarousel />);
         setActive(3);
         break;
 
-      case "4":
+      case "5":
         setOps(<AdminAboutUs />);
         setActive(4);
         break;
 
-      case "5":
+      case "6":
         // reservada para estadisticas
         // setOps(<CreateProduct location={handleLocation} />);
         // setActive(1);
         break;
 
-      case "6":
+      case "7":
         setOps(<GiveAdmin />);
         setActive(6);
         break;
 
-      case "7":
+      case "8":
         setOps(<EditSocialMedia />);
         setActive(7);
 
@@ -81,7 +85,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Producto
+                    Categoria
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -95,7 +99,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Servicios
+                    Producto
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -109,7 +113,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Carrusel
+                    Servicios
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -123,7 +127,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Sobre nosotros
+                    Carrusel
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -137,7 +141,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Estadisticas
+                    Sobre nosotros
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -151,7 +155,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Permisos
+                    Estadisticas
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -165,15 +169,29 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
+                    Permisos
+                  </button>
+                </Link>
+                <Link className="nav-link" to="/panel">
+                  <button
+                    className={
+                      active == 8 ? s.buttonNav + " " + s.activo : s.buttonNav
+                    }
+                    value="8"
+                    onClick={(e) => {
+                      handleLocation(e);
+                    }}
+                  >
+                    <div className={s.translate}></div>
                     Redes Sociales
                   </button>
                 </Link>
-              </Nav >
-            </Navbar.Collapse >
-          </Navbar >
-        </div >
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        </div>
         <div className={s.containerOp}>{ops}</div>
-      </div >
+      </div>
     </>
   );
 }

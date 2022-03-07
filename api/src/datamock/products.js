@@ -4,7 +4,7 @@ const products = [
     stock: 82,
     cost_by_unit: 1.25,
     description: "Nulla facilisi. Cras non velit nec nisi vulputate nonummy.",
-    category: ["Rank"],
+    category: ["cejas"],
     warranty: 79,
     brand: "Oregon Ash",
     image: [
@@ -20,7 +20,7 @@ const products = [
     cost_by_unit: 18.78,
     description:
       "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor.",
-    category: ["Rank"],
+    category: ["cejas"],
     warranty: 41,
     brand: "Cough",
     image: [
@@ -36,7 +36,7 @@ const products = [
     cost_by_unit: 27.28,
     description:
       "In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst.",
-    category: ["Rank"],
+    category: ["cejas"],
     warranty: 20,
     brand: "Flurazepam",
     image: [
@@ -52,7 +52,7 @@ const products = [
     cost_by_unit: 28.04,
     description:
       "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
-    category: ["Rank"],
+    category: ["cejas"],
     warranty: 87,
     brand: "Theraplex",
     image: [
@@ -68,7 +68,7 @@ const products = [
     cost_by_unit: 73.27,
     description:
       "Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
-    category: ["Duobam"],
+    category: ["cejas"],
     warranty: 51,
     brand: "Aveeno",
     image: [
@@ -84,7 +84,7 @@ const products = [
     cost_by_unit: 95.19,
     description:
       "Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    category: ["Duobam"],
+    category: ["cejas"],
     warranty: 78,
     brand: "Strength",
     image: [
@@ -100,7 +100,7 @@ const products = [
     cost_by_unit: 2.55,
     description:
       "In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
-    category: ["Duobam"],
+    category: ["cejas"],
     warranty: 74,
     brand: "Oxytocin",
     image: [
@@ -116,7 +116,7 @@ const products = [
     cost_by_unit: 30.01,
     description:
       "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
-    category: ["Zoolab"],
+    category: ["pestanas"],
     warranty: 83,
     brand: "PhysiciansCare",
     image: [
@@ -434,7 +434,7 @@ const products = [
     cost_by_unit: 45.06,
     description:
       "In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-    category: ["Flexidy"],
+    category: ["cejas"],
     warranty: 97,
     brand: "Norvasc",
     image: [
@@ -450,7 +450,7 @@ const products = [
     cost_by_unit: 47.21,
     description:
       "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-    category: ["Flexidy"],
+    category: ["cuidado facial"],
     warranty: 48,
     brand: "Deconge",
     image: [
@@ -466,7 +466,7 @@ const products = [
     cost_by_unit: 17.22,
     description:
       "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-    category: ["Flexidy"],
+    category: ["cejas"],
     warranty: 23,
     brand: "Neutrogena",
     image: [

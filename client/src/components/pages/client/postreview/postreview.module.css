@@ -27,7 +27,7 @@
     margin: 7px 0;
   }
   
-  button {
+  .button {
     display: inline-block;
     border-radius: 4px;
     background: rgb(218, 210, 200);
@@ -47,7 +47,7 @@
     align-content: space-between;
   }
   
-  button:hover {
+  .button:hover {
     background: rgb(212, 191, 204);
     transition: all 0.5s ease;
   }

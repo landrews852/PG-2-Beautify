@@ -16,7 +16,7 @@ export default function PostReview() {
             value=""
             
           />
-          <button className="submit" type="submit">
+          <button className={s.button} type="submit">
             Buscar
           </button>
         </div>

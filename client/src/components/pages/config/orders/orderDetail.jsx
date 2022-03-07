@@ -2,7 +2,8 @@ import React, { useEffect} from 'react';
 import Orders from './orders';
 import { useDispatch, useSelector } from "react-redux";
 import { cleanOrderDetail } from '../../../../redux/actions';
-
+import ModalComp from '../../../elements/modal/modal';
+import s from './orderDetail.module.css'
 
 export default function OrderDetail({setOps}) {
   const dispatch = useDispatch();
@@ -23,15 +24,18 @@ export default function OrderDetail({setOps}) {
 
     return (
         <>
+        
         {orderDetail.id ? (<>
           <button onClick={handleBack}>Atras</button>
-          <div>
+          <div className={s.container}>
             {console.log(orderDetail)}
             {orderDetail.products.length ? (
               orderDetail.products.map(p => <>
+              <div>
               <span>{p.product_name}</span>
               <img src={`${p.product_name}`} alt="Imagen del producto" />
-              <button onClick={() => postReview(p.id)}>Opina</button>
+              < ModalComp key={p.id} product={p.product_name} id={p.id}/>
+              </div>
               </>
               )
             ) : null}
@@ -42,6 +46,7 @@ export default function OrderDetail({setOps}) {
           Espere un momento
           </>
         )}
+        
       </>
     )
 

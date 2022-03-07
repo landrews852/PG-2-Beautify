@@ -3,6 +3,7 @@ import CardOrder from '../../../cards/cardOrder/CardOrder';
 import { getOrderDetail, getOrders } from "../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import OrderDetail from './orderDetail'
+import s from './orders.module.css'
 
 
 export default function Orders({setOps}) {
@@ -23,6 +24,7 @@ export default function Orders({setOps}) {
 
     return (
         <>
+        <h3>Listado de ordenes</h3>
         {orders.length ? (
         orders.map((o) => (
         <div key={o.id}>
@@ -39,6 +41,7 @@ export default function Orders({setOps}) {
       ) : (
         <p>No tienes ordenes.</p>
       )}
+      
       </>
     )
 

@@ -35,11 +35,11 @@ function CenteredModal(props) {
           </div>
             <textarea>
             </textarea>
-          <button>Publicar review</button>
+          
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <button onClick={props.onHide}>Close</button>
+                <button>Publicar review</button>
         </Modal.Footer>
       </Modal>
     );

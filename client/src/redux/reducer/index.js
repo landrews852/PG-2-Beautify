@@ -31,6 +31,7 @@ import {
   CLEAN_CART,
   GET_ORDERS,
   GET_ORDER_DETAIL,
+  CLEAN_ORDER_DETAIL
 } from "../actions";
 
 export const initialState = {
@@ -271,6 +272,12 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         orderDetail: action.payload,
+      };
+
+    case CLEAN_ORDER_DETAIL:
+      return {
+        ...state,
+        orderDetail: {},
       };
 
     default:

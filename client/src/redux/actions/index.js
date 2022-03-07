@@ -37,6 +37,7 @@ export const GET_REVIEWS = "GET_REVIEWS";
 export const PAYMENT = "PAYMENT";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
+export const CLEAN_ORDER_DETAIL = "CLEAN_ORDER_DETAIL";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -439,6 +440,15 @@ export function getOrderDetail(id) {
     dispatch({
       type: GET_ORDER_DETAIL,
       payload: json.data,
+    });
+  };
+}
+
+export function cleanOrderDetail(id) {
+  return function (dispatch) {
+    dispatch({
+      type: CLEAN_ORDER_DETAIL,
+      payload: {},
     });
   };
 }

@@ -1,9 +1,40 @@
-.newService {
-  margin-bottom: -20px;
-  background-image: url("https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078439/beautify/form/beautyservice_wtcniv.jpg");
-  height: 800px;
+.newCategory {
+  margin-bottom: 20px;
+  background-image: url("https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078439/beautify/form/beautfywelcome_pz6vtd.png");
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-bottom: 1em;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.profilepicture {
+  width: 30vw;
+  min-width: 100px;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.profilepicture div {
+  border: 2px solid rgb(31, 4, 58);
+  width: 7vw;
+  height: 7vw;
+  margin: auto;
+  min-width: 100px;
+  min-height: 100px;
+}
+.profilepicture div img {
+  width: 100%;
+  height: 100%;
+}
+.profileform {
+  width: 50vw;
+  min-width: 300px;
 }
 
 .cat {
@@ -27,11 +58,11 @@
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.3);
 }
 
-.newService h2 {
+.newCategory h2 {
   border-bottom: 2px solid;
 }
 
-.newService button {
+.newCategory button {
   display: inline-block;
   border-radius: 4px;
   background-color: rgb(248, 193, 130);
@@ -47,10 +78,6 @@
   align-content: space-between;
 }
 
-.form .description input {
-  height: 150px;
-}
-
 .form input {
   width: 360px;
   height: 30px;
@@ -60,14 +87,21 @@
   outline: none;
   border: 1px solid silver;
   border-radius: 10px;
-  opacity: 60%;
+  opacity: 0.6;
   position: relative;
+  text-align: left !important;
   left: 110px;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
   top: 8px;
   background-color: rgba(228, 225, 224, 0.883);
   margin: 7px 0;
 }
+
+.putdate {
+  padding: 0.5em !important;
+  height: 35px !important;
+}
+
 .form label {
   position: absolute;
   left: 5%;
@@ -76,7 +110,7 @@
   width: 29%;
   height: 6%;
   border-radius: 5%;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .form .submit {
@@ -87,15 +121,6 @@
 .form .submit:hover {
   background: rgb(212, 191, 204);
   transition: all 0.5s ease;
-}
-
-.form .category {
-  width: 430px;
-  height: 40px;
-  position: relative;
-  left: 50px;
-  margin-top: 5px;
-  background-color: rgba(255, 255, 255, 0.562);
 }
 
 .divCats {

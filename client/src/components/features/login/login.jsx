@@ -40,13 +40,13 @@ export default function Login() {
   };
 
   return (
-    <>
+
       <button
         className={isAuthenticated ? s.buttonlogin: s.button}
         onClick={(e) => logger(e.target.textContent)}
       >
         {isAuthenticated?"Logout":"Login"}
       </button>
-    </>
+
   );
 }

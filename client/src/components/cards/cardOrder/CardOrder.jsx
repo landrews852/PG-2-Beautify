@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./cardOrder.module.css";
 
-function CardOrder({ total_amount, address, order_date, id, status, getDetail, client }) {
+function CardOrder({ total_amount, address, order_date, id, status, getDetail, name_client }) {
 
 
   return (
@@ -16,8 +16,8 @@ function CardOrder({ total_amount, address, order_date, id, status, getDetail, c
           </div>
           <div className={s.containerdata}>
             <label>Usuario</label>
-            <div className={s.client}>
-              {client}
+            <div className={s.name_client}>
+              {name_client}
             </div>
           </div>
           <div className={s.containerdata}>

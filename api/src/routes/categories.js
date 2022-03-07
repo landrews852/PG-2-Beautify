@@ -22,6 +22,25 @@ router.post("/", async (req, res, next) => {
     next(err);
   }
 });
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name_category } = req.body;
+
+    let data = {};
+    if (name_category !== undefined) data.name_category = name_category;
+
+    const updateCategory = await Category.update(data, {
+      where: {
+        id,
+      },
+      returning: true,
+    });
+    res.json(updateCategory[1]);
+  } catch (err) {
+    res.json(err);
+  }
+});
 
 router.delete("/:id", async (req, res, next) => {
   try {

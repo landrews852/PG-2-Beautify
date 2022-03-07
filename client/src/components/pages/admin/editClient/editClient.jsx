@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import s from "./editClient.module.css";
-import { editUserInfo, getUserInfo } from "../../../../redux/actions";
+import { editUserInfo } from "../../../../redux/actions";
 
 //const apiRoute = "http://localhost:3001";
 const apiRoute = process.env.REACT_APP_APP_ROOT;
@@ -193,9 +193,9 @@ export default function EditClient() {
                 <button className={s.submit} type="submit">
                   Guardar cambios
                 </button>
-                <Link to="/profile">
-                  <button className={s.submit}>Volver</button>
-                </Link>
+
+                <button type='button' className={s.submit} onClick={()=>navigate (-1)} >Volver</button>
+
               </div>
             </form>
           </div>

@@ -21,7 +21,6 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const { loadCategories } = require("../api/loadData/categoryLoad");
 const { loadProducts } = require("../api/loadData/productLoad");
-//const { clientLoad } = require("../api/loadData/clientLoad");
 const { loadServices } = require("../api/loadData/servicesLoad");
 const { loadCarousel } = require("../api/loadData/carouselLoad.js");
 const { loadSocial } = require("../api/loadData/socialLoad");
@@ -30,12 +29,11 @@ const { loadSocial } = require("../api/loadData/socialLoad");
 
 conn.sync({ force: false }).then(() => {
   server.listen(3001, async () => {
-    /* await loadCarousel();
-    await loadCategories();
-    await loadProducts();
-    await clientLoad();
-    await loadServices(); */
-    //await loadSocial();
+    // await loadCarousel();
+    // await loadCategories();
+    // await loadProducts();
+    // await loadServices();
+    // await loadSocial();
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });

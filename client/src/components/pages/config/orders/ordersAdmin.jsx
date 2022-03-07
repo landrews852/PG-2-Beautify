@@ -31,6 +31,7 @@ export default function Orders({setOps}) {
           <CardOrder
             order_date={o.order_date}
             id={o.id}
+            client={o.client}
             total_amount={o.total_amount}
             status = {o.status}
             address={o.address}

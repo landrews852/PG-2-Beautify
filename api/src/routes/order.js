@@ -31,6 +31,12 @@ router.get('/', async (req,res) => {
         where: {
             clientId: id
         },
+        include: {
+            model: Product,
+            attributes: [
+                "product_name", "image", "id"
+            ]
+        },
         order: [
             ["order_date", "DESC"]
         ]

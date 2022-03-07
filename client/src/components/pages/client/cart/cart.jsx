@@ -90,12 +90,9 @@ export default function Cart() {
           <Total />
         </div>
       </div>
-      {/* </div> */}
       <div>
-        <button onClick={handleClick}>Pagar</button>
-      </div>
-      <div id="test"></div>
-      
+        <button className={s.btnpay} onClick={handleClick}>Pagar</button>
+      </div>      
       <ConfirmarCompra
         show={modalShow}
         onHide={() => setModalShow(false)}

@@ -34,9 +34,16 @@ margin: 0;
 
 
 .btnn {
-  border: none;
+  border: 0px;
+  border-radius: 20%;
   height: 2rem;
   width: 2rem;
+  transition: all 0.5s ease;
+  text-shadow: black;
+}
+.btnn:hover{
+  background: rgb(212, 191, 204);
+  transition: all 0.5s ease;
 }
 
 

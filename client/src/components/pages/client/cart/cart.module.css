@@ -29,6 +29,24 @@
 }
 
 .total {
-  margin-left: 15rem;
+  /* margin-left: 15rem; */
   height: 4rem;
+}
+
+.btnpay{
+  border-radius: 4px;
+  background: rgb(218, 210, 200);
+  transition: all 0.5s ease;
+  border: none;
+  text-shadow: black;
+  font-size: 18px;
+  padding: 5px;
+  cursor: pointer;
+  width: 100px;
+  text-align: center;
+}
+.btnpay:hover{
+  background: rgb(212, 191, 204);
+    transition: all 0.5s ease;
+    
 }

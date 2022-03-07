@@ -28,22 +28,22 @@ export default function AdminSideBar() {
 
       case "2":
         setOps(<Product />);
-        setActive(1);
+        setActive(2);
         break;
 
       case "3":
         setOps(<Service />);
-        setActive(2);
+        setActive(3);
         break;
 
       case "4":
         setOps(<EditCarousel />);
-        setActive(3);
+        setActive(4);
         break;
 
       case "5":
         setOps(<AdminAboutUs />);
-        setActive(4);
+        setActive(5);
         break;
 
       case "6":
@@ -54,12 +54,12 @@ export default function AdminSideBar() {
 
       case "7":
         setOps(<GiveAdmin />);
-        setActive(6);
+        setActive(7);
         break;
 
       case "8":
         setOps(<EditSocialMedia />);
-        setActive(7);
+        setActive(8);
 
       default:
         break;

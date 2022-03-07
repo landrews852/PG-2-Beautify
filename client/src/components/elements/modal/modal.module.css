@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container textarea {
+    max-height:20vh;
+    min-height:10vh ;
+}
+
+.rankproduct {
+    display: flex;
+    text-align: center;
+}
+
+.rankproduct p {
+    width: 8vw;
+    margin-bottom: 0px !important;
+    font-size: 1em;
+}
+
+.rankproduct select {
+    height: 1.5em;
+    margin: none;
+}
+
+.rankproduct input {
+    width: 3em;
+    padding:.5em;
+    border:1px solid;
+}
+

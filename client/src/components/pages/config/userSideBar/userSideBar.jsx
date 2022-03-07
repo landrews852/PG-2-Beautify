@@ -17,20 +17,21 @@ export default function UserSideBar() {
     const [ops, setOps] = useState(welcome);
     const location = useLocation().search;
     const [active, setActive] = useState(0);
+    const changeOps = (ops) => setOps(ops)
+  
     useEffect(()=>{
       if (location.toString() === "?true") {
         dispatch(cleanCart());
-        setOps(<Orders />);
+        setOps(<Orders setOps={changeOps} />);
         setActive(1);
       }
     },[])
   
-    var components = "chau";
-  
+
     const handleLocation = (e) => {
       switch (e.target.value) {
         case "1":
-          setOps(<Orders />);
+          setOps(<Orders setOps={changeOps} />);
           setActive(1);
           break;  
         case "2":

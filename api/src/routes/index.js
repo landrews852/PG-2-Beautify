@@ -10,6 +10,9 @@ const clientRouter = require('./client.js')
 const carouselRouter = require('./carousel.js')
 const aboutRouter = require('./about.js')
 const socialRouter = require('./social.js')
+const paymentRouter = require('./payment.js')
+const feedbackRouter = require('./feedback.js')
+const orderRouter = require('./order.js')
 
 
 const router = Router();
@@ -27,5 +30,8 @@ router.use('/api/client', clientRouter);
 router.use('/api/carousel', carouselRouter);
 router.use('/api/about', aboutRouter);
 router.use('/api/social', socialRouter)
+router.use('/api/payment', paymentRouter)
+router.use('/api/feedback', feedbackRouter)
+router.use('/api/order', orderRouter)
 
 module.exports = router;

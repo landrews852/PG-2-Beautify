@@ -25,7 +25,6 @@ const handleOnChange = (e) => {
 
 const handleSubmit = (e) => { 
     e.preventDefault();
-    console.log(about)
     dispatch(editAbout(about))
 }
 

@@ -27,7 +27,12 @@ import {
   EDIT_SERVICE,
   GET_SOCIAL,
   UPDATE_SOCIAL,
-  GET_REVIEWS
+  GET_REVIEWS,
+  POST_REVIEW,
+  CLEAN_CART,
+  GET_ORDERS,
+  GET_ORDER_DETAIL,
+  CLEAN_ORDER_DETAIL
 } from "../actions";
 
 export const initialState = {
@@ -35,7 +40,7 @@ export const initialState = {
   products: [],
   productDetail: {},
   allProducts: [],
-  order: [],
+  orders: [],
   orderDetail: {},
   cart: [],
   carrusel: [],
@@ -95,7 +100,7 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-    
+
     case GET_PRODUCT_DETAIL:
       return {
         ...state,
@@ -107,18 +112,6 @@ export function rootReducer(state = initialState, action) {
         ...state,
         productDetail: {},
       };
-
-    // case NAME_SORT:
-    //   return {
-    //     ...state,
-    //     products: action.payload,
-    //   };
-
-    // case PRICE_SORT:
-    //   return {
-    //     ...state,
-    //     products: action.payload,
-    //   };
 
     case NAME_SORT:
       const asc = action.payload;
@@ -226,7 +219,7 @@ export function rootReducer(state = initialState, action) {
       };
 
     case EDIT_CLIENT:
-        localStorage.setItem("user", JSON.stringify(action.payload));
+      localStorage.setItem("user", JSON.stringify(action.payload));
       return {
         ...state,
         user: action.payload,
@@ -239,20 +232,20 @@ export function rootReducer(state = initialState, action) {
 
     case EDIT_SERVICE:
       return {
-        ...state
+        ...state,
       };
 
     case IS_LOADING:
       return {
         ...state,
-        isLoading: action.payload
-      }
+        isLoading: action.payload,
+      };
 
     case GET_SOCIAL:
       return {
         ...state,
-        social: action.payload
-      }
+        social: action.payload,
+      };
 
     case UPDATE_SOCIAL:
       return {
@@ -264,6 +257,34 @@ export function rootReducer(state = initialState, action) {
           ...state,
           reviews: action.payload
       }
+    case POST_REVIEW:
+        return {
+          ...state,
+          reviews: action.payload
+    }  
+    case CLEAN_CART:
+      return {
+        ...state,
+        cart: [],
+      };
+
+    case GET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+      };
+
+    case GET_ORDER_DETAIL:
+      return {
+        ...state,
+        orderDetail: action.payload,
+      };
+
+    case CLEAN_ORDER_DETAIL:
+      return {
+        ...state,
+        orderDetail: {},
+      };
 
     default:
       return state;

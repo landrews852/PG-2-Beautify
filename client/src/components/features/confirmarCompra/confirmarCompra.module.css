@@ -1,0 +1,98 @@
+.filas{
+  
+  display: flex;
+  justify-content:space-between;
+  margin-left: 10px;
+  border-bottom: gray solid 1px;
+}
+.filase{
+  
+  display: flex;
+  justify-content:space-between;
+  margin-left: 10px;
+  border-bottom: gray solid 1px;
+}
+.productos{
+  margin-left: 20px;
+}
+.name{
+  margin-left:10px;
+  width: 70%;
+  align-self: center;  
+  
+}
+.amount{
+  margin-inline-end: 5%;
+  width: 30%;
+  align-self: center; 
+  
+}
+.amountf{
+  margin-inline-end: 5%;
+  width: 30%;
+  align-self: center; 
+  padding-left: 30px;
+
+  
+}
+.total{
+  margin: 0;
+  width: 30%;
+  align-self: center;  
+  
+}
+.header{
+  margin-left: 30%;
+  
+}
+
+.t{
+  margin-left: 30%;
+}
+
+.filase span{
+  font-size: 16px;
+  font-weight:bold;
+}
+
+/* .contbtn{
+  display: flex;
+  justify-content: center;
+  width:max-content;
+} */
+
+
+.close{
+    border-radius: 4px;
+    background: rgb(218, 210, 200);
+    transition: all 0.5s ease;
+    border: none;
+    color: black;
+    text-shadow: black;
+    font-size: 18px;
+    width: 80px;
+    padding: 2px;
+
+}
+
+.close:hover{
+  background: rgb(212, 191, 204);
+  transition: all 0.5s ease;
+}
+
+.pay{
+    border-radius: 4px;
+    background: rgb(218, 210, 200);
+    transition: all 0.5s ease;
+    border: none;
+    color: black;
+    text-shadow: black;
+    font-size: 18px;
+    width: 80px;
+    margin-left: 10px;
+    padding: 2px;
+}
+.pay:hover{
+  background: rgb(212, 191, 204);
+  transition: all 0.5s ease;
+}

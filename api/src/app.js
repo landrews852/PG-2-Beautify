@@ -5,6 +5,12 @@ const morgan = require("morgan");
 const routes = require("./routes/index");
 const cors = require('cors');
 require("./db.js");
+const { ACCESS_TOKEN } = process.env;
+const mercadopago = require("mercadopago");
+
+mercadopago.configure({
+	access_token: `${ACCESS_TOKEN}`,
+});
 
 const server = express();
 server.use(express.json());

@@ -8,6 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import ConfirmarCompra from "../../../features/confirmarCompra/confirmarCompra";
 import ConfirmarDatos from "../../../features/confirmarDatos/confirmarDatos";
+import { useNavigate } from "react-router-dom";
 
 
 

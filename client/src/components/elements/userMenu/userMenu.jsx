@@ -1,7 +1,7 @@
 import s from "./userMenu.module.css";
 import React, { useEffect, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DropdownButton, Dropdown } from "react-bootstrap";
+import { DropdownButton, Dropdown, Button } from "react-bootstrap";
 import { useState } from "react";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";

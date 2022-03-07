@@ -435,10 +435,11 @@ export function getReviews(id) {
   }
 }
 
-export function postReview(token,idclient,idproduct,review) {
+export function postReview(token,idclient,idproduct,payload) {
   return async function (dispatch) {
     const userreview = await axios.post(
-      `${apiRoute}/api/review?idClient=${idclient}&idProduct=${idproduct}`, review,
+      `${apiRoute}/api/review?idClient=${idclient}&idProduct=${idproduct}`,
+       payload,
       {
         headers: {
           authorization: `Bearer ${token}`,

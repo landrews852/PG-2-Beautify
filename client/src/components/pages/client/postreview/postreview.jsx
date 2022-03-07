@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { postReview } from '../../../../redux/actions';
 import s from './postreview.module.css'
 import { useAuth0 } from '@auth0/auth0-react';
+import Swal from 'sweetalert2';
 
 export default function PostReview(props) {
 const dispatch = useDispatch();
@@ -23,17 +24,22 @@ const handleChange = (e) => {
     setReview({...review,comment: e.target.value})
   }
   return
-}
+};
 
- async function handleSubmit() {
-  
+ async function handleSubmit(e) {
+  e.preventDefault();
   const token = await getAccessTokenSilently();
   dispatch(postReview(token,user[0].id,id,review));
-}
+  Swal.fire({
+    icon: "success",
+    title: "¡Bien!",
+    text: "Publicaste una review",
+  });  
+};
     return (
         <> 
     <div className={s.container}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => {handleSubmit(e)}}>
         <div> 
             <div className={s.rankproduct}>
                 <p>Puntaje del producto</p>

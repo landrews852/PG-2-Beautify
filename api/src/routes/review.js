@@ -3,10 +3,12 @@ const { Review } = require("../db");
 const { Client } = require("../db");
 const { Op } = require("sequelize");
 const router = Router();
+const { verifyjwt, verifytoken } = require("../auth/auth")
 
-router.post("/", async (req, res) => {
+router.post("/", verifyjwt, async (req, res) => {
   const { rank, comment } = req.body;
   const { idClient, idProduct } = req.query;
+  const userinfo = await verifytoken(req)
   //comentario
   try{
   if (rank && comment && idClient && idProduct) {

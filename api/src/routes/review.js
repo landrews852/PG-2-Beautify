@@ -1,12 +1,14 @@
 const { Router } = require("express");
 const { Review } = require("../db");
+const { Client } = require("../db");
 const { Op } = require("sequelize");
-
 const router = Router();
+const { verifyjwt, verifytoken } = require("../auth/auth")
 
-router.post("/", async (req, res) => {
+router.post("/", verifyjwt, async (req, res) => {
   const { rank, comment } = req.body;
   const { idClient, idProduct } = req.query;
+  const userinfo = await verifytoken(req)
   //comentario
   try{
   if (rank && comment && idClient && idProduct) {
@@ -37,14 +39,19 @@ router.get("/", async (req, res) => {
       let reviews = await Review.findAll({ where: { clientId: idClient } });
       return res.json(reviews);
     } else if (idProduct) {
-      let reviews = await Review.findAll({ where: { productId: idProduct } });
+      let reviews = await Review.findAll({ 
+        where: 
+          {  productId: idProduct }, 
+          include: { model: Client, attributes: ["name_client"] },        
+        }          
+      );
       return res.json(reviews);
     } else {
       let reviews = await Review.findAll();
       return res.json(reviews);
     }
   } catch (e) {
-    res.json("ERROR");
+    res.json(e);
   }
 });
 

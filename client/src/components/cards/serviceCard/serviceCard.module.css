@@ -171,10 +171,22 @@ background: #DFC2F2;
 
 /* control */
 
-.control {
+.control button {
   /* 	position: absolute; */
-  bottom: auto;
+  margin-top: 3rem;
   left: 22.8%;
+  width: 9rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: url("../../../images/logo_calendar.png");
+  background-size: 1.8rem;
+  background-repeat: no-repeat;
+  background-color: rgb(248, 222, 187);
+  background-position: 0.6rem;
+  text-align: right;
+  border: none;
+  font-weight: bold;
+  
 }
 /* the Button */
 .btns {

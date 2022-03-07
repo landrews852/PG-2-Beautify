@@ -9,8 +9,8 @@ router.post("/create_preference", (req, res) => {
     const data = req.body.productos;
     const user = req.body.user;
 
-    console.log("user", user);
-    console.log("productos", data);
+    // console.log("user", user);
+    // console.log("productos", data);
     if (data.length > 0) {
       let cartItems = [];
       for (const item of data) {
@@ -36,8 +36,8 @@ router.post("/create_preference", (req, res) => {
         statement_descriptor: "BEAUTIFY",
         items: cartItems,
         back_urls: {
-          success: `http://localhost:3001/api/feedback/success`,
-          failure: `http://localhost:3001/api/feedback/error`,
+          success: `${APP_ROOT}/api/feedback/success`,
+          failure: `${APP_ROOT}/api/feedback/error`,
           /* "pending": `${APP_ROOT}` */
         },
         payment_methods: {
@@ -67,7 +67,7 @@ router.post("/create_preference", (req, res) => {
       mercadopago.preferences
         .create(preference)
         .then(function (response) {
-          console.log(`ID: ${response.body.id}`);
+          // console.log(`ID: ${response.body.id}`);
           res.json({
             id: response.body.id,
           });

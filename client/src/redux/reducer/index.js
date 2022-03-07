@@ -29,7 +29,12 @@ import {
   IS_LOADING,
   EDIT_SERVICE,
   UPDATE_SOCIAL,
+  GET_REVIEWS,
+  POST_REVIEW,
   CLEAN_CART,
+  GET_ORDERS,
+  GET_ORDER_DETAIL,
+  CLEAN_ORDER_DETAIL,
 } from "../actions";
 
 export const initialState = {
@@ -45,6 +50,7 @@ export const initialState = {
   services: [],
   brands: [],
   about: {},
+  reviews: [],
   isLoading: false,
   social: { facebook: "", instagram: "", email: "" },
 };
@@ -113,18 +119,6 @@ export function rootReducer(state = initialState, action) {
         ...state,
         productDetail: {},
       };
-
-    // case NAME_SORT:
-    //   return {
-    //     ...state,
-    //     products: action.payload,
-    //   };
-
-    // case PRICE_SORT:
-    //   return {
-    //     ...state,
-    //     products: action.payload,
-    //   };
 
     case NAME_SORT:
       const asc = action.payload;
@@ -265,6 +259,16 @@ export function rootReducer(state = initialState, action) {
         ...state,
         social: action.payload,
       };
+    case GET_REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
+    case POST_REVIEW:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
     case CLEAN_CART:
       return {
         ...state,
@@ -275,6 +279,18 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         orders: action.payload,
+      };
+
+    case GET_ORDER_DETAIL:
+      return {
+        ...state,
+        orderDetail: action.payload,
+      };
+
+    case CLEAN_ORDER_DETAIL:
+      return {
+        ...state,
+        orderDetail: {},
       };
 
     default:

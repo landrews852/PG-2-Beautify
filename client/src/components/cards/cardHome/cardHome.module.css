@@ -42,6 +42,7 @@
     text-transform: uppercase;
     text-overflow: clip;
     overflow: hidden;
+    margin: 0.7rem;
     margin-bottom: 2rem;
   }
   

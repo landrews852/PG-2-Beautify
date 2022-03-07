@@ -34,8 +34,12 @@ export const IS_LOADING = "IS_LOADING";
 export const EDIT_SERVICE = "EDIT_SERVICE";
 export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 export const GET_SOCIAL = "GET_SOCIAL";
+export const GET_REVIEWS = "GET_REVIEWS";
+export const POST_REVIEW = "POST_REVIEW";
 export const PAYMENT = "PAYMENT";
 export const GET_ORDERS = "GET_ORDERS";
+export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
+export const CLEAN_ORDER_DETAIL = "CLEAN_ORDER_DETAIL";
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -361,7 +365,6 @@ export function getClient(token) {
 export function getSocial() {
   return async function (dispatch) {
     const social = await axios.get(`${apiRoute}/api/social`);
-    console.log(social.data[0]);
     dispatch({
       type: GET_SOCIAL,
       payload: social.data[0],
@@ -384,10 +387,6 @@ export function editProduct(id, payload) {
       `${apiRoute}/api/product/${id}`,
       payload
     );
-    // dispatch({
-    //   type: EDIT_SERVICE,
-    //   payload: payload
-    // });
   };
 }
 
@@ -440,5 +439,51 @@ export function putCategory(id, payload) {
       `${apiRoute}/api/categories/${id}`,
       payload
     );
+  };
+}
+export function getReviews(id) {
+  return async function (dispatch) {
+    const reviews = await axios.get(`${apiRoute}/api/review?idProduct=${id}`);
+    dispatch({
+      type: GET_REVIEWS,
+      payload: reviews.data,
+    });
+  };
+}
+
+export function postReview(token, idclient, idproduct, payload) {
+  return async function (dispatch) {
+    const userreview = await axios.post(
+      `${apiRoute}/api/review?idClient=${idclient}&idProduct=${idproduct}`,
+      payload,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    dispatch({
+      type: POST_REVIEW,
+      payload: userreview,
+    });
+  };
+}
+
+export function getOrderDetail(id) {
+  return async function (dispatch) {
+    var json = await axios.get(`${apiRoute}/api/order/${id}`);
+    dispatch({
+      type: GET_ORDER_DETAIL,
+      payload: json.data,
+    });
+  };
+}
+
+export function cleanOrderDetail(id) {
+  return function (dispatch) {
+    dispatch({
+      type: CLEAN_ORDER_DETAIL,
+      payload: {},
+    });
   };
 }

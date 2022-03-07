@@ -6,6 +6,7 @@ const { API_ROOT } = process.env;
 
 const router = Router();
 
+// Obtiene todas las ordenes de todos los cliente
 router.get('/all', async (req,res) => {
     try {
         const data = await Order.findAll({
@@ -22,6 +23,7 @@ router.get('/all', async (req,res) => {
     }
 })
 
+//Obtiene todas las ordenes de un cliente en especifico, solo la informacion de la orden, sin productos.
 router.get('/', async (req,res) => {
     try {
         const { id } = req.query;
@@ -32,12 +34,30 @@ router.get('/', async (req,res) => {
         include: {
             model: Product,
             attributes: [
-                "product_name", "image"
+                "product_name", "image", "id"
             ]
         },
         order: [
             ["order_date", "DESC"]
         ]
+    })
+    res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+//Obtiene el detalle de una orden especifica
+router.get('/:id', async (req,res) => {
+    try {
+        const { id } = req.params;
+        const data = await Order.findByPk(id,
+        {include: {
+            model: Product,
+            attributes: [
+                "product_name", "image","id"
+            ]
+        }
     })
     res.json(data)
     } catch (error) {
@@ -69,7 +89,7 @@ router.post('/', async (req, res) => {
             }})
             await axios.put (`${API_ROOT}/api/product/changestock/${item.id}/${item.quantity}`)
         }
-        console.log (items)
+        // console.log (items)
         res.send("OK")
     } catch (error) {
         console.log(error)

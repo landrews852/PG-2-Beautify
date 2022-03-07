@@ -50,6 +50,10 @@
   flex-direction: row;
 }
 
+.ProductDetail h2 {
+  border-bottom: 1px solid;
+}
+
 /* 	Product details  */
 .product-details {
   display: flex;
@@ -57,7 +61,7 @@
   text-align: center;
   align-self: stretch;
   padding: 15px;
-  width: 50%;
+  width: 55vw;
   }
 
   @media screen and (max-width: 900px) {
@@ -269,12 +273,22 @@
 .info {
   position: relative;
   text-align: left;
-  font-size: 1.1rem;
-  
+  font-size: 1.1rem;  
   position: relative;
   left: -1.8vw;
-  top: 2vw
-  
+  top: 2vw  
+}
+
+.moredetails {
+  width: auto;
+  display: flex;
+  flex-flow: column; 
+  min-height: 250px; 
+}
+.reviews {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 
 .info ul {

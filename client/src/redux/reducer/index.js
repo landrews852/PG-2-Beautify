@@ -28,6 +28,7 @@ import {
   GET_SOCIAL,
   UPDATE_SOCIAL,
   GET_REVIEWS,
+  POST_REVIEW,
   CLEAN_CART,
   GET_ORDERS,
   GET_ORDER_DETAIL,
@@ -256,6 +257,11 @@ export function rootReducer(state = initialState, action) {
           ...state,
           reviews: action.payload
       }
+    case POST_REVIEW:
+        return {
+          ...state,
+          reviews: action.payload
+    }  
     case CLEAN_CART:
       return {
         ...state,

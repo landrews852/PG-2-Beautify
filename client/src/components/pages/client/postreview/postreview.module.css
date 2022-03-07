@@ -1,9 +1,9 @@
 .container {
     height: 500px;
     margin-bottom: -20px;
-    background-image: url("../../../../images/beautyadmin.jpeg");
+    /* background-image: url("../../../../images/beautyadmin.jpeg");
     background-repeat: repeat;
-    background-size: cover;
+    background-size: cover; */
   }
   
   .container h2 {
@@ -60,3 +60,31 @@
   .container .form {
     border-bottom: 50px;
   }
+
+  .container textarea {
+    max-height:25vh;
+    min-height:10vh;
+    width: 100%;
+}
+
+.rankproduct {
+    display: flex;
+    text-align: center;
+}
+
+.rankproduct p {
+    width: 8vw;
+    margin-bottom: 0px !important;
+    font-size: 1em;
+}
+
+.rankproduct select {
+    height: 1.5em;
+    margin: none;
+}
+
+.rankproduct input {
+    width: 3em;
+    padding:.5em;
+    border:1px solid;
+}

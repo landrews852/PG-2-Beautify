@@ -1,3 +1,4 @@
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const { Router } = require("express");
 const { ACCESS_TOKEN, APP_ROOT, API_ROOT } = process.env;
 const router = Router();

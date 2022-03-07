@@ -16,7 +16,6 @@ export default function Card({ image, product_name, cost_by_unit, id, stock }) {
         <div className={s.amount}>
           <Amount id={id} stock={stock} />
         </div>
-        {/* <div className={s.button}><Button amount = {amount} id={id}/></div> */}
       </div>
     </div>
   );

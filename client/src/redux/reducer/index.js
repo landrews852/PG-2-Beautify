@@ -3,36 +3,37 @@ import {
   GET_IMG_CAROUSEL,
   GET_PRODUCTS_BY_NAME,
   GET_SERVICES_BY_NAME,
-  ALL_PRODUCTS,
   GET_CATEGORIES,
+  GET_PRODUCT_DETAIL,
+  GET_SOCIAL,
+  GET_SERVICES,
+  GET_CLIENT,
+  GET_BRANDS,
+  ALL_PRODUCTS,
   POST_PRODUCT,
   POST_SERVICE,
   POST_CLIENT,
+  POST_CATEGORY,
   PRICE_SORT,
   NAME_SORT,
   FILTER_BY_OFFER,
-  GET_PRODUCT_DETAIL,
   CLEAN_PRODUCT_DETAIL,
-  GET_SERVICES,
   FILTER_BY_CATEGORY,
   FILTER_BY_BRAND,
-  GET_BRANDS,
   ADD_TO_CART,
   DELETE_ITEM,
   UPDATE_CART,
-  GET_CLIENT,
   EDIT_CLIENT,
   EDIT_ABOUT,
   IS_LOADING,
   EDIT_SERVICE,
-  GET_SOCIAL,
   UPDATE_SOCIAL,
   GET_REVIEWS,
   POST_REVIEW,
   CLEAN_CART,
   GET_ORDERS,
   GET_ORDER_DETAIL,
-  CLEAN_ORDER_DETAIL
+  CLEAN_ORDER_DETAIL,
 } from "../actions";
 
 export const initialState = {
@@ -49,8 +50,8 @@ export const initialState = {
   brands: [],
   about: {},
   reviews: [],
-  isLoading : false,
-  social: {facebook:"",instagram:"",email:""}
+  isLoading: false,
+  social: { facebook: "", instagram: "", email: "" },
 };
 
 export function rootReducer(state = initialState, action) {
@@ -92,6 +93,11 @@ export function rootReducer(state = initialState, action) {
       };
 
     case POST_SERVICE:
+      return {
+        ...state,
+      };
+
+    case POST_CATEGORY:
       return {
         ...state,
       };
@@ -250,18 +256,18 @@ export function rootReducer(state = initialState, action) {
     case UPDATE_SOCIAL:
       return {
         ...state,
-        social: action.payload
-      }
+        social: action.payload,
+      };
     case GET_REVIEWS:
-        return {
-          ...state,
-          reviews: action.payload
-      }
+      return {
+        ...state,
+        reviews: action.payload,
+      };
     case POST_REVIEW:
-        return {
-          ...state,
-          reviews: action.payload
-    }  
+      return {
+        ...state,
+        reviews: action.payload,
+      };
     case CLEAN_CART:
       return {
         ...state,

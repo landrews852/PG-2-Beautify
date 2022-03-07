@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
-import { deleteItem, payProducts } from "../../../../redux/actions";
-import { Navigate, useNavigate } from "react-router-dom";
+import { payProducts } from "../../../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import ConfirmarCompra from "../../../features/confirmarCompra/confirmarCompra";
@@ -45,10 +44,10 @@ export default function Cart() {
         text: "Agrega productos al carrito...",
       });
     }
-    setModalShow (true) 
+    setModalShow(true);
   };
-  const onPay = ()=>{
-    setModalShow (false)
+  const onPay = () => {
+    setModalShow(false);
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = "https://sdk.mercadopago.com/js/v2";
@@ -100,8 +99,10 @@ export default function Cart() {
         </div>
       </div>
       <div>
-        <button className={s.btnpay} onClick={handleClick}>Pagar</button>
-      </div>      
+        <button className={s.btnpay} onClick={handleClick}>
+          Pagar
+        </button>
+      </div>
       <ConfirmarCompra
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -127,7 +128,6 @@ export default function Cart() {
       centered={true}    
       onPay= {()=> onPay() } 
       />
-    
     </div>
   );
 }

@@ -27,13 +27,13 @@ const { loadSocial } = require("../api/loadData/socialLoad");
 
 // Syncing all the models at once.
 
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     // await loadCarousel();
     // await loadCategories();
     // await loadProducts();
     // await loadServices();
-    // await loadSocial();
+     await loadSocial();
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });

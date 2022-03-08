@@ -15,11 +15,14 @@ export default function Orders({setOps}) {
     const { getAccessTokenSilently } = useAuth0();
   
     const handleSubmit = async (e) => {
+
       e.preventDefault();
       const token = await getAccessTokenSilently();
       dispatch(searchId(input, token)).then((res) => {
-        // console.log(res.data);
-        setData(res.data);
+        console.log(res.data);
+        const arr = []
+        arr.push(res.data)
+        setData(arr);
       });
     };
 
@@ -57,17 +60,20 @@ export default function Orders({setOps}) {
           </button>
         </div>
       </form>
-        {orders.length ? (
-        orders.map((o) => (
+        {data.length ? (
+        data.map((o) => (
         <div key={o.id}>
           <CardOrder
             order_date={o.order_date}
             id={o.id}
             total_amount={o.total_amount}
+            name_client= {o.client.name_client}
+            lastname_client= {o.client.lastname_client}
             status = {o.status}
             address={o.address}
             getDetail = {handleClick}
           />
+          {console.log(o.client.name_client)}
         </div>
         ))
       ) : (

@@ -501,3 +501,14 @@ export function cleanOrderDetail(id) {
     });
   };
 }
+
+export function putOrder(data, id, token) {
+  return async function (dispatch) {
+  var json = await axios.put(`${apiRoute}/api/order/${id}`, {status: data}, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+return json;
+}
+}

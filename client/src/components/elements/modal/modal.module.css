@@ -3,7 +3,23 @@
     flex-direction: column;
 }
 
-
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background: rgb(218, 210, 200);
+    height: 5.8vh;
+    transition: all 0.5s ease;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    margin:auto 0px;
+  }
+  
+  .button:hover {
+    background: rgb(212, 191, 204);
+    transition: all 0.5s ease;
+  }
 
 
 

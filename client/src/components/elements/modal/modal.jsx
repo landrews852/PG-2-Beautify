@@ -29,7 +29,7 @@ function CenteredModal(props) {
   }
     return (
         <>
-        <button variant="primary" onClick={() => setModalShow(true)}>
+        <button className={m.button} variant="primary" onClick={() => setModalShow(true)}>
         Crear Review
         </button>
 

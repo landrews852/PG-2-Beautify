@@ -336,6 +336,20 @@ export function searchEmail(email, token) {
   };
 }
 
+export function searchId(id, token) {
+  return async function (dispatch) {
+    const data = await axios.get(
+      `${apiRoute}/api/order/${id}`,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  };
+}
+
 export function updateClient(info, token) {
   return async function (dispatch) {
     const response = await axios.put(

@@ -6,9 +6,9 @@ function CardOrder({ total_amount, address, order_date, id, status, getDetail, n
 
   return (
     <>
-      <div className={s.container} onClick={() => getDetail(id)}>
+      <div className={s.container}>
           <div className={s.containerorder}>
-          <div className={s.containerdata}>
+          <div className={s.containerdata} onClick={() => getDetail(id)}>
             <label>id de la orden</label>
             <div className={s.orderId}>
               {id}
@@ -41,7 +41,11 @@ function CardOrder({ total_amount, address, order_date, id, status, getDetail, n
             <div className={s.containerdata}>  
               <label>Estado</label>
               <div className={s.status}>
-                {status}
+                <select>
+                  <option>in process</option>
+                  <option>delivered</option>
+                  <option>rejected</option>
+                </select>
               </div>
             </div>  
           </div> 

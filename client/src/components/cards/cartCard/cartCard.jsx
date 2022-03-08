@@ -24,33 +24,36 @@ export default function Card({
   };
   return (
     <div className={s.container}>
-      <img className={s.image} src={image} alt="Img not found" />
-      <div className={s.card}>
-        <div className={s.text}>
-          <h5 className={s.product_name}>{product_name}</h5>
-          {cost_by_unit === total ? (
-            <>
-              <p className={s.cost}>$ {cost_by_unit}</p>
-            </>
-          ) : (
-            <div className={s.cost}>
-              <p>
-                Valor: <del>{cost_by_unit}</del>
-              </p>
-              <p>on descuento: {total}</p>
-            </div>
-          )}
-
-          <p className={s.amount}>
-            {location.pathname === "/cart" ? (
-              <AmountCart id={id} amountCart={amount} stock={stock} cart={true} />
-            ) : (
-              <Amount id={id} amount={amount} stock={stock} />
-            )}
-          </p>
-        </div>
+      <div>
+        <img className={s.img} src={image} alt="Img not found" />
+      </div>
+      <div className={s.product_name_container}>
+        <h5 className={s.product_name}>{product_name}</h5>
+      </div>
+      <div className={s.amount}>
+        {location.pathname === "/cart" ? (
+          <AmountCart id={id} amountCart={amount} stock={stock} cart={true} />
+        ) : (
+          <Amount id={id} amount={amount} stock={stock} />
+        )}
+      </div>
+      <div  className={s.cost_container}>
+        {cost_by_unit === total ? (
+          <>
+            <p className={s.cost}>$ {cost_by_unit}</p>
+          </>
+        ) : (
+          <div>
+            <p>
+              Valor: <del>{cost_by_unit}</del>
+            </p>
+            <p>Con descuento: {total}</p>
+          </div>
+        )}
+      </div>
+      <div className={s.btn_container}>
         <button className={s.btn} onClick={(e) => handleDelete()}>
-          x
+          Quitar
         </button>
       </div>
     </div>

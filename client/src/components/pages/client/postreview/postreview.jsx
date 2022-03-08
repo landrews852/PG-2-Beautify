@@ -5,15 +5,15 @@ import { postReview } from '../../../../redux/actions';
 import s from './postreview.module.css'
 import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2';
-
+import { useNavigate } from 'react-router-dom';
 
 const validate = (review) => {
   let errors = {};
   
   if (!review.comment) {
     errors.comment = "Debe completar con un mensaje";
-  } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(review.comment)) {
-    errors.comment = "El apellido debe empezar en mayuscula";
+  } else if (!/^.{10,250}$/.test(review.comment)) {
+    errors.comment = "El contenido debe ser mayor a 10 caracteres y menor a 250 caracteres";
   }
   if (!review.rank) {
     errors.rank = "Elija un numero para puntuar";
@@ -32,7 +32,7 @@ const reviewpost = {
 const {user , id}  = props; 
 const [review,setReview] = useState(reviewpost);
 const { getAccessTokenSilently } = useAuth0();
-
+const navigate = useNavigate();
 
 useEffect(() => {
   setErrors(validate(review));
@@ -53,12 +53,25 @@ const handleChange = (e) => {
  async function handleSubmit(e) {
   e.preventDefault();
   const token = await getAccessTokenSilently();
-  dispatch(postReview(token,user[0].id,id,review));
-  Swal.fire({
-    icon: "success",
-    title: "¡Bien!",
-    text: "Publicaste una review",
-  });  
+  if(Object.keys(errors).length !== 0) 
+    {
+      Swal.fire({
+        icon: "error",
+        title: "¡Error!",
+        text: "Debes completar los datos requeridos",
+      });      
+    }
+    else {  
+      dispatch(postReview(token,user[0].id,id,review));
+      Swal.fire({
+        icon: "success",
+        title: "¡Bien!",
+        text: "Publicaste una review",
+      }); 
+      setTimeout(() => {
+        navigate('/panel')
+      },3000)
+    }    
 };
     return (
         <> 
@@ -75,10 +88,11 @@ const handleChange = (e) => {
                   <option value="4">4</option>
                   <option value="5">5</option>
               </select>
-              {errors.rank && (
-              <p className={s.error}>{errors.rank}</p>
-            )}    
+                
             </div>
+            {errors.rank && (
+              <p className={s.error}>{errors.rank}</p>
+            )}  
               <textarea value={review.comment} name="comment" onChange={(e) => {handleChange(e)}}>
               </textarea>
               {errors.comment && (

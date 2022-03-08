@@ -115,6 +115,7 @@ export default function Cart() {
         backdrop={'static'}
         centered={true}        
       />
+      {userlocal?
       <ConfirmarDatos
       show={modalShow2}
       onHide={() => {
@@ -126,8 +127,10 @@ export default function Cart() {
       scrollable={true}
       animation={true}
       backdrop={'static'}
-      centered={true}     
-      />
-    </div>
-  );
-}
+      centered={true}    
+      />:null
+      }
+      </div>
+      );
+    }
+    

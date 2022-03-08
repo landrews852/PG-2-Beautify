@@ -5,6 +5,7 @@
   background-color:rgb(255 237 237);
   border-radius: 10px;
   transition: all 0.3s ease-out;
+  height: 100%;
 }
 
 .cards:hover {

@@ -80,11 +80,20 @@
 
 .rankproduct select {
     height: 1.5em;
-    margin: none;
+    margin:0 0 10px 0;
 }
 
 .rankproduct input {
     width: 3em;
     padding:.5em;
     border:1px solid;
+}
+
+.error {
+  color: tomato;
+  background-color: rgba(17, 4, 4, 0.774);
+  font-weight: bold;
+  position: relative;
+  margin:1em 0 10px 0;
+
 }

@@ -6,7 +6,7 @@
 }
 
 .containerorder {
-    width: 100%;
+    width: auto;
     display: flex;
     border-bottom: 1px solid;
 }
@@ -23,5 +23,25 @@
 }
 
 .containerdata {
-    margin:2px 2em;
+    margin: 2px 2em;
+    min-width: 5vw;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.checked, .pause, .rejected, .delivered {
+    height: 1.5em !important;
+    margin: auto;    
+}
+.checked {
+    color: green;
+}
+.pause {
+    color:orange;
+}
+.rejected {
+    color:red;
+}
+.delivered {
+    color:rgb(65, 106, 240);
 }

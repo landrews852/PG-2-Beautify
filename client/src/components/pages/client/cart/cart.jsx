@@ -115,6 +115,7 @@ export default function Cart() {
         backdrop={'static'}
         centered={true}        
       />
+      {userlocal?
       <ConfirmarDatos
       show={modalShow2}
       onHide={() => {
@@ -127,8 +128,9 @@ export default function Cart() {
       animation={true}
       backdrop={'static'}
       centered={true}    
-      onPay= {()=> onPay() } 
-      />
-    </div>
-  );
-}
+      />:null
+      }
+      </div>
+      );
+    }
+    

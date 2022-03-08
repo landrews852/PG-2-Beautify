@@ -21,7 +21,6 @@
   flex-wrap: wrap;
 }
 .profilepicture div {
-  border: 2px solid rgb(31, 4, 58);
   width: 20vw;
   height: 20vw;
   margin: auto;
@@ -178,6 +177,10 @@
   border-radius: 6px; 
   cursor:pointer;
   background: rgb(218, 210, 200);
-  margin: 0.5em 3px 1em 7px;
+  margin: 0.5em 3px;
   transition: all 0.5s ease;
+  min-width: 200px;
+}
+.img{
+  border-radius: 50%;
 }

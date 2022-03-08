@@ -149,9 +149,9 @@ export default function EditClient() {
           <div onDragOver={dragOver}  className={s.profilepicture}>
               <div >
                     {!input.profile_picture ?
-                     <img /* className={s.img} */ src={perfil} onDrop={(e) => onDrop(e)}></img>
+                     <img className={s.img} src={perfil} onDrop={(e) => onDrop(e)}></img>
                     :
-                     <img /* className={s.img} */ src={input.profile_picture} onDrop={(e) => onDrop(e)}  ></img>
+                     <img className={s.img} src={input.profile_picture} onDrop={(e) => onDrop(e)}  ></img>
                     }
                     <label className={s.label} for='img'>Elige o arrastra una imagen</label>            
                     <input id="img" className={s.input} type="file" onChange={(e) => uploadImage(e)}/>

@@ -10,12 +10,21 @@ const router = Router();
 router.get('/all', async (req,res) => {
     try {
         const data = await Order.findAll({
-            include: {
+            include: [{
                 model: Product,
                 attributes: [
                     "product_name", "image"
                 ]
-            }
+            },{
+                model: Client,
+                attributes: [
+                    "name_client", "lastname_client"
+                ]
+            }],
+            order: [
+                ["order_date", "DESC"]
+            ],
+            limit: 10
         })
         res.json(data)
     } catch (error) {

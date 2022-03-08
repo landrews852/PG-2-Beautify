@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import CardOrder from '../../../cards/cardOrder/CardOrder';
-import { getOrderDetail, getOrders } from "../../../../redux/actions";
+import { getAllOrders, getOrderDetail, getOrders } from "../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import OrderDetail from './orderDetail'
 import s from './ordersAdmin.module.css'
@@ -35,9 +35,18 @@ export default function Orders({setOps}) {
     let { id } = userlocal[0];
     let orders = useSelector((state) => state.orders);
   
-    useEffect(() => {
-      dispatch(getOrders(id));
-    }, []);
+    // useEffect(() => {
+    //   dispatch(getOrders(id));
+    // }, []);
+
+    useEffect(async ()=>{
+      const token = await getAccessTokenSilently();
+      dispatch(getAllOrders(token))
+      .then(res => {
+        console.log(res.data)
+        setData(res.data)
+      })
+    }, [])
 
     const handleClick = (id) => {
       dispatch(getOrderDetail(id))

@@ -512,3 +512,14 @@ export function putOrder(data, id, token) {
 return json;
 }
 }
+
+export function getAllOrders(token) {
+  return async function (dispatch) {
+    const data = await axios.get(`${apiRoute}/api/order/all`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  };
+}

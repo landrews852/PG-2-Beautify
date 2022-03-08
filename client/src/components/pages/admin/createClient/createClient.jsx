@@ -85,6 +85,17 @@ export default function CreateClient() {
     });
   }
 
+  function handleUpper(e) {
+    let nameInput = e.target.value;
+    let validation = /\w\S*/g;
+    let capitalLetter= nameInput.replace(validation, (cl)=> cl.charAt(0).toUpperCase() + cl.substring(1).toLowerCase())
+
+    setInput({
+      ...input,
+      [e.target.name]: capitalLetter,
+    });
+  }
+
   const { getAccessTokenSilently } = useAuth0();
 
   async function handleSubmit(e) {
@@ -137,7 +148,7 @@ export default function CreateClient() {
               type="text"
               value={input.name_client}
               name="name_client"
-              onChange={handleChange}
+              onChange={handleUpper}
             />
             {errors.name_client && (
               <p className={s.error}>{errors.name_client}</p>
@@ -150,7 +161,7 @@ export default function CreateClient() {
               type="text"
               value={input.lastname_client}
               name="lastname_client"
-              onChange={handleChange}
+              onChange={handleUpper}
             />
           </div>
           {errors.lastname_client && (
@@ -213,7 +224,7 @@ export default function CreateClient() {
             />
           </div>
 
-          <button className={s.submit} type="submit">
+          <button className={s.submit} type="submit" disabled={errors.name_client || errors.lastname_client || errors.address ? true : false}>
             Crear
           </button>
         </div>

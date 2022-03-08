@@ -68,12 +68,13 @@
 }
 
 .rankproduct {
-    display: flex;
-    text-align: center;
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  width: 20vw;
 }
 
 .rankproduct p {
-    width: 8vw;
     margin-bottom: 0px !important;
     font-size: 1em;
 }

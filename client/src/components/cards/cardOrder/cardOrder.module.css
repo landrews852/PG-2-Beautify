@@ -2,13 +2,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 35vw;
+    width: 100%;
 }
 
 .containerorder {
     width: auto;
     display: flex;
     border-bottom: 1px solid;
+    flex-wrap: wrap;
 }
 
 .containerorder label {
@@ -44,4 +45,16 @@
 }
 .delivered {
     color:rgb(65, 106, 240);
+}
+
+@media screen and (max-width: 700px){
+    .containerorder {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .containerdata {
+        border-bottom:1px solid;
+        margin:1em 0;
+    }
+    
 }

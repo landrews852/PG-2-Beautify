@@ -52,14 +52,20 @@ router.get('/:id', async (req,res) => {
     try {
         const { id } = req.params;
         const data = await Order.findByPk(id,
-        {include: {
+        {include: [{
             model: Product,
             attributes: [
                 "product_name", "image","id"
             ]
-        }
-    })
-    res.json(data)
+        },{
+            model: Client,
+            attributes: [
+                "name_client", "lastname_client"
+            ]
+        }]
+        })
+        console.log(data)
+        res.json(data)
     } catch (error) {
         console.log(error)
     }

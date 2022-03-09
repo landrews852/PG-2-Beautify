@@ -12,7 +12,7 @@ const dispatch = useDispatch()
 const [about,setAbout] = useState({
     title : "",
     description: "",
-    image: "",
+    image: "no",
     slogan: ""
 })
 
@@ -45,8 +45,8 @@ const handleSubmit = (e) => {
                     <label name="slogan" id="slogan" className={s.slogan}>Su eslogan</label>
                     <textarea onChange={handleOnChange} type="text" name="slogan" id="slogan" />
                 
-                    <label name="image" id="image">Url de la imagen anexada</label>
-                    <input onChange={handleOnChange} type="text" name="image" id="image" />
+                    {/* <label name="image" id="image">Url de la imagen anexada</label>
+                    <input onChange={handleOnChange} type="text" name="image" id="image"  /> */}
                     
                 </div>
                 <button type="submit">Modificar</button>

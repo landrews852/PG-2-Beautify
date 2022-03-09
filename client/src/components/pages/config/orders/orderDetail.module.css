@@ -10,14 +10,24 @@
     color: black;
     display: flex;
     border-bottom: 1px solid;
+    width: 25vw;
+    text-align: center;
+    vertical-align: center;
+}
+
+.h3 {
+  border-bottom:1px solid;
+  margin-bottom:1em;
 }
 
 .ordercontainer img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
 }
 .ordercontainer span {
     min-width:8vw;
+    font-size:20px;
+    width: 100%;
 }
 .ordercontainer img, .ordercontainer span{
     margin: auto 2em;
@@ -54,4 +64,16 @@
     transform: translate(-15px,0px);
     position: relative;
     transition: all 0.5s linear;
+  }
+
+  @media screen and (max-width:720px  ) {
+    .ordercontainer {
+      display: flex;
+      flex-direction: column;
+  }
+  .ordercontainer img, .ordercontainer span, .ordercontainer a {
+    margin: auto;
+  }
+  
+
   }

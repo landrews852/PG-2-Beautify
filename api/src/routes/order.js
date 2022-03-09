@@ -10,12 +10,21 @@ const router = Router();
 router.get('/all', async (req,res) => {
     try {
         const data = await Order.findAll({
-            include: {
+            include: [{
                 model: Product,
                 attributes: [
                     "product_name", "image"
                 ]
-            }
+            },{
+                model: Client,
+                attributes: [
+                    "name_client", "lastname_client"
+                ]
+            }],
+            order: [
+                ["order_date", "DESC"]
+            ],
+            limit: 10
         })
         res.json(data)
     } catch (error) {
@@ -64,14 +73,20 @@ router.get('/:id', async (req,res) => {
     try {
         const { id } = req.params;
         const data = await Order.findByPk(id,
-        {include: {
+        {include: [{
             model: Product,
             attributes: [
                 "product_name", "image","id"
             ]
-        }
-    })
-    res.json(data)
+        },{
+            model: Client,
+            attributes: [
+                "name_client", "lastname_client"
+            ]
+        }]
+        })
+        console.log(data)
+        res.json(data)
     } catch (error) {
         console.log(error)
     }
@@ -119,6 +134,7 @@ router.put('/:id', async (req, res) =>{
             returning: true
         })
         const data = response[1][0]
+        await axios.post (`${API_ROOT}/api/email/changestatus`, data)
         res.json(data)
     } catch (error) {
         console.log(error)

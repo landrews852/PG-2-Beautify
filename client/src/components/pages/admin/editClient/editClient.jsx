@@ -5,6 +5,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import s from "./editClient.module.css";
 import { editUserInfo } from "../../../../redux/actions";
+import axios from "axios";
+import perfil from '../../../../images/perfil.png'
 
 //const apiRoute = "http://localhost:3001";
 const apiRoute = process.env.REACT_APP_APP_ROOT;
@@ -61,6 +63,7 @@ export default function EditClient() {
     profile_picture,
     email,
   } = user[0];
+  const [image, setImage] = useState(profile_picture);
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
@@ -107,16 +110,53 @@ export default function EditClient() {
       text: "Ya has editado tu Perfil",
     });
   }
+  const upload = async (img)=>{
+    const files = img;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "Beautify");    
+    const res = await axios.post(
+      "https://api.cloudinary.com/v1_1/jair1020/image/upload",
+      data
+    );
+    const file = res.data;
+    setInput({...input,profile_picture:file.secure_url});
+    console.log(res);
+  }
+
+  const uploadImage =  (e) => {
+    e.preventDefault();
+    const files = e.target.files;
+    upload (files)
+
+  };
+
+  const onDrop = (e)=> {
+    e.preventDefault();
+    const files =e.dataTransfer.files
+    upload (files)
+    
+  };
+  const dragOver = e => {
+    e.preventDefault ()
+  }
 
   return (
     <>
       <div className={s.newService}>
         <h2>Editar Perfil</h2>
         <div className={s.container}>
-          <div className={s.profilepicture}>
-            <div>
-              <img src={profile_picture} />
-            </div>
+          <div onDragOver={dragOver}  className={s.profilepicture}>
+              <div >
+                    {!input.profile_picture ?
+                     <img className={s.img} src={perfil} onDrop={(e) => onDrop(e)}></img>
+                    :
+                     <img className={s.img} src={input.profile_picture} onDrop={(e) => onDrop(e)}  ></img>
+                    }
+                    <label className={s.label} for='img'>Elige o arrastra una imagen</label>            
+                    <input id="img" className={s.input} type="file" onChange={(e) => uploadImage(e)}/>
+                    {/* <img src={profile_picture}/> */}
+              </div>
           </div>
           <div className={s.profileform}>
             <form onSubmit={handleSubmit}>

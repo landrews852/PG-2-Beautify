@@ -19,7 +19,18 @@ router.get("/success", async (req,res) => {
       items: additional_info.items,
       address: metadata.address
     }
-    await axios.post (`${API_ROOT}/api/order`,orderPost)   
+    const emailpost={
+      apellido: metadata.last_name,
+      name: metadata.name_client,
+      email:metadata.email,
+      status,
+      transaction_amount,
+      id_order:order.id,
+      items: additional_info.items,
+      address: metadata.address
+    }
+    await axios.post (`${API_ROOT}/api/order`,orderPost)
+    await axios.post (`${API_ROOT}/api/email`,emailpost)
     res.redirect(`${APP_ROOT}/panel?true`)
   }catch (err){
     res.json (err)

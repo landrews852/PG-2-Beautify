@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { postImgCarousel } from "../../../../../redux/actions";
-import s from "./addImageCarousel.module.css"
+import s from "./addImageCarousel.module.css";
+import UploadImage from "../../../../cloudinary/UploadImage.jsx";
 
 export default function AddImageCarousel() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [errors, setErrors] = useState({
-    image: "",         // string
-    title: "",         // string
-    description: "",         // string
+    image: "", // string
+    title: "", // string
+    description: "", // string
   });
   const [input, setInput] = useState({
-    image: "",         // string
-    title: "",         // string
-    description: "",         // string
-  })
+    image: "", // string
+    title: "", // string
+    description: "", // string
+  });
 
   const validate = (input) => {
     let errors = {};
@@ -38,31 +39,36 @@ export default function AddImageCarousel() {
     }
 
     return errors;
-  }
+  };
 
   useEffect(() => {
     setErrors(validate(input));
-  }, [input])
+  }, [input]);
 
   function handleChange(e) {
     setInput({
       ...input,
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
+  }
+  function handleChangeimg(e, img) {
+    setInput({
+      ...input,
+      image: img,
+    });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(postImgCarousel(input))
-      .then(response => {
-        if (response === "created") alert("The image was added successfully!")
-        if (response === "maximum images") alert("Can't exceed 5 images")
-      })
+    dispatch(postImgCarousel(input)).then((response) => {
+      if (response === "created") alert("The image was added successfully!");
+      if (response === "maximum images") alert("Can't exceed 5 images");
+    });
     setInput({
       image: "",
       title: "",
       description: "",
-    })
+    });
   }
 
   return (
@@ -72,13 +78,12 @@ export default function AddImageCarousel() {
         <div className={s.form}>
           <div>
             <label>Imagen:</label>
-            <input
-              type="text"
-              value={input.image}
-              name="image"
-              onChange={handleChange}
+            <UploadImage
+              input={input}
+              setInput={setInput}
+              handleChangeimg={handleChangeimg}
             />
-            {errors.image && (<p className={s.error}>{errors.image}</p>)}
+            {errors.image && <p className={s.error}>{errors.image}</p>}
           </div>
           <div>
             <label>Título:</label>
@@ -89,9 +94,7 @@ export default function AddImageCarousel() {
               onChange={handleChange}
             />
           </div>
-          {errors.title && (
-            <p className={s.error}>{errors.title}</p>
-          )}
+          {errors.title && <p className={s.error}>{errors.title}</p>}
           <div>
             <label>Descripcion:</label>
             <input
@@ -104,13 +107,16 @@ export default function AddImageCarousel() {
           {errors.description && (
             <p className={s.error}>{errors.description}</p>
           )}
-          <button disabled={Object.values(errors).length > 0} className={s.submit} type="submit">Agregar</button>
-          <div>
-
-          </div>
+          <button
+            disabled={Object.values(errors).length > 0}
+            className={s.submit}
+            type="submit"
+          >
+            Agregar
+          </button>
+          <div></div>
         </div>
       </form>
-
     </div>
-  )
+  );
 }

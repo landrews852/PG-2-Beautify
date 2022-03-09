@@ -19,32 +19,41 @@ export default function ProductDetail() {
   //REVIEWS STATE//
   const reviews = useSelector(state => state.reviews)
 
+
+  // Ordenamiento por fecha de las reviews
   const sortAsc = (a,b) => {
     if (a.createdAt > b.createdAt) return -1
     else if (a.createdAt < b.createdAt) return 1
     else return 0   
   }
-
   if(reviews.length > 0 ) {
-    console.log(reviews)
     reviews.sort(sortAsc)
   }
 
-  const ranking = 2.5;
+
+  // Calculo porcentaje para valor del ranking(estrellas)
+  var sum = 0 
+  for(let i=0;i < reviews.length;i++){
+    sum = parseInt(reviews[i].rank) + sum;
+  }
+  
+  
+  let ranking = reviews.length ? sum / (reviews.length) : "5";
+  console.log("ranking",reviews.length)
   let ranking_starts = [1, 2, 3, 4, 5];
   // Ranking dinamico para estrellas.
-  ranking_starts = ranking_starts.map((rank) => {
-    if (rank < ranking) return "fa-star";
-    if (rank - ranking === 0.5) return "fa-star-half-o";
-    if (ranking - rank < 0) return "fa-star-o";
+  ranking_starts = ranking &&ranking_starts.map((rank) => {
+    if (rank <= ranking) return "fa-star";
+    if ( rank - ranking > 0 && rank - ranking <= 0.5 ) return "fa-star-half-o";
+    else return "fa-star-o";
   });
-
+ console.log("ranking_starts",ranking_starts)
   useEffect(() => {
     dispatch(getProductDetail(id));
     dispatch(allProducts());
     dispatch(getReviews(id));
     return dispatch(cleanProductDetail());
-  }, [dispatch]);
+  }, []);
 
   let productDetail = useSelector((state) => state.productDetail);
   

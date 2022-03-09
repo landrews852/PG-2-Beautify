@@ -3,7 +3,7 @@ import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
-import { payProducts } from "../../../../redux/actions";
+import { payProducts, getUserInfo } from "../../../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import ConfirmarCompra from "../../../features/confirmarCompra/confirmarCompra";
@@ -18,14 +18,14 @@ export default function Cart() {
   let productos = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   let mercadopago;
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, getAccessTokenSilently, logout } = useAuth0();
   const userlocal = JSON.parse(localStorage.getItem("user"));
   let Items = userlocal ? { productos: productos, user: userlocal[0] } : null;
   const [modalShow, setModalShow] = useState(false);
   const [modalShow2, setModalShow2] = useState (false)
   const navigate = useNavigate ()
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (!isAuthenticated) {
       return Swal.fire({
         icon: "warning",
@@ -45,6 +45,28 @@ export default function Cart() {
         text: "Agrega productos al carrito...",
       });
     }
+
+    if (isAuthenticated) {
+      const token = await getAccessTokenSilently();
+      dispatch(getUserInfo(token)).then(u => {
+        if(u[0].disabled){
+          Swal.fire({
+            icon: "error",
+            title: "¡Bloqueado!",
+            text: "Se ha detectado actividad sospechosa y/o inapropiada, por favor comuniquese con nosotros.",
+          }).then(result =>{
+            if (result.isConfirmed) {
+              logout();
+              localStorage.clear();
+            } else {
+              logout();
+              localStorage.clear();
+            }
+          })
+        }
+      })
+    }
+
     setModalShow(true);
   };
   const onPay = () => {
@@ -115,6 +137,7 @@ export default function Cart() {
         backdrop={'static'}
         centered={true}        
       />
+      {userlocal?
       <ConfirmarDatos
       show={modalShow2}
       onHide={() => {
@@ -127,8 +150,9 @@ export default function Cart() {
       animation={true}
       backdrop={'static'}
       centered={true}    
-      onPay= {()=> onPay() } 
-      />
-    </div>
-  );
-}
+      />:null
+      }
+      </div>
+      );
+    }
+    

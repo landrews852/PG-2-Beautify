@@ -296,6 +296,7 @@ export function getUserInfo(token) {
       type: GET_CLIENT,
       payload: user.data,
     });
+    return user.data
   };
 }
 
@@ -344,6 +345,20 @@ export function searchEmail(email, token) {
   return async function (dispatch) {
     const data = await axios.get(
       `${apiRoute}/api/client/search?email=${email}`,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  };
+}
+
+export function searchId(id, token) {
+  return async function (dispatch) {
+    const data = await axios.get(
+      `${apiRoute}/api/order/${id}`,
       {
         headers: {
           authorization: `Bearer ${token}`,
@@ -503,5 +518,42 @@ export function cleanOrderDetail(id) {
       type: CLEAN_ORDER_DETAIL,
       payload: {},
     });
+  };
+}
+
+export function putOrder(data, id, token) {
+  return async function (dispatch) {
+  var json = await axios.put(`${apiRoute}/api/order/${id}`, {status: data}, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+return json;
+}
+}
+
+export function getAllOrders(token) {
+  return async function (dispatch) {
+    const data = await axios.get(`${apiRoute}/api/order/all`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  };
+}
+
+export function blockClient(info, token) {
+  return async function (dispatch) {
+    const response = await axios.put(
+      `${apiRoute}/api/client/${info.id}`,
+      { disabled: info.data },
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
   };
 }

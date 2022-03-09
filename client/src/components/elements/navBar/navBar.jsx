@@ -13,15 +13,32 @@ import Login from "../../features/login/login";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import CalendarLogo from "./calendarLogo";
+import Swal from "sweetalert2";
 
 
 export default function Navigator() {
-  const { isAuthenticated, getAccessTokenSilently, isLoading } = useAuth0();
+  const { isAuthenticated, getAccessTokenSilently, isLoading, logout } = useAuth0();
   const dispatch = useDispatch();
   useEffect(async () => {
     if (isAuthenticated) {
       const token = await getAccessTokenSilently();
-      dispatch(getUserInfo(token));
+      dispatch(getUserInfo(token)).then(u => {
+        if(u[0].disabled){
+          Swal.fire({
+            icon: "error",
+            title: "¡Bloqueado!",
+            text: "Se ha detectado actividad sospechosa y/o inapropiada, por favor comuniquese con nosotros.",
+          }).then(result =>{
+            if (result.isConfirmed) {
+              logout();
+              localStorage.clear();
+            } else {
+              logout();
+              localStorage.clear();
+            }
+          })
+        }
+      })
     }
   }, [isAuthenticated]);
 

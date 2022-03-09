@@ -14,8 +14,7 @@ router.get("/", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const { image, description,title,slogan } = req.body;
-    if (image && description) {
-      const data = await About.findAll();
+    if (image && description && title && slogan) {
       await About.create({
         image,
         description,

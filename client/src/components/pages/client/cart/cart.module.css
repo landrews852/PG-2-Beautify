@@ -21,7 +21,7 @@
   border: 1px solid #ebebeb;
   border-radius: 10px;
   background-color: #fafafa;
-  margin-bottom: 12rem;
+  margin-bottom: 1rem;
 }
 .title {
   margin-top: 20px;
@@ -33,7 +33,7 @@
   height: 4rem;
 }
 
-.btnpay{
+.btnpay {
   border-radius: 4px;
   background: rgb(218, 210, 200);
   transition: all 0.5s ease;
@@ -45,8 +45,7 @@
   width: 100px;
   text-align: center;
 }
-.btnpay:hover{
+.btnpay:hover {
   background: rgb(212, 191, 204);
-    transition: all 0.5s ease;
-    
+  transition: all 0.5s ease;
 }

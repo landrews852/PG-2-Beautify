@@ -43,9 +43,9 @@ export default function ProductDetail() {
   let ranking_starts = [1, 2, 3, 4, 5];
   // Ranking dinamico para estrellas.
   ranking_starts = ranking &&ranking_starts.map((rank) => {
-    if (rank < ranking) return "fa-star";
-    if (rank - ranking === 0.5) return "fa-star-half-o";
-    if (ranking - rank < 0.5) return "fa-star-o";
+    if (rank <= ranking) return "fa-star";
+    if ( rank - ranking > 0 && rank - ranking <= 0.5 ) return "fa-star-half-o";
+    else return "fa-star-o";
   });
  console.log("ranking_starts",ranking_starts)
   useEffect(() => {

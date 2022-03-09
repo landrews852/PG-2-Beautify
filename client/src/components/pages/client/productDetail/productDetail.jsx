@@ -38,11 +38,11 @@ export default function ProductDetail() {
   }
   
   
-  const ranking =reviews.length == "0" ?"1":sum / (reviews.length);
+  let ranking = reviews.length ? sum / (reviews.length) : "5";
   console.log("ranking",reviews.length)
   let ranking_starts = [1, 2, 3, 4, 5];
   // Ranking dinamico para estrellas.
-  ranking_starts =ranking&&ranking_starts.map((rank) => {
+  ranking_starts = ranking &&ranking_starts.map((rank) => {
     if (rank < ranking) return "fa-star";
     if (rank - ranking === 0.5) return "fa-star-half-o";
     if (ranking - rank < 0.5) return "fa-star-o";
@@ -53,7 +53,7 @@ export default function ProductDetail() {
     dispatch(allProducts());
     dispatch(getReviews(id));
     return dispatch(cleanProductDetail());
-  }, [dispatch]);
+  }, []);
 
   let productDetail = useSelector((state) => state.productDetail);
   

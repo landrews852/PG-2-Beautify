@@ -62,6 +62,7 @@ export default function Orders({setOps}) {
             type="text"
             name="search_name"
             value={input}
+            placeholder="Ingrese el id de la orden"
             onChange={handleChange}
           />
           <button className="submit" type="submit">

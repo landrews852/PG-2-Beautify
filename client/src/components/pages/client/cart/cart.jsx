@@ -3,7 +3,7 @@ import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
-import { payProducts } from "../../../../redux/actions";
+import { payProducts, getUserInfo } from "../../../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import ConfirmarCompra from "../../../features/confirmarCompra/confirmarCompra";
@@ -18,7 +18,7 @@ export default function Cart() {
   let productos = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   let mercadopago;
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, getAccessTokenSilently, logout } = useAuth0();
   const userlocal = JSON.parse(localStorage.getItem("user"));
   let Items = userlocal ? { productos: productos, user: userlocal[0] } : null;
   const [modalShow, setModalShow] = useState(false);

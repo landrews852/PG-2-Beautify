@@ -47,12 +47,12 @@ dispatch(putOrder(e.target.value, id, token))
   return (
     <>
       <div className={s.container}>
-          <div className={s.containerorder}>
+          <div className={s.containerorder} onClick={() => getDetail(id)}>
           <div className={s.containerdata}>
             {/* {iconstatus} */}
             {icon}
           </div>
-          <div className={s.containerdata} onClick={() => getDetail(id)}>
+          <div className={s.containerdata} >
             <label>id de la orden</label>
             <div className={s.orderId}>
               {id}

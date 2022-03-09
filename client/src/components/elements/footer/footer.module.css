@@ -5,9 +5,7 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  margin-top: 24vw;
-  position: sticky;
-  /* bottom: 1%; */
+  /* position: relative; */
   background: linear-gradient(to bottom, #fbeee6 5%, #ffffff 100%);
   background-color: #ffffff;
 }

@@ -12,6 +12,7 @@ export const GET_SERVICES_BY_NAME = "GET_SERVICES_BY_NAME";
 export const ALL_PRODUCTS = "ALL_PRODUCTS";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const POST_PRODUCT = "POST_PRODUCT";
+export const POST_CATEGORY = "POST_CATEGORY";
 export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
 export const CLEAN_PRODUCT_DETAIL = "CLEAN_PRODUCT_DETAIL";
 export const POST_SERVICE = "POST_SERVICE";
@@ -277,6 +278,7 @@ export function getUserInfo(token) {
       type: GET_CLIENT,
       payload: user.data,
     });
+    return user.data
   };
 }
 
@@ -325,6 +327,20 @@ export function searchEmail(email, token) {
   return async function (dispatch) {
     const data = await axios.get(
       `${apiRoute}/api/client/search?email=${email}`,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  };
+}
+
+export function searchId(id, token) {
+  return async function (dispatch) {
+    const data = await axios.get(
+      `${apiRoute}/api/order/${id}`,
       {
         headers: {
           authorization: `Bearer ${token}`,
@@ -414,6 +430,13 @@ export function cleanCart() {
   };
 }
 
+export function postCategory(category) {
+  return async function (dispatch) {
+    const data = await axios.post(`${apiRoute}/api/categories`, category);
+    return data;
+  };
+}
+
 export function getOrders(id) {
   return async function (dispatch) {
     var json = await axios.get(`${apiRoute}/api/order?id=${id}`);
@@ -425,21 +448,29 @@ export function getOrders(id) {
   };
 }
 
+export function putCategory(id, payload) {
+  return async function (dispatch) {
+    const categoryUpdate = await axios.put(
+      `${apiRoute}/api/categories/${id}`,
+      payload
+    );
+  };
+}
 export function getReviews(id) {
   return async function (dispatch) {
-    const reviews = await axios.get(`${apiRoute}/api/review?idProduct=${id}`)
+    const reviews = await axios.get(`${apiRoute}/api/review?idProduct=${id}`);
     dispatch({
       type: GET_REVIEWS,
-      payload: reviews.data
-    })
-  }
+      payload: reviews.data,
+    });
+  };
 }
 
-export function postReview(token,idclient,idproduct,payload) {
+export function postReview(token, idclient, idproduct, payload) {
   return async function (dispatch) {
     const userreview = await axios.post(
       `${apiRoute}/api/review?idClient=${idclient}&idProduct=${idproduct}`,
-       payload,
+      payload,
       {
         headers: {
           authorization: `Bearer ${token}`,
@@ -448,9 +479,9 @@ export function postReview(token,idclient,idproduct,payload) {
     );
     dispatch({
       type: POST_REVIEW,
-      payload: userreview
-    })
-  }
+      payload: userreview,
+    });
+  };
 }
 
 export function getOrderDetail(id) {
@@ -469,5 +500,42 @@ export function cleanOrderDetail(id) {
       type: CLEAN_ORDER_DETAIL,
       payload: {},
     });
+  };
+}
+
+export function putOrder(data, id, token) {
+  return async function (dispatch) {
+  var json = await axios.put(`${apiRoute}/api/order/${id}`, {status: data}, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+return json;
+}
+}
+
+export function getAllOrders(token) {
+  return async function (dispatch) {
+    const data = await axios.get(`${apiRoute}/api/order/all`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  };
+}
+
+export function blockClient(info, token) {
+  return async function (dispatch) {
+    const response = await axios.put(
+      `${apiRoute}/api/client/${info.id}`,
+      { disabled: info.data },
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
   };
 }

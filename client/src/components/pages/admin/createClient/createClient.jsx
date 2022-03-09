@@ -6,7 +6,7 @@ import axios from "axios";
 import s from "./createClient.module.css";
 import { getUserInfo } from "../../../../redux/actions";
 import Swal from "sweetalert2";
-
+import perfil from "../../../../images/perfil.png";
 
 const apiRoute = process.env.REACT_APP_APP_ROOT;
 
@@ -85,20 +85,60 @@ export default function CreateClient() {
     });
   }
 
+  function handleUpper(e) {
+    let nameInput = e.target.value;
+    let validation = /\w\S*/g;
+    let capitalLetter = nameInput.replace(
+      validation,
+      (cl) => cl.charAt(0).toUpperCase() + cl.substring(1).toLowerCase()
+    );
+
+    setInput({
+      ...input,
+      [e.target.name]: capitalLetter,
+    });
+  }
+  const upload = async (img) => {
+    const files = img;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "Beautify");
+    const res = await axios.post(
+      "https://api.cloudinary.com/v1_1/jair1020/image/upload",
+      data
+    );
+    const file = res.data;
+    setInput({ ...input, profile_picture: file.secure_url });
+    console.log(res);
+  };
+
+  const uploadImage = (e) => {
+    e.preventDefault();
+    const files = e.target.files;
+    upload(files);
+  };
+
+  const onDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    upload(files);
+  };
+  const dragOver = (e) => {
+    e.preventDefault();
+  };
+
   const { getAccessTokenSilently } = useAuth0();
 
   async function handleSubmit(e) {
     e.preventDefault();
     const token = await getAccessTokenSilently();
-    if(Object.keys(errors).length !== 0) 
-    {
+    if (Object.keys(errors).length !== 0) {
       Swal.fire({
         icon: "error",
         title: "¡Error!",
         text: "Debes completar los datos requeridos",
-      });      
-    }
-    else {      
+      });
+    } else {
       const response = await axios.post(`${apiRoute}/api/client`, input, {
         headers: {
           authorization: `Bearer ${token}`,
@@ -119,45 +159,70 @@ export default function CreateClient() {
         text: "Has completado tus datos de perfil",
       });
       setTimeout(() => {
-        navigate('/profile')
-      },3000)
-      
-      }    
+        navigate("/profile");
+      }, 3000);
+    }
   }
 
   return (
     <div className={s.newService}>
       {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
       <h2>Cliente nuevo</h2>
-      <form onSubmit={handleSubmit}>
-        <div className={s.form}>
+      <div className={s.container}>
+        <div onDragOver={dragOver} className={s.profilepicture}>
           <div>
-            <label>Nombre:</label>
-            <input
-              type="text"
-              value={input.name_client}
-              name="name_client"
-              onChange={handleChange}
-            />
-            {errors.name_client && (
-              <p className={s.error}>{errors.name_client}</p>
+            {!input.profile_picture ? (
+              <img
+                className={s.img} src={perfil}
+                onDrop={(e) => onDrop(e)}
+              ></img>
+            ) : (
+              <img
+                className={s.img} src={input.profile_picture}
+                onDrop={(e) => onDrop(e)}
+              ></img>
             )}
-          </div>
-
-          <div>
-            <label>Apellido:</label>
+            <label className={s.label} for="img">
+              Elige o arrastra una imagen
+            </label>
             <input
-              type="text"
-              value={input.lastname_client}
-              name="lastname_client"
-              onChange={handleChange}
+              id="img"
+              className={s.input}
+              type="file"
+              onChange={(e) => uploadImage(e)}
             />
+            {/* <img src={profile_picture}/> */}
           </div>
-          {errors.lastname_client && (
-            <p className={s.error}>{errors.lastname_client}</p>
-          )}
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className={s.form}>
+            <div>
+              <label>Nombre:</label>
+              <input
+                type="text"
+                value={input.name_client}
+                name="name_client"
+                onChange={handleUpper}
+              />
+              {errors.name_client && (
+                <p className={s.error}>{errors.name_client}</p>
+              )}
+            </div>
 
-          {/* <div>
+            <div>
+              <label>Apellido:</label>
+              <input
+                type="text"
+                value={input.lastname_client}
+                name="lastname_client"
+                onChange={handleUpper}
+              />
+            </div>
+            {errors.lastname_client && (
+              <p className={s.error}>{errors.lastname_client}</p>
+            )}
+
+            {/* <div>
                         <label>E-mail:</label>
                         <input
                             type="email"
@@ -170,54 +235,63 @@ export default function CreateClient() {
                         <p className={s.error}>{errors.email}</p>
                     )} */}
 
-          <div>
-            <label>Foto Perfil:</label>
-            <input
-              type="text"
-              value={input.profile_picture}
-              name="profile_picture"
-              onChange={handleChange}
-            />
-          </div>
+            <div>
+              <label>Foto Perfil:</label>
+              <input
+                type="text"
+                value={input.profile_picture}
+                name="profile_picture"
+                onChange={handleChange}
+              />
+            </div>
 
-          <div>
-            <label>Direccion:</label>
-            <input
-              type="text"
-              value={input.address}
-              name="address"
-              onChange={handleChange}
-            />
-          </div>
-          {errors.address && <p className={s.error}>{errors.address}</p>}
+            <div>
+              <label>Direccion:</label>
+              <input
+                type="text"
+                value={input.address}
+                name="address"
+                onChange={handleChange}
+              />
+            </div>
+            {errors.address && <p className={s.error}>{errors.address}</p>}
 
-          <div>
-            <label>Telefono:</label>
-            <input
-              type="text"
-              value={input.phone}
-              name="phone"
-              onChange={handleChange}
-            />
-          </div>
-          {errors.phone && <p className={s.error}>{errors.phone}</p>}
+            <div>
+              <label>Telefono:</label>
+              <input
+                type="text"
+                value={input.phone}
+                name="phone"
+                onChange={handleChange}
+              />
+            </div>
+            {errors.phone && <p className={s.error}>{errors.phone}</p>}
 
-          <div>
-            <label>Fecha de Cumpleaños:</label>
-            <input
-              className={s.putdate}
-              type="date"
-              value={input.birthday}
-              name="birthday"
-              onChange={handleChange}
-            />
-          </div>
+            <div>
+              <label>Fecha de Cumpleaños:</label>
+              <input
+                className={s.putdate}
+                type="date"
+                value={input.birthday}
+                name="birthday"
+                onChange={handleChange}
+              />
+            </div>
 
-          <button className={s.submit} type="submit">
-            Crear
-          </button>
-        </div>
-      </form>
+            <button
+              className={s.submit}
+              type="submit"
+              disabled={
+                errors.name_client || errors.lastname_client || errors.address
+                  ? true
+                  : false
+              }
+            >
+              Crear
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

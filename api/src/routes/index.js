@@ -13,6 +13,7 @@ const socialRouter = require('./social.js')
 const paymentRouter = require('./payment.js')
 const feedbackRouter = require('./feedback.js')
 const orderRouter = require('./order.js')
+const envioEmail = require ('./enviomail')
 
 
 const router = Router();
@@ -33,5 +34,6 @@ router.use('/api/social', socialRouter)
 router.use('/api/payment', paymentRouter)
 router.use('/api/feedback', feedbackRouter)
 router.use('/api/order', orderRouter)
+router.use ('/api/email', envioEmail )
 
 module.exports = router;

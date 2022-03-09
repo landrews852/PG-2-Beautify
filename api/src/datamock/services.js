@@ -48,7 +48,8 @@ const services = [
   {
     name_service: "Tintura para cejas",
     price: 5.96,
-    description: "¡En Beautify creemos que hay un color especial esperándote! En este proceso se utiliza colorantes especialmente desarrollados para el área de los ojos, libres de amoníaco. El colorante difiere del procedimiento de henna, debido a la utilización sólo de la coloración de los pelos, sin llegar a la piel, generando un aspecto natural. ",
+    description:
+      "¡En Beautify creemos que hay un color especial esperándote! En este proceso se utiliza colorantes especialmente desarrollados para el área de los ojos, libres de amoníaco. El colorante difiere del procedimiento de henna, debido a la utilización sólo de la coloración de los pelos, sin llegar a la piel, generando un aspecto natural. ",
     category: ["Cejas"],
     image: [
       "https://www.cocinavital.mx/wp-content/uploads/2021/06/tinte-casero-para-cejas.jpg",

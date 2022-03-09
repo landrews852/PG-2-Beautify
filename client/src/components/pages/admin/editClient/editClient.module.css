@@ -21,9 +21,8 @@
   flex-wrap: wrap;
 }
 .profilepicture div {
-  border: 2px solid rgb(31, 4, 58);
-  width: 7vw;
-  height: 7vw;
+  width: 20vw;
+  height: 20vw;
   margin: auto;
   min-width: 100px;
   min-height: 100px;
@@ -166,4 +165,22 @@
   left: 320px;
   top: 2px;
   width: 180px;
+}
+
+.input{
+  display: none;
+}
+
+.label{
+  display: block; 
+  border: 1px solid #000;
+  border-radius: 6px; 
+  cursor:pointer;
+  background: rgb(218, 210, 200);
+  margin: 0.5em 3px;
+  transition: all 0.5s ease;
+  min-width: 200px;
+}
+.img{
+  border-radius: 50%;
 }

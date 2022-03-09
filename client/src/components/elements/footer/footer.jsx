@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import s from "./footer.module.css";
 import { Link } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSocial } from "../../../redux/actions";
 
 export default function Footer() {
-  const dispatch = useDispatch()
-  const data = useSelector(state => state.social)
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.social);
 
   useEffect(() => {
-    dispatch(getSocial())
-  }, [])
+    dispatch(getSocial());
+  }, []);
 
   return (
     <div className={s.container}>
@@ -58,7 +58,7 @@ export default function Footer() {
             <Toaster position="bottom-center" reverseOrder={false} />
           </div>
         </li>
-      </ul >
-    </div >
+      </ul>
+    </div>
   );
 }

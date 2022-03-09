@@ -1,14 +1,9 @@
 import "./cardCateServices.css";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function CardCateServices() {
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getCategories());
-  // }, []);
-  // const categories = use}Selector((state) => state.categories);
-
   return (
     <div className="content-wrapper">
       <ul id="accordion">

@@ -6,21 +6,36 @@ import { getUserInfo } from "../../../redux/actions";
 import CartLogo from "./cartLogo";
 import s from "./navBar.module.css";
 import UserMenu from "../../elements/userMenu/userMenu";
-import { Link } from "react-router-dom";
+import { Link,  NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import Login from "../../features/login/login";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import CalendarLogo from "./calendarLogo";
+import Swal from "sweetalert2";
+
 
 export default function Navigator() {
-  const { isAuthenticated, getAccessTokenSilently, isLoading } = useAuth0();
+  const { isAuthenticated, getAccessTokenSilently, isLoading, logout } = useAuth0();
   const dispatch = useDispatch();
   useEffect(async () => {
     if (isAuthenticated) {
       const token = await getAccessTokenSilently();
-      dispatch(getUserInfo(token));
+      dispatch(getUserInfo(token)).then(u => {
+        if(u[0].disabled){
+          Swal.fire({
+            icon: "error",
+            title: "¡Bloqueado!",
+            text: "Se ha detectado actividad sospechosa y/o inapropiada, por favor comuniquese con nosotros.",
+          }).then(result =>{
+            if (result.isConfirmed) {
+              logout();
+              localStorage.clear();
+            }
+          })
+        }
+      })
     }
   }, [isAuthenticated]);
 
@@ -48,16 +63,16 @@ export default function Navigator() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={s.me_auto}>
-            <Link to="/aboutUs" className={s.linkbar}>
+            <NavLink to="/aboutUs" className={({ isActive }) =>isActive?s.act:s.linkbar}>
               Quienes somos
-            </Link>
-            <Link to="/market" className={s.linkbar}>
+            </NavLink>
+            <NavLink to="/market" className={({ isActive }) =>isActive?s.act:s.linkbar}>
               Productos
-            </Link>
-            <Link to="/services" className={s.linkbar}>
+            </NavLink>
+            <NavLink to="/services" className={({ isActive }) =>isActive?s.act:s.linkbar}>
               Servicios
-            </Link>
-            <Login />
+            </NavLink>
+            {!isAuthenticated?<Login/>:null}
           </Nav>
 
           { location.pathname === "/market" ||

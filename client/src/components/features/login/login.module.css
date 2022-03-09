@@ -1,0 +1,25 @@
+.button {
+  /* border-bottom: 2px solid transparent; */
+  border: none;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.55);
+  display: block;
+  /* padding: 0.5rem 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem; */
+}
+.button:hover {
+  border-bottom: 2px solid black;
+}
+
+.buttonlogin {
+  /* border-bottom: 2px solid black; */
+  background-color: transparent;
+  border: none;
+  transition: all 0.5s ease;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  text-align: left;
+}

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { postProduct, getCategories } from "../../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./createProduct.module.css";
+import UploadImage from "../../../../cloudinary/UploadImage.jsx";
 
 export default function CreateProduct() {
   const dispatch = useDispatch();
+  const [image, setImage] = useState("");
 
   const categories = useSelector((state) => state.categories);
   const [errors, setErrors] = useState({});
@@ -14,7 +16,7 @@ export default function CreateProduct() {
     description: "", // TEXT
     stock: "", // integer
     cost_by_unit: "", // float
-    image: "", // Array (text)
+    image: [], // Array (text)
     warranty: "", // integer
     brand: "", // string
     discount: "", // INTEGER
@@ -37,8 +39,8 @@ export default function CreateProduct() {
         "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";
     }
 
-    if (input.image.length < 1) {
-      errors.image = "La imagen es requerida";
+    if (input.image.length < 3) {
+      errors.image = "Las 3 imagenes son requeridas";
     }
 
     if (!input.cost_by_unit) {
@@ -78,17 +80,12 @@ export default function CreateProduct() {
       ...input,
       [e.target.name]: e.target.value,
     });
-
-    // setErrors(validate({
-    //     ...input,
-    //     [e.target.name]: e.target.value
-    // }));
   }
 
-  function handleChangeimg(e) {
+  function handleChangeimg(e, img) {
     setInput({
       ...input,
-      image: [e.target.value],
+      image: [...input.image, img],
     });
   }
 
@@ -108,7 +105,7 @@ export default function CreateProduct() {
       description: "",
       stock: "",
       cost_by_unit: "",
-      image: "",
+      image: [],
       warranty: "",
       brand: "",
       discount: "",
@@ -129,8 +126,8 @@ export default function CreateProduct() {
       {/* <Link to="/"><button className={s.button}>Volver</button></Link> */}
       <h2>Agregar nuevo producto</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div className={s.form}>
-          <div>
+        <div>
+          <div className={s.input}>
             <label>Nombre del producto:</label>
             <input
               type="text"
@@ -143,7 +140,7 @@ export default function CreateProduct() {
             )}
           </div>
 
-          <div className="description">
+          <div className={s.input}>
             <label>Descripción:</label>
             <input
               type="text"
@@ -156,7 +153,7 @@ export default function CreateProduct() {
             <p className={s.error}>{errors.description}</p>
           )}
 
-          <div>
+          <div className={s.input}>
             <label>Stock:</label>
             <input
               type="integer"
@@ -166,7 +163,7 @@ export default function CreateProduct() {
             />
           </div>
           {errors.stock && <p className={s.error}>{errors.stock}</p>}
-          <div>
+          <div className={s.input}>
             <label>Descuento:</label>
             <input
               type="integer"
@@ -176,7 +173,7 @@ export default function CreateProduct() {
             />
           </div>
 
-          <div>
+          <div className={s.input}>
             <label>Costo por unidad:</label>
             <input
               type="integer"
@@ -189,18 +186,28 @@ export default function CreateProduct() {
             <p className={s.error}>{errors.cost_by_unit}</p>
           )}
 
-          <div>
-            <label>Imagen:</label>
-            <input
-              type="text"
-              value={input.image}
-              name="image"
-              onChange={handleChangeimg}
+          <div className={s.uploadImage}>
+            <label>Imagenes:</label>
+            <UploadImage
+              input={input}
+              setInput={setInput}
+              handleChangeimg={handleChangeimg}
+            />
+            <UploadImage
+              input={input}
+              setInput={setInput}
+              handleChangeimg={handleChangeimg}
+            />
+            <UploadImage
+              input={input}
+              setInput={setInput}
+              handleChangeimg={handleChangeimg}
             />
           </div>
+
           {errors.image && <p className={s.error}>{errors.image}</p>}
 
-          <div>
+          <div className={s.input}>
             <label>Garantia:</label>
             <input
               type="text"
@@ -210,7 +217,7 @@ export default function CreateProduct() {
             />
           </div>
           {errors.warranty && <p className={s.error}>{errors.warranty}</p>}
-          <div>
+          <div className={s.input}>
             <label>Marca:</label>
             <input
               type="text"

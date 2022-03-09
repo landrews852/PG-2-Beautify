@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Card from "../../../cards/cartCard/cartCard";
 import s from "./cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Total from "../../../elements/totalCart/totalCart";
-import { deleteItem, payProducts } from "../../../../redux/actions";
-import { Navigate, useNavigate } from "react-router-dom";
+import { payProducts } from "../../../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import ConfirmarCompra from "../../../features/confirmarCompra/confirmarCompra";
+import ConfirmarDatos from "../../../features/confirmarDatos/confirmarDatos";
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function Cart() {
@@ -20,6 +22,8 @@ export default function Cart() {
   const userlocal = JSON.parse(localStorage.getItem("user"));
   let Items = userlocal ? { productos: productos, user: userlocal[0] } : null;
   const [modalShow, setModalShow] = useState(false);
+  const [modalShow2, setModalShow2] = useState (false)
+  const navigate = useNavigate ()
 
   const handleClick = () => {
     if (!isAuthenticated) {
@@ -41,10 +45,10 @@ export default function Cart() {
         text: "Agrega productos al carrito...",
       });
     }
-    setModalShow (true) 
+    setModalShow(true);
   };
-  const onPay = ()=>{
-    setModalShow (false)
+  const onPay = () => {
+    setModalShow(false);
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src = "https://sdk.mercadopago.com/js/v2";
@@ -63,6 +67,11 @@ export default function Cart() {
         autoOpen: true,
       });
     });
+  }
+  const  onData = ()=>{
+    console.log  (userlocal)
+    setModalShow (false)
+    setModalShow2 (true) 
   }
 
   return (
@@ -91,21 +100,37 @@ export default function Cart() {
         </div>
       </div>
       <div>
-        <button className={s.btnpay} onClick={handleClick}>Pagar</button>
-      </div>      
+        <button className={s.btnpay} onClick={handleClick}>
+          Pagar
+        </button>
+      </div>
       <ConfirmarCompra
         show={modalShow}
         onHide={() => setModalShow(false)}
-        onPay= {()=> onPay() }
+        onData= {()=>onData()}
         productos={productos}
         /* fullscreen={true} */
         scrollable={true}
         animation={true}
         backdrop={'static'}
-        centered={true}
-        
+        centered={true}        
       />
+      {userlocal?
+      <ConfirmarDatos
+      show={modalShow2}
+      onHide={() => {
+        setModalShow2(false)
+        setModalShow (true)
+      }}
+      user={userlocal[0]}
+      onPay= {()=> onPay() }
+      scrollable={true}
+      animation={true}
+      backdrop={'static'}
+      centered={true}    
+      />:null
+      }
+      </div>
+      );
+    }
     
-    </div>
-  );
-}

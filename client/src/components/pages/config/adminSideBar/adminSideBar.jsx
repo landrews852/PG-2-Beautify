@@ -1,61 +1,87 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./adminSideBar.module.css";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-// import CreateProduct from "../../../pages/admin/createProduct/createProduct";
-// import CreateService from "../../admin/services/createService/createService";
 import EditCarousel from "../../admin/editCarousel/editCarousel";
 import GiveAdmin from "../../admin/giveAdmin/giveAdmin";
+import BlockUser from "../../admin/blockUser/blockUser"
 import { useState } from "react";
 import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
 import Service from "../../admin/services/services";
-import Product from "../../admin/products/product"
+import Product from "../../admin/products/product";
 import EditSocialMedia from "../../admin/editSocialMedia/editSocialMedia";
+import Orders from "../orders/ordersAdmin";
+import { useDispatch } from "react-redux";
+import { cleanCart } from "../../../../redux/actions";
+import Category from "../../admin/category/Category.jsx";
 
 export default function AdminSideBar() {
+  const dispatch=useDispatch()
   const locationpath = useLocation();
   const welcome = "Bienvenido al panel administrativo de tu E-commerce";
   const [ops, setOps] = useState(welcome);
+  const location = useLocation().search;
   const [active, setActive] = useState(0);
+  const changeOps = (ops) => setOps(ops)
 
   var components = "chau";
+  
+  useEffect(()=>{
+    if (location.toString() === "?true") {
+      dispatch(cleanCart());
+      setOps(<Orders setOps={changeOps} />);
+      setActive(1);
+    }
+  },[])
+
 
   const handleLocation = (e) => {
     switch (e.target.value) {
       case "1":
-        setOps(<Product />);
+        setOps(<Category />);
         setActive(1);
         break;
 
       case "2":
-        setOps(<Service />);
+        setOps(<Product />);
         setActive(2);
         break;
 
       case "3":
-        setOps(<EditCarousel />);
+        setOps(<Service />);
         setActive(3);
         break;
 
       case "4":
-        setOps(<AdminAboutUs />);
+        setOps(<EditCarousel />);
         setActive(4);
         break;
 
       case "5":
-        // reservada para estadisticas
-        // setOps(<CreateProduct location={handleLocation} />);
-        // setActive(1);
+        setOps(<AdminAboutUs />);
+        setActive(5);
         break;
 
       case "6":
-        setOps(<GiveAdmin />);
+        setOps(<BlockUser/>);
         setActive(6);
         break;
 
       case "7":
+        setOps(<GiveAdmin />);
+        setActive(7);
+        break;
+
+      case "8":
         setOps(<EditSocialMedia />);
         setActive(7);
+        break;
+        
+      case "9":
+        setOps(<Orders setOps={changeOps} />);
+          setActive(9);
+          break;
+      
 
       default:
         break;
@@ -81,7 +107,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Producto
+                    Categoria
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -95,9 +121,23 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Servicios
+                    Producto
                   </button>
                 </Link>
+                <Link className="nav-link" to="/panel">
+                    <button
+                      className={
+                        active == 9 ? s.buttonNav + " " + s.activo : s.buttonNav
+                      }
+                      value="9"
+                      onClick={(e) => {
+                        handleLocation(e);
+                      }}
+                    >
+                      <div className={s.translate}></div>
+                      Ventas
+                    </button>
+                  </Link>
                 <Link className="nav-link" to="/panel">
                   <button
                     className={
@@ -109,7 +149,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Carrusel
+                    Servicios
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -123,7 +163,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Sobre nosotros
+                    Carrusel
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -137,7 +177,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Estadisticas
+                    Sobre nosotros
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -151,7 +191,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Permisos
+                    Bloqueos
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">
@@ -165,15 +205,29 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
+                    Permisos
+                  </button>
+                </Link>
+                <Link className="nav-link" to="/panel">
+                  <button
+                    className={
+                      active == 8 ? s.buttonNav + " " + s.activo : s.buttonNav
+                    }
+                    value="8"
+                    onClick={(e) => {
+                      handleLocation(e);
+                    }}
+                  >
+                    <div className={s.translate}></div>
                     Redes Sociales
                   </button>
                 </Link>
-              </Nav >
-            </Navbar.Collapse >
-          </Navbar >
-        </div >
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        </div>
         <div className={s.containerOp}>{ops}</div>
-      </div >
+      </div>
     </>
   );
 }

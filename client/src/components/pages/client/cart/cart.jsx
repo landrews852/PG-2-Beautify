@@ -45,6 +45,28 @@ export default function Cart() {
         text: "Agrega productos al carrito...",
       });
     }
+
+    if (isAuthenticated) {
+      const token = await getAccessTokenSilently();
+      dispatch(getUserInfo(token)).then(u => {
+        if(u[0].disabled){
+          Swal.fire({
+            icon: "error",
+            title: "¡Bloqueado!",
+            text: "Se ha detectado actividad sospechosa y/o inapropiada, por favor comuniquese con nosotros.",
+          }).then(result =>{
+            if (result.isConfirmed) {
+              logout();
+              localStorage.clear();
+            } else {
+              logout();
+              localStorage.clear();
+            }
+          })
+        }
+      })
+    }
+
     setModalShow(true);
   };
   const onPay = () => {

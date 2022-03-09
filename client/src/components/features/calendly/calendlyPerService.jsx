@@ -19,7 +19,7 @@ export default function App() {
   const isLoading = useSelector((state) => state.isLoading);
 
   const prefill = {
-    name: "Test Name",
+    name: "Name",
     email: "Email@gmail.com"
   };
 

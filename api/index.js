@@ -25,6 +25,7 @@ const { loadProducts } = require("../api/loadData/productLoad");
 const { loadServices } = require("../api/loadData/servicesLoad");
 const { loadCarousel } = require("../api/loadData/carouselLoad.js");
 const { loadSocial } = require("../api/loadData/socialLoad");
+const { loadAbout } = require("../api/loadData/aboutLoad");
 
 // Syncing all the models at once.
 
@@ -35,6 +36,7 @@ conn.sync({force:false}).then(() => {
     // await loadProducts();
     // await loadServices();
     //  await loadSocial();
+    // await loadAbout();
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });

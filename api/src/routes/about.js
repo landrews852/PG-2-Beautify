@@ -4,7 +4,7 @@ const router = Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const findData = await About.findAll();
+    const findData = await About.findByPk(1);
     res.status(200).send(findData);
   } catch (err) {
     next(err);
@@ -14,8 +14,7 @@ router.get("/", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const { image, description,title,slogan } = req.body;
-    if (image && description) {
-      const data = await About.findAll();
+    if (image && description && title && slogan) {
       await About.create({
         image,
         description,

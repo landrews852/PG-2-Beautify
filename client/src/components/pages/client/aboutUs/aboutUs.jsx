@@ -1,13 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAbout } from "../../../../redux/actions";
 import s from "./aboutUs.module.css";
 
 export default function AboutUs() {
   let about = useSelector((state) => state.about);
-
-  // useEffect(()=>{
-
-  // },[])
+  const dispatch = useDispatch();
+  
+  useEffect(()=>{
+    dispatch(getAbout())
+  },[])
 
   return about.title ? (
     <div className={s.container}>

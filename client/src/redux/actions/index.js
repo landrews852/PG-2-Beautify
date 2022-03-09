@@ -42,6 +42,7 @@ export const GET_ORDERS = "GET_ORDERS";
 export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const CLEAN_ORDER_DETAIL = "CLEAN_ORDER_DETAIL";
 export const GET_ORDER_BY_STATUS = "GET_ORDER_BY_STATUS";
+export const GET_ABOUT = "GET_ABOUT";
 
 export const getOrderByStatus = (payload) =>{
 
@@ -58,6 +59,7 @@ export const getOrderByStatus = (payload) =>{
     };
 
 };
+
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -555,5 +557,16 @@ export function blockClient(info, token) {
       }
     );
     return response.data;
+  };
+}
+
+export function getAbout() {
+  return async function (dispatch) {
+    var json = await axios.get(`${apiRoute}/api/about`);
+
+    dispatch({
+      type: GET_ABOUT,
+      payload: json.data,
+    });
   };
 }

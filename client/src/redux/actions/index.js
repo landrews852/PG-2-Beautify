@@ -278,6 +278,7 @@ export function getUserInfo(token) {
       type: GET_CLIENT,
       payload: user.data,
     });
+    return user.data
   };
 }
 

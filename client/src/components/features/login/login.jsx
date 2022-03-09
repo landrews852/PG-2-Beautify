@@ -3,10 +3,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 import s from "./login.module.css";
 import { getUserInfo } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+
+
 export default function Login() {
 
+  
   const {
     loginWithPopup,
     logout,
@@ -23,7 +26,6 @@ export default function Login() {
       const token = await getAccessTokenSilently();
       dispatch(getUserInfo(token)).then((u) => {
         const user = JSON.parse(localStorage.getItem("user"));
-
         if (!user.length) {
           navigate("/admin/client/create");
         }

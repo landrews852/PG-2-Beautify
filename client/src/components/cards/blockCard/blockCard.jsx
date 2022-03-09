@@ -21,14 +21,14 @@ function BlockCard({ id, name, lastname,disabled }) {
           ...status,
           disabled: res[0].disabled
         })
-        res[0].admin ? Swal.fire({
+        res[0].disabled ? Swal.fire({
           icon: "success",
-          title: "¡Genial!",
-          text: "Permiso de admin concedido",
+          title: "¡Bloqueado!",
+          text: "El usuario ha sido bloqueado",
         }) : Swal.fire({
           icon: "success",
-          title: "¡Genial!",
-          text: "Permiso de admin denegado",
+          title: "¡Desbloqueado!",
+          text: "El usuario ha sido desbloqueado",
         })
       })
 

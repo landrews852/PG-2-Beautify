@@ -191,7 +191,7 @@ export default function AdminSideBar() {
                     }}
                   >
                     <div className={s.translate}></div>
-                    Estadisticas
+                    Bloqueos
                   </button>
                 </Link>
                 <Link className="nav-link" to="/panel">

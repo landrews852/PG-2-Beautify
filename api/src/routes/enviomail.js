@@ -6,7 +6,7 @@ const {  Client } = require("../db");
 const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI ,REFRESH_TOKEN} = process.env;
 
 router.post ('/', (req,res)=>{ 
-  const {name,apellido,email,status,transaction_amount,id_order,items,address}= req.body
+  const {name,apellido,email,status,transaction_amount,id_order,address}= req.body
   const oAuth2Client=new google.auth.OAuth2 (CLIENT_ID,CLIENT_SECRET,REDIRECT_URI)
   
   oAuth2Client.setCredentials ({refresh_token:REFRESH_TOKEN})
@@ -32,13 +32,13 @@ router.post ('/', (req,res)=>{
         to: email,
         subject:`Estado de su compra`,
         html:`
-<h3>Estimad@ ${client.name_client} ${client.lastname_client} 👋,</h3>
+<h3>Estimad@ ${name} ${apellido} 👋,</h3>
 <p>Estamos muy contentos que hayas encontrado lo que estabas buscando en nuestra tienda 😊, con el id_orden puedes revisar mas detalles de tu compra en nuestra pagina web.</p>
 <ul>
-    <li>id_orden: ${id}</li>
+    <li>id_orden: ${id_order}</li>
     <li>Estado: ${status}</li>
     <li>Dirección de envio: ${address}</li>
-    <li>Valor total: ${total_amount}</li>
+    <li>Valor total: ${transaction_amount}</li>
 </ul>
 <p>¡Gracias por comprar en nuestra tienda! 🌸</p>
 <img  src="https://res.cloudinary.com/estdia/image/upload/c_fit,w_250,h_200/f_auto/v1646078440/beautify/form/logo2_bqgepw.png"></img>`
@@ -108,15 +108,3 @@ router.post ('/changestatus',async (req,res)=>{
 
 module.exports = router;
 
-/* `
-<h5>Estimad@ ${client.name_client} ${client.lastname_client} 👋,</h5>
-<p>El estado de la compra realizada en la fecha ${order_date} ha cambiado, con el id_orden puedes revisar mas detalles de tu compra en nuestra pagina web.</p>
-<ul>
-  <li>id_orden: ${id}</li>
-  <li>Estado: ${status}</li>
-  <li>Dirección de envio: ${address}</li>
-  <li>Valor total: ${total_amount}</li>
-</ul>
-<p>¡Gracias por comprar en nuestra tienda! 🌸</p>
-<img src="https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078440/beautify/form/logo2_bqgepw.png"></img>
-` */

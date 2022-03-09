@@ -7,7 +7,7 @@ import {useDispatch} from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
-function CardOrder({ total_amount, address, order_date, id, status, getDetail}) {
+function CardOrder({ total_amount, address, order_date, id, status, getDetail, name_client, lastname_client }) {
 
   const [icon, setIcon] = useState()
   const [selector, setSelector] = useState(status)
@@ -58,7 +58,12 @@ dispatch(putOrder(e.target.value, id, token))
               {id}
             </div>
           </div>
-          
+          <div className={s.containerdata}>
+            <label>Usuario</label>
+            <div className={s.name_client}>
+              {`${name_client} ${lastname_client}`}
+            </div>
+          </div>
           <div className={s.containerdata}>
               <label>Fecha</label>
               <div className={s.date}>
@@ -80,7 +85,12 @@ dispatch(putOrder(e.target.value, id, token))
             <div className={s.containerdata}>  
               <label>Estado</label>
               <div className={s.status}>
-                {status}
+                <select defaultValue={selector} onChange={handleChange}>
+                  <option value="approved">approved</option>
+                  <option value="process">in process</option>
+                  <option value="delivered">delivered</option>
+                  <option value="rejected">rejected</option>
+                </select>
               </div>
             </div>  
           </div> 

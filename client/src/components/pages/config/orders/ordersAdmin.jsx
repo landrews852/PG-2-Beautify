@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react';
-import CardOrder from '../../../cards/cardOrder/CardOrder';
+import CardOrderAdmin from '../../../cards/cardOrder/cardOrderAdmin';
 import { getAllOrders, getOrderDetail, getOrders } from "../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import OrderDetail from './orderDetail'
@@ -73,7 +73,7 @@ export default function Orders({setOps}) {
         {data.length ? (
         data.map((o) => (
         <div key={o.id}>
-          <CardOrder
+          <CardOrderAdmin
             order_date={o.order_date}
             id={o.id}
             total_amount={o.total_amount}

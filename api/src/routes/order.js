@@ -122,6 +122,7 @@ router.put('/:id', async (req, res) =>{
             returning: true
         })
         const data = response[1][0]
+        await axios.post (`${API_ROOT}/api/email/changestatus`, data)
         res.json(data)
     } catch (error) {
         console.log(error)

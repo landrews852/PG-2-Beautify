@@ -4,7 +4,7 @@ const router = Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const findData = await About.findAll();
+    const findData = await About.findByPk(1);
     res.status(200).send(findData);
   } catch (err) {
     next(err);

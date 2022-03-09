@@ -34,6 +34,7 @@ import {
   GET_ORDERS,
   GET_ORDER_DETAIL,
   CLEAN_ORDER_DETAIL,
+  GET_ABOUT,
 } from "../actions";
 
 export const initialState = {
@@ -290,6 +291,12 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         orderDetail: {},
+      };
+
+    case GET_ABOUT:
+      return {
+        ...state,
+        about: action.payload,
       };
 
     default:

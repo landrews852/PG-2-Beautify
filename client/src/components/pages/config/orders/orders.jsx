@@ -4,6 +4,7 @@ import { getOrderDetail, getOrders } from "../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import OrderDetail from './orderDetail'
 import s from './orders.module.css'
+import { OrderFilter } from './orderFilter';
 
 
 export default function Orders({setOps}) {

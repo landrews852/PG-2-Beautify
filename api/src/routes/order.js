@@ -23,6 +23,18 @@ router.get('/all', async (req,res) => {
     }
 })
 
+router.get('/filter', async(req,res) =>{
+    const { status } = req.query;
+
+    try{
+        let orders = await Order.findAll({where:{status : status.toLowerCase()}})
+        return res.json(orders)
+    }catch(e){
+        console.log(e)
+    }
+
+})
+
 //Obtiene todas las ordenes de un cliente en especifico, solo la informacion de la orden, sin productos.
 router.get('/', async (req,res) => {
     try {

@@ -108,6 +108,8 @@ a:link {
 
 .linkbar:hover {
   color: black;
+  border-bottom:2px solid;
+  transition:all .3s linear;
 }
 
 .act{  

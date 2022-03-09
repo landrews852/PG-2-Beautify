@@ -55,7 +55,7 @@ export default function CreateClient() {
   const [input, setInput] = useState({
     name_client: "",
     lastname_client: "",
-    profile_picture: "",
+    profile_picture: 'https://res.cloudinary.com/jair1020/image/upload/v1646762757/Beautify/z0bmo0frxpjjdbsfeow9.png',
     address: "",
     phone: "",
     birthday: "",

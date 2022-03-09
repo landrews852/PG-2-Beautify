@@ -32,6 +32,9 @@ export default function Navigator() {
             if (result.isConfirmed) {
               logout();
               localStorage.clear();
+            } else {
+              logout();
+              localStorage.clear();
             }
           })
         }

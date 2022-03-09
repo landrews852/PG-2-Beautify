@@ -4,6 +4,7 @@ import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import EditCarousel from "../../admin/editCarousel/editCarousel";
 import GiveAdmin from "../../admin/giveAdmin/giveAdmin";
+import BlockUser from "../../admin/blockUser/blockUser"
 import { useState } from "react";
 import AdminAboutUs from "../../admin/editAboutUs/editAboutUs";
 import Service from "../../admin/services/services";
@@ -62,9 +63,8 @@ export default function AdminSideBar() {
         break;
 
       case "6":
-        // reservada para estadisticas
-        // setOps(<CreateProduct location={handleLocation} />);
-        // setActive(1);
+        setOps(<BlockUser/>);
+        setActive(6);
         break;
 
       case "7":

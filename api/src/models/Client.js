@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
         defaultValue: false,
       },
       disabled: {
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
       // purchase_history: {

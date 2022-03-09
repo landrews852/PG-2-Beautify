@@ -31,16 +31,18 @@ router.post ('/', (req,res)=>{
         from: "Beautify <beautify.pg@gmail.com>",
         to: email,
         subject:`Estado de su compra`,
-        text:`
-Estimad@ ${name} ${apellido} 👋,
-Estamos muy contentos que hayas encontrado lo que estabas buscando en nuestra tienda 😊, con el id_orden puedes revisar mas detalles de tu compra en nuestra pagina web.
+        html:`
+<h3>Estimad@ ${client.name_client} ${client.lastname_client} 👋,</h3>
+<p>Estamos muy contentos que hayas encontrado lo que estabas buscando en nuestra tienda 😊, con el id_orden puedes revisar mas detalles de tu compra en nuestra pagina web.</p>
+<ul>
+    <li>id_orden: ${id}</li>
+    <li>Estado: ${status}</li>
+    <li>Dirección de envio: ${address}</li>
+    <li>Valor total: ${total_amount}</li>
+</ul>
+<p>¡Gracias por comprar en nuestra tienda! 🌸</p>
+<img  src="https://res.cloudinary.com/estdia/image/upload/c_fit,w_250,h_200/f_auto/v1646078440/beautify/form/logo2_bqgepw.png"></img>`
 
-id_orden: ${id_order},
-Estado: ${status},
-Dirección de envio: ${address},
-Valor total: ${transaction_amount}
-
-!Gracias por comprar en nuestra tienda! 🌸`
       }
       const result= await  transporter.sendMail (mailOptions)
       return result 
@@ -81,16 +83,17 @@ router.post ('/changestatus',async (req,res)=>{
         from: "Beautify <beautify.pg@gmail.com>",
         to: email,
         subject:`Nuevo estado de su compra`,
-        text:`
-Estimad@ ${client.name_client} ${client.lastname_client} 👋,
-El estado de la compra realizada en la fecha ${order_date} ha cambiado, con el id_orden puedes revisar mas detalles de tu compra en nuestra pagina web.
-
-id_orden: ${id},
-Estado: ${status},
-Dirección de envio: ${address},
-Valor total: ${total_amount}
-
-!Gracias por comprar en nuestra tienda! 🌸`
+        html:`
+<h3>Estimad@ ${client.name_client} ${client.lastname_client} 👋,</h3>
+<p>El estado de la compra realizada en la fecha ${order_date} ha cambiado, con el id_orden puedes revisar mas detalles de tu compra en nuestra pagina web.</p>
+<ul>
+    <li>id_orden: ${id}</li>
+    <li>Estado: ${status}</li>
+    <li>Dirección de envio: ${address}</li>
+  <li>Valor total: ${total_amount}</li>
+</ul>
+<p>¡Gracias por comprar en nuestra tienda! 🌸</p>
+<img  src="https://res.cloudinary.com/estdia/image/upload/c_fit,w_250,h_200/f_auto/v1646078440/beautify/form/logo2_bqgepw.png"></img>`
       }
       const result= await  transporter.sendMail (mailOptions)
       return result 
@@ -104,3 +107,16 @@ Valor total: ${total_amount}
 })
 
 module.exports = router;
+
+/* `
+<h5>Estimad@ ${client.name_client} ${client.lastname_client} 👋,</h5>
+<p>El estado de la compra realizada en la fecha ${order_date} ha cambiado, con el id_orden puedes revisar mas detalles de tu compra en nuestra pagina web.</p>
+<ul>
+  <li>id_orden: ${id}</li>
+  <li>Estado: ${status}</li>
+  <li>Dirección de envio: ${address}</li>
+  <li>Valor total: ${total_amount}</li>
+</ul>
+<p>¡Gracias por comprar en nuestra tienda! 🌸</p>
+<img src="https://res.cloudinary.com/estdia/image/upload/f_auto/v1646078440/beautify/form/logo2_bqgepw.png"></img>
+` */

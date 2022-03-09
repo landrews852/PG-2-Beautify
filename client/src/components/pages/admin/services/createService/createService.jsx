@@ -3,6 +3,7 @@ import { getCategories, postService } from "../../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./createServices.module.css";
 import Swal from "sweetalert2";
+import UploadImage from "../../../../cloudinary/UploadImage.jsx";
 
 const validate = (input) => {
   let errors = {};
@@ -20,8 +21,8 @@ const validate = (input) => {
       "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";
   }
 
-  if (input.image.length < 1) {
-    errors.image = "La imagen es requerida";
+  if (input.image.length < 3) {
+    errors.image = "Las 3 imagenes son requeridas";
   }
 
   if (!input.price) {
@@ -54,10 +55,10 @@ export default function CreateService() {
     dispatch(getCategories());
   }, []);
 
-  function handleChangeimg(e) {
+  function handleChangeimg(e, img) {
     setInput({
       ...input,
-      image: [e.target.value],
+      image: [...input.image, img],
     });
   }
 
@@ -94,7 +95,6 @@ export default function CreateService() {
       image: [],
       category: [],
     });
-    // history.push("/home")
   }
 
   function handleDelete(el) {
@@ -148,12 +148,22 @@ export default function CreateService() {
           {errors.price && <p className={s.error}>{errors.price}</p>}
 
           <div>
-            <label>Imagen:</label>
-            <input
-              type="text"
-              value={input.image}
-              name="image"
-              onChange={handleChangeimg}
+            <UploadImage
+              input={input}
+              setInput={setInput}
+              handleChangeimg={handleChangeimg}
+            />
+
+            <UploadImage
+              input={input}
+              setInput={setInput}
+              handleChangeimg={handleChangeimg}
+            />
+
+            <UploadImage
+              input={input}
+              setInput={setInput}
+              handleChangeimg={handleChangeimg}
             />
           </div>
           {errors.image && <p className={s.error}>{errors.image}</p>}

@@ -51,10 +51,14 @@
     .containerorder {
         flex-wrap: wrap;
         flex-direction: column;
+        margin:auto;
     }
     .containerdata {
         border-bottom:1px solid;
         margin:1em 0;
+    }
+    .checked, .pause, .rejected, .delivered {
+         margin:.3em auto;    
     }
     
 }

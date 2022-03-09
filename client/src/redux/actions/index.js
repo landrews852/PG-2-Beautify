@@ -43,6 +43,12 @@ export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const CLEAN_ORDER_DETAIL = "CLEAN_ORDER_DETAIL";
 export const GET_ORDER_BY_STATUS = "GET_ORDER_BY_STATUS";
 export const GET_ABOUT = "GET_ABOUT";
+export const CLEAN_ORDERS = "CLEAN ORDERS";
+
+
+export const cleanOrders = () =>{
+  return {type:CLEAN_ORDERS}
+}  
 
 export const getOrderByStatus = (payload) =>{
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./filter.module.css";
@@ -17,6 +17,8 @@ export default function Filter({ Paginate }) {
   const products = useSelector((state) => state.products);
   const brands = useSelector((state) => state.brands);
 
+  let [page, setPage] = useState(1);
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,6 +44,7 @@ export default function Filter({ Paginate }) {
 
   function handleFilterOffer(e) {
     dispatch(filterByOffer(e.target.value));
+    Paginate(1)
   }
 
   var select = document.querySelectorAll("select")
@@ -49,6 +52,7 @@ export default function Filter({ Paginate }) {
 
   function handleFilterReset(e) {
     dispatch(filterBrand(""));
+    Paginate(1)
     return allSelect.forEach((e) => {
       e.options.selectedIndex = 1;
     });

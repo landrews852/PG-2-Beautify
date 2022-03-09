@@ -23,7 +23,8 @@ export default function Navigator() {
     if (isAuthenticated) {
       const token = await getAccessTokenSilently();
       dispatch(getUserInfo(token)).then(u => {
-        if(u[0].disabled){
+        console.log (u)
+        if( u.length  && u[0].disabled){
           Swal.fire({
             icon: "error",
             title: "¡Bloqueado!",

@@ -107,8 +107,9 @@ a:link {
 }
 
 .linkbar:hover {
-  border-bottom: 2px solid black;
   color: black;
+  border-bottom:2px solid;
+  transition:all .3s linear;
 }
 
 .act{  
@@ -117,7 +118,7 @@ a:link {
   padding: 0.5rem 1rem;
   padding-right: 1rem;
   padding-left: 1rem;
-  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 .act:hover{
   color:black

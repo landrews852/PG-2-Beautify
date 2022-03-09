@@ -68,7 +68,7 @@ function Amount({ id, stock, amountCart=1, cart=false }) {
   return  <div className={s.agotado} ><h3 style={{color:'red'}}>AGOTADO!</h3></div>
   }else return (
     <div className={s.quantity}>
-      <p>CANTIDAD MAX : {stock}</p>
+      <p>Stock : {stock}</p>
       <button className={s.btnn} onClick={(e) => handleClickSub(e)}>
         -
       </button>

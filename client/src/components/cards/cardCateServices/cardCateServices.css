@@ -33,7 +33,7 @@ body {
 }
 .acc-item h1 {
   height: 450px;
-  font-size: 65px;
+  font-size: 2vw;
   background: rgba(0, 0, 0, 0.4);
   transition: all 0.5s linear;
 }
@@ -121,6 +121,12 @@ body {
 
   .content-wrapper > p {
     margin: 10px 15px 0 15px;
+  }
+
+  .acc-item h1 {
+    
+    font-size: 4vw;
+    
   }
 }
 

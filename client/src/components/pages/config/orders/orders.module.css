@@ -1,3 +1,8 @@
 .orderdetailtitle {
     display: flex;
 }
+
+.h3 {
+    border-bottom:1px solid;
+    margin-bottom:1em;
+  }

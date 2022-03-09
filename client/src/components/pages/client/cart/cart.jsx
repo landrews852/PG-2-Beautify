@@ -45,11 +45,18 @@ export default function Cart() {
         text: "Agrega productos al carrito...",
       });
     }
+    else if (!userlocal.length) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Espera!!",
+        text: "Por favor completa tu registro",
+      });
+    }
 
     if (isAuthenticated) {
       const token = await getAccessTokenSilently();
       dispatch(getUserInfo(token)).then(u => {
-        if(u[0].disabled){
+        if(u.length&&u[0].disabled){
           Swal.fire({
             icon: "error",
             title: "¡Bloqueado!",
@@ -137,7 +144,7 @@ export default function Cart() {
         backdrop={'static'}
         centered={true}        
       />
-      {userlocal?
+      {userlocal.length?
       <ConfirmarDatos
       show={modalShow2}
       onHide={() => {

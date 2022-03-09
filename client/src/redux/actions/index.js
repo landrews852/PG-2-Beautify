@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+//import { json } from "stream/consumers";
 export const CLEAN_CART = "CLEAN_CART";
 export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
 export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
@@ -40,7 +41,25 @@ export const PAYMENT = "PAYMENT";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const CLEAN_ORDER_DETAIL = "CLEAN_ORDER_DETAIL";
+export const GET_ORDER_BY_STATUS = "GET_ORDER_BY_STATUS";
 export const GET_ABOUT = "GET_ABOUT";
+
+export const getOrderByStatus = (payload) =>{
+
+    return async function(dispatch){
+      try{
+        let json = await axios.get(`${apiRoute}/api/order/filter?status=${payload}`);
+        dispatch({
+          type: GET_ORDER_BY_STATUS, 
+          payload:json.data
+        });
+      }catch(e){
+        console.error(e);
+      };
+    };
+
+};
+
 
 export const getImgCarousel = () => {
   return async function (dispatch) {

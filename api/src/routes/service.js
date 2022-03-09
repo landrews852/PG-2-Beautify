@@ -71,7 +71,9 @@ router.get("/", async (req, res) => {
       });
       return res.json(service);
     } else {
-      let services = await Service.findAll();
+      let services = await Service.findAll({
+        include: { model: Category, attributes: ["name_category"] },
+      });
       return res.json(services);
     }
   } catch (e) {

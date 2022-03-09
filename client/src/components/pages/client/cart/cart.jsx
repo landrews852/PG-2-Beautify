@@ -25,7 +25,7 @@ export default function Cart() {
   const [modalShow2, setModalShow2] = useState (false)
   const navigate = useNavigate ()
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (!isAuthenticated) {
       return Swal.fire({
         icon: "warning",

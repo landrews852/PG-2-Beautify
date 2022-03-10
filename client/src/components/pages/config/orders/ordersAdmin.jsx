@@ -1,11 +1,12 @@
 import React, { useEffect, useState} from 'react';
 import CardOrderAdmin from '../../../cards/cardOrder/cardOrderAdmin';
-import { getAllOrders, getOrderDetail, getOrders } from "../../../../redux/actions";
+import { getAllOrders, getOrderByStatus, getOrderDetail, getOrders } from "../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import OrderDetail from './orderDetail'
 import s from './ordersAdmin.module.css'
 import { useAuth0 } from "@auth0/auth0-react";
 import { searchId } from "../../../../redux/actions";
+import { OrderFilter } from './orderFilter';
 
 
 export default function Orders({setOps}) {
@@ -19,7 +20,7 @@ export default function Orders({setOps}) {
       e.preventDefault();
       const token = await getAccessTokenSilently();
       dispatch(searchId(input, token)).then((res) => {
-        console.log(res.data);
+        
         const arr = []
         arr.push(res.data)
         setData(arr);
@@ -43,7 +44,7 @@ export default function Orders({setOps}) {
       const token = await getAccessTokenSilently();
       dispatch(getAllOrders(token))
       .then(res => {
-        console.log(res.data)
+        
         setData(res.data)
       })
     }, [])
@@ -53,9 +54,37 @@ export default function Orders({setOps}) {
       setOps(<OrderDetail setOps={setOps}/>)
     }
 
+    const handleChangeSelect = async (e) =>{
+      if(e.target.value == "todas"){
+        const token = await getAccessTokenSilently();
+      dispatch(getAllOrders(token))
+      .then(res => {
+        
+        setData(res.data)
+      })
+      }else if(e.target.value !== "todas" && data.length){
+      let ordersFiltered = data.filter(o => o.status === e.target.value);
+      setData(ordersFiltered.length ? ordersFiltered : [])  
+      }else if(e.target.value !== "todas" && !data.length){
+        const token = await getAccessTokenSilently();
+        dispatch(getAllOrders(token))
+        .then(res => {
+          let ordersFiltered = res.data.filter(o => o.status === e.target.value);
+          setData(ordersFiltered.length ? ordersFiltered : []) 
+        })
+      }
+    }
+
     return (
         <>
         <h3>Listado de ordenes</h3>
+        <select onChange={(e) => handleChangeSelect(e)}>
+            <option value="todas">Todas</option>
+            <option value="approved">Aprobadas</option>
+            <option value="process">En proceso</option>
+            <option value="rejected">Rechazadas</option>
+            <option value="delivered">Despachadas</option>
+        </select>
         <form onSubmit={handleSubmit}>
         <div className={s.form}>
           <input
@@ -83,7 +112,7 @@ export default function Orders({setOps}) {
             address={o.address}
             getDetail = {handleClick}
           />
-          {console.log(o.client.name_client)}
+         
         </div>
         ))
       ) : (

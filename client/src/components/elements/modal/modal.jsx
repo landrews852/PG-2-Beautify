@@ -9,12 +9,12 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
 export default function ModalComp({id , product, handleBack}) {
-const reviews = useSelector(state => state.reviews)
+const reviews = useSelector(state => state.reviewsuser)
 const [modalShow, setModalShow] = useState(false);
 const user = JSON.parse(localStorage.getItem('user'))
 const dispatch = useDispatch()
 
-const pruebaid = "109233972128167815856"
+
 
 useEffect(() => {
   dispatch(getReviewUser(id,user[0].id));

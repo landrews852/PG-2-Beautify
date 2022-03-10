@@ -54,6 +54,7 @@ export const initialState = {
   brands: [],
   about: {},
   reviews: [],
+  reviewsuser: [],
   isLoading: false,
   social: { facebook: "", instagram: "", email: "" },
 };
@@ -270,7 +271,7 @@ export function rootReducer(state = initialState, action) {
     case GET_REVIEWSUSER:
       return {
         ...state,
-        reviews: action.payload,
+        reviewsuser: action.payload,
       };    
     case POST_REVIEW:
       return {

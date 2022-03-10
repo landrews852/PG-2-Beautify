@@ -25,10 +25,11 @@ router.post("/", async (req, res, next) => {
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { name_category } = req.body;
+    const { name_category,disabled } = req.body;
 
     let data = {};
     if (name_category !== undefined) data.name_category = name_category;
+    if (disabled !== undefined) data.disabled = disabled;
 
     const updateCategory = await Category.update(data, {
       where: {

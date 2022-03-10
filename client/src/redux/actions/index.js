@@ -587,3 +587,13 @@ export function getAbout() {
     });
   };
 }
+
+export function desactiveCategory(info) {
+  return async function (dispatch) {
+    const response = await axios.put(
+      `${apiRoute}/api/categories/${info.id}`,
+      { disabled: info.data },
+    );
+    return response.data;
+  };
+}

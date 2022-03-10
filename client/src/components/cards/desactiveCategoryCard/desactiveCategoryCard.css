@@ -1,0 +1,29 @@
+.containerPermission {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(231, 223, 221, 0.67);
+  background-repeat: no-repeat;
+  margin:25px auto;
+  height:70%;
+  width: 600px;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+}
+
+.textPermission {
+  align-items: center;
+  position: relative;
+  left: 20px;
+  top: 6px;
+}
+
+.buttonPermission {
+    display: flex;
+    align-items: center;
+}
+
+#buttonStatus {
+  left: 0;
+  top: 0;
+}

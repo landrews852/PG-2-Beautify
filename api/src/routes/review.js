@@ -55,6 +55,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/user", async (req, res) => {
+  const { idClient, idProduct } = req.query;
+  let reviews = await Review.findAll({
+        where: { productId: idProduct, clientId: idClient },
+      });
+      return res.json(reviews);    
+});
+
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {

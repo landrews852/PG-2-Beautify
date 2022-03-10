@@ -37,6 +37,7 @@ import {
   GET_ORDER_BY_STATUS,
   GET_ABOUT,
   GET_REVIEWSUSER,
+  CLEAN_ORDERS,
 } from "../actions";
 
 export const initialState = {
@@ -46,7 +47,6 @@ export const initialState = {
   allProducts: [],
   orders: [],
   orderDetail: {},
-  ordersFiltered:[],
   cart: [],
   carrusel: [],
   categories: [],
@@ -304,14 +304,19 @@ export function rootReducer(state = initialState, action) {
     case GET_ORDER_BY_STATUS:
       return{
         ...state,
-        ordersFiltered: action.payload
+        orders: action.payload
       }  
-
+    case CLEAN_ORDERS:
+      return{
+        ...state,
+        orders:[]
+      }  
     case GET_ABOUT:
       return {
         ...state,
         about: action.payload,
       };
+
 
     default:
       return state;

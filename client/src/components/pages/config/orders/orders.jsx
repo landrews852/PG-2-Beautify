@@ -25,9 +25,7 @@ export default function Orders({setOps}) {
 
     return (
         <>
-        
         <h3 className={s.h3}>Listado de ordenes</h3>
-        <OrderFilter/>
         {orders.length ? (
         orders.map((o) => (
         <div key={o.id}>

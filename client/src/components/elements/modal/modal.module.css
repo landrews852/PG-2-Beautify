@@ -21,6 +21,20 @@
     transition: all 0.5s ease;
   }
 
+  .buttonrp {
+    display: inline-block;
+    border-radius: 4px;
+    background: rgb(161, 161, 161);
+    height: 5.8vh;
+    transition: all 0.5s ease;
+    border: none;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1rem;
+    margin:auto 0px;
+  }
+  
+  
 @media screen and (max-width:700px) {
     .button {
       margin:.4em auto;

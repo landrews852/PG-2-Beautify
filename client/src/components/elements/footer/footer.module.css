@@ -1,11 +1,14 @@
 .container {
   border-top: 1px solid #d6d6d6;
   display: inline-flex;
+
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  /* position: relative; */
+  margin-top: 20px;
+  position: sticky;
+  /* bottom: 1%; */
   background: linear-gradient(to bottom, #fbeee6 5%, #ffffff 100%);
   background-color: #ffffff;
 }

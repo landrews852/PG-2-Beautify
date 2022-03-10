@@ -5,6 +5,7 @@
   width: 80%;
   margin: auto;
   justify-content: center;
+  
 }
 
 .contenedor {
@@ -14,11 +15,12 @@
   margin-right: auto;
   margin-bottom: 1em;
   margin-left: auto;
+
 }
 
 .main {
   width: 100%;
-  min-height: 70vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

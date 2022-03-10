@@ -36,6 +36,7 @@ export const EDIT_SERVICE = "EDIT_SERVICE";
 export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 export const GET_SOCIAL = "GET_SOCIAL";
 export const GET_REVIEWS = "GET_REVIEWS";
+export const GET_REVIEWSUSER = "GET_REVIEWSUSER";
 export const POST_REVIEW = "POST_REVIEW";
 export const PAYMENT = "PAYMENT";
 export const GET_ORDERS = "GET_ORDERS";
@@ -487,6 +488,16 @@ export function getReviews(id) {
     const reviews = await axios.get(`${apiRoute}/api/review?idProduct=${id}`);
     dispatch({
       type: GET_REVIEWS,
+      payload: reviews.data,
+    });
+  };
+}
+
+export function getReviewUser(id,userid) {
+  return async function (dispatch) {
+    const reviews = await axios.get(`${apiRoute}/api/review/user?idProduct=${id}&idClient=${userid}`);
+    dispatch({
+      type: GET_REVIEWSUSER,
       payload: reviews.data,
     });
   };

@@ -37,7 +37,6 @@ export default function Card({
           <Amount id={id} amount={amount} stock={stock} />
         )}
       </div>
-      <br/>
       <div  className={s.cost_container}>
         {cost_by_unit === total ? (
           <>

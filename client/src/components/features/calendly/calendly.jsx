@@ -7,7 +7,7 @@ export default function App() {
   const [isTimeSelected, setTimeSelected] = useState(false);
 
   const prefill = {
-    name: "Name",
+    name: "Test Name",
     email: "Email@gmail.com"
   };
 

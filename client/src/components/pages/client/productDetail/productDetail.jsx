@@ -10,6 +10,7 @@ import {
 import React from "react";
 import Styles from "./productDetail.module.css";
 import Amount from "../../../features/amountProduct/amountProduct";
+import Loading from "../../../elements/loading/loading";
 import Reviews from "../reviews/reviews";
 import Slideshow from "./productDetailCarousel";
 
@@ -19,7 +20,7 @@ export default function ProductDetail() {
 
   //REVIEWS STATE//
   const reviews = useSelector(state => state.reviews)
-
+  const isLoading = useSelector((state) => state.isLoading)
 
   // Ordenamiento por fecha de las reviews
   const sortAsc = (a,b) => {
@@ -61,6 +62,8 @@ export default function ProductDetail() {
   
   return (
     <>
+      {isLoading?(<><Loading /></>):
+      (<>
       <div className={Styles.ProductDetail}>
         <div className={Styles.container}>
           <div className={Styles["product-image"]}>
@@ -86,7 +89,7 @@ export default function ProductDetail() {
             <p className={Styles.information}>{productDetail.description}</p>
             <div className={Styles.cost}>$ {productDetail.cost_by_unit}</div>
             <div className={Styles.control}>
-              <Amount id={productDetail.id} stock={productDetail.stock} />
+              {productDetail.product_name&&<Amount id={productDetail.id} stock={productDetail.stock} />}
             </div>
           </div>
           <div className={Styles.moredetails}>
@@ -121,9 +124,9 @@ export default function ProductDetail() {
         {
          reviews.length&&reviews?reviews.map(r => < Reviews author={r.client.name_client} created={r.createdAt} rank={r.rank} review={r.comment}/>):"No hay reviews aún"        
         }               
-        </div>
- 
+        </div> 
       </div>
+      </>)}
     </>
   );
 }

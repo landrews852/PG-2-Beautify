@@ -52,6 +52,13 @@ export default function Cart() {
         text: "Por favor completa tu registro",
       });
     }
+    else if (userlocal[0].admin){
+      return Swal.fire({
+        icon: "warning",
+        title: "Espera!!",
+        text: "Por favor registrate como cliente",
+      });
+    }
 
     if (isAuthenticated) {
       const token = await getAccessTokenSilently();

@@ -144,7 +144,7 @@ export default function Cart() {
         backdrop={'static'}
         centered={true}        
       />
-      {userlocal.length?
+      {userlocal && userlocal.length?
       <ConfirmarDatos
       show={modalShow2}
       onHide={() => {

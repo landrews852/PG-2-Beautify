@@ -1,5 +1,6 @@
 import React, { useEffect} from 'react';
 import Orders from './orders';
+import OrdersAdmin from './ordersAdmin'
 import { useDispatch, useSelector } from "react-redux";
 import { cleanOrderDetail } from '../../../../redux/actions';
 import ModalComp from '../../../elements/modal/modal';
@@ -8,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
-export default function OrderDetail({setOps}) {
+export default function OrderDetail({setOps,admin}) {
   const dispatch = useDispatch();
   let orderDetail = useSelector(state => state.orderDetail)
 
@@ -18,7 +19,11 @@ export default function OrderDetail({setOps}) {
 
   const handleBack = () => {
     dispatch(cleanOrderDetail())
-    setOps(<Orders setOps={setOps}/>)
+    if(admin){
+      setOps(<OrdersAdmin setOps={setOps}/>)
+    } else {
+      setOps(<Orders setOps={setOps}/>)
+    }
   }
 
   const postReview = (id) => {

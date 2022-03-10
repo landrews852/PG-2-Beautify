@@ -37,10 +37,16 @@ export default function EditProduct({ id }) {
     let errors = {};
     if (!input.product_name) {
       errors.product_name = "El nombre es requerido";
+    } else if (!/^[a-z][\s\w]{1,35}$/.test(input.product_name)) {
+      errors.product_name =
+        "El nombre debe tener menos de 35 caracteres";
     }
 
     if (!input.description) {
       errors.description = "La descripción es requerida";
+    } else if (!/^[A-Z][\s\w\W]{1,250}$/.test(input.description)) {
+      errors.description =
+        "La descripcion debe empezar en mayuscula y debe tener menos de 250 caracteres";
     }
 
     if (!input.image) {
@@ -49,14 +55,20 @@ export default function EditProduct({ id }) {
 
     if (!input.cost_by_unit) {
       errors.cost_by_unit = "El costo es requerido";
+    } else if (!/^(\d*(?:\.\d+)?)[\.\d]*$/.test(input.cost_by_unit)) {
+      errors.cost_by_unit = "El costo debe ser un numero entero o decimal";
     }
 
     if (!input.stock) {
       errors.stock = "Inventario inicial es requerido";
+    } else if (!/^[0-9]*$/.test(input.stock)) {
+      errors.stock = "El valor de inventario debe ser un numero entero";
     }
 
     if (!input.warranty) {
       errors.warranty = "La garantia es requerida";
+    } else if (!/^[0-9]*$/.test(input.warranty)) {
+      errors.warranty = "La garantia debe ser un numero entero";
     }
 
     if (!input.brand) {
@@ -192,7 +204,7 @@ export default function EditProduct({ id }) {
                   onChange={handleChange}
                 />
               </div>
-              {errors.stock && <p className={s.error}>{productDetail.stock}</p>}
+              {errors.stock && <p className={s.error}>{errors.stock}</p>}
               <div>
                 <label>Descuento:</label>
                 <input

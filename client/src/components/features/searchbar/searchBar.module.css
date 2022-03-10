@@ -1,29 +1,31 @@
 
 .searchBar {
-  position: absolute;
-  padding: 5px;
-  right: 13%;
+  display: flex;
+  /* padding: 5px; */
+  /* right: 13%; */
+  align-items: center;
 }
 
 .input {
   width: 0px;
   height: 30px;
-  padding: 0 20px;
-  font-size: 18px;
+  padding: 0 0;
+
   color: black;
   outline: none;
-  border: 1px solid silver;
+  border: none;
   border-radius: 30px;
   transition: all 0.6s ease;
   margin-top: 5px;
 }
 .input::placeholder {
   font-size: 16px;
+  
 }
 
 
 .btn {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   right: 0;
   background: #facdb6;
@@ -44,11 +46,13 @@
 
 
 .searchBar:hover input{
-  width: 240px;
+  width: 200px;
+  border: 1px solid silver;
 }
 
 .searchBar input:focus{
-  width: 240px;
+  width: 200px;
+  border: 1px solid silver;
 }
 
 

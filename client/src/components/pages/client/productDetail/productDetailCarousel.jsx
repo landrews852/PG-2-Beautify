@@ -12,9 +12,7 @@ export default function Slideshow() {
   console.log("productDetail", productDetail);
 
   const productImg = productDetail.image
-  useEffect(() => {
-    dispatch(getProductDetail());
-  }, []);
+
 
   return (
     <div>

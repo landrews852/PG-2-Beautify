@@ -64,27 +64,27 @@ function Amount({ id, stock, amountCart=1, cart=false }) {
 
     
   };
-  if (!stock){
-  return  <div className={s.agotado} ><h3 style={{color:'red'}}>AGOTADO!</h3></div>
-  }else return (
-    <div className={s.quantity}>
-      <p>Stock : {stock}</p>
-      <button className={s.btnn} onClick={(e) => handleClickSub(e)}>
-        -
-      </button>
-      <input
-        type="number"
-        value={amount}
-        onChange={(e) => handleInputChange(e)}
-        onBlur= {(e)=>handleInputBlur (e)}
-      />
-      <button className={s.btnn} onClick={(e) => handleClickSum(e)}>
-        +
-      </button>
-      <div className={s.marketbutton}>
-       {!cart && <MarketButton amount={amount} id={id} />}
-      </div>
-    </div>
+  if (stock){
+  return   (   <div className={s.quantity}>
+  <p>Stock : {stock}</p>
+  <button className={s.btnn} onClick={(e) => handleClickSub(e)}>
+    -
+  </button>
+  <input
+    type="number"
+    value={amount}
+    onChange={(e) => handleInputChange(e)}
+    onBlur= {(e)=>handleInputBlur (e)}
+  />
+  <button className={s.btnn} onClick={(e) => handleClickSum(e)}>
+    +
+  </button>
+  <div className={s.marketbutton}>
+   {!cart && <MarketButton amount={amount} id={id} />}
+  </div>
+</div>
+  )}else return (
+    <div className={s.agotado} ><h3 style={{color:'red'}}>AGOTADO!</h3></div>
   );
 }
 

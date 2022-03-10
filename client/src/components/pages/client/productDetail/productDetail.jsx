@@ -89,7 +89,7 @@ export default function ProductDetail() {
             <p className={Styles.information}>{productDetail.description}</p>
             <div className={Styles.cost}>$ {productDetail.cost_by_unit}</div>
             <div className={Styles.control}>
-              <Amount id={productDetail.id} stock={productDetail.stock} />
+              {productDetail.product_name&&<Amount id={productDetail.id} stock={productDetail.stock} />}
             </div>
           </div>
           <div className={Styles.moredetails}>

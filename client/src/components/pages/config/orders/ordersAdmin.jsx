@@ -59,7 +59,7 @@ export default function Orders({setOps}) {
 
     const handleClick = (id) => {
       dispatch(getOrderDetail(id))
-      setOps(<OrderDetail setOps={setOps}/>)
+      setOps(<OrderDetail setOps={setOps} admin={true}/>)
     }
 
     return (

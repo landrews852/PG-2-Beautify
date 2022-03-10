@@ -10,7 +10,6 @@ export default function EditCategory({ id }) {
   const [nameCategory, setNameCategory] = useState({ name_category: "" });
   const [categoryDetail, setcategoryDetail] = useState("");
   const categories = useSelector((state) => state.categories);
-
   const validate = (nameCategory) => {
     let errors = {};
 
@@ -50,12 +49,20 @@ export default function EditCategory({ id }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    dispatch(putCategory(categoryDetail.id, nameCategory));
-    Swal.fire({
-      icon: "success",
-      title: "¡Genial!",
-      text: "Categoria editada con exito",
-    });
+    if(Object.keys(errors).length>0){
+      Swal.fire({
+        icon: "warning",
+        title: "¡Cuidado!",
+        text: "Nombre de categoria incorrecto",
+      });
+    }else{
+      dispatch(putCategory(categoryDetail.id, nameCategory));
+      Swal.fire({
+        icon: "success",
+        title: "¡Genial!",
+        text: "Categoria editada con exito",
+      });
+    }
   }
 
   return (

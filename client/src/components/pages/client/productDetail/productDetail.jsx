@@ -11,6 +11,7 @@ import React from "react";
 import Styles from "./productDetail.module.css";
 import Amount from "../../../features/amountProduct/amountProduct";
 import Reviews from "../reviews/reviews";
+import Slideshow from "./productDetailCarousel";
 
 export default function ProductDetail() {
   let { id } = useParams();
@@ -47,7 +48,7 @@ export default function ProductDetail() {
     if ( rank - ranking > 0 && rank - ranking <= 0.5 ) return "fa-star-half-o";
     else return "fa-star-o";
   });
- console.log("ranking_starts",ranking_starts)
+//  console.log("ranking_starts",ranking_starts)
   useEffect(() => {
     dispatch(getProductDetail(id));
     dispatch(allProducts());
@@ -56,24 +57,26 @@ export default function ProductDetail() {
   }, []);
 
   let productDetail = useSelector((state) => state.productDetail);
+  console.log("productDetail", productDetail);
   
   return (
     <>
       <div className={Styles.ProductDetail}>
         <div className={Styles.container}>
           <div className={Styles["product-image"]}>
-            <img
+            {/* <img
               src={
                 Array.isArray(productDetail.image) === true
                   ? productDetail.image[0]
                   : null
               }
               alt="img no found"
-            />
+            /> */}
+            <Slideshow/>
           </div>
           <div className={Styles["product-details"]}>
             <div className={Styles["title-stars"]}>
-              <h1>{productDetail.product_name}</h1>
+              <h1>{productDetail.product_name} </h1>
               <span className={Styles["hint-star"]}>
                 {ranking_starts.map((star) => (
                   <i className={`${Styles.fa} ${Styles[star]}`}></i>
@@ -112,10 +115,11 @@ export default function ProductDetail() {
           </div>
         </div>           
       </div>      
+      <br/>
       <div className={Styles.reviews}>
         <h2>Reviews</h2>
         {
-         reviews.length?reviews.map(r => < Reviews author={r.client.name_client} created={r.createdAt} rank={r.rank} review={r.comment}/>):"Sin reviews de compradores"          
+         reviews.length&&reviews?reviews.map(r => < Reviews author={r.client.name_client} created={r.createdAt} rank={r.rank} review={r.comment}/>):"No hay reviews aún"        
         }               
         </div>
  

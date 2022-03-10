@@ -45,9 +45,9 @@ export default function Card({
         ) : (
           <div>
             <p>
-              Valor: <del>{cost_by_unit}</del>
+              $ <del>{cost_by_unit}</del>
             </p>
-            <p>Con descuento: {total}</p>
+            <p>Con descuento: $ {total}</p>
           </div>
         )}
       </div>

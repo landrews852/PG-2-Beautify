@@ -70,7 +70,7 @@ export default function UserSideBar() {
                       Compras
                     </button>
                   </Link>
-                  <Link className="nav-link" to="/panel">
+                  {/* <Link className="nav-link" to="/panel">
                     <button
                       className={
                         active == 2 ? s.buttonNav + " " + s.activo : s.buttonNav
@@ -97,7 +97,7 @@ export default function UserSideBar() {
                       <div className={s.translate}></div>
                       Reviews
                     </button>
-                  </Link>                  
+                  </Link>                   */}
                 </Nav >
               </Navbar.Collapse >
             </Navbar >

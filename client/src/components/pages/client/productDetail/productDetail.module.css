@@ -39,7 +39,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 15px 30px 1px rgba(128, 128, 128, 0.31);
+  box-shadow: 0 10px 15px 1px rgba(128, 128, 128, 0.31);
   background: rgba(255, 255, 255, 0.9);
   text-align: center;
   border-radius: 10px;
@@ -62,30 +62,27 @@
   align-self: stretch;
   padding: 15px;
   width: 55vw;
-  }
-
-  @media screen and (max-width: 900px) {
-    .product-details {
-      width: 100%;
-    }
-    .cost {
-      position: relative;
-      top: -0.5rem;
-    }
-    
-  
-  }
-  @media screen and (min-width: 700) {
-    .control {
-      position: relative;
-      left: -5rem;
-    }
-    .hint-star {
-      position: relative;
-      left: 6rem;
-  }
 }
 
+@media screen and (max-width: 900px) {
+  .product-details {
+    width: 100%;
+  }
+  .cost {
+    position: relative;
+    top: -0.5rem;
+  }
+}
+@media screen and (min-width: 700) {
+  .control {
+    position: relative;
+    left: -5rem;
+  }
+  .hint-star {
+    position: relative;
+    left: 6rem;
+  }
+}
 
 /* 	Product Name */
 .container .product-details h1 {
@@ -126,10 +123,7 @@
   display: inline;
   color: gold;
   width: 50%;
-  /* position: relative; */
-  /* left: -33rem; */
-  top: 2rem;
-
+  align-self: center;
 }
 .more p {
   position: relative;
@@ -148,14 +142,14 @@
   color: #7d7d7d;
   width: 100%;
   position: relative;
-  
 }
 
 /* control */
 
 .control {
+  display: flex;
   position: relative;
-  left: -6rem;
+  left: -5rem;
   top: 3.5vw;
 }
 /* the Button */
@@ -227,7 +221,7 @@
 /* product image  */
 .product-image {
   transition: all 1s ease-out;
-  width:50%;
+  width: 50%;
 }
 
 .container img {
@@ -237,25 +231,24 @@
 
 .product-image img {
   transition: all 1s ease-out;
-  height: 32rem;  
-  width: 100%;
-  border-radius: 10px;  
+  height: 500px;
+  /* width: 100%; */
+  /* object-fit: fill; */
 }
 
 .product-image {
+  border-radius: 10px;
   transition: all 0.3s ease-out;
   display: inline-block;
   position: relative;
-  width: 600px;
+  width: 400px;
   overflow: hidden;
+  margin-top: 1rem;
 }
-
 
 .product-image:hover .info {
   transform: translateX(0);
 }
-
-
 
 .product-image:hover img {
   transition: all 0.3s ease-out;
@@ -273,17 +266,17 @@
 .info {
   position: relative;
   text-align: left;
-  font-size: 1.1rem;  
+  font-size: 1.1rem;
   position: relative;
   left: -1.8vw;
-  top: 2vw  
+  top: 2vw;
 }
 
 .moredetails {
   width: auto;
   display: flex;
-  flex-flow: column; 
-  min-height: 250px; 
+  flex-flow: column;
+  min-height: 250px;
 }
 .reviews {
   display: flex;

@@ -34,6 +34,10 @@ import {
   GET_ORDERS,
   GET_ORDER_DETAIL,
   CLEAN_ORDER_DETAIL,
+  GET_ORDER_BY_STATUS,
+  GET_ABOUT,
+  GET_REVIEWSUSER,
+  CLEAN_ORDERS,
 } from "../actions";
 
 export const initialState = {
@@ -50,6 +54,7 @@ export const initialState = {
   brands: [],
   about: {},
   reviews: [],
+  reviewsuser: [],
   isLoading: false,
   social: { facebook: "", instagram: "", email: "" },
 };
@@ -263,6 +268,11 @@ export function rootReducer(state = initialState, action) {
         ...state,
         reviews: action.payload,
       };
+    case GET_REVIEWSUSER:
+      return {
+        ...state,
+        reviewsuser: action.payload,
+      };    
     case POST_REVIEW:
       return {
         ...state,
@@ -291,6 +301,23 @@ export function rootReducer(state = initialState, action) {
         ...state,
         orderDetail: {},
       };
+    
+    case GET_ORDER_BY_STATUS:
+      return{
+        ...state,
+        orders: action.payload
+      }  
+    case CLEAN_ORDERS:
+      return{
+        ...state,
+        orders:[]
+      }  
+    case GET_ABOUT:
+      return {
+        ...state,
+        about: action.payload,
+      };
+
 
     default:
       return state;

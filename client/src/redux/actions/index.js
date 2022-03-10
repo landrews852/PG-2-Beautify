@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+//import { json } from "stream/consumers";
 export const CLEAN_CART = "CLEAN_CART";
 export const GET_IMG_CAROUSEL = "GET_IMG_CAROUSEL";
 export const POST_IMG_CAROUSEL = "POST_IMG_CAROUSEL";
@@ -35,11 +36,37 @@ export const EDIT_SERVICE = "EDIT_SERVICE";
 export const UPDATE_SOCIAL = "UPDATE_SOCIAL";
 export const GET_SOCIAL = "GET_SOCIAL";
 export const GET_REVIEWS = "GET_REVIEWS";
+export const GET_REVIEWSUSER = "GET_REVIEWSUSER";
 export const POST_REVIEW = "POST_REVIEW";
 export const PAYMENT = "PAYMENT";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const CLEAN_ORDER_DETAIL = "CLEAN_ORDER_DETAIL";
+export const GET_ORDER_BY_STATUS = "GET_ORDER_BY_STATUS";
+export const GET_ABOUT = "GET_ABOUT";
+export const CLEAN_ORDERS = "CLEAN ORDERS";
+
+
+export const cleanOrders = () =>{
+  return {type:CLEAN_ORDERS}
+}  
+
+export const getOrderByStatus = (payload) =>{
+
+    return async function(dispatch){
+      try{
+        let json = await axios.get(`${apiRoute}/api/order/filter?status=${payload}`);
+        dispatch({
+          type: GET_ORDER_BY_STATUS, 
+          payload:json.data
+        });
+      }catch(e){
+        console.error(e);
+      };
+    };
+
+};
+
 
 export const getImgCarousel = () => {
   return async function (dispatch) {
@@ -466,6 +493,16 @@ export function getReviews(id) {
   };
 }
 
+export function getReviewUser(id,userid) {
+  return async function (dispatch) {
+    const reviews = await axios.get(`${apiRoute}/api/review/user?idProduct=${id}&idClient=${userid}`);
+    dispatch({
+      type: GET_REVIEWSUSER,
+      payload: reviews.data,
+    });
+  };
+}
+
 export function postReview(token, idclient, idproduct, payload) {
   return async function (dispatch) {
     const userreview = await axios.post(
@@ -535,6 +572,27 @@ export function blockClient(info, token) {
           authorization: `Bearer ${token}`,
         },
       }
+    );
+    return response.data;
+  };
+}
+
+export function getAbout() {
+  return async function (dispatch) {
+    var json = await axios.get(`${apiRoute}/api/about`);
+
+    dispatch({
+      type: GET_ABOUT,
+      payload: json.data,
+    });
+  };
+}
+
+export function desactiveCategory(info) {
+  return async function (dispatch) {
+    const response = await axios.put(
+      `${apiRoute}/api/categories/${info.id}`,
+      { disabled: info.data },
     );
     return response.data;
   };

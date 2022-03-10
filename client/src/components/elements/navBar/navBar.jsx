@@ -14,6 +14,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import CalendarLogo from "./calendarLogo";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Navigator() {
@@ -23,7 +24,8 @@ export default function Navigator() {
     if (isAuthenticated) {
       const token = await getAccessTokenSilently();
       dispatch(getUserInfo(token)).then(u => {
-        if(u[0].disabled){
+        console.log (u)
+        if( u.length  && u[0].disabled){
           Swal.fire({
             icon: "error",
             title: "¡Bloqueado!",
@@ -41,6 +43,19 @@ export default function Navigator() {
       })
     }
   }, [isAuthenticated]);
+  const navigate = useNavigate()
+  useEffect(async () => {
+    if (isAuthenticated) {
+      const token = await getAccessTokenSilently();
+      dispatch(getUserInfo(token)).then((u) => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user.length) {
+          navigate("/admin/client/create");
+        }
+      });
+    }
+  }, [isAuthenticated]);
+
 
   const userstate = useSelector((state) => state.user);
   // console.log("userstate",userstate)

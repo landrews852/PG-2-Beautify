@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
          },
       },
       disabled: {
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
     },

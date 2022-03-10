@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { postReview } from '../../../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getReviews, postReview } from '../../../../redux/actions';
 import s from './postreview.module.css'
 import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2';
@@ -29,13 +29,15 @@ const reviewpost = {
   rank: "",
   comment: "",
 } 
-const {user , id}  = props; 
+const {user , id, close}  = props; 
 const [review,setReview] = useState(reviewpost);
 const { getAccessTokenSilently } = useAuth0();
 const navigate = useNavigate();
+const reviews = useSelector((state) => state.reviews)
 
 useEffect(() => {
   setErrors(validate(review));
+  
 }, [review]);
 
 
@@ -67,10 +69,9 @@ const handleChange = (e) => {
         icon: "success",
         title: "¡Bien!",
         text: "Publicaste una review",
-      }); 
-      setTimeout(() => {
-        navigate('/panel')
-      },3000)
+        timer:"2000",
+      });
+      close(false);         
     }    
 };
     return (

@@ -36,6 +36,7 @@ import {
   CLEAN_ORDER_DETAIL,
   GET_ORDER_BY_STATUS,
   GET_ABOUT,
+  GET_REVIEWSUSER,
 } from "../actions";
 
 export const initialState = {
@@ -266,6 +267,11 @@ export function rootReducer(state = initialState, action) {
         ...state,
         reviews: action.payload,
       };
+    case GET_REVIEWSUSER:
+      return {
+        ...state,
+        reviews: action.payload,
+      };    
     case POST_REVIEW:
       return {
         ...state,

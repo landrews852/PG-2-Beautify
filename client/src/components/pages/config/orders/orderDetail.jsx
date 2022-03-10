@@ -39,7 +39,7 @@ export default function OrderDetail({setOps}) {
               <Link to={`/market/${p.id}`}>            
               <span>{p.product_name}</span>
               </Link> 
-              < ModalComp key={p.id} product={p.product_name} id={p.id}/>
+              < ModalComp handleBack={handleBack} key={p.id} product={p.product_name} id={p.id}/>
               </div>
               
               </>

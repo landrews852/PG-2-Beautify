@@ -68,7 +68,7 @@ export default function EditCategory({ id }) {
             id="category"
             onChange={(e) => selectCategory(e)}
           >
-            <option value="">Seleccione un categoria</option>
+            <option value="" hidden>Seleccione un categoria</option>
             {categories?.map((c) => (
               <option value={c.id} selected={id ? c.id == id : false}>
                 {c.name_category}

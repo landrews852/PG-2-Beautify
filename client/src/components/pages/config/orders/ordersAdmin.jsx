@@ -13,17 +13,26 @@ export default function Orders({setOps}) {
     const [input, setInput] = useState("");
     const [data, setData] = useState([]);
     const { getAccessTokenSilently } = useAuth0();
+
+    // console.log(data)
   
     const handleSubmit = async (e) => {
 
       e.preventDefault();
       const token = await getAccessTokenSilently();
-      dispatch(searchId(input, token)).then((res) => {
-        console.log(res.data);
-        const arr = []
-        arr.push(res.data)
-        setData(arr);
-      });
+      if(input!==''){
+        dispatch(searchId(input, token)).then((res) => {
+          // console.log(res.data);
+          const arr = []
+          arr.push(res.data)
+          setData(arr)
+        });
+      }else{
+        dispatch(getAllOrders(token)).then(res => {
+          // console.log(res.data)
+          setData(res.data)
+        })
+      }
     };
 
     const handleChange = (e) => {
@@ -43,7 +52,7 @@ export default function Orders({setOps}) {
       const token = await getAccessTokenSilently();
       dispatch(getAllOrders(token))
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         setData(res.data)
       })
     }, [])
@@ -70,7 +79,7 @@ export default function Orders({setOps}) {
           </button>
         </div>
       </form>
-        {data.length ? (
+        {data.length && data[0] !== null ? (
         data.map((o) => (
         <div key={o.id}>
           <CardOrderAdmin
@@ -83,7 +92,7 @@ export default function Orders({setOps}) {
             address={o.address}
             getDetail = {handleClick}
           />
-          {console.log(o.client.name_client)}
+          {/* {console.log(o.client.name_client)} */}
         </div>
         ))
       ) : (

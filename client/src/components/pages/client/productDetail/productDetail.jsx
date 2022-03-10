@@ -54,7 +54,7 @@ export default function ProductDetail() {
     dispatch(allProducts());
     dispatch(getReviews(id));
     return dispatch(cleanProductDetail());
-  }, []);
+  }, [dispatch]);
 
   let productDetail = useSelector((state) => state.productDetail);
   console.log("productDetail", productDetail);

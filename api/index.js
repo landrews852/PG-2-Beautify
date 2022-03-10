@@ -33,7 +33,7 @@ const { loadAbout } = require("../api/loadData/aboutLoad");
 conn.sync({force:false}).then(() => {
   server.listen(3001, async () => {
     // await loadCarousel();
-   // await loadCategories();
+    // await loadCategories();
     // await loadProducts();
     //await loadServices();
     //  await loadSocial();

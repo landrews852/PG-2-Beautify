@@ -129,7 +129,7 @@ export default function EditService({ id }) {
             id="service"
             onChange={(e) => selectService(e)}
           >
-            <option value="">Seleccione un servicio</option>
+            <option value="" hidden>Seleccione un servicio</option>
             {services?.map((service) => (
               <option
                 value={service.id}

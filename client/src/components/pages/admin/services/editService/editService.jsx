@@ -232,7 +232,7 @@ export default function EditService({ id }) {
                     <label>Seleccione las Categorias</label>
 
                     <select className={s.cat} onChange={(e) => handleSelect(e)}>
-                      <option>Seleccione una categoria</option>
+                      <option hidden>Seleccione una categoria</option>
                       {categories.map((category) => {
                         return (
                           <option

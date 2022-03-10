@@ -48,6 +48,8 @@
   height: auto;
   width: 95vw;
   flex-direction: row;
+  margin-bottom:20px;
+  padding-bottom:20px;
 }
 
 .ProductDetail h2 {

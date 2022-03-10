@@ -3,6 +3,7 @@ import { postProduct, getCategories } from "../../../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./createProduct.module.css";
 import UploadImage from "../../../../cloudinary/UploadImage.jsx";
+import Swal from "sweetalert2";
 
 export default function CreateProduct() {
   const dispatch = useDispatch();
@@ -45,14 +46,20 @@ export default function CreateProduct() {
 
     if (!input.cost_by_unit) {
       errors.cost_by_unit = "El costo es requerido";
+    } else if (!/^(\d*(?:\.\d+)?)[\.\d]*$/.test(input.cost_by_unit)) {
+      errors.cost_by_unit = "El costo debe ser un numero entero o decimal";
     }
 
     if (!input.stock) {
       errors.stock = "Inventario inicial es requerido";
+    } else if (!/^[0-9]*$/.test(input.stock)) {
+      errors.stock = "El valor de inventario debe ser un numero entero";
     }
 
     if (!input.warranty) {
       errors.warranty = "La garantia es requerida";
+    } else if (!/^[0-9]*$/.test(input.warranty)) {
+      errors.warranty = "La garantia debe ser un numero entero";
     }
 
     if (!input.brand) {
@@ -61,6 +68,15 @@ export default function CreateProduct() {
 
     if (input.category.length < 1) {
       errors.category = "Selecciona una categoria";
+    }
+
+    // if (!input.discount) {
+    //   errors.discount = "El descuento es requerido"
+    // } else if (!/^([0-9]|([1-9][0-9])|100)$/.test(input.discount))  {
+    //   errors.discount = "El descuento debe ser un numero entero entre 0 y 100"
+    // }
+    if (!/^([0-9]|([1-9][0-9])|100)$/.test(input.discount))  {
+      errors.discount = "El descuento debe ser un numero entero entre 0 y 100"
     }
 
     return errors;
@@ -99,7 +115,11 @@ export default function CreateProduct() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(postProduct(input));
-    alert("The product was added successfully!");
+    Swal.fire({
+      icon: "success",
+      title: "¡Genial!",
+      text: "Producto agregado con exito",
+    });
     setInput({
       product_name: "",
       description: "",
@@ -164,7 +184,7 @@ export default function CreateProduct() {
           </div>
           {errors.stock && <p className={s.error}>{errors.stock}</p>}
           <div className={s.input}>
-            <label>Descuento:</label>
+            <label>Descuento (%):</label>
             <input
               type="integer"
               value={input.discount}
@@ -172,6 +192,9 @@ export default function CreateProduct() {
               onChange={handleChange}
             />
           </div>
+          {errors.discount && (
+            <p className={s.error}>{errors.discount}</p>
+          )}
 
           <div className={s.input}>
             <label>Costo por unidad:</label>
@@ -208,7 +231,7 @@ export default function CreateProduct() {
           {errors.image && <p className={s.error}>{errors.image}</p>}
 
           <div className={s.input}>
-            <label>Garantia:</label>
+            <label>Garantia (semanas):</label>
             <input
               type="text"
               value={input.warranty}

@@ -96,10 +96,14 @@ export default function Filter({ Paginate }) {
             <option hidden>Selecciona una opción</option>
             <option value="">Todas</option>
             {categories && categories.length > 0
-              ? categories.map((e) => (
+              ? categories.map((e) => ( <>
+                {e.disabled ? null : (
                   <option key={e.id} value={e.id}>
                     {e.name_category}
                   </option>
+                ) }
+              </>
+                
                 ))
               : null}
           </select>

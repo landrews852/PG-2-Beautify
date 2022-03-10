@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { blockClient } from '../../../redux/actions'
+import { desactiveCategory } from '../../../redux/actions'
 import Swal from "sweetalert2";
 import { useAuth0 } from '@auth0/auth0-react'
 import "./desactiveCategoryCard.css"
@@ -13,22 +13,22 @@ function DesactiveCategoryCard({ id, name ,disabled }) {
     const { value } = e.target
     let data = (value === 'true')
     let categoryObject = { id, data }
-    // dispatch(blockClient(categoryObject, token))
-    //   .then(res => {
-    //     setStatus({
-    //       ...status,
-    //       disabled: res[0].disabled
-    //     })
-    //     res[0].disabled ? Swal.fire({
-    //       icon: "success",
-    //       title: "¡Bloqueado!",
-    //       text: "El usuario ha sido bloqueado",
-    //     }) : Swal.fire({
-    //       icon: "success",
-    //       title: "¡Desbloqueado!",
-    //       text: "El usuario ha sido desbloqueado",
-    //     })
-    //   })
+    dispatch(desactiveCategory(categoryObject))
+      .then(res => {
+        setStatus({
+          ...status,
+          disabled: res[0].disabled
+        })
+        res[0].disabled ? Swal.fire({
+          icon: "success",
+          title: "¡Desactivada!",
+          text: "La categoria ha sido desactivada",
+        }) : Swal.fire({
+          icon: "success",
+          title: "¡Activada!",
+          text: "La categoria ha sido activada",
+        })
+      })
     console.log(categoryObject)
 
   }
@@ -40,7 +40,11 @@ function DesactiveCategoryCard({ id, name ,disabled }) {
       </div>
       <div className="buttonPermission">
         {
-          status.disabled ? <button id="buttonStatus" type="button" onClick={handleClick} value={false}>Desbloquear</button> : <button id="buttonStatus" type="button" onClick={handleClick} value={true}>Bloquear</button>
+          status.disabled ? (
+            <button id="buttonStatus" type="button" onClick={handleClick} value={false}>Activar</button> 
+          ) : (
+            <button id="buttonStatus" type="button" onClick={handleClick} value={true}>Desactivar</button>
+          )
         }
       </div>
     </div>

@@ -588,16 +588,11 @@ export function getAbout() {
   };
 }
 
-export function blockClient(info, token) {
+export function desactiveCategory(info) {
   return async function (dispatch) {
     const response = await axios.put(
-      `${apiRoute}/api/client/${info.id}`,
+      `${apiRoute}/api/categories/${info.id}`,
       { disabled: info.data },
-      {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
     );
     return response.data;
   };

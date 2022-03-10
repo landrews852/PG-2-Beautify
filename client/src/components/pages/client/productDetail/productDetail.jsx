@@ -119,7 +119,7 @@ export default function ProductDetail() {
       <div className={Styles.reviews}>
         <h2>Reviews</h2>
         {
-         reviews.length?reviews.map(r => < Reviews author={r.client.name_client} created={r.createdAt} rank={r.rank} review={r.comment}/>):"Sin reviews de compradores"          
+         reviews.length&&reviews?reviews.map(r => < Reviews author={r.client.name_client} created={r.createdAt} rank={r.rank} review={r.comment}/>):"No hay reviews aún"        
         }               
         </div>
  

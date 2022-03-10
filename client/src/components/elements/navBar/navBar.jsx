@@ -93,15 +93,18 @@ export default function Navigator() {
             {!isAuthenticated?<Login/>:null}
           </Nav>
 
-          { location.pathname === "/market" ||
-          location.pathname === "/services" ? (
-            <SearchBar className={s.navSearch} />
-          ) : null }
-          <CartLogo />
-          <CalendarLogo />
-          {isAuthenticated && <UserMenu user={user} clientname={clientname} />}
-          <span className={s.welcome}>{isAuthenticated ? clientname : ""}</span>
+          
         </Navbar.Collapse>
+        <div className={s.cont} >
+        { location.pathname === "/market" ||
+          location.pathname === "/services" ? (
+          <SearchBar className={s.navSearch} />
+          ) : null }       
+          <CartLogo />
+          {isAuthenticated && <UserMenu user={user} clientname={clientname} />}
+          <CalendarLogo />
+        </div>
+      <span className={s.welcome}>{isAuthenticated ? clientname : ""}</span>
       </Container>
     </Navbar>
   );

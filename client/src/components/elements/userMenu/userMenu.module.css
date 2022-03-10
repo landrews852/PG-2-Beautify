@@ -1,17 +1,14 @@
 .container{
-  position: absolute;
-  right: 5%;
-  top: 43%;
+  /* position: absolute; */
+/*   right: 5%;
+  top: 43%; */
 }
 
 .container a {
   color:black
 }
 
-.container a:hover {
-  background-color: rgb(224, 203, 143);
-  transition:all .16s ease;
-}
+
 
 .menu{
   inset: 35px 0px auto auto;
@@ -21,10 +18,10 @@
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  position: relative;
   top: -3px;
   transition: all 0.3s ease-out;
   transform: scale(1, 1);
+  margin-right: 5px;
 }
 .vinc{
   border-radius: 50%;

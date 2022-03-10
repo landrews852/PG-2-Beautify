@@ -587,3 +587,18 @@ export function getAbout() {
     });
   };
 }
+
+export function blockClient(info, token) {
+  return async function (dispatch) {
+    const response = await axios.put(
+      `${apiRoute}/api/client/${info.id}`,
+      { disabled: info.data },
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  };
+}

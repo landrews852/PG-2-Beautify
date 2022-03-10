@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CreateCategory from "./createCategory/CreateCategory";
 import EditCategory from "./editCategory/EditCategory";
+import DesactiveCategory from "./desactiveCategory/desactiveCategory";
 import s from "./category.module.css";
 
 export default function Category() {
@@ -16,7 +17,9 @@ export default function Category() {
     section = <CreateCategory />;
   } else if (action === "edit") {
     section = <EditCategory />;
-  }
+  } else if (action === "desactive") {
+    section = <DesactiveCategory />;
+  } 
 
   return (
     <div className={s.new}>
@@ -31,7 +34,9 @@ export default function Category() {
           <option key="2" value="edit">
             Editar
           </option>
-          {/* <option key='3' value='order'>Ordenar</option> */}
+          <option key='3' value='desactive'>
+            Deshabilitar
+          </option>
         </select>
         {section}
       </div>

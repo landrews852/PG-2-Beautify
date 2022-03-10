@@ -30,7 +30,7 @@ export default function AdminSideBar() {
     if (location.toString() === "?true") {
       dispatch(cleanCart());
       setOps(<Orders setOps={changeOps} />);
-      setActive(1);
+      setActive(9);
     }
   },[])
 

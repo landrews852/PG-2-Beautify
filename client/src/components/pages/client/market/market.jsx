@@ -21,7 +21,11 @@ export default function Market() {
   let lastPage = 1 + Math.floor((products.length - 1) / 9);
   let paginatedProducts =
     products !== "nothing found" ? products.slice(firstItem, lastItem) : [];
-
+ 
+  useEffect(() => {
+      setPage(1)
+  }, [products]);
+ 
   useEffect(() => {
     if (typeof products === "string" || products.length == 0)
       dispatch(allProducts());

@@ -42,6 +42,7 @@ export default function Filter({ Paginate }) {
 
   function handleFilterOffer(e) {
     dispatch(filterByOffer(e.target.value));
+    Paginate(1);
   }
 
   var select = document.querySelectorAll("select")
@@ -49,6 +50,7 @@ export default function Filter({ Paginate }) {
 
   function handleFilterReset(e) {
     dispatch(filterBrand(""));
+    Paginate(1);
     return allSelect.forEach((e) => {
       e.options.selectedIndex = 1;
     });

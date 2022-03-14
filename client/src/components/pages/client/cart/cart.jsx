@@ -44,15 +44,21 @@ export default function Cart() {
         title: "Espera!!",
         text: "Agrega productos al carrito...",
       });
-    }
-    else if (!userlocal.length) {
+    } else if (!userlocal.length) {
       return Swal.fire({
         icon: "warning",
         title: "Espera!!",
         text: "Por favor completa tu registro",
       });
+    } else if (userlocal[0].admin){
+      return Swal.fire({
+        icon: "warning",
+        title: "Espera!!",
+        text: "Por favor administrador, logeate como cliente",
+      });
     }
 
+    console.log(userlocal[0].admin)
     if (isAuthenticated) {
       const token = await getAccessTokenSilently();
       dispatch(getUserInfo(token)).then(u => {

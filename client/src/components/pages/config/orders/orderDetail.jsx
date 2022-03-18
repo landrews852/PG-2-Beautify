@@ -8,6 +8,8 @@ import s from './orderDetail.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import { getReviewUser } from '../../../../redux/actions';
+
 
 export default function OrderDetail({setOps,admin}) {
   const dispatch = useDispatch();
@@ -16,7 +18,16 @@ export default function OrderDetail({setOps,admin}) {
   useEffect(()=>{
     return dispatch(cleanOrderDetail()); 
   },[])
+  const reviews = useSelector(state => state.reviewsuser)
+  const user = JSON.parse(localStorage.getItem('user'))
 
+  useEffect(() => {
+    dispatch(getReviewUser(user[0].id));
+  }, [dispatch]);
+  
+
+  
+  console.log("reviews", reviews)
   const handleBack = () => {
     dispatch(cleanOrderDetail())
     if(admin){
@@ -26,16 +37,11 @@ export default function OrderDetail({setOps,admin}) {
     }
   }
 
-  const postReview = (id) => {
-    console.log('Producto ',id)
-  }
-
     return (
         <>
         <h3 className={s.h3}>Detalle de la orden</h3>
         {orderDetail.id ? (<>          
           <div className={s.container}>
-            {console.log("detalle de orden",orderDetail)}
             {orderDetail.products.length ? (
               orderDetail.products.map(p => <>
               
@@ -44,7 +50,7 @@ export default function OrderDetail({setOps,admin}) {
               <Link to={`/market/${p.id}`}>            
               <span>{p.product_name}</span>
               </Link> 
-              < ModalComp handleBack={handleBack} key={p.id} product={p.product_name} id={p.id}/>
+              < ModalComp handleBack={handleBack} key={p.id} revuser={reviews} user={user} product={p.product_name} id={p.id}/>
               </div>
               
               </>

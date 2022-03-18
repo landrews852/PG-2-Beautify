@@ -4,26 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import PostReview from '../../pages/client/postreview/postreview';
 import m from './modal.module.css'
 import { useEffect } from 'react';
-import { getReviewUser } from '../../../redux/actions';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
 
-export default function ModalComp({id , product, handleBack}) {
+
+
+export default function ModalComp({id , product, user, revuser, handleBack}) {
 const reviews = useSelector(state => state.reviewsuser)
 const [modalShow, setModalShow] = useState(false);
-const user = JSON.parse(localStorage.getItem('user'))
-const dispatch = useDispatch()
+const dispatch = useDispatch();
 
+const revcheck = revuser&&revuser.filter(r => r.productId == id)
 
-
-useEffect(() => {
-  dispatch(getReviewUser(id,user[0].id));
-}, [dispatch]);
-
-
-  
 const handlePublished = () => {
-  console.log("review publicada");
+  
   Swal.fire({
     icon: 'warning',
     text: 'Ya has publicado una review en este producto',
@@ -57,7 +50,7 @@ function CenteredModal(props) {
   }
     return (
         <>
-        {reviews.length?<button className={m.buttonrp} onClick={() => handlePublished()}>Review Publicada</button>
+        {revcheck.length?<button className={m.buttonrp} onClick={() => handlePublished()}>Review Publicada</button>
         :<button className={m.button} variant="primary" onClick={() => setModalShow(true)}>
         Crear Review
         </button>

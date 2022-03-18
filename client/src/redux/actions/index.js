@@ -493,9 +493,9 @@ export function getReviews(id) {
   };
 }
 
-export function getReviewUser(id,userid) {
+export function getReviewUser(userid) {
   return async function (dispatch) {
-    const reviews = await axios.get(`${apiRoute}/api/review/user?idProduct=${id}&idClient=${userid}`);
+    const reviews = await axios.get(`${apiRoute}/api/review/user?idClient=${userid}`);
     dispatch({
       type: GET_REVIEWSUSER,
       payload: reviews.data,
